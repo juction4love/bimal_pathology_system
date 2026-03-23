@@ -1,0 +1,32 @@
+# Flutter/Dart related
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+
+# Windows related
+build/windows/
+/windows/flutter/ephemeral/
+/windows/flutter/generated_config.cmake
+
+# Visual Studio related
+.vs/
+*.user
+*.suo
+*.sln
+*.vcxproj
+*.filters
+*.useros
+bin/
+obj/
+
+# Firebase related (Security)
+google-services.json
+firebase_options.dart
+
+# OS related
+.DS_Store
+Thumbs.db
