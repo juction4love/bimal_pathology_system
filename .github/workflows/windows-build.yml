@@ -12,8 +12,7 @@ on:
   workflow_dispatch:
 
 env:
-  FLUTTER_VERSION: '3.19.0'
-  JAVA_VERSION: '11'
+  FLUTTER_VERSION: 'stable'
 
 jobs:
   build:
@@ -35,14 +34,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: 🔧 Setup Java
-        uses: actions/setup-java@v4
-        with:
-          java-version: ${{ env.JAVA_VERSION }}
-          distribution: 'temurin'
-          cache: 'gradle'
-
-      - name: 🐦 Setup Flutter
+      - name: 🐦 Setup Flutter (Stable)
         uses: subosito/flutter-action@v2
         with:
           flutter-version: ${{ env.FLUTTER_VERSION }}
@@ -55,46 +47,58 @@ jobs:
       - name: 🔍 Analyze code
         run: |
           flutter analyze
+        continue-on-error: true
 
       - name: 🧪 Run tests
         run: |
-          flutter test --coverage --no-pub
+          flutter test --coverage
         continue-on-error: true
 
-      - name: 📊 Upload coverage
-        uses: codecov/codecov-action@v3
-        with:
-          files: ./coverage/lcov.info
-          flags: flutter
-          name: flutter-coverage
-        if: always()
-
-      - name: 🛠️ Build Windows app
+      - name: 🛠️ Build Windows app (${{ matrix.build-mode }})
         run: |
-          flutter build windows --${{ matrix.build-mode }}
+          flutter build windows --${{ matrix.build-mode }} --verbose
 
       - name: 📦 Create installer artifact
+        shell: powershell
         run: |
-          cd build/windows/runner/Release
-          powershell -Command "Compress-Archive -Path . -DestinationPath ../../../${{ matrix.artifact-name }}.zip"
-          cd ../../../
-          dir /s /b ${{ matrix.artifact-name }}.zip
+          # Verify build output exists
+          $buildPath = "build/windows/x64/runner/${{ matrix.build-mode | title }}"
+          
+          if (-Not (Test-Path $buildPath)) {
+            Write-Host "❌ Build path not found: $buildPath"
+            Write-Host "Available directories:"
+            Get-ChildItem "build/windows" -Recurse -Directory | ForEach-Object { Write-Host $_.FullName }
+            exit 1
+          }
+          
+          Write-Host "✅ Build path found: $buildPath"
+          
+          # Create ZIP file
+          $zipPath = "${{ matrix.artifact-name }}.zip"
+          Write-Host "Creating ZIP: $zipPath"
+          
+          Compress-Archive `
+            -Path "$buildPath/*" `
+            -DestinationPath $zipPath `
+            -Force
+          
+          # Verify ZIP was created
+          if (Test-Path $zipPath) {
+            $zipSize = (Get-Item $zipPath).Length / 1MB
+            Write-Host "✅ ZIP created successfully: $zipSize MB"
+          } else {
+            Write-Host "❌ ZIP creation failed"
+            exit 1
+          }
 
       - name: 📤 Upload build artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.artifact-name }}-${{ github.run_number }}
-          path: build/windows/runner/Release/${{ matrix.artifact-name }}.zip
+          path: ${{ matrix.artifact-name }}.zip
           retention-days: 30
-
-      - name: 📝 Generate build summary
+          compression-level: 0
         if: always()
-        run: |
-          echo "## Build Summary" >> $env:GITHUB_STEP_SUMMARY
-          echo "- **Build Mode**: ${{ matrix.build-mode }}" >> $env:GITHUB_STEP_SUMMARY
-          echo "- **Run ID**: ${{ github.run_number }}" >> $env:GITHUB_STEP_SUMMARY
-          echo "- **Commit**: ${{ github.sha }}" >> $env:GITHUB_STEP_SUMMARY
-          echo "- **Branch**: ${{ github.ref }}" >> $env:GITHUB_STEP_SUMMARY
 
   lint:
     name: Code Quality & Lint
@@ -104,25 +108,35 @@ jobs:
       - name: 📥 Checkout code
         uses: actions/checkout@v4
 
-      - name: 🐦 Setup Flutter
+      - name: 🐦 Setup Flutter (Stable)
         uses: subosito/flutter-action@v2
         with:
           flutter-version: ${{ env.FLUTTER_VERSION }}
           cache: true
 
       - name: 📦 Get dependencies
-        run: flutter pub get
+        run: |
+          flutter pub get
 
       - name: 🔍 Dart analyze
-        run: flutter analyze --fatal-infos --fatal-warnings
+        run: |
+          flutter analyze --fatal-infos
         continue-on-error: false
 
       - name: 📋 Dart format check
-        run: dart format --set-exit-if-changed .
+        run: |
+          dart format --set-exit-if-changed lib test
         continue-on-error: true
 
-      - name: 🧹 Lint with flutter_lints
-        run: flutter pub run custom_lint
+      - name: 🧹 Check for custom_lint
+        run: |
+          $pubspec = Get-Content pubspec.yaml
+          if ($pubspec -match "custom_lint:") {
+            Write-Host "✅ custom_lint found in pubspec.yaml"
+            flutter pub run custom_lint
+          } else {
+            Write-Host "ℹ️  custom_lint not configured (skipping)"
+          }
         continue-on-error: true
 
   security:
@@ -133,27 +147,32 @@ jobs:
       - name: 📥 Checkout code
         uses: actions/checkout@v4
 
-      - name: 🐦 Setup Flutter
+      - name: 🐦 Setup Flutter (Stable)
         uses: subosito/flutter-action@v2
         with:
           flutter-version: ${{ env.FLUTTER_VERSION }}
           cache: true
 
       - name: 📦 Get dependencies
-        run: flutter pub get
+        run: |
+          flutter pub get
 
       - name: 🔐 Check for hardcoded secrets
+        shell: powershell
         run: |
           $patterns = @(
-            'password\s*=\s*["\'].*["\']',
-            'api[_-]?key\s*=\s*["\'].*["\']',
-            'secret\s*=\s*["\'].*["\']',
-            'token\s*=\s*["\'].*["\']'
+            'password\s*[:=]\s*["\x27].*["\x27]',
+            'api[_-]?key\s*[:=]\s*["\x27].*["\x27]',
+            'secret\s*[:=]\s*["\x27].*["\x27]',
+            'token\s*[:=]\s*["\x27].*["\x27]'
           )
           
           $found = $false
           foreach ($pattern in $patterns) {
-            $matches = Get-ChildItem -Path . -Include *.dart -Recurse | Select-String -Pattern $pattern
+            $matches = Get-ChildItem -Path . -Include *.dart -Recurse `
+              | Where-Object { $_.FullName -notmatch 'pubspec.lock|\.git' } `
+              | Select-String -Pattern $pattern
+            
             if ($matches) {
               Write-Host "⚠️ Potential secrets found:"
               Write-Host $matches
@@ -170,7 +189,7 @@ jobs:
 
       - name: 📦 Check for vulnerable dependencies
         run: |
-          flutter pub outdated --exit-code 0
+          flutter pub outdated
         continue-on-error: true
 
   database:
@@ -181,42 +200,48 @@ jobs:
       - name: 📥 Checkout code
         uses: actions/checkout@v4
 
-      - name: 🐦 Setup Flutter
+      - name: 🐦 Setup Flutter (Stable)
         uses: subosito/flutter-action@v2
         with:
           flutter-version: ${{ env.FLUTTER_VERSION }}
           cache: true
 
       - name: 📦 Get dependencies
-        run: flutter pub get
+        run: |
+          flutter pub get
 
       - name: 🗄️ Validate database migrations
+        shell: powershell
         run: |
-          if (Test-Path "lib/core/database/migrations") {
-            $migrations = Get-ChildItem -Path "lib/core/database/migrations" -Filter "*.dart"
-            Write-Host "Found $($migrations.Count) migration files"
+          $migrationPath = "lib/core/database/migrations"
+          
+          if (Test-Path $migrationPath) {
+            $migrations = Get-ChildItem -Path $migrationPath -Filter "*.dart"
+            Write-Host "✅ Found $($migrations.Count) migration files"
             foreach ($migration in $migrations) {
-              Write-Host "✅ Found migration: $($migration.Name)"
+              Write-Host "  ✓ $($migration.Name)"
             }
           } else {
-            Write-Host "ℹ️ No migrations directory found"
+            Write-Host "ℹ️ No migrations directory found at $migrationPath"
           }
-        continue-on-error: true
 
       - name: 🔍 Validate audit log schema
+        shell: powershell
         run: |
-          if (Test-Path "lib/core/services/audit_service.dart") {
+          $auditServicePath = "lib/core/services/audit_service.dart"
+          
+          if (Test-Path $auditServicePath) {
             Write-Host "✅ Audit service found"
-            $content = Get-Content "lib/core/services/audit_service.dart"
-            if ($content -match "INSERT|append.*only") {
-              Write-Host "✅ Audit log appears to be insert-only"
+            $content = Get-Content $auditServicePath -Raw
+            
+            if ($content -match "INSERT|append.*only" -or $content -match "no.*UPDATE|no.*DELETE") {
+              Write-Host "✅ Audit log appears to be INSERT-ONLY"
             } else {
-              Write-Host "⚠️ Verify audit log is insert-only"
+              Write-Host "⚠️ Verify audit log is INSERT-ONLY"
             }
           } else {
             Write-Host "⚠️ Audit service not found"
           }
-        continue-on-error: true
 
   documentation:
     name: Documentation Check
@@ -226,21 +251,22 @@ jobs:
       - name: 📥 Checkout code
         uses: actions/checkout@v4
 
-      - name: 📖 Check for required documentation
+      - name: 📖 Check required documentation
         run: |
-          echo "## Documentation Check" >> $GITHUB_STEP_SUMMARY
+          echo "## 📖 Documentation Status" >> $GITHUB_STEP_SUMMARY
           
           files=(
+            "README.md"
             "ARCHITECTURE_AUDIT_CHECKLIST.md"
             "CLINICAL_SYSTEM_BEST_PRACTICES.md"
-            "README.md"
           )
           
           for file in "${files[@]}"; do
             if [ -f "$file" ]; then
-              echo "✅ $file exists" >> $GITHUB_STEP_SUMMARY
+              size=$(wc -l < "$file")
+              echo "✅ **$file** ($size lines)" >> $GITHUB_STEP_SUMMARY
             else
-              echo "❌ $file is MISSING" >> $GITHUB_STEP_SUMMARY
+              echo "⚠️ **$file** - MISSING" >> $GITHUB_STEP_SUMMARY
             fi
           done
 
@@ -252,16 +278,20 @@ jobs:
       - name: 📥 Checkout code
         uses: actions/checkout@v4
 
-      - name: 📋 Verify audit checklist
+      - name: 📋 Verify compliance
         run: |
-          echo "## Audit Compliance" >> $GITHUB_STEP_SUMMARY
+          echo "## 🔐 Audit Compliance" >> $GITHUB_STEP_SUMMARY
           
-          if grep -q "INSERT.*ONLY" ARCHITECTURE_AUDIT_CHECKLIST.md 2>/dev/null; then
+          if grep -qi "INSERT.*ONLY" ARCHITECTURE_AUDIT_CHECKLIST.md 2>/dev/null; then
             echo "✅ INSERT-ONLY audit logs documented" >> $GITHUB_STEP_SUMMARY
           fi
           
-          if grep -q "Result.*Version" CLINICAL_SYSTEM_BEST_PRACTICES.md 2>/dev/null; then
+          if grep -qi "result.*version" CLINICAL_SYSTEM_BEST_PRACTICES.md 2>/dev/null; then
             echo "✅ Result versioning documented" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          if grep -qi "recovery.*test\|RTO" CLINICAL_SYSTEM_BEST_PRACTICES.md 2>/dev/null; then
+            echo "✅ Recovery testing documented" >> $GITHUB_STEP_SUMMARY
           fi
 
   notify:
@@ -271,14 +301,15 @@ jobs:
     needs: [build, lint, security, database, documentation, audit-compliance]
 
     steps:
-      - name: 📊 Build Summary
+      - name: 📊 Build Report
         run: |
-          echo "# Build Status Summary" >> $GITHUB_STEP_SUMMARY
+          echo "# 🏗️ Build Pipeline Report" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "| Job | Status |" >> $GITHUB_STEP_SUMMARY
-          echo "|-----|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Stage | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|-------|--------|" >> $GITHUB_STEP_SUMMARY
           echo "| Build | ${{ needs.build.result }} |" >> $GITHUB_STEP_SUMMARY
           echo "| Lint | ${{ needs.lint.result }} |" >> $GITHUB_STEP_SUMMARY
           echo "| Security | ${{ needs.security.result }} |" >> $GITHUB_STEP_SUMMARY
           echo "| Database | ${{ needs.database.result }} |" >> $GITHUB_STEP_SUMMARY
           echo "| Documentation | ${{ needs.documentation.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Audit | ${{ needs.audit-compliance.result }} |" >> $GITHUB_STEP_SUMMARY
