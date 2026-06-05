@@ -106,41 +106,614 @@ Sample Collected → Result Entered → Result Reviewed → Pathologist Approved
   - [ ] Offsite backup recommended (USB drive, network storage, or cloud)
 - [ ] **Recovery Plan**: Documented and tested procedure to restore from backup
 
-### Audit Trail (Comprehensive Logging)
-Every action must be logged with:
-- Timestamp (accurate to seconds)
-- User ID
-- Action type
-- Entity affected (Patient ID, Report ID, etc.)
-- Old value (if update)
-- New value (if update)
-- IP/Session info (if applicable)
+### Comprehensive Audit Trail & Logging
 
-**Minimum Audit Events**:
-- [ ] **Patient Creation**: Who created, when, initial data
-- [ ] **Patient Modification**: Who changed what, old vs. new values
-- [ ] **Result Entry**: Who entered, test type, values
-- [ ] **Result Review**: Who reviewed, approval status, feedback
-- [ ] **Result Approval**: Who approved, timestamp, approval comments
-- [ ] **Report Generation**: Report number, who generated, timestamp
-- [ ] **Report Printing**: Who printed, how many copies, timestamp
-- [ ] **Report Delivery**: Delivery method (patient, email, physical), timestamp
-- [ ] **User Login/Logout**: All authentication events
-- [ ] **User Role Changes**: Admin modified user role
-- [ ] **System Configuration Changes**: Backup settings, reference ranges modified
-- [ ] **Access Attempts**: Failed access attempts, permission denials
+#### Audit Log Schema
+Every action must be logged in a **dedicated audit table** with this structure:
 
-**Audit Log Storage**:
-- [ ] Separate table/database from operational data
-- [ ] Indexed by timestamp and user_id for fast queries
-- [ ] Audit logs immutable (append-only, no deletions)
-- [ ] Retention: Minimum 3 years (check local regulations)
+```sql
+CREATE TABLE audit_logs (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER NOT NULL,
+  user_name TEXT,
+  action VARCHAR(50) NOT NULL,        -- 'CREATE', 'UPDATE', 'DELETE', 'APPROVE', 'PRINT', etc.
+  entity_type VARCHAR(50) NOT NULL,   -- 'Patient', 'Result', 'Report', 'User', 'ReferenceRange'
+  entity_id INTEGER NOT NULL,         -- FK to the affected entity
+  entity_name TEXT,                   -- Human-readable identifier (Patient name, Report #)
+  old_value TEXT,                     -- JSON of previous state (for updates)
+  new_value TEXT,                     -- JSON of new state (for updates)
+  timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+  ip_address TEXT,
+  session_id TEXT,
+  status VARCHAR(20),                 -- 'SUCCESS', 'FAILURE'
+  error_message TEXT,                 -- If failed, capture error details
+  metadata JSON,                       -- Additional context (change reason, comments, etc.)
+  
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  INDEX idx_user_id (user_id),
+  INDEX idx_entity_type (entity_type),
+  INDEX idx_entity_id (entity_id),
+  INDEX idx_timestamp (timestamp),
+  INDEX idx_action (action)
+);
+
+-- Make audit logs immutable (append-only)
+-- Application enforces: NO UPDATE, NO DELETE on audit_logs table
+```
+
+**Audit Events to Log**:
+- [ ] **Patient Management**:
+  - [ ] `CREATE` - New patient registered
+  - [ ] `UPDATE` - Patient details modified
+  - [ ] `DELETE` - Patient record marked inactive (soft delete)
+- [ ] **Result Entry**:
+  - [ ] `RESULT_ENTERED` - Lab technician enters test result
+  - [ ] `RESULT_REVIEWED` - Pathologist reviews result
+  - [ ] `RESULT_APPROVED` - Pathologist approves result
+  - [ ] `RESULT_AMENDED` - Result corrected (with amendment reason)
+- [ ] **Report Generation**:
+  - [ ] `REPORT_GENERATED` - Report created from approved results
+  - [ ] `REPORT_PRINTED` - Report printed to paper/file
+  - [ ] `REPORT_DELIVERED` - Report delivered to patient/clinic
+- [ ] **User Management**:
+  - [ ] `USER_CREATED` - New user account created
+  - [ ] `USER_ROLE_CHANGED` - User role modified
+  - [ ] `USER_DISABLED` - User account disabled
+- [ ] **System Configuration**:
+  - [ ] `REFERENCE_RANGE_UPDATED` - Reference range changed
+  - [ ] `CRITICAL_VALUE_UPDATED` - Critical value alert threshold changed
+  - [ ] `CONFIG_CHANGED` - System settings modified
+- [ ] **Authentication**:
+  - [ ] `LOGIN_SUCCESS` - User logged in
+  - [ ] `LOGIN_FAILED` - Failed login attempt
+  - [ ] `LOGOUT` - User logged out
+  - [ ] `PERMISSION_DENIED` - Access attempt denied
+
+**Audit Log Features**:
+- [ ] Append-only (immutable after creation)
+- [ ] Retention policy: Minimum 3 years
+- [ ] Searchable by user, date range, entity type, action
+- [ ] Automated cleanup of logs older than retention period
+- [ ] Regular audit log report generation (weekly/monthly)
 
 ---
 
-## 🟡 TIER 2: STRONGLY RECOMMENDED
+## 🟡 TIER 2: RESULT VERSIONING & MASTER DATA GOVERNANCE
 
-### Clean Architecture Structure
+### Result Versioning Schema
+Never overwrite approved results. Store every version.
+
+```sql
+CREATE TABLE results (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  sample_id INTEGER NOT NULL,
+  test_id INTEGER NOT NULL,
+  value DECIMAL(10, 2),
+  unit VARCHAR(20),
+  reference_range_id INTEGER,
+  status VARCHAR(20),               -- 'Draft', 'Entered', 'Reviewed', 'Approved'
+  entered_by INTEGER,
+  entered_at DATETIME,
+  reviewed_by INTEGER,
+  reviewed_at DATETIME,
+  approved_by INTEGER,
+  approved_at DATETIME,
+  is_abnormal BOOLEAN,
+  abnormal_flag VARCHAR(20),        -- 'Normal', 'Low', 'High', 'Critical'
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME,
+  
+  FOREIGN KEY (sample_id) REFERENCES samples(id),
+  FOREIGN KEY (test_id) REFERENCES test_definitions(id),
+  FOREIGN KEY (entered_by) REFERENCES users(id),
+  FOREIGN KEY (reviewed_by) REFERENCES users(id),
+  FOREIGN KEY (approved_by) REFERENCES users(id)
+);
+
+CREATE TABLE result_amendments (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  original_result_id INTEGER NOT NULL,
+  amended_result_id INTEGER NOT NULL,
+  amendment_reason TEXT,
+  old_value DECIMAL(10, 2),
+  new_value DECIMAL(10, 2),
+  amended_by INTEGER NOT NULL,
+  amended_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  amendment_approved_by INTEGER,
+  amendment_approved_at DATETIME,
+  
+  FOREIGN KEY (original_result_id) REFERENCES results(id),
+  FOREIGN KEY (amended_result_id) REFERENCES results(id),
+  FOREIGN KEY (amended_by) REFERENCES users(id),
+  FOREIGN KEY (amendment_approved_by) REFERENCES users(id)
+);
+
+CREATE TABLE reports (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  report_number VARCHAR(50) UNIQUE,         -- REP-2026-000145
+  sample_id INTEGER NOT NULL,
+  version INTEGER DEFAULT 1,
+  status VARCHAR(20),                       -- 'Draft', 'Final', 'Amended'
+  generated_by INTEGER,
+  generated_at DATETIME,
+  approved_by INTEGER,
+  approved_at DATETIME,
+  printed_count INTEGER DEFAULT 0,
+  pdf_file_path TEXT,
+  qr_code TEXT,                             -- QR verification data
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  
+  FOREIGN KEY (sample_id) REFERENCES samples(id),
+  FOREIGN KEY (generated_by) REFERENCES users(id),
+  FOREIGN KEY (approved_by) REFERENCES users(id)
+);
+
+CREATE TABLE report_amendments (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  original_report_id INTEGER NOT NULL,
+  amended_report_id INTEGER NOT NULL,
+  amendment_reason TEXT,
+  amended_by INTEGER NOT NULL,
+  amended_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  previous_report_number VARCHAR(50),
+  new_report_number VARCHAR(50),
+  
+  FOREIGN KEY (original_report_id) REFERENCES reports(id),
+  FOREIGN KEY (amended_report_id) REFERENCES reports(id),
+  FOREIGN KEY (amended_by) REFERENCES users(id)
+);
+```
+
+**Report Versioning Example**:
+```
+Report #REP-2026-000145
+├── Version 1 (Approved) - 2026-06-05 09:00 by Dr. XYZ
+├── Version 2 (Amended) - 2026-06-05 14:30 by Dr. ABC
+│   └── Reason: Reference range updated for Hemoglobin
+├── Version 3 (Amended) - 2026-06-06 10:15 by Dr. ABC
+│   └── Reason: Corrected patient DOB (data entry error)
+```
+
+- [ ] **Version History Accessible**: Users can view all report versions
+- [ ] **Reason Tracking**: Amendment reason documented
+- [ ] **Approval Chain**: Each version has approval metadata
+- [ ] **Report Archive**: Original report never deleted
+
+---
+
+### Master Data Governance
+
+Pathology systems contain critical master data that affects all operations. Changes must be audited and versioned.
+
+```sql
+CREATE TABLE test_definitions (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  test_code VARCHAR(20) UNIQUE,      -- 'HB', 'RBC', 'WBC', etc.
+  test_name VARCHAR(100) NOT NULL,   -- 'Hemoglobin', 'Red Blood Cell Count'
+  description TEXT,
+  unit VARCHAR(20),
+  specimen_type VARCHAR(50),         -- 'Blood', 'Urine', 'Serum'
+  method VARCHAR(100),
+  is_active BOOLEAN DEFAULT 1,
+  created_at DATETIME,
+  updated_at DATETIME,
+  updated_by INTEGER,
+  
+  FOREIGN KEY (updated_by) REFERENCES users(id)
+);
+
+CREATE TABLE test_definitions_history (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  test_id INTEGER NOT NULL,
+  old_value TEXT,                    -- JSON of previous state
+  new_value TEXT,                    -- JSON of new state
+  changed_by INTEGER NOT NULL,
+  changed_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  change_reason TEXT,
+  
+  FOREIGN KEY (test_id) REFERENCES test_definitions(id),
+  FOREIGN KEY (changed_by) REFERENCES users(id),
+  INDEX idx_test_id (test_id),
+  INDEX idx_changed_at (changed_at)
+);
+
+CREATE TABLE reference_ranges (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  test_id INTEGER NOT NULL,
+  age_group_min INTEGER DEFAULT 0,   -- Age in years (0 = all ages)
+  age_group_max INTEGER DEFAULT 999,
+  gender CHAR(1),                    -- 'M', 'F', 'B' (both)
+  min_value DECIMAL(10, 4),
+  max_value DECIMAL(10, 4),
+  critical_low DECIMAL(10, 4),       -- Alert if below this
+  critical_high DECIMAL(10, 4),      -- Alert if above this
+  unit VARCHAR(20),
+  notes TEXT,
+  version_number INTEGER DEFAULT 1,
+  effective_date DATE,
+  is_active BOOLEAN DEFAULT 1,
+  created_by INTEGER,
+  created_at DATETIME,
+  updated_by INTEGER,
+  updated_at DATETIME,
+  
+  FOREIGN KEY (test_id) REFERENCES test_definitions(id),
+  FOREIGN KEY (created_by) REFERENCES users(id),
+  FOREIGN KEY (updated_by) REFERENCES users(id),
+  INDEX idx_test_id (test_id),
+  INDEX idx_gender (gender),
+  INDEX idx_age (age_group_min, age_group_max)
+);
+
+CREATE TABLE reference_ranges_history (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  reference_range_id INTEGER NOT NULL,
+  old_min DECIMAL(10, 4),
+  old_max DECIMAL(10, 4),
+  new_min DECIMAL(10, 4),
+  new_max DECIMAL(10, 4),
+  old_critical_low DECIMAL(10, 4),
+  new_critical_low DECIMAL(10, 4),
+  old_critical_high DECIMAL(10, 4),
+  new_critical_high DECIMAL(10, 4),
+  change_reason TEXT,
+  changed_by INTEGER NOT NULL,
+  changed_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  
+  FOREIGN KEY (reference_range_id) REFERENCES reference_ranges(id),
+  FOREIGN KEY (changed_by) REFERENCES users(id),
+  INDEX idx_reference_range_id (reference_range_id),
+  INDEX idx_changed_at (changed_at)
+);
+
+CREATE TABLE departments (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  department_code VARCHAR(20) UNIQUE,
+  department_name VARCHAR(100) NOT NULL,
+  head_doctor_id INTEGER,
+  contact_phone TEXT,
+  location TEXT,
+  is_active BOOLEAN DEFAULT 1,
+  created_at DATETIME,
+  updated_at DATETIME,
+  
+  FOREIGN KEY (head_doctor_id) REFERENCES users(id)
+);
+
+CREATE TABLE instruments (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  instrument_code VARCHAR(20) UNIQUE,
+  instrument_name VARCHAR(100) NOT NULL,
+  manufacturer VARCHAR(100),
+  model VARCHAR(50),
+  serial_number VARCHAR(100),
+  department_id INTEGER NOT NULL,
+  installation_date DATE,
+  last_calibration_date DATE,
+  next_calibration_due DATE,
+  status VARCHAR(20),                -- 'Active', 'Maintenance', 'Retired'
+  created_at DATETIME,
+  updated_at DATETIME,
+  
+  FOREIGN KEY (department_id) REFERENCES departments(id)
+);
+
+CREATE TABLE doctors (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER NOT NULL,
+  registration_number VARCHAR(50),
+  specialization VARCHAR(100),
+  department_id INTEGER,
+  clinic_name TEXT,
+  clinic_address TEXT,
+  is_active BOOLEAN DEFAULT 1,
+  
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (department_id) REFERENCES departments(id)
+);
+```
+
+**Master Data Change Governance**:
+- [ ] **Change Request Process**: Admin submits change, documents reason
+- [ ] **Approval Required**: Changes approved by authorized users before applying
+- [ ] **Effective Date**: Changes don't apply retroactively (set effective date)
+- [ ] **Version Tracking**: Every version of master data tracked
+- [ ] **History Retention**: Never delete master data history
+- [ ] **Impact Analysis**: Understand which results/reports affected by change
+- [ ] **Audit Trail**: All changes logged to audit_logs table
+
+**Example - Reference Range Change**:
+```
+Reference Range: Hemoglobin (Male)
+Changed by: Admin (admin@lab.com)
+Change Date: 2026-06-05 10:00 AM
+
+Old Range: 13.0 - 17.0 g/dL
+New Range: 11.5 - 15.5 g/dL
+
+Effective Date: 2026-06-10 (gives time to communicate)
+Change Reason: Updated per WHO 2024 guidelines
+
+Audit Entry:
+Action: REFERENCE_RANGE_UPDATED
+Entity: reference_ranges
+Old Value: {"min": 13.0, "max": 17.0}
+New Value: {"min": 11.5, "max": 15.5}
+Timestamp: 2026-06-05 10:00 AM
+User: admin@lab.com
+```
+
+---
+
+## 🟢 TIER 3: RECOVERY TESTING, OFFLINE RESILIENCE & PERFORMANCE
+
+### Database Recovery Testing
+
+A backup is only useful if it can be restored. Implement a **quarterly testing schedule**.
+
+```
+Recovery Testing Checklist
+─────────────────────────
+
+□ Q1 (Jan-Mar)
+  □ Restore backup from 3 months ago (Oct)
+  □ Verify all tables present
+  □ Verify data integrity (row counts, checksums)
+  □ Restore latest daily backup from yesterday
+  □ Perform smoke tests (patient search, report generation)
+  □ Document test results
+  
+□ Q2 (Apr-Jun)
+  □ Restore backup from 6 months ago (Dec)
+  □ Verify audit logs intact (immutability check)
+  □ Restore 1-week-old backup
+  □ Verify reference ranges restored correctly
+  □ Document test results
+
+□ Q3 (Jul-Sep)
+  □ Restore backup from 9 months ago (Sep)
+  □ Verify encryption/decryption
+  □ Simulate data corruption recovery
+  □ Document test results
+
+□ Q4 (Oct-Dec)
+  □ Restore backup from 12 months ago (Dec previous year)
+  □ Full end-to-end recovery drill
+  □ Test failover to backup database
+  □ Document test results
+```
+
+- [ ] **Quarterly Restore Test**: Documented and scheduled
+- [ ] **Test Evidence**: Screenshot/log of successful restore
+- [ ] **Restore Time Measured**: Document how long restore takes
+- [ ] **Data Verification**: Checksums or row counts compared before/after
+- [ ] **Recovery Runbook**: Step-by-step restore procedure documented
+- [ ] **Recovery Time Objective (RTO)**: Target restore time defined (e.g., < 2 hours)
+- [ ] **Recovery Point Objective (RPO)**: Maximum data loss acceptable (e.g., < 24 hours)
+
+**Recovery Testing Automation**:
+```dart
+// test/integration/backup_recovery_test.dart
+void main() {
+  group('Backup & Recovery', () {
+    test('Weekly backup can be restored successfully', () async {
+      // Create backup
+      final backup = await BackupService.createBackup();
+      expect(backup.success, true);
+      
+      // Verify backup integrity
+      final integrity = await BackupService.verifyBackup(backup.path);
+      expect(integrity.valid, true);
+      
+      // Restore from backup
+      final restore = await BackupService.restoreFromBackup(backup.path);
+      expect(restore.success, true);
+      
+      // Verify restored data
+      final patientCount = await PatientRepository.countAll();
+      expect(patientCount, equals(originalCount));
+    });
+  });
+}
+```
+
+---
+
+### Offline Resilience for Windows Desktop
+
+Since this is a **local Windows desktop application**, database corruption and network issues are real concerns.
+
+```sql
+-- Transaction safety
+BEGIN TRANSACTION;
+  UPDATE results SET status = 'Approved' WHERE id = 123;
+  INSERT INTO audit_logs (action, entity_type, ...) VALUES ('RESULT_APPROVED', 'Result', ...);
+COMMIT;  -- All or nothing
+
+-- Rollback on error
+BEGIN TRANSACTION;
+  UPDATE results SET status = 'Approved' WHERE id = 123;
+  -- Error occurs during insert
+  INSERT INTO audit_logs ...;  -- FAILS
+ROLLBACK;  -- Results update also rolled back
+```
+
+**Offline Resilience Checklist**:
+- [ ] **Transaction Management**: All critical operations wrapped in transactions
+  - [ ] ACID properties enforced
+  - [ ] Rollback tested on failure
+- [ ] **Database Corruption Handling**:
+  - [ ] SQLite integrity check: `PRAGMA integrity_check`
+  - [ ] Recovery procedure if corruption detected
+  - [ ] Automatic recovery attempt before manual intervention
+  - [ ] User notification if database corrupted
+- [ ] **Automatic Local Backups**:
+  - [ ] Backup on app startup
+  - [ ] Backup before major operations (report generation, result approval)
+  - [ ] Backup after successful result entry
+  - [ ] Last 7 days of hourly backups retained
+- [ ] **Recovery Mode**:
+  - [ ] Detect corruption on app start
+  - [ ] Offer recovery option (restore from latest backup)
+  - [ ] Guided recovery process for non-technical users
+  - [ ] Fall-back to manual administrator recovery if auto-recovery fails
+- [ ] **Transaction Rollback**:
+  - [ ] Explicit rollback on exception
+  - [ ] No partial updates in database
+  - [ ] Clear user feedback: "Operation failed, database unchanged"
+- [ ] **Data Consistency Checks**:
+  - [ ] Foreign key constraints enforced
+  - [ ] Orphaned records check on startup
+  - [ ] Data validation on every insert/update
+
+**Implementation Example**:
+```dart
+// core/database/database_recovery.dart
+class DatabaseRecoveryService {
+  Future<void> checkDatabaseIntegrity() async {
+    try {
+      final result = await database.rawQuery('PRAGMA integrity_check');
+      if (result.isNotEmpty && result.first['integrity_check'] != 'ok') {
+        throw DatabaseCorruptionException('Database integrity check failed');
+      }
+    } on DatabaseCorruptionException {
+      await _handleCorruption();
+    }
+  }
+  
+  Future<void> _handleCorruption() async {
+    // Log corruption event
+    await AuditService.log(AuditEvent(
+      action: 'DATABASE_CORRUPTION_DETECTED',
+      timestamp: DateTime.now(),
+    ));
+    
+    // Attempt auto-recovery
+    final backup = await BackupService.getLatestBackup();
+    if (backup != null) {
+      await BackupService.restoreFromBackup(backup.path);
+      Logger.info('Database recovered from backup');
+    } else {
+      // Notify user and administrator
+      throw RecoveryFailedException('No backup available for recovery');
+    }
+  }
+  
+  Future<void> executeWithTransaction(Future Function() operation) async {
+    await database.transaction((txn) async {
+      try {
+        await operation();
+      } catch (e) {
+        // Transaction automatically rolled back on exception
+        throw OperationFailedException('Operation failed: $e');
+      }
+    });
+  }
+}
+
+// Usage in repository
+Future<Result<Patient>> createPatient(PatientRequest request) async {
+  try {
+    return await databaseRecoveryService.executeWithTransaction(() async {
+      final patient = await _localDataSource.createPatient(request);
+      await _auditService.log(AuditEvent.patientCreated(patient.id));
+      return patient;
+    });
+  } catch (e) {
+    return Failure(e.toString());
+  }
+}
+```
+
+---
+
+### Large Dataset Performance Targets
+
+Define **measurable, objective performance goals**. These become your performance audit criteria.
+
+```
+Performance SLA
+═══════════════════════════════════════════════════════════
+
+Operation                     Target        Threshold    Notes
+──────────────────────────────────────────────────────────
+Patient Search (by name)      < 1 second    p95: 1.5s    Indexed on name field
+Patient Search (by phone)     < 1 second    p95: 1.5s    Indexed on phone field
+Patient List Load (50 items)  < 2 seconds   p95: 3s      Paginated
+Open Patient Record           < 1 second    p95: 1.5s    Including history
+Report Open (PDF)             < 2 seconds   p95: 3s      Cached, indexed access
+PDF Generation                < 5 seconds   p95: 8s      Depends on complexity
+Sample Tracking Display       < 2 seconds   p95: 3s      Real-time updates
+Dashboard Load                < 3 seconds   p95: 5s      Multiple widgets
+Result Entry Save             < 500ms       p95: 1s      Including audit log
+Result Search (date range)    < 2 seconds   p95: 3s      Indexed on date fields
+Backup Operation              < 30 seconds  p95: 60s     Depends on DB size
+System Startup                < 5 seconds   p95: 10s     Database initialization
+```
+
+**Performance Verification Checklist**:
+- [ ] **Baseline Measurements**: Performance tests run with 10,000+ patient records
+- [ ] **Query Plan Analysis**: EXPLAIN QUERY PLAN reviewed for all queries
+  - [ ] Full table scans eliminated where possible
+  - [ ] Indexes used for WHERE clauses
+  - [ ] JOIN operations optimized
+- [ ] **Concurrent User Testing**: 5+ simultaneous users tested
+  - [ ] No performance degradation
+  - [ ] Database connections managed
+- [ ] **Memory Profiling**: Long-running sessions (8+ hours) monitored
+  - [ ] No memory leaks detected
+  - [ ] Memory stable over time
+- [ ] **Load Testing**: Simulate peak usage
+  - [ ] High-volume result entry (100+ entries/minute)
+  - [ ] Multiple concurrent report generations
+  - [ ] Report printing stress test
+- [ ] **Performance Monitoring**: Production metrics tracked
+  - [ ] Slow query logging enabled
+  - [ ] Performance metrics exported (Prometheus/OpenTelemetry)
+  - [ ] Alerts on performance degradation
+
+**Performance Test Implementation**:
+```dart
+// test/performance/patient_search_performance_test.dart
+void main() {
+  group('Performance Tests', () {
+    test('Patient search by name with 10k records < 1 second', () async {
+      // Setup: Create 10,000 patient records
+      await _seedPatients(10000);
+      
+      // Measure search performance
+      final stopwatch = Stopwatch()..start();
+      final results = await patientRepository.searchByName('John');
+      stopwatch.stop();
+      
+      expect(stopwatch.elapsedMilliseconds, lessThan(1000));
+      expect(results, isNotEmpty);
+    });
+    
+    test('Report PDF generation < 5 seconds', () async {
+      final report = await reportRepository.getReport(reportId);
+      
+      final stopwatch = Stopwatch()..start();
+      final pdfBytes = await reportGenerator.generatePdf(report);
+      stopwatch.stop();
+      
+      expect(stopwatch.elapsedMilliseconds, lessThan(5000));
+      expect(pdfBytes.isNotEmpty, true);
+    });
+  });
+}
+```
+
+**Performance Optimization Priorities**:
+1. **Indexing**: Add indexes to frequently queried fields
+2. **Pagination**: Never load all records at once
+3. **Caching**: Cache reference ranges, user data, master data
+4. **Query Optimization**: Use EXPLAIN QUERY PLAN to optimize SQLite queries
+5. **Lazy Loading**: Load data on-demand, not at startup
+
+---
+
+## Clean Architecture Structure
 ```
 lib/
 │
@@ -153,7 +726,8 @@ lib/
 │   │   ├── audit_service.dart
 │   │   ├── auth_service.dart
 │   │   ├── backup_service.dart
-│   │   └── encryption_service.dart
+│   │   ├── encryption_service.dart
+│   │   └── database_recovery_service.dart
 │   ├── utils/
 │   │   ├── constants.dart
 │   │   ├── validators.dart
@@ -220,13 +794,9 @@ lib/
 └── main.dart
 ```
 
-**Rationale**:
-- [ ] Feature-based structure scales with team size
-- [ ] Clear separation: data layer (database/API), domain layer (business logic), presentation (UI)
-- [ ] Easy to locate feature code
-- [ ] Dependencies point inward (presentation → domain → data)
+---
 
-### Repository Pattern Implementation
+## Repository Pattern Implementation
 - [ ] **Repository Interface**: Abstract interface in `domain/repositories/`
 - [ ] **Repository Implementation**: Concrete implementation in `data/repositories/`
 - [ ] **Data Source Abstraction**: `LocalDataSource` for SQLite, `RemoteDataSource` for APIs
@@ -234,117 +804,38 @@ lib/
 - [ ] **Error Handling**: Repositories catch exceptions, return Result or Either type
 - [ ] **Testing**: Repository logic testable with mock data sources
 
-**Example (Patient Repository)**:
-```dart
-// domain/repositories/patient_repository.dart
-abstract class PatientRepository {
-  Future<Either<Failure, List<Patient>>> getPatients({int page = 1});
-  Future<Either<Failure, Patient>> getPatientById(String id);
-  Future<Either<Failure, Patient>> createPatient(PatientRequest request);
-  Future<Either<Failure, Patient>> updatePatient(String id, PatientRequest request);
-}
+---
 
-// data/repositories/patient_repository_impl.dart
-class PatientRepositoryImpl implements PatientRepository {
-  final PatientLocalDataSource _localDataSource;
-  final AuditService _auditService;
-  
-  @override
-  Future<Either<Failure, Patient>> createPatient(PatientRequest request) async {
-    try {
-      final patient = await _localDataSource.createPatient(request);
-      await _auditService.log(AuditEvent.patientCreated(patient.id));
-      return Right(patient);
-    } catch (e) {
-      return Left(DatabaseFailure(e.toString()));
-    }
-  }
-}
-```
-
-- [ ] **Repositories Tested**: Unit tests for each repository
-
-### Dependency Injection (DI)
+## Dependency Injection (DI)
 - [ ] **get_it or riverpod Used**: NOT ServiceLocator or global singletons
 - [ ] **Service Locator Configuration**: Centralized in `core/di/service_locator.dart`
 - [ ] **Lazy Loading**: Services created on first use, not all at app startup
 - [ ] **Testing Mode**: Ability to register mock implementations for testing
-- [ ] **No Service Locator in Business Logic**: Inject dependencies via constructors
 
-**Example (get_it setup)**:
-```dart
-// core/di/service_locator.dart
-final getIt = GetIt.instance;
+---
 
-void setupServiceLocator() {
-  // Core Services
-  getIt.registerSingleton<AuthService>(AuthServiceImpl());
-  getIt.registerSingleton<DatabaseService>(DatabaseServiceImpl());
-  getIt.registerSingleton<AuditService>(AuditServiceImpl());
-  getIt.registerSingleton<BackupService>(BackupServiceImpl());
-  
-  // Repositories
-  getIt.registerSingleton<PatientRepository>(
-    PatientRepositoryImpl(
-      localDataSource: getIt<PatientLocalDataSource>(),
-      auditService: getIt<AuditService>(),
-    ),
-  );
-  
-  // Use Cases
-  getIt.registerSingleton<CreatePatientUseCase>(
-    CreatePatientUseCase(getIt<PatientRepository>()),
-  );
-}
-```
-
-- [ ] **No Service Locator Leakage**: Business logic doesn't import `service_locator.dart`
-
-### Error Handling & Logging
+## Error Handling & Logging
 - [ ] **Custom Exception Hierarchy**:
   ```dart
   abstract class AppException implements Exception {}
   class AuthenticationException extends AppException {}
   class DatabaseException extends AppException {}
   class ValidationException extends AppException {}
-  class NetworkException extends AppException {}
   ```
 - [ ] **Try-Catch at Boundaries**: Data layer (database, APIs)
 - [ ] **Result Type or Either**: Return `Result<T>` or `Either<Failure, T>` from repositories
-- [ ] **Centralized Logging**:
-  - [ ] Log levels: DEBUG, INFO, WARNING, ERROR, CRITICAL
-  - [ ] Structured logs with fields: timestamp, level, logger_name, message, stack_trace
-  - [ ] Medical-sensitive data NOT logged (patient names, IDs masked if logged)
-- [ ] **Error Display**: User-friendly error messages without technical details
-- [ ] **Crash Reporting**: Send critical errors to admin (via email or logging service)
+- [ ] **Centralized Logging**: Structured logs with levels (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+- [ ] **Medical-Sensitive Data NOT Logged**: Patient names, IDs masked if logged
+- [ ] **Error Display**: User-friendly messages without technical details
 
 ---
 
-## 🟢 TIER 3: PATHOLOGY-SPECIFIC ENHANCEMENTS
+## 🧪 PATHOLOGY-SPECIFIC FEATURES
 
 ### Reference Range Management
-- [ ] **Separate Reference Range Table**:
-  ```
-  TestReferenceRange {
-    id
-    test_name
-    age_group_min (0 for all ages)
-    age_group_max (999 for all ages)
-    gender ('M', 'F', 'Both')
-    min_value
-    max_value
-    unit
-    created_by
-    created_at
-    modified_by
-    modified_at
-  }
-  ```
 - [ ] **Age & Gender-Specific Ranges**: Different ranges for different demographics
-  - [ ] Hemoglobin: Male 13-17 g/dL, Female 12-15 g/dL
-  - [ ] Pediatric ranges separate from adult
 - [ ] **Automatic Abnormality Highlighting**: UI flags values outside range
-- [ ] **Reference Range Versioning**: Track changes over time (medical guidelines update)
+- [ ] **Reference Range Versioning**: Track changes over time
 - [ ] **Critical Value Flags**: Special marker for values requiring immediate attention
 - [ ] **Admin Interface**: Easily add/update reference ranges
 
@@ -353,146 +844,34 @@ void setupServiceLocator() {
   - [ ] Glucose < 40 or > 400 mg/dL
   - [ ] Potassium < 2.5 or > 6.5 mmol/L
   - [ ] Platelet < 20,000/µL
-  - [ ] Hemoglobin < 5 g/dL
-  - [ ] Calcium < 6.5 mg/dL
-  - [ ] Creatinine > 10 mg/dL
 - [ ] **Alert Workflow**:
-  - [ ] Result entry triggers check against critical values
   - [ ] Modal/popup displays critical value warning
   - [ ] Pathologist must confirm acknowledgment
   - [ ] Confirmation logged in audit trail
-  - [ ] Optional: Immediate notification to clinician (email, SMS)
 - [ ] **Critical Value Reports**: Generate daily/weekly list for review
 
 ### Barcode Support
-- [ ] **Barcode Entities**:
-  - [ ] Patient ID barcode (on registration card)
-  - [ ] Sample barcode (on specimen tube/container)
-  - [ ] Report barcode (on printed report)
-  - [ ] Invoice barcode (on billing document)
-- [ ] **Barcode Format**: Code128 or QR code (QR preferred for density)
-- [ ] **Barcode Scanning Integration**:
-  - [ ] Barcode scanner device connected to Windows desktop
-  - [ ] Scan field auto-populated
-  - [ ] Validation on scan (check barcode format)
-  - [ ] Reduce manual data entry errors
+- [ ] **Barcode Entities**: Patient ID, Sample, Report, Invoice
+- [ ] **Barcode Format**: Code128 or QR code (QR preferred)
+- [ ] **Barcode Scanning Integration**: Reduces manual data entry errors
 - [ ] **Barcode Generation**: System generates unique barcodes on entity creation
-- [ ] **Barcode Printing**: Barcodes included on reports and labels
 
-### Sample Tracking Workflow
-- [ ] **Sample States & Timestamps**:
-  ```
-  Sample {
-    id (unique sample ID / barcode)
-    patient_id
-    test_type
-    collected_at (timestamp)
-    received_at (timestamp)
-    processing_started_at (timestamp)
-    completed_at (timestamp)
-    reported_at (timestamp)
-    current_status ('Collected', 'Received', 'Processing', 'Completed', 'Reported')
-  }
-  ```
-- [ ] **Status Transitions Logged**: Every status change tracked with timestamp & user
-- [ ] **Receptionist Marks as Received**: Confirms sample received from patient
-- [ ] **Lab Technician Starts Processing**: Updates status to Processing
-- [ ] **Results Completed**: Lab technician marks results complete
-- [ ] **Report Generated**: Automatic update to Reported on report generation
-- [ ] **Dashboard View**: Visual timeline showing sample journey
-
-### Reference Range Management (Reference Values)
-- [ ] **Test Results Display**:
-  ```
-  Test: Hemoglobin
-  Result: 14.2 g/dL
-  Reference Range: 13-17 g/dL (Male)  [or 12-15 g/dL (Female)]
-  Status: NORMAL ✓
-  
-  Test: Glucose
-  Result: 45 mg/dL
-  Reference Range: 70-100 mg/dL
-  Status: CRITICAL LOW ⚠️ (Requires confirmation)
-  ```
-- [ ] **Automatic Flagging**: RED for abnormal, YELLOW for critical, GREEN for normal
-- [ ] **Notes on Abnormal Values**: Pathologist can add clinical notes
+### Sample Tracking
+- [ ] **Sample States**: Collected → Received → Processing → Completed → Reported
+- [ ] **Timestamps**: Each state transition timestamped and logged
+- [ ] **Status Dashboard**: Visual timeline of sample journey
 
 ---
 
 ## 📊 REPORTING & PDF GENERATION
 
-### PDF Report Structure
-- [ ] **Locked Template**: Report layout fixed, cannot be modified by users
-- [ ] **Unique Report Number**: Sequential or UUID (REP-2026-000145)
-- [ ] **Header Information**:
-  - [ ] Lab name & logo
-  - [ ] Unique report number
-  - [ ] Issue date & time
-  - [ ] Pathologist name & signature
-- [ ] **Patient Section**:
-  - [ ] Patient name, ID, DOB
-  - [ ] Gender, age
-  - [ ] Contact information
-- [ ] **Sample Information**:
-  - [ ] Sample ID / barcode
-  - [ ] Collection date/time
-  - [ ] Received date/time
-- [ ] **Results Section**:
-  - [ ] Test name
-  - [ ] Result value
-  - [ ] Unit
-  - [ ] Reference range
-  - [ ] Abnormal flag (if applicable)
-  - [ ] Notes/comments
-- [ ] **Footer**:
-  - [ ] Lab address & contact
-  - [ ] QR verification code
-  - [ ] Confidentiality notice
-  - [ ] Disclaimer
+### PDF Report Features
+- [ ] **Locked Template**: Report layout fixed
+- [ ] **Unique Report Number**: REP-2026-000145
 - [ ] **QR Verification Code**: Encodes report ID, patient ID, issue date
-- [ ] **Digital Signature**: PDF signed with lab private key (optional but recommended)
-- [ ] **Watermark**: "DRAFT" on unapproved reports, "FINAL" on approved
+- [ ] **Digital Signature**: PDF signed with lab private key (optional)
+- [ ] **Watermark**: "DRAFT" on unapproved, "FINAL" on approved
 - [ ] **Print Date**: Printed-at timestamp on physical copies
-
-### Report Versioning & Amendment
-- [ ] **Amendment Reason Visible**: Report shows "Amended - Reference range updated"
-- [ ] **Both Versions Available**: Original & amended accessible from report history
-- [ ] **Version Number**: Report #123 v1, Report #123 v2, etc.
-- [ ] **Amendment Audit**: Amendment reason, date, and approver logged
-
----
-
-## ⚡ PERFORMANCE REQUIREMENTS
-
-### Database Indexing
-- [ ] **Primary Indexes Created**:
-  ```sql
-  CREATE INDEX idx_patient_id ON results(patient_id);
-  CREATE INDEX idx_mobile ON patients(mobile_number);
-  CREATE INDEX idx_report_number ON reports(report_number);
-  CREATE INDEX idx_sample_date ON samples(collected_at);
-  CREATE INDEX idx_created_at ON patients(created_at);
-  CREATE INDEX idx_user_id ON audit_logs(user_id);
-  CREATE INDEX idx_audit_timestamp ON audit_logs(created_at);
-  ```
-- [ ] **Query Optimization**: Avoid full table scans
-- [ ] **Foreign Key Indexes**: Indexed for join performance
-
-### Pagination & Data Loading
-- [ ] **Patient List Pagination**: LIMIT 50 OFFSET 0
-  - [ ] Default: 50 items per page
-  - [ ] User can configure (25, 50, 100 per page)
-- [ ] **Results List**: Paginated by report/date range
-- [ ] **Lazy Loading**: Load data on-demand, not all at startup
-- [ ] **Caching**: Cache reference ranges, user roles, frequently accessed data
-- [ ] **Search Optimization**: Indexed search fields (patient name, phone, ID)
-
-### Memory & UI Responsiveness
-- [ ] **Async Operations**: Long-running tasks (PDF generation, backup) off main thread
-- [ ] **Progress Indicators**: Show progress on long operations (report generation)
-- [ ] **No Freezing UI**: Responsive even with large datasets
-- [ ] **Memory Profiling**: Monitor memory usage in long sessions
-- [ ] **Database Connection Pooling**: Connection management for concurrent operations
 
 ---
 
@@ -506,22 +885,8 @@ void setupServiceLocator() {
 | Report Generation | 90%+ | PDF templates, formatting |
 | RBAC/Authorization | 90%+ | Permission checks, role transitions |
 | Audit Service | 90%+ | All audit events logged |
-| UI/Presentation | 50-60% | Critical flows, user interactions |
 | Result Workflow | 90%+ | State transitions, approvals |
-
-### Test Types Recommended
-- [ ] **Unit Tests**: Business logic, utilities, validators
-- [ ] **Integration Tests**: Repository + database, workflow state machines
-- [ ] **Widget Tests**: Form validation, permission-based UI visibility
-- [ ] **E2E Tests** (if resources allow): Complete user workflows
-  - [ ] Patient registration → result entry → report generation
-  - [ ] Approval workflow with multiple users
-  - [ ] Amendment process
-
-### Test Data Fixtures
-- [ ] **Seeded Test Database**: Consistent test data for all tests
-- [ ] **Mock External Services**: Backup service, email service (if used)
-- [ ] **Medical Data Samples**: Real-world lab values for testing
+| UI/Presentation | 50-60% | Critical flows, user interactions |
 
 ---
 
@@ -530,39 +895,54 @@ void setupServiceLocator() {
 These areas warrant extra scrutiny during code reviews:
 
 1. **Patient Data Security** ⚠️
-   - [ ] Encryption implementation correct
-   - [ ] No plaintext passwords stored
-   - [ ] SQL injection prevention
+   - Encryption implementation
+   - No plaintext passwords
+   - SQL injection prevention
 
 2. **Audit Logging** ⚠️
-   - [ ] All required events captured
-   - [ ] Logs immutable after writing
-   - [ ] Timestamps accurate and consistent
+   - All required events captured
+   - Logs immutable after writing
+   - Timestamps accurate
 
 3. **Result Approval Workflow** ⚠️
-   - [ ] State machine correctly enforced
-   - [ ] No skipped states possible
-   - [ ] Approval always by different user than entry
+   - State machine correctly enforced
+   - No skipped states possible
+   - Approval always by different user
 
 4. **Backup & Recovery** ⚠️
-   - [ ] Backup process tested monthly
-   - [ ] Restoration verified to work
-   - [ ] Backup encryption correct
+   - Backup process tested quarterly
+   - Restoration verified
+   - Encryption correct
 
 5. **Report Integrity** ⚠️
-   - [ ] Reports become read-only after approval
-   - [ ] Amendment process maintains original
-   - [ ] Version history complete
+   - Reports read-only after approval
+   - Amendment process maintains original
+   - Version history complete
 
-6. **Reference Range Management** ⚠️
-   - [ ] Age/gender logic correct
-   - [ ] Critical values properly flagged
-   - [ ] Updates don't affect historical results
+6. **Master Data Governance** ⚠️
+   - Reference range changes tracked
+   - Effective dates managed
+   - History retained
 
 7. **Role-Based Access** ⚠️
-   - [ ] All sensitive operations check RBAC
-   - [ ] No role bypass paths
-   - [ ] Permission matrix enforced
+   - All sensitive operations check RBAC
+   - No role bypass paths
+   - Permission matrix enforced
+
+8. **Database Recovery** ⚠️
+   - Recovery testing quarterly documented
+   - RTO/RPO defined and tested
+   - Runbook available
+
+9. **Offline Resilience** ⚠️
+   - Transaction management tested
+   - Database corruption handling
+   - Auto-backup functional
+
+10. **Performance** ⚠️
+    - Query plans optimized
+    - Indexes used correctly
+    - Performance baselines established
 
 ---
 
@@ -582,24 +962,35 @@ Before going live:
 - [ ] Amendment process verified
 - [ ] Audit logs comprehensive and immutable
 - [ ] Database constraints enforced
+- [ ] Result versioning functional
 
 ### Performance
 - [ ] Load testing with 10,000+ patient records
 - [ ] Report generation time < 5 seconds
-- [ ] Patient search response < 2 seconds
+- [ ] Patient search response < 1 second
 - [ ] Concurrent user testing (5+ simultaneous users)
+- [ ] Memory profiling complete (no leaks)
+
+### Backup & Recovery
+- [ ] Daily automatic backup functional
+- [ ] Weekly full backup verified
+- [ ] **Quarterly restore test completed** ✅
+- [ ] Recovery time measured and acceptable
+- [ ] Backup encryption verified
 
 ### Operations
-- [ ] Backup/restore procedure documented and tested
 - [ ] Admin dashboard shows system health
 - [ ] Error monitoring in place
 - [ ] User manual and admin guide complete
+- [ ] Recovery runbook documented
+- [ ] Support contact information visible
 
 ### Compliance
 - [ ] HIPAA/local regulations reviewed
 - [ ] Data retention policy documented
 - [ ] Privacy policy in place
 - [ ] Terms of service finalized
+- [ ] Audit log retention policy enforced
 
 ---
 
@@ -611,33 +1002,52 @@ Before going live:
 - [ ] Performance metrics reviewed
 
 ### Monthly
-- [ ] Backup restoration test
-- [ ] Audit log review (sample check)
-- [ ] Database optimization (indexes)
+- [ ] Audit log review (sample check for integrity)
+- [ ] Database optimization (indexes, statistics)
 - [ ] Security update checks
+- [ ] Critical value thresholds reviewed
 
 ### Quarterly
+- [ ] **Database backup restoration test** ✅
 - [ ] Full security audit
 - [ ] Test coverage report
-- [ ] Reference range review (medical standards)
 - [ ] Capacity planning (database size growth)
+- [ ] Performance baseline comparison
 
 ### Annually
 - [ ] Penetration testing
-- [ ] Compliance audit
+- [ ] Compliance audit (HIPAA/regulations)
 - [ ] Architecture review
+- [ ] Master data governance review
 
 ---
 
 ## 🔗 Related Documentation
 
-- [Clean Architecture Guide](CLEAN_ARCHITECTURE.md) *(to be created)*
 - [Database Schema Specification](DATABASE_SCHEMA.md) *(to be created)*
+- [Audit Logging Specification](AUDIT_LOGGING.md) *(to be created)*
+- [Recovery Procedures](RECOVERY_PROCEDURES.md) *(to be created)*
+- [Performance Testing Guide](PERFORMANCE_TESTING.md) *(to be created)*
+- [Backup Strategy](BACKUP_STRATEGY.md) *(to be created)*
+- [Report Template Design](REPORT_TEMPLATES.md) *(to be created)*
 - [API & Repository Interfaces](API_SPECIFICATION.md) *(to be created)*
 - [Testing Strategy](TESTING_STRATEGY.md) *(to be created)*
-- [Backup & Recovery Procedure](BACKUP_PROCEDURE.md) *(to be created)*
-- [Audit Logging Specification](AUDIT_LOGGING.md) *(to be created)*
-- [Report Template Design](REPORT_TEMPLATES.md) *(to be created)*
+
+---
+
+## 📌 CRITICAL SUCCESS FACTORS
+
+For a real-world pathology system, focus on these areas first:
+
+1. ✅ **Audit Logging** - Foundation for compliance and troubleshooting
+2. ✅ **Result Approval Workflow** - Prevents erroneous reports
+3. ✅ **Report Immutability** - Protects data integrity
+4. ✅ **Backup/Recovery** - Business continuity essential
+5. ✅ **Role-Based Permissions** - Data access control
+6. ✅ **Database Recovery** - Tested and verified
+7. ✅ **Master Data Governance** - Ensures consistent reference ranges
+
+If these seven areas are implemented rigorously, your system will be **significantly more reliable and suitable for real-world laboratory operations**.
 
 ---
 
