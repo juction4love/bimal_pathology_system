@@ -108,10 +108,13 @@ Sample Collected → Result Entered → Result Reviewed → Pathologist Approved
 
 ### Comprehensive Audit Trail & Logging
 
-#### Audit Log Schema
-Every action must be logged in a **dedicated audit table** with this structure:
+#### ⭐ Audit Log Schema - INSERT ONLY (Append-Only)
+
+**महत्वपूर्ण (Important)**: Audit Log को **INSERT मात्र** गर्न दिनु, UPDATE र DELETE गर्न दिँदैन।  
+यसले प्रमाण (Evidence) सुरक्षित राख्छ। यो compliance को लागि आवश्यक छ।
 
 ```sql
+-- Audit Log Table (Append-Only)
 CREATE TABLE audit_logs (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   user_id INTEGER NOT NULL,
@@ -137,8 +140,110 @@ CREATE TABLE audit_logs (
   INDEX idx_action (action)
 );
 
--- Make audit logs immutable (append-only)
--- Application enforces: NO UPDATE, NO DELETE on audit_logs table
+-- IMMUTABILITY ENFORCEMENT
+-- ═════════════════════════════════════════════════════════════
+
+-- 1️⃣ No UPDATE allowed on audit_logs
+-- 2️⃣ No DELETE allowed on audit_logs
+-- 3️⃣ INSERT ONLY - Application enforces this at code level
+
+-- SQLITE: Prevent DELETE
+CREATE TRIGGER prevent_audit_delete BEFORE DELETE ON audit_logs
+BEGIN
+  SELECT RAISE(FAIL, 'Audit logs cannot be deleted');
+END;
+
+-- SQLITE: Prevent UPDATE
+CREATE TRIGGER prevent_audit_update BEFORE UPDATE ON audit_logs
+BEGIN
+  SELECT RAISE(FAIL, 'Audit logs cannot be updated');
+END;
+
+-- Application-level enforcement (Dart/Flutter):
+-- - AuditService.log() → INSERT only
+-- - No updateAuditLog() method exists
+-- - No deleteAuditLog() method exists
+```
+
+**Database Level Protection**:
+- [ ] **SQLite Triggers**: DELETE और UPDATE triggers implement (see SQL above)
+- [ ] **No UPDATE Permission**: Database user (application user) को UPDATE permission नदिनु
+- [ ] **No DELETE Permission**: Database user को DELETE permission नदिनु
+- [ ] **INSERT Only**: Application user को INSERT permission मात्र दिनु
+
+**Application Level Protection**:
+- [ ] **No Update Method**: `AuditService` मा updateAuditLog() method छैन
+- [ ] **No Delete Method**: `AuditService` मा deleteAuditLog() method छैन
+- [ ] **Insert Only**: `AuditService.log(event)` मा INSERT मात्र हुन्छ
+
+```dart
+// ✅ Correct Implementation
+class AuditService {
+  // INSERT ONLY - No delete or update methods!
+  
+  Future<void> log(AuditEvent event) async {
+    // Only INSERT into audit_logs
+    await database.insert(
+      'audit_logs',
+      event.toMap(),
+      conflictAlgorithm: ConflictAlgorithm.fail, // Fail on conflict
+    );
+  }
+  
+  // ❌ These methods should NOT exist:
+  // Future<void> updateAuditLog(int id, ...) {}  // DON'T ADD THIS
+  // Future<void> deleteAuditLog(int id) {}      // DON'T ADD THIS
+  
+  // ✅ Read-only methods are OK:
+  Future<List<AuditEvent>> getAuditLog({
+    required int days,
+    String? userFilter,
+    String? entityTypeFilter,
+  }) async {
+    final sql = '''
+      SELECT * FROM audit_logs 
+      WHERE timestamp >= datetime('now', '-$days days')
+    ''';
+    // ... query implementation
+  }
+}
+
+// Implementation Example
+void main() async {
+  final auditService = AuditService();
+  
+  // ✅ This works - log is created
+  await auditService.log(AuditEvent(
+    action: 'RESULT_APPROVED',
+    entityType: 'Result',
+    entityId: 123,
+    userId: 5,
+    timestamp: DateTime.now(),
+  ));
+  
+  // ❌ These should NOT compile:
+  // await auditService.updateAuditLog(1, ...);  // Error: No such method
+  // await auditService.deleteAuditLog(1);       // Error: No such method
+}
+```
+
+**Why INSERT-Only?**
+```
+Audit Log समस्या (Problem):
+─────────────────────────
+Bad Admin:  "मेरो गलतीको प्रमाण छिपाउँ!"
+Bad Admin:  DELETE FROM audit_logs WHERE user_id = bad_admin_id;
+Result:     गलतीको कुनै प्रमाण नै नरहे।
+            → Compliance violation
+            → Evidence destroyed
+
+Audit Log समाधान (Solution):
+─────────────────────────
+INSERT-Only Audit Log:
+  ✅ Bad Admin: DELETE चलाउँ। → DENIED (Trigger blocks it)
+  ✅ Bad Admin: UPDATE चलाउँ। → DENIED (Trigger blocks it)
+  ✅ सबै प्रमाण सुरक्षित रहे।
+  ✅ Compliance maintained
 ```
 
 **Audit Events to Log**:
@@ -169,12 +274,13 @@ CREATE TABLE audit_logs (
   - [ ] `LOGOUT` - User logged out
   - [ ] `PERMISSION_DENIED` - Access attempt denied
 
-**Audit Log Features**:
-- [ ] Append-only (immutable after creation)
-- [ ] Retention policy: Minimum 3 years
-- [ ] Searchable by user, date range, entity type, action
-- [ ] Automated cleanup of logs older than retention period
-- [ ] Regular audit log report generation (weekly/monthly)
+**Audit Log Verification Checklist**:
+- [ ] **Append-Only**: INSERT मात्र, UPDATE/DELETE छैन
+- [ ] **Immutable After Creation**: Triggers implement गरिएको छ
+- [ ] **Retention Policy**: Minimum 3 years
+- [ ] **Searchable**: user, timestamp, entity_type, action by indexed
+- [ ] **Regular Audit Reports**: Weekly/monthly reports generate हुन्छ
+- [ ] **No Bulk Delete**: नियमित cleanup policies छैन (सबै logs retain हुन्छ)
 
 ---
 
@@ -899,9 +1005,10 @@ These areas warrant extra scrutiny during code reviews:
    - No plaintext passwords
    - SQL injection prevention
 
-2. **Audit Logging** ⚠️
+2. **Audit Logging (INSERT-ONLY)** ⚠️
    - All required events captured
-   - Logs immutable after writing
+   - **Audit logs immutable (no UPDATE/DELETE)**
+   - Triggers prevent modification
    - Timestamps accurate
 
 3. **Result Approval Workflow** ⚠️
@@ -1039,7 +1146,7 @@ Before going live:
 
 For a real-world pathology system, focus on these areas first:
 
-1. ✅ **Audit Logging** - Foundation for compliance and troubleshooting
+1. ✅ **Audit Logging (INSERT-ONLY)** - Foundation for compliance and troubleshooting
 2. ✅ **Result Approval Workflow** - Prevents erroneous reports
 3. ✅ **Report Immutability** - Protects data integrity
 4. ✅ **Backup/Recovery** - Business continuity essential
