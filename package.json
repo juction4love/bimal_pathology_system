@@ -1,0 +1,16 @@
+{
+  "name": "bimal-pathology-system",
+  "version": "1.0.0",
+  "description": "Official Windows Desktop Suite for Bimal Pathology using pure JavaScript (Electron).",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "package": "electron-builder"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^24.6.0"
+  }
+}
