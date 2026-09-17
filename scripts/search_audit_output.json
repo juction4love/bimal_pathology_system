@@ -1,0 +1,1062 @@
+[
+  {
+    "match_count": 6,
+    "term": "CBC",
+    "top_matches": [
+      {
+        "code": "HEM-0001",
+        "name": "Complete Blood Count (CBC)",
+        "price_npr": 400,
+        "short_name": "HEM-0001",
+        "specimen": "EDTA Whole Blood",
+        "test_type": "Panel"
+      },
+      {
+        "code": "HEM-0002",
+        "name": "Hemoglobin (Hb)",
+        "price_npr": 100,
+        "short_name": "HEM-0002",
+        "specimen": "EDTA Whole Blood",
+        "test_type": "Single"
+      },
+      {
+        "code": "HEM-0004",
+        "name": "RBC Count",
+        "price_npr": 0,
+        "short_name": "HEM-0004",
+        "specimen": "EDTA Whole Blood",
+        "test_type": "Single"
+      },
+      {
+        "code": "HEM-0005",
+        "name": "WBC Count / TLC",
+        "price_npr": 0,
+        "short_name": "HEM-0005",
+        "specimen": "EDTA Whole Blood",
+        "test_type": "Single"
+      },
+      {
+        "code": "HEM-0006",
+        "name": "Platelet Count",
+        "price_npr": 150,
+        "short_name": "HEM-0006",
+        "specimen": "EDTA Whole Blood",
+        "test_type": "Single"
+      }
+    ]
+  },
+  {
+    "match_count": 1,
+    "term": "Hemogram",
+    "top_matches": [
+      {
+        "code": "HEM-0001",
+        "name": "Complete Blood Count (CBC)",
+        "price_npr": 400,
+        "short_name": "HEM-0001",
+        "specimen": "EDTA Whole Blood",
+        "test_type": "Panel"
+      }
+    ]
+  },
+  {
+    "match_count": 1,
+    "term": "LFT",
+    "top_matches": [
+      {
+        "code": "PRO-0001",
+        "name": "Liver Function Test (LFT)",
+        "price_npr": 800,
+        "short_name": "PRO-0001",
+        "specimen": "Multiple specimens as applicable",
+        "test_type": "Panel"
+      }
+    ]
+  },
+  {
+    "match_count": 1,
+    "term": "KFT",
+    "top_matches": [
+      {
+        "code": "PRO-0002",
+        "name": "Renal Function Test (RFT/KFT)",
+        "price_npr": 0,
+        "short_name": "PRO-0002",
+        "specimen": "Multiple specimens as applicable",
+        "test_type": "Panel"
+      }
+    ]
+  },
+  {
+    "match_count": 1,
+    "term": "RFT",
+    "top_matches": [
+      {
+        "code": "PRO-0002",
+        "name": "Renal Function Test (RFT/KFT)",
+        "price_npr": 0,
+        "short_name": "PRO-0002",
+        "specimen": "Multiple specimens as applicable",
+        "test_type": "Panel"
+      }
+    ]
+  },
+  {
+    "match_count": 1,
+    "term": "Lipid",
+    "top_matches": [
+      {
+        "code": "PRO-0003",
+        "name": "Lipid Profile",
+        "price_npr": 700,
+        "short_name": "PRO-0003",
+        "specimen": "Multiple specimens as applicable",
+        "test_type": "Panel"
+      }
+    ]
+  },
+  {
+    "match_count": 7,
+    "term": "Cholesterol",
+    "top_matches": [
+      {
+        "code": "BIO-0027",
+        "name": "Total Cholesterol",
+        "price_npr": 0,
+        "short_name": "BIO-0027",
+        "specimen": "Serum / Plasma",
+        "test_type": "Single"
+      },
+      {
+        "code": "BIO-0029",
+        "name": "HDL Cholesterol",
+        "price_npr": 0,
+        "short_name": "BIO-0029",
+        "specimen": "Serum / Plasma",
+        "test_type": "Single"
+      },
+      {
+        "code": "BIO-0030",
+        "name": "LDL Cholesterol, Direct",
+        "price_npr": 0,
+        "short_name": "BIO-0030",
+        "specimen": "Serum / Plasma",
+        "test_type": "Single"
+      },
+      {
+        "code": "BIO-0031",
+        "name": "LDL Cholesterol, Calculated",
+        "price_npr": 0,
+        "short_name": "BIO-0031",
+        "specimen": "Serum / Plasma",
+        "test_type": "Single"
+      },
+      {
+        "code": "BIO-0032",
+        "name": "VLDL Cholesterol",
+        "price_npr": 0,
+        "short_name": "BIO-0032",
+        "specimen": "Serum / Plasma",
+        "test_type": "Single"
+      }
+    ]
+  },
+  {
+    "match_count": 5,
+    "term": "TSH",
+    "top_matches": [
+      {
+        "code": "END-0001",
+        "name": "TSH",
+        "price_npr": 500,
+        "short_name": "END-0001",
+        "specimen": "Serum / Plasma",
+        "test_type": "Single"
+      },
+      {
+        "code": "END-0009",
+        "name": "TSH Receptor Antibody (TRAb)",
+        "price_npr": 0,
+        "short_name": "END-0009",
+        "specimen": "Serum / Plasma",
+        "test_type": "Single"
+      },
+      {
+        "code": "PRO-0004",
+        "name": "Thyroid Profile (FT3, FT4, TSH)",
+        "price_npr": 0,
+        "short_name": "TFT (Free)",
+        "specimen": "Multiple specimens as applicable",
+        "test_type": "Panel"
+      },
+      {
+        "code": "PRO-0028",
+        "name": "COMPLETE THYROID PROFILE (T3, T4, TSH)",
+        "price_npr": 1200,
+        "short_name": "Thyroid Profile (Total)",
+        "specimen": "Multiple specimens as applicable",
+        "test_type": "Panel"
+      },
+      {
+        "code": "SPC-0001",
+        "name": "Neonatal TSH Screen",
+        "price_npr": 0,
+        "short_name": "SPC-0001",
+        "specimen": "Blood/DBS/Urine/Sweat as specified",
+        "test_type": "Single"
+      }
+    ]
+  },
+  {
+    "match_count": 2,
+    "term": "FT3",
+    "top_matches": [
+      {
+        "code": "END-0003",
+        "name": "Free T3 (FT3)",
+        "price_npr": 550,
+        "short_name": "END-0003",
+        "specimen": "Serum / Plasma",
+        "test_type": "Single"
+      },
+      {
+        "code": "PRO-0004",
+        "name": "Thyroid Profile (FT3, FT4, TSH)",
+        "price_npr": 0,
+        "short_name": "TFT (Free)",
+        "specimen": "Multiple specimens as applicable",
+        "test_type": "Panel"
+      }
+    ]
+  },
+  {
+    "match_count": 2,
+    "term": "FT4",
+    "top_matches": [
+      {
+        "code": "END-0002",
+        "name": "Free T4 (FT4)",
+        "price_npr": 550,
+        "short_name": "END-0002",
+        "specimen": "Serum / Plasma",
+        "test_type": "Single"
+      },
+      {
+        "code": "PRO-0004",
+        "name": "Thyroid Profile (FT3, FT4, TSH)",
+        "price_npr": 0,
+        "short_name": "TFT (Free)",
+        "specimen": "Multiple specimens as applicable",
+        "test_type": "Panel"
+      }
+    ]
+  },
+  {
+    "match_count": 7,
+    "term": "T3",
+    "top_matches": [
+      {
+        "code": "END-0003",
+        "name": "Free T3 (FT3)",
+        "price_npr": 550,
+        "short_name": "END-0003",
+        "specimen": "Serum / Plasma",
+        "test_type": "Single"
+      },
+      {
+        "code": "END-0005",
+        "name": "Total T3",
+        "price_npr": 0,
+        "short_name": "END-0005",
+        "specimen": "Serum / Plasma",
+        "test_type": "Single"
+      },
+      {
+        "code": "END-0067",
+        "name": "Reverse T3",
+        "price_npr": 0,
+        "short_name": "END-0067",
+        "specimen": "Serum / Plasma / Saliva as specified",
+        "test_type": "Single"
+      },
+      {
+        "code": "GEN-0015",
+        "name": "FISH - DDIT3",
+        "price_npr": 0,
+        "short_name": "GEN-0015",
+        "specimen": "EDTA Blood / Bone Marrow / FFPE as applicable",
+        "test_type": "Single"
+      },
+      {
+        "code": "MOL-0033",
+        "name": "FLT3 ITD/TKD",
+        "price_npr": 0,
+        "short_name": "MOL-0033",
+        "specimen": "EDTA Blood/Bone Marrow",
+        "test_type": "Single"
+      }
+    ]
+  },
+  {
+    "match_count": 5,
+    "term": "T4",
+    "top_matches": [
+      {
+        "code": "END-0002",
+        "name": "Free T4 (FT4)",
+        "price_npr": 550,
+        "short_name": "END-0002",
+        "specimen": "Serum / Plasma",
+        "test_type": "Single"
+      },
+      {
+        "code": "END-0004",
+        "name": "Total T4",
+        "price_npr": 0,
+        "short_name": "END-0004",
+        "specimen": "Serum / Plasma",
+        "test_type": "Single"
+      },
+      {
+        "code": "END-0066",
+        "name": "Free T4 by Equilibrium Dialysis",
+        "price_npr": 0,
+        "short_name": "END-0066",
+        "specimen": "Serum / Plasma / Saliva as specified",
+        "test_type": "Single"
+      },
+      {
+        "code": "PRO-0004",
+        "name": "Thyroid Profile (FT3, FT4, TSH)",
+        "price_npr": 0,
+        "short_name": "TFT (Free)",
+        "specimen": "Multiple specimens as applicable",
+        "test_type": "Panel"
+      },
+      {
+        "code": "PRO-0028",
+        "name": "COMPLETE THYROID PROFILE (T3, T4, TSH)",
+        "price_npr": 1200,
+        "short_name": "Thyroid Profile (Total)",
+        "specimen": "Multiple specimens as applicable",
+        "test_type": "Panel"
+      }
+    ]
+  },
+  {
+    "match_count": 2,
+    "term": "Vitamin D",
+    "top_matches": [
+      {
+        "code": "BIO-0053",
+        "name": "Vitamin D, 25-OH",
+        "price_npr": 2000,
+        "short_name": "BIO-0053",
+        "specimen": "Serum / Plasma",
+        "test_type": "Single"
+      },
+      {
+        "code": "BIO-0054",
+        "name": "Vitamin D, 1,25-dihydroxy",
+        "price_npr": 0,
+        "short_name": "BIO-0054",
+        "specimen": "Serum / Plasma",
+        "test_type": "Single"
+      }
+    ]
+  },
+  {
+    "match_count": 2,
+    "term": "Troponin",
+    "top_matches": [
+      {
+        "code": "BIO-0063",
+        "name": "Troponin I, High Sensitivity",
+        "price_npr": 1200,
+        "short_name": "BIO-0063",
+        "specimen": "Serum / Plasma",
+        "test_type": "Single"
+      },
+      {
+        "code": "BIO-0064",
+        "name": "Troponin T, High Sensitivity",
+        "price_npr": 1800,
+        "short_name": "BIO-0064",
+        "specimen": "Serum / Plasma",
+        "test_type": "Single"
+      }
+    ]
+  },
+  {
+    "match_count": 1,
+    "term": "cTnI",
+    "top_matches": [
+      {
+        "code": "BIO-0063",
+        "name": "Troponin I, High Sensitivity",
+        "price_npr": 1200,
+        "short_name": "BIO-0063",
+        "specimen": "Serum / Plasma",
+        "test_type": "Single"
+      }
+    ]
+  },
+  {
+    "match_count": 2,
+    "term": "CK-MB",
+    "top_matches": [
+      {
+        "code": "BIO-0061",
+        "name": "CK-MB Mass",
+        "price_npr": 700,
+        "short_name": "BIO-0061",
+        "specimen": "Serum / Plasma",
+        "test_type": "Single"
+      },
+      {
+        "code": "BIO-0062",
+        "name": "CK-MB Activity",
+        "price_npr": 0,
+        "short_name": "BIO-0062",
+        "specimen": "Serum / Plasma",
+        "test_type": "Single"
+      }
+    ]
+  },
+  {
+    "match_count": 1,
+    "term": "NT-proBNP",
+    "top_matches": [
+      {
+        "code": "BIO-0067",
+        "name": "NT-proBNP",
+        "price_npr": 3000,
+        "short_name": "BIO-0067",
+        "specimen": "Serum / Plasma",
+        "test_type": "Single"
+      }
+    ]
+  },
+  {
+    "match_count": 1,
+    "term": "D-Dimer",
+    "top_matches": [
+      {
+        "code": "COA-0006",
+        "name": "D-Dimer",
+        "price_npr": 1500,
+        "short_name": "COA-0006",
+        "specimen": "Citrated Plasma",
+        "test_type": "Single"
+      }
+    ]
+  },
+  {
+    "match_count": 3,
+    "term": "CRP",
+    "top_matches": [
+      {
+        "code": "BIO-0068",
+        "name": "hs-CRP",
+        "price_npr": 700,
+        "short_name": "BIO-0068",
+        "specimen": "Serum / Plasma",
+        "test_type": "Single"
+      },
+      {
+        "code": "IMM-0001",
+        "name": "CRP, Quantitative",
+        "price_npr": 700,
+        "short_name": "IMM-0001",
+        "specimen": "Serum",
+        "test_type": "Single"
+      },
+      {
+        "code": "PRO-0027",
+        "name": "PCT + CRP COMBO",
+        "price_npr": 3000,
+        "short_name": "PCT + CRP",
+        "specimen": "Multiple specimens as applicable",
+        "test_type": "Panel"
+      }
+    ]
+  },
+  {
+    "match_count": 1,
+    "term": "hs-CRP",
+    "top_matches": [
+      {
+        "code": "BIO-0068",
+        "name": "hs-CRP",
+        "price_npr": 700,
+        "short_name": "BIO-0068",
+        "specimen": "Serum / Plasma",
+        "test_type": "Single"
+      }
+    ]
+  },
+  {
+    "match_count": 3,
+    "term": "PCT",
+    "top_matches": [
+      {
+        "code": "HEM-0014",
+        "name": "PCT (Plateletcrit)",
+        "price_npr": 0,
+        "short_name": "HEM-0014",
+        "specimen": "EDTA Whole Blood",
+        "test_type": "Single"
+      },
+      {
+        "code": "PCT_SEPSIS",
+        "name": "Procalcitonin (PCT)",
+        "price_npr": 2500,
+        "short_name": "PCT_SEPSIS",
+        "specimen": "Serum",
+        "test_type": "Single"
+      },
+      {
+        "code": "PRO-0027",
+        "name": "PCT + CRP COMBO",
+        "price_npr": 3000,
+        "short_name": "PCT + CRP",
+        "specimen": "Multiple specimens as applicable",
+        "test_type": "Panel"
+      }
+    ]
+  },
+  {
+    "match_count": 1,
+    "term": "IL-6",
+    "top_matches": [
+      {
+        "code": "IMM-0093",
+        "name": "Interleukin-6 (IL-6)",
+        "price_npr": 3000,
+        "short_name": "IL-6",
+        "specimen": "Specimen Pending Validation",
+        "test_type": "Single"
+      }
+    ]
+  },
+  {
+    "match_count": 1,
+    "term": "Ferritin",
+    "top_matches": [
+      {
+        "code": "BIO-0050",
+        "name": "Ferritin",
+        "price_npr": 1000,
+        "short_name": "BIO-0050",
+        "specimen": "Serum / Plasma",
+        "test_type": "Single"
+      }
+    ]
+  },
+  {
+    "match_count": 2,
+    "term": "HbA1c",
+    "top_matches": [
+      {
+        "code": "BIO-0006",
+        "name": "HbA1c",
+        "price_npr": 800,
+        "short_name": "BIO-0006",
+        "specimen": "EDTA Whole Blood",
+        "test_type": "Single"
+      },
+      {
+        "code": "BIO-0004",
+        "name": "Glucose, 1 hr Post Glucose",
+        "price_npr": 0,
+        "short_name": "BIO-0004",
+        "specimen": "Serum / Plasma",
+        "test_type": "Single"
+      }
+    ]
+  },
+  {
+    "match_count": 1,
+    "term": "Microalbumin",
+    "top_matches": [
+      {
+        "code": "BIO-0085",
+        "name": "Urine Microalbumin",
+        "price_npr": 800,
+        "short_name": "BIO-0085",
+        "specimen": "Urine (random or timed as specified)",
+        "test_type": "Single"
+      }
+    ]
+  },
+  {
+    "match_count": 1,
+    "term": "Cystatin C",
+    "top_matches": [
+      {
+        "code": "BIO-0141",
+        "name": "Cystatin C",
+        "price_npr": 1200,
+        "short_name": "CysC",
+        "specimen": "Specimen Pending Validation",
+        "test_type": "Single"
+      }
+    ]
+  },
+  {
+    "match_count": 5,
+    "term": "HIV",
+    "top_matches": [
+      {
+        "code": "MOL-0007",
+        "name": "HIV-1 RNA Viral Load",
+        "price_npr": 0,
+        "short_name": "MOL-0007",
+        "specimen": "EDTA Plasma",
+        "test_type": "Single"
+      },
+      {
+        "code": "SER-0001",
+        "name": "HIV 1/2 Ag/Ab 4th Generation",
+        "price_npr": 500,
+        "short_name": "SER-0001",
+        "specimen": "Serum/Plasma",
+        "test_type": "Single"
+      },
+      {
+        "code": "SER-0002",
+        "name": "HIV 1 Antibody",
+        "price_npr": 0,
+        "short_name": "SER-0002",
+        "specimen": "Serum/Plasma",
+        "test_type": "Single"
+      },
+      {
+        "code": "SER-0003",
+        "name": "HIV 2 Antibody",
+        "price_npr": 0,
+        "short_name": "SER-0003",
+        "specimen": "Serum/Plasma",
+        "test_type": "Single"
+      },
+      {
+        "code": "SER-0086",
+        "name": "HUMAN IMMUNODEFICIENCY VIRUS (HIV), RAPID SCREENING TEST",
+        "price_npr": 500,
+        "short_name": "HIV Rapid",
+        "specimen": "Serum",
+        "test_type": "Single"
+      }
+    ]
+  },
+  {
+    "match_count": 1,
+    "term": "HIV Rapid",
+    "top_matches": [
+      {
+        "code": "SER-0086",
+        "name": "HUMAN IMMUNODEFICIENCY VIRUS (HIV), RAPID SCREENING TEST",
+        "price_npr": 500,
+        "short_name": "HIV Rapid",
+        "specimen": "Serum",
+        "test_type": "Single"
+      }
+    ]
+  },
+  {
+    "match_count": 2,
+    "term": "HBsAg",
+    "top_matches": [
+      {
+        "code": "SER-0004",
+        "name": "HBsAg",
+        "price_npr": 350,
+        "short_name": "SER-0004",
+        "specimen": "Serum/Plasma",
+        "test_type": "Single"
+      },
+      {
+        "code": "SER-0087",
+        "name": "HEPATITIS B SURFACE ANTIGEN (HBsAg), RAPID SCREENING TEST",
+        "price_npr": 600,
+        "short_name": "HBsAg Rapid",
+        "specimen": "Serum",
+        "test_type": "Single"
+      }
+    ]
+  },
+  {
+    "match_count": 1,
+    "term": "HBsAg Rapid",
+    "top_matches": [
+      {
+        "code": "SER-0087",
+        "name": "HEPATITIS B SURFACE ANTIGEN (HBsAg), RAPID SCREENING TEST",
+        "price_npr": 600,
+        "short_name": "HBsAg Rapid",
+        "specimen": "Serum",
+        "test_type": "Single"
+      }
+    ]
+  },
+  {
+    "match_count": 3,
+    "term": "HCV",
+    "top_matches": [
+      {
+        "code": "MOL-0006",
+        "name": "HCV RNA Quantitative",
+        "price_npr": 0,
+        "short_name": "MOL-0006",
+        "specimen": "EDTA Plasma",
+        "test_type": "Single"
+      },
+      {
+        "code": "SER-0010",
+        "name": "Anti-HCV",
+        "price_npr": 450,
+        "short_name": "SER-0010",
+        "specimen": "Serum/Plasma",
+        "test_type": "Single"
+      },
+      {
+        "code": "SER-0088",
+        "name": "HCV RAPID SCREENING TEST",
+        "price_npr": 600,
+        "short_name": "HCV Rapid",
+        "specimen": "Specimen Pending Validation",
+        "test_type": "Single"
+      }
+    ]
+  },
+  {
+    "match_count": 1,
+    "term": "HCV Rapid",
+    "top_matches": [
+      {
+        "code": "SER-0088",
+        "name": "HCV RAPID SCREENING TEST",
+        "price_npr": 600,
+        "short_name": "HCV Rapid",
+        "specimen": "Specimen Pending Validation",
+        "test_type": "Single"
+      }
+    ]
+  },
+  {
+    "match_count": 5,
+    "term": "Dengue",
+    "top_matches": [
+      {
+        "code": "MOL-0024",
+        "name": "Dengue RT-PCR",
+        "price_npr": 0,
+        "short_name": "MOL-0024",
+        "specimen": "Serum",
+        "test_type": "Single"
+      },
+      {
+        "code": "PRO-0029",
+        "name": "DENGUE COMBO (NS1 + IgM + IgG)",
+        "price_npr": 1200,
+        "short_name": "Dengue Combo",
+        "specimen": "Multiple specimens as applicable",
+        "test_type": "Panel"
+      },
+      {
+        "code": "SER-0015",
+        "name": "Dengue NS1 Antigen",
+        "price_npr": 800,
+        "short_name": "SER-0015",
+        "specimen": "Serum",
+        "test_type": "Single"
+      },
+      {
+        "code": "SER-0016",
+        "name": "Dengue IgM",
+        "price_npr": 800,
+        "short_name": "SER-0016",
+        "specimen": "Serum",
+        "test_type": "Single"
+      },
+      {
+        "code": "SER-0017",
+        "name": "Dengue IgG",
+        "price_npr": 0,
+        "short_name": "SER-0017",
+        "specimen": "Serum",
+        "test_type": "Single"
+      }
+    ]
+  },
+  {
+    "match_count": 3,
+    "term": "Scrub Typhus",
+    "top_matches": [
+      {
+        "code": "MOL-0026",
+        "name": "Scrub Typhus PCR",
+        "price_npr": 0,
+        "short_name": "MOL-0026",
+        "specimen": "Whole Blood",
+        "test_type": "Single"
+      },
+      {
+        "code": "SER-0020",
+        "name": "Scrub Typhus IgM",
+        "price_npr": 1000,
+        "short_name": "SER-0020",
+        "specimen": "Serum",
+        "test_type": "Single"
+      },
+      {
+        "code": "SER-0089",
+        "name": "Scrub Typhus (FIA IgM/IgG)",
+        "price_npr": 1000,
+        "short_name": "Scrub Typhus FIA",
+        "specimen": "Specimen Pending Validation",
+        "test_type": "Single"
+      }
+    ]
+  },
+  {
+    "match_count": 1,
+    "term": "H pylori",
+    "top_matches": [
+      {
+        "code": "SER-0043",
+        "name": "H. pylori Stool Antigen",
+        "price_npr": 1000,
+        "short_name": "SER-0043",
+        "specimen": "Stool",
+        "test_type": "Single"
+      }
+    ]
+  },
+  {
+    "match_count": 2,
+    "term": "Anti-CCP",
+    "top_matches": [
+      {
+        "code": "IMM-0004",
+        "name": "Anti-CCP",
+        "price_npr": 2200,
+        "short_name": "IMM-0004",
+        "specimen": "Serum",
+        "test_type": "Single"
+      },
+      {
+        "code": "IMM-0079",
+        "name": "Anti-CCP3",
+        "price_npr": 0,
+        "short_name": "IMM-0079",
+        "specimen": "Serum / Whole Blood as applicable",
+        "test_type": "Single"
+      }
+    ]
+  },
+  {
+    "match_count": 6,
+    "term": "ASO",
+    "top_matches": [
+      {
+        "code": "END-0054",
+        "name": "ADH / Vasopressin",
+        "price_npr": 0,
+        "short_name": "END-0054",
+        "specimen": "EDTA Plasma (chilled)",
+        "test_type": "Single"
+      },
+      {
+        "code": "END-0059",
+        "name": "Dexamethasone Suppression Test - Overnight",
+        "price_npr": 0,
+        "short_name": "END-0059",
+        "specimen": "Serum/Plasma at timed intervals",
+        "test_type": "Panel"
+      },
+      {
+        "code": "END-0060",
+        "name": "Low Dose Dexamethasone Suppression Test",
+        "price_npr": 0,
+        "short_name": "END-0060",
+        "specimen": "Serum/Plasma at timed intervals",
+        "test_type": "Panel"
+      },
+      {
+        "code": "END-0061",
+        "name": "High Dose Dexamethasone Suppression Test",
+        "price_npr": 0,
+        "short_name": "END-0061",
+        "specimen": "Serum/Plasma at timed intervals",
+        "test_type": "Panel"
+      },
+      {
+        "code": "HEM-0019",
+        "name": "Basophil %",
+        "price_npr": 0,
+        "short_name": "HEM-0019",
+        "specimen": "EDTA Whole Blood",
+        "test_type": "Single"
+      }
+    ]
+  },
+  {
+    "match_count": 4,
+    "term": "RF",
+    "top_matches": [
+      {
+        "code": "HEM-0025",
+        "name": "Immature Reticulocyte Fraction",
+        "price_npr": 0,
+        "short_name": "HEM-0025",
+        "specimen": "EDTA Whole Blood",
+        "test_type": "Single"
+      },
+      {
+        "code": "IMM-0002",
+        "name": "Rheumatoid Factor (RF)",
+        "price_npr": 600,
+        "short_name": "IMM-0002",
+        "specimen": "Serum",
+        "test_type": "Single"
+      },
+      {
+        "code": "PRO-0002",
+        "name": "Renal Function Test (RFT/KFT)",
+        "price_npr": 0,
+        "short_name": "PRO-0002",
+        "specimen": "Multiple specimens as applicable",
+        "test_type": "Panel"
+      },
+      {
+        "code": "SER-0087",
+        "name": "HEPATITIS B SURFACE ANTIGEN (HBsAg), RAPID SCREENING TEST",
+        "price_npr": 600,
+        "short_name": "HBsAg Rapid",
+        "specimen": "Serum",
+        "test_type": "Single"
+      }
+    ]
+  },
+  {
+    "match_count": 70,
+    "term": "IgE",
+    "top_matches": [
+      {
+        "code": "ALG-0001",
+        "name": "Specific IgE - House Dust Mite D. pteronyssinus",
+        "price_npr": 0,
+        "short_name": "ALG-0001",
+        "specimen": "Serum",
+        "test_type": "Single"
+      },
+      {
+        "code": "ALG-0002",
+        "name": "Specific IgE - House Dust Mite D. farinae",
+        "price_npr": 0,
+        "short_name": "ALG-0002",
+        "specimen": "Serum",
+        "test_type": "Single"
+      },
+      {
+        "code": "ALG-0003",
+        "name": "Specific IgE - Cockroach",
+        "price_npr": 0,
+        "short_name": "ALG-0003",
+        "specimen": "Serum",
+        "test_type": "Single"
+      },
+      {
+        "code": "ALG-0004",
+        "name": "Specific IgE - Cat Dander",
+        "price_npr": 0,
+        "short_name": "ALG-0004",
+        "specimen": "Serum",
+        "test_type": "Single"
+      },
+      {
+        "code": "ALG-0005",
+        "name": "Specific IgE - Dog Dander",
+        "price_npr": 0,
+        "short_name": "ALG-0005",
+        "specimen": "Serum",
+        "test_type": "Single"
+      }
+    ]
+  },
+  {
+    "match_count": 5,
+    "term": "PSA",
+    "top_matches": [
+      {
+        "code": "HIS-0051",
+        "name": "IHC - PSA",
+        "price_npr": 0,
+        "short_name": "HIS-0051",
+        "specimen": "FFPE tissue block",
+        "test_type": "Single"
+      },
+      {
+        "code": "HIS-0052",
+        "name": "IHC - PSAP",
+        "price_npr": 0,
+        "short_name": "HIS-0052",
+        "specimen": "FFPE tissue block",
+        "test_type": "Single"
+      },
+      {
+        "code": "TUM-0007",
+        "name": "PSA, Total",
+        "price_npr": 1200,
+        "short_name": "TUM-0007",
+        "specimen": "Serum / Plasma",
+        "test_type": "Single"
+      },
+      {
+        "code": "TUM-0008",
+        "name": "PSA, Free",
+        "price_npr": 0,
+        "short_name": "TUM-0008",
+        "specimen": "Serum / Plasma",
+        "test_type": "Single"
+      },
+      {
+        "code": "TUM-0009",
+        "name": "Free/Total PSA Ratio",
+        "price_npr": 0,
+        "short_name": "TUM-0009",
+        "specimen": "Serum / Plasma",
+        "test_type": "Single"
+      }
+    ]
+  },
+  {
+    "match_count": 1,
+    "term": "AFP",
+    "top_matches": [
+      {
+        "code": "TUM-0001",
+        "name": "AFP",
+        "price_npr": 1400,
+        "short_name": "TUM-0001",
+        "specimen": "Serum / Plasma",
+        "test_type": "Single"
+      }
+    ]
+  },
+  {
+    "match_count": 1,
+    "term": "CEA",
+    "top_matches": [
+      {
+        "code": "TUM-0002",
+        "name": "CEA",
+        "price_npr": 1400,
+        "short_name": "TUM-0002",
+        "specimen": "Serum / Plasma",
+        "test_type": "Single"
+      }
+    ]
+  }
+]

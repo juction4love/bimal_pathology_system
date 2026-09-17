@@ -1,0 +1,83 @@
+{
+  "historical_bills_delta": 0,
+  "historical_orders_delta": 0,
+  "historical_reports_delta": 0,
+  "historical_results_delta": 0,
+  "param_count_delta": 0,
+  "range_count_delta": 0,
+  "test_count_delta": 0,
+  "verification": {
+    "bt_ct_invented_range_count": 0,
+    "bt_test": {
+      "active": true,
+      "aliases": [
+        "Bleeding Time",
+        "Bleeding Time (BT)",
+        "BT",
+        "COA-0007",
+        "ब्लिडिङ टाइम"
+      ],
+      "code": "COA-0007",
+      "dept": "Coagulation",
+      "id": "3531fc7b-db20-4f22-85c2-4a2076763113",
+      "method": "Ivy/Duke (legacy)",
+      "name": "Bleeding Time",
+      "param": {
+        "name": "Bleeding Time",
+        "type": "Numeric",
+        "unit": "min"
+      },
+      "short_name": "BT",
+      "specimen": "Capillary Blood"
+    },
+    "canonical_count": 3,
+    "ct_test": {
+      "active": true,
+      "aliases": [
+        "Clotting Time",
+        "Clotting Time (CT)",
+        "COA-0008",
+        "Coagulation Time",
+        "CT",
+        "क्लटिङ टाइम"
+      ],
+      "code": "COA-0008",
+      "dept": "Coagulation",
+      "id": "1e03e664-18f1-4893-b651-0f25642e83c1",
+      "method": "Lee-White (legacy)",
+      "name": "Clotting Time",
+      "param": {
+        "name": "Clotting Time",
+        "type": "Numeric",
+        "unit": "min"
+      },
+      "short_name": "CT",
+      "specimen": "Whole Blood"
+    },
+    "duplicate_code_count": 0,
+    "pt_range_count": 2,
+    "pt_test": {
+      "active": true,
+      "aliases": [
+        "COA-0001",
+        "Prothrombin Test",
+        "Prothrombin Time",
+        "PT",
+        "PT (Prothrombin Time)",
+        "प्रोध्रोम्बिन टाइम"
+      ],
+      "code": "COA-0001",
+      "dept": "Coagulation",
+      "id": "2f8b4df3-40e4-4141-b003-9a124fdc75a8",
+      "method": "Electromechanical / Photo-optical Clot Detection",
+      "name": "Prothrombin Time (PT)",
+      "param": {
+        "name": "Prothrombin Time (PT)",
+        "type": "Numeric",
+        "unit": "sec"
+      },
+      "short_name": "PT",
+      "specimen": "Citrated Plasma"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "pre_state": {
+    "pre_bills": 0,
+    "pre_orders": 0,
+    "pre_parameters": 1128,
+    "pre_ranges": 93,
+    "pre_reports": 0,
+    "pre_technician_perms": 23,
+    "pre_test_results": 0,
+    "pre_total_tests": 1135
+  },
+  "verification": {
+    "has_catalogue_require_manager": true,
+    "has_catalogue_require_technical": true,
+    "has_replace_role_permission_matrix": true,
+    "post_technician_perms": 13,
+    "technician_permission_list": [
+      "can_acknowledge_critical",
+      "can_amend_reports",
+      "can_collect_sample",
+      "can_create_bill",
+      "can_edit_patient",
+      "can_enter_results",
+      "can_manage_outsource_tracking",
+      "can_print_reports",
+      "can_receive_sample",
+      "can_reject_sample",
+      "can_sign_reports",
+      "can_verify_results",
+      "can_view_dashboard"
+    ]
+  }
+}

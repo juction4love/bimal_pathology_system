@@ -1,0 +1,92 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+.env
+.env.*
+!.env.example
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Windows SMS Gateway build/runtime outputs
+tools/sms-gateway/bin/
+tools/sms-gateway/obj/
+tools/sms-gateway/publish/
+tools/sms-gateway/TestResults/
+tools/sms-gateway/installer/machine-bound/
+
+# Production recovery artifacts and machine-bound recovery keys
+/.recovery-work/
+/recovery/encrypted/
+/recovery/inventories/
+/recovery/manifests/
+/recovery/restore-tests/
+/recovery/keys/
+
+# Codex temporary/runtime artifacts
+.codex-tmp/
+
+# Local secrets / runtime state
+.local-secrets/
+.release-work/
+.tmp/
+.audit/
+
+# Generated QA / build / test artifacts
+artifacts/
+qa-artifacts/
+test-results/
+backups/
+
+# Build intermediates
+*.obj
+ServiceHost.obj
+
+# Supabase local/runtime state
+supabase/.temp/
+
+# Cloudflare generated/runtime state
+**/.wrangler/
+**/.wrangler-home/
+
+# Build/cache artifacts
+**/.npm-cache/
+**/bin/
+**/obj/
+**/publish/
+**/.hardening-package/
+
+# Generated project artifacts
+artifacts/
+qa-artifacts/
+test-results/
+backups/
+
+# Local SMS gateway production evidence/runtime state
+tools/sms-gateway-clean/operations/*evidence.json
+tools/sms-gateway-clean/operations/*identity.json
+
+# Python generated cache
+__pycache__/
+*.py[cod]
+
+# Supabase local branch state
+supabase/.branches/

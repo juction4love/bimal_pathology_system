@@ -1,0 +1,8 @@
+import test from'node:test';import assert from'node:assert/strict';import fs from'node:fs';
+const bus=fs.readFileSync('src/lib/workflowInvalidation.ts','utf8');
+const sources=['src/features/patients/PatientsPage.tsx','src/features/billing/NewBillPage.tsx','src/features/billing/BillListPage.tsx','src/features/samples/SampleAccessioningPage.tsx','src/features/worklist/ResultEntryPage.tsx'];
+test('same-origin invalidation uses BroadcastChannel with storage fallback',()=>{assert.match(bus,/new BroadcastChannel\(CHANNEL\)/);assert.match(bus,/addEventListener\('storage'/);assert.match(bus,/source===message\.source|message\.source===source/)});
+test('messages carry no PII or clinical values',()=>{assert.doesNotMatch(bus,/patientName|mobile|resultValue|display_value/);assert.match(bus,/opaqueId\?:string/)});
+test('refetches are debounced, loop-safe, and do not echo to the publishing tab',()=>{assert.match(bus,/source===source/);assert.match(bus,/setTimeout\(listener,120\)/);assert.doesNotMatch(bus,/localStorage\.removeItem\(CHANNEL\)[^}]*listeners\.forEach/s)});
+test('all workflow mutation surfaces publish invalidation',()=>{for(const file of sources)assert.match(fs.readFileSync(file,'utf8'),/publishWorkflowInvalidation\(/,file)});
+test('worklist and registries subscribe to relevant domains',()=>{for(const file of ['src/features/worklist/WorklistPage.tsx','src/features/patients/PatientsPage.tsx','src/features/samples/SampleAccessioningPage.tsx','src/features/billing/BillListPage.tsx','src/features/reports/ReportsPage.tsx'])assert.match(fs.readFileSync(file,'utf8'),/subscribeWorkflowInvalidation\(/,file)});

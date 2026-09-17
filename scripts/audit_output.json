@@ -1,0 +1,6024 @@
+{
+  "matched_tests": [
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0001",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "104dbe56-7929-4937-a031-f8ce992fa320",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - House Dust Mite D. pteronyssinus",
+      "parameters": [
+        {
+          "code": "ALG-0001",
+          "id": "147e4a0d-7205-4040-b325-5c04ce85f9a8",
+          "name": "Specific IgE - House Dust Mite D. pteronyssinus",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0001",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0002",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "d0159645-7bb9-4e58-8c27-10f37d6e707c",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - House Dust Mite D. farinae",
+      "parameters": [
+        {
+          "code": "ALG-0002",
+          "id": "a861d32f-2762-499c-b800-56b99f8cb179",
+          "name": "Specific IgE - House Dust Mite D. farinae",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0002",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0003",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "babe3400-78c5-4e51-afad-90604932b434",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Cockroach",
+      "parameters": [
+        {
+          "code": "ALG-0003",
+          "id": "7446378c-ba8d-486f-a051-dd646fbf545e",
+          "name": "Specific IgE - Cockroach",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0003",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0004",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "4cbaf2fd-dcb4-4c72-81d0-689898c9b74c",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Cat Dander",
+      "parameters": [
+        {
+          "code": "ALG-0004",
+          "id": "8dcde4ed-313d-4726-958c-407dc725a712",
+          "name": "Specific IgE - Cat Dander",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0004",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0005",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "0d64f449-0050-4b71-b7b8-4321b6a166e4",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Dog Dander",
+      "parameters": [
+        {
+          "code": "ALG-0005",
+          "id": "f7a0b456-67d7-4959-8b64-8518784bfcf5",
+          "name": "Specific IgE - Dog Dander",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0005",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0006",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "45f73cfe-38e0-4769-a55e-f13a0ba7aa4b",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Alternaria alternata",
+      "parameters": [
+        {
+          "code": "ALG-0006",
+          "id": "17906c9c-a127-4bc2-900a-2dabcfe7702a",
+          "name": "Specific IgE - Alternaria alternata",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0006",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0007",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "561d2e0f-99ce-4350-978f-e985b36779cb",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Aspergillus fumigatus",
+      "parameters": [
+        {
+          "code": "ALG-0007",
+          "id": "4cabaee8-5338-453b-9163-22964a768625",
+          "name": "Specific IgE - Aspergillus fumigatus",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0007",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0008",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "7f00556a-e89a-41a8-b9d9-a09b4bf30380",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Cladosporium herbarum",
+      "parameters": [
+        {
+          "code": "ALG-0008",
+          "id": "d70424fe-b9d6-4531-acf4-1f15d61bf263",
+          "name": "Specific IgE - Cladosporium herbarum",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0008",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0009",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "eaa924a5-e38b-46c6-a350-586e482c40b1",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Penicillium chrysogenum",
+      "parameters": [
+        {
+          "code": "ALG-0009",
+          "id": "ea99eeec-5bcf-40e3-ad5d-cddce26bed9d",
+          "name": "Specific IgE - Penicillium chrysogenum",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0009",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0010",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "f5dbc42b-1431-4591-a92f-13a431d6f247",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Bermuda Grass",
+      "parameters": [
+        {
+          "code": "ALG-0010",
+          "id": "42447e2c-324d-4a34-a9ca-7f90507a6cd4",
+          "name": "Specific IgE - Bermuda Grass",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0010",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0011",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "5c437f2c-ade2-4027-9ef6-dfd156829b7a",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Timothy Grass",
+      "parameters": [
+        {
+          "code": "ALG-0011",
+          "id": "2a44c30e-f122-4b36-9e1b-4b2720c98f45",
+          "name": "Specific IgE - Timothy Grass",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0011",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0012",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "49a9485e-00be-4c5a-a3de-58bad8f836a7",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Rye Grass",
+      "parameters": [
+        {
+          "code": "ALG-0012",
+          "id": "c824a875-10aa-49fe-8a68-0a524f61c04a",
+          "name": "Specific IgE - Rye Grass",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0012",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0013",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "041db139-20a6-49b1-b26c-e03b7594bc0f",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Johnson Grass",
+      "parameters": [
+        {
+          "code": "ALG-0013",
+          "id": "669b647d-1972-4741-b5fb-c82c90a746e6",
+          "name": "Specific IgE - Johnson Grass",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0013",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0014",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "ab4cd090-588f-4c48-9fe5-900260b9cdef",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Common Ragweed",
+      "parameters": [
+        {
+          "code": "ALG-0014",
+          "id": "81b8546d-9852-4909-aa32-461ec21f91f4",
+          "name": "Specific IgE - Common Ragweed",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0014",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0015",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "1045990d-09bf-4043-a39c-e0507af991e4",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Mugwort",
+      "parameters": [
+        {
+          "code": "ALG-0015",
+          "id": "14620e90-e694-43b9-83ff-bc8ed69cc3c5",
+          "name": "Specific IgE - Mugwort",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0015",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0016",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "8e2b0cf9-fa6b-4dcc-95c4-df87654eb304",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Birch",
+      "parameters": [
+        {
+          "code": "ALG-0016",
+          "id": "34d224c6-46e1-41b8-8d84-22d48899ee6e",
+          "name": "Specific IgE - Birch",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0016",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0017",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "38e64801-d33e-43ec-bc8b-bb3bba708773",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Oak",
+      "parameters": [
+        {
+          "code": "ALG-0017",
+          "id": "dd536644-ebd5-4f9a-8551-797b2506584e",
+          "name": "Specific IgE - Oak",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0017",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0018",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "960f5d61-9c5e-4798-8ae1-3783a117f2a1",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Olive Tree",
+      "parameters": [
+        {
+          "code": "ALG-0018",
+          "id": "d6d282fd-da26-4916-9712-6bab48f0dc83",
+          "name": "Specific IgE - Olive Tree",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0018",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0019",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "f20118ab-1de2-4915-8ff3-343773a503ed",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Cow's Milk",
+      "parameters": [
+        {
+          "code": "ALG-0019",
+          "id": "51b94566-d164-46b2-81b1-b6a1a51fd5ff",
+          "name": "Specific IgE - Cow's Milk",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0019",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0020",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "1fdb039d-ecf4-4db1-a521-8a4ff68af636",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Egg White",
+      "parameters": [
+        {
+          "code": "ALG-0020",
+          "id": "6cf1a375-2d12-4f1a-b074-6495817f1882",
+          "name": "Specific IgE - Egg White",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0020",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0021",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "140013a4-9d30-47c6-851a-0c473823aaff",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Egg Yolk",
+      "parameters": [
+        {
+          "code": "ALG-0021",
+          "id": "b7fde477-4ab0-4483-848c-7491920b13b6",
+          "name": "Specific IgE - Egg Yolk",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0021",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0022",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "4cd7db41-7ce1-4131-85fb-6c675e0705ff",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Peanut",
+      "parameters": [
+        {
+          "code": "ALG-0022",
+          "id": "2edf0576-bfb2-4236-865e-656bc831db48",
+          "name": "Specific IgE - Peanut",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0022",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0023",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "10c142ac-b41e-4266-9ad1-722f8f84d243",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Soybean",
+      "parameters": [
+        {
+          "code": "ALG-0023",
+          "id": "0667d66f-7ecf-4c94-8df8-16521f3b3d83",
+          "name": "Specific IgE - Soybean",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0023",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0024",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "62e3d806-6dc0-46a6-a423-082df756363b",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Wheat",
+      "parameters": [
+        {
+          "code": "ALG-0024",
+          "id": "3aa46a01-659a-40a2-9d80-45598672805b",
+          "name": "Specific IgE - Wheat",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0024",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0025",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "c8d216e3-83e5-4aef-861f-5044a40465df",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Rice",
+      "parameters": [
+        {
+          "code": "ALG-0025",
+          "id": "acd1e392-7f2b-4004-b63d-39802570350a",
+          "name": "Specific IgE - Rice",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0025",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0026",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "3812626e-5e6f-43e1-ab8a-480dc66dd885",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Maize/Corn",
+      "parameters": [
+        {
+          "code": "ALG-0026",
+          "id": "83eac78b-beef-45f4-961f-697632a5bf33",
+          "name": "Specific IgE - Maize/Corn",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0026",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0027",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "309434f6-85f1-45c6-8596-5eb95e4fb479",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Sesame",
+      "parameters": [
+        {
+          "code": "ALG-0027",
+          "id": "57ec1fad-9a09-4d59-9db2-bd89a9ab26e5",
+          "name": "Specific IgE - Sesame",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0027",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0028",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "1599d807-1636-4b95-b443-d08f4218e092",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Walnut",
+      "parameters": [
+        {
+          "code": "ALG-0028",
+          "id": "b6d58dd1-d620-4fe4-87bf-d789bc3ecf88",
+          "name": "Specific IgE - Walnut",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0028",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0029",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "27637c2a-9fc7-433f-a01e-fd2998ca124b",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Cashew",
+      "parameters": [
+        {
+          "code": "ALG-0029",
+          "id": "200d5235-8458-4028-9091-d7ed647ad18a",
+          "name": "Specific IgE - Cashew",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0029",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0030",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "13d4ce58-07ef-471a-be00-06fe80dbef19",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Almond",
+      "parameters": [
+        {
+          "code": "ALG-0030",
+          "id": "f91d461a-3d94-45f5-a12e-461bf230322f",
+          "name": "Specific IgE - Almond",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0030",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0031",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "7fa56d8f-0e69-49ae-98c0-d06d2c03162f",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Hazelnut",
+      "parameters": [
+        {
+          "code": "ALG-0031",
+          "id": "b6d7a100-24f2-406e-bcb3-47a66d5881d3",
+          "name": "Specific IgE - Hazelnut",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0031",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0032",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "4a6397fb-f351-4ebe-82da-dff419c645e7",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Shrimp",
+      "parameters": [
+        {
+          "code": "ALG-0032",
+          "id": "cf6e93ad-15af-4702-bed0-46cea9fed3d1",
+          "name": "Specific IgE - Shrimp",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0032",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0033",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "31698067-4ca3-4c48-8d1a-524c95829ae8",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Crab",
+      "parameters": [
+        {
+          "code": "ALG-0033",
+          "id": "0730153b-501a-4d72-a568-5c4ab2b36b07",
+          "name": "Specific IgE - Crab",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0033",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0034",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "34bed538-2c7b-4c6e-b69e-af626fce349f",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Lobster",
+      "parameters": [
+        {
+          "code": "ALG-0034",
+          "id": "c73f3fbc-22d5-46ce-9521-d460d22f2aeb",
+          "name": "Specific IgE - Lobster",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0034",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0035",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "b0899d81-72c0-4311-86e3-2cfc2ae0e42c",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Tuna",
+      "parameters": [
+        {
+          "code": "ALG-0035",
+          "id": "2d030227-8b23-4d13-9085-5d37458e70c3",
+          "name": "Specific IgE - Tuna",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0035",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0036",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "f64b9e9b-9aae-43df-9ae0-f9702865075d",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Salmon",
+      "parameters": [
+        {
+          "code": "ALG-0036",
+          "id": "77834f21-e178-4046-a51f-4363fc4e8d77",
+          "name": "Specific IgE - Salmon",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0036",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0037",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "56201355-1250-4ba4-8c98-104b39564247",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Codfish",
+      "parameters": [
+        {
+          "code": "ALG-0037",
+          "id": "32d28118-d9b7-414e-b76a-f743640a0b8a",
+          "name": "Specific IgE - Codfish",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0037",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0038",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "cbc86e15-b5db-46d4-b822-ac3769f3c95b",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Beef",
+      "parameters": [
+        {
+          "code": "ALG-0038",
+          "id": "60857818-d59e-4fd8-8261-9576bd23b504",
+          "name": "Specific IgE - Beef",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0038",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0039",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "8ca9a935-c5f0-43d4-81d0-fded9298fad5",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Chicken Meat",
+      "parameters": [
+        {
+          "code": "ALG-0039",
+          "id": "18019dd6-fe21-4bac-a96a-44e78c88ca85",
+          "name": "Specific IgE - Chicken Meat",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0039",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0040",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "af38c0f5-84cc-4973-b543-18531d4388f7",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Pork",
+      "parameters": [
+        {
+          "code": "ALG-0040",
+          "id": "06f1a255-59ad-4d8d-bca0-b41824fc4863",
+          "name": "Specific IgE - Pork",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0040",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0041",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "365cd937-80e4-4c87-8546-21733e4e67e2",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Mustard",
+      "parameters": [
+        {
+          "code": "ALG-0041",
+          "id": "86b82b66-2dcc-4251-bab7-2b0792a11e2f",
+          "name": "Specific IgE - Mustard",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0041",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0042",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "84469ee1-e3b9-4e4d-a80d-ff708135adbe",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Latex",
+      "parameters": [
+        {
+          "code": "ALG-0042",
+          "id": "7eabaa77-0949-40a8-aaaf-ab1a4a6dbc21",
+          "name": "Specific IgE - Latex",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0042",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0043",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "1ce9e232-a95c-40c3-8175-9e6c0e44f7b1",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Honey Bee Venom",
+      "parameters": [
+        {
+          "code": "ALG-0043",
+          "id": "38e377e0-78d8-4d68-97e0-f0fe39afc69a",
+          "name": "Specific IgE - Honey Bee Venom",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0043",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0044",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "3a1eb53b-d105-4ce1-98ee-de0bc10eadca",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Wasp Venom",
+      "parameters": [
+        {
+          "code": "ALG-0044",
+          "id": "2ce940cb-ccd7-4b50-9843-f86c04a90a0f",
+          "name": "Specific IgE - Wasp Venom",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0044",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0045",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "6085e76d-82ca-43c0-8d90-aaafca59b9f5",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Mosquito",
+      "parameters": [
+        {
+          "code": "ALG-0045",
+          "id": "ce62d873-8f30-413a-a36b-3dbc4efb665c",
+          "name": "Specific IgE - Mosquito",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0045",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0046",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "3b947a62-c54e-4e2a-add9-807cd6693bdf",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Penicillin G",
+      "parameters": [
+        {
+          "code": "ALG-0046",
+          "id": "8fb3b96a-4967-46dc-8dd7-e42d82588dab",
+          "name": "Specific IgE - Penicillin G",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0046",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0047",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "5a8ce3a1-1816-4bc4-9b86-11b7904f282d",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Penicillin V",
+      "parameters": [
+        {
+          "code": "ALG-0047",
+          "id": "fecf918a-6e20-4c0f-9ec8-76b84bd7672e",
+          "name": "Specific IgE - Penicillin V",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0047",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "ALG-0048",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Allergy",
+      "id": "40beab74-71cd-4d07-b9ed-4e65f8a0adea",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ImmunoCAP/Validated specific IgE assay",
+      "name": "Specific IgE - Amoxicillin",
+      "parameters": [
+        {
+          "code": "ALG-0048",
+          "id": "20d1bfd1-3d29-45cd-a779-2e3b6fdd5769",
+          "name": "Specific IgE - Amoxicillin",
+          "unit": "kUA/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "ALG-0048",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "kUA/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "BIO-0006",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "EDTA (Purple)",
+      "department": "Clinical Biochemistry",
+      "id": "2e1adb6d-42c4-4d20-95ae-1035ee351ab8",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "HPLC / Enzymatic / Immunoturbidimetry (NGSP/IFCC Certified)",
+      "name": "HbA1c",
+      "parameters": [
+        {
+          "code": "BIO-0006",
+          "id": "e0811320-6e01-451a-bb74-49af6df4f776",
+          "name": "HbA1c",
+          "unit": "%",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 80000,
+      "report_data_type": "Numeric",
+      "sample_type": "EDTA Whole Blood",
+      "short_name": "BIO-0006",
+      "specimen_rules": null,
+      "specimen_type": "EDTA Whole Blood",
+      "test_type": "Single",
+      "unit": "%",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "ALB",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Albumin",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "BIO-0014",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Clinical Biochemistry",
+      "id": "d1356bb0-88e1-4947-966a-b392cad353f1",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Bromocresol Green (BCG)",
+      "name": "Albumin",
+      "parameters": [
+        {
+          "code": "BIO-0014",
+          "id": "53b3d4e5-4416-4b5e-8ab1-a8696bd00c66",
+          "name": "Albumin",
+          "unit": "g/dL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum / Plasma",
+      "short_name": "BIO-0014",
+      "specimen_rules": [
+        {
+          "allowed_specimens": [
+            "Heparin Plasma"
+          ],
+          "preferred_specimen": "Serum"
+        }
+      ],
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "g/dL",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "Ferritin",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Serum Ferritin",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "BIO-0050",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Clinical Biochemistry",
+      "id": "18219d0b-5806-447c-b46f-89e1a3db4903",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Fluorescence Immunoassay",
+      "name": "Ferritin",
+      "parameters": [
+        {
+          "code": "BIO-0050",
+          "id": "646b1794-7626-4b82-b7ba-4885ac506c66",
+          "name": "Ferritin",
+          "unit": "ng/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum / Plasma",
+      "short_name": "BIO-0050",
+      "specimen_rules": [
+        {
+          "allowed_specimens": [
+            "Heparin Plasma"
+          ],
+          "preferred_specimen": "Serum"
+        }
+      ],
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "ng/mL",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "Vitamin D",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "25-OH Vitamin D",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "VIT_D",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "IMM_VITD",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Vit D",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "25-OH",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "25-Hydroxy Vitamin D",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "भिटामिन डी",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "BIO-0053",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Clinical Biochemistry",
+      "id": "52bc94a9-1c73-4fa2-a93f-0668a5b9a73c",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Fluorescence Immunoassay",
+      "name": "Vitamin D, 25-OH",
+      "parameters": [
+        {
+          "code": "BIO-0053",
+          "id": "faf7d941-f509-4731-8455-716f9f93b363",
+          "name": "Vitamin D, 25-OH",
+          "unit": "ng/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum / Plasma",
+      "short_name": "BIO-0053",
+      "specimen_rules": [
+        {
+          "allowed_specimens": [
+            "Heparin Plasma"
+          ],
+          "preferred_specimen": "Serum"
+        }
+      ],
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "ng/mL",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "BIO-0054",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Clinical Biochemistry",
+      "id": "75e7262a-4d54-49c7-95c5-ce70c262f186",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Immunoassay/LC-MS",
+      "name": "Vitamin D, 1,25-dihydroxy",
+      "parameters": [
+        {
+          "code": "BIO-0054",
+          "id": "25805a46-7172-49b5-9904-fbb49b0f14a1",
+          "name": "Vitamin D, 1,25-dihydroxy",
+          "unit": "pg/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum / Plasma",
+      "short_name": "BIO-0054",
+      "specimen_rules": null,
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "pg/mL",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "CK-MB Mass",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "CKMB Mass",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "CKMB_MASS",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "BIO-0061",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Clinical Biochemistry",
+      "id": "7504528b-6709-4ecb-bde2-ace123cb2b7c",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Fluorescence Immunoassay",
+      "name": "CK-MB Mass",
+      "parameters": [
+        {
+          "code": "BIO-0061",
+          "id": "e055666f-2e08-4011-888b-b7d81e6adc5a",
+          "name": "CK-MB Mass",
+          "unit": "ng/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum / Plasma",
+      "short_name": "BIO-0061",
+      "specimen_rules": null,
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "ng/mL",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "CK-MB",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "CPK-MB",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "BIO-0062",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Clinical Biochemistry",
+      "id": "4f9e21fa-2dfc-4257-8e94-5795c66be2a0",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Immunoinhibition Kinetic",
+      "name": "CK-MB Activity",
+      "parameters": [
+        {
+          "code": "BIO-0062",
+          "id": "71f1993b-ff66-4088-99fb-043cdcf850ea",
+          "name": "CK-MB Activity",
+          "unit": "U/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum / Plasma",
+      "short_name": "BIO-0062",
+      "specimen_rules": [
+        {
+          "allowed_specimens": [
+            "Heparin Plasma"
+          ],
+          "preferred_specimen": "Serum"
+        }
+      ],
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "U/L",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "Troponin I",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "cTnI",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "CTNI",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "IMM_CTNI",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Troponin",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "hs-cTnI",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "Cardiac Troponin I",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "कार्डियाक ट्रोपोनिन",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "BIO-0063",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Clinical Biochemistry",
+      "id": "6ad3e9d7-07e7-48d1-b330-ce1a1e7906be",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Fluorescence Immunoassay",
+      "name": "Troponin I, High Sensitivity",
+      "parameters": [
+        {
+          "code": "BIO-0063",
+          "id": "a2be46bd-b75a-4226-b96d-fe12e0888635",
+          "name": "Troponin I, High Sensitivity",
+          "unit": "ng/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum / Plasma",
+      "short_name": "BIO-0063",
+      "specimen_rules": [
+        {
+          "allowed_specimens": [
+            "EDTA Whole Blood",
+            "EDTA Plasma",
+            "Heparin Plasma"
+          ],
+          "preferred_specimen": "Serum"
+        }
+      ],
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "ng/mL",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "BIO-0064",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Clinical Biochemistry",
+      "id": "c8b4e3d2-e11e-490e-9e6c-ace2ecd81953",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "High-sensitivity immunoassay",
+      "name": "Troponin T, High Sensitivity",
+      "parameters": [
+        {
+          "code": "BIO-0064",
+          "id": "1879f7d4-8610-4195-8738-112a4178528d",
+          "name": "Troponin T, High Sensitivity",
+          "unit": "ng/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum / Plasma",
+      "short_name": "BIO-0064",
+      "specimen_rules": null,
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "ng/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "Myoglobin",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "MYO",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "BIO-0065",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Clinical Biochemistry",
+      "id": "9a82ab3b-e114-4881-b80d-ca39d51a8167",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Fluorescence Immunoassay",
+      "name": "Myoglobin",
+      "parameters": [
+        {
+          "code": "BIO-0065",
+          "id": "454db68a-c2c6-43b0-9232-c849d25d20c9",
+          "name": "Myoglobin",
+          "unit": "ng/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum / Plasma",
+      "short_name": "BIO-0065",
+      "specimen_rules": [
+        {
+          "allowed_specimens": [
+            "EDTA Whole Blood",
+            "EDTA Plasma",
+            "Heparin Plasma"
+          ],
+          "preferred_specimen": "Serum"
+        }
+      ],
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "ng/mL",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "BIO-0066",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Clinical Biochemistry",
+      "id": "3e1f7052-8d1c-4127-bfec-512b97acfaf8",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Immunoassay",
+      "name": "BNP",
+      "parameters": [
+        {
+          "code": "BIO-0066",
+          "id": "6347d9ba-4823-4fce-8044-b174e7b511ba",
+          "name": "BNP",
+          "unit": "pg/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum / Plasma",
+      "short_name": "BIO-0066",
+      "specimen_rules": null,
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "pg/mL",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "NT-proBNP",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "NT_PROBNP",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "N-Terminal proBNP",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "IMM_BNP",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "BNP",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "Brain Natriuretic Peptide",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "BIO-0067",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Clinical Biochemistry",
+      "id": "ed7944e9-3ff9-40ab-b8e5-fe827d86bf63",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Fluorescence Immunoassay",
+      "name": "NT-proBNP",
+      "parameters": [
+        {
+          "code": "BIO-0067",
+          "id": "a7421589-afce-45bf-b96b-db9125e157ff",
+          "name": "NT-proBNP",
+          "unit": "pg/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum / Plasma",
+      "short_name": "BIO-0067",
+      "specimen_rules": [
+        {
+          "allowed_specimens": [
+            "EDTA Whole Blood",
+            "EDTA Plasma",
+            "Heparin Plasma"
+          ],
+          "preferred_specimen": "Serum"
+        }
+      ],
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "pg/mL",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "hs-CRP",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "hsCRP",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "High Sensitivity CRP",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "CRP",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "C-Reactive Protein",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "सीआरपी",
+          "alias_type": "Acronym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "BIO-0068",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Clinical Biochemistry",
+      "id": "021e2230-37ab-433d-8529-53edb189fc31",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Fluorescence Immunoassay",
+      "name": "hs-CRP",
+      "parameters": [
+        {
+          "code": "BIO-0068",
+          "id": "63ba8694-4c52-4652-9334-e56ca8e9a2c6",
+          "name": "hs-CRP",
+          "unit": "mg/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum / Plasma",
+      "short_name": "BIO-0068",
+      "specimen_rules": [
+        {
+          "allowed_specimens": [
+            "EDTA Whole Blood",
+            "EDTA Plasma",
+            "Heparin Plasma"
+          ],
+          "preferred_specimen": "Serum"
+        }
+      ],
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "mg/L",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "BIO-0076",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Clinical Biochemistry",
+      "id": "44090413-f0a7-4cc5-a8b0-874be3db3653",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Immunoturbidimetry",
+      "name": "Prealbumin",
+      "parameters": [
+        {
+          "code": "BIO-0076",
+          "id": "44ad3e54-d7ff-44be-ac21-674c3aa4f2f0",
+          "name": "Prealbumin",
+          "unit": "mg/dL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum / Plasma",
+      "short_name": "BIO-0076",
+      "specimen_rules": null,
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "mg/dL",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "BIO-0084",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Sterile urine container / 24h container",
+      "department": "Clinical Biochemistry",
+      "id": "37a85b2e-3e26-4d06-a0a5-77eb7d7e6b7c",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Analyzer/Validated chemistry method",
+      "name": "Urine Albumin, Random",
+      "parameters": [
+        {
+          "code": "BIO-0084",
+          "id": "7c774b76-4988-4f96-a4cb-9b98e1157135",
+          "name": "Urine Albumin, Random",
+          "unit": "mg/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Urine (random or timed as specified)",
+      "short_name": "BIO-0084",
+      "specimen_rules": null,
+      "specimen_type": "Urine (random or timed as specified)",
+      "test_type": "Single",
+      "unit": "mg/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "BIO-0085",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Sterile urine container / 24h container",
+      "department": "Clinical Biochemistry",
+      "id": "add643a0-56cf-432f-83be-cc257a7cf0e7",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Analyzer/Validated chemistry method",
+      "name": "Urine Microalbumin",
+      "parameters": [
+        {
+          "code": "BIO-0085",
+          "id": "471fb37a-f4d9-4492-b42c-8aa7c8c4673d",
+          "name": "Urine Microalbumin",
+          "unit": "mg/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Urine (random or timed as specified)",
+      "short_name": "BIO-0085",
+      "specimen_rules": null,
+      "specimen_type": "Urine (random or timed as specified)",
+      "test_type": "Single",
+      "unit": "mg/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "BIO-0086",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Sterile urine container / 24h container",
+      "department": "Clinical Biochemistry",
+      "id": "7f92c6fd-7d03-45d0-bb2c-cda79f0641b7",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Analyzer/Validated chemistry method",
+      "name": "Urine Albumin/Creatinine Ratio",
+      "parameters": [
+        {
+          "code": "BIO-0086",
+          "id": "2cba5677-1af2-47ff-8c30-7f6d05c32f44",
+          "name": "Urine Albumin/Creatinine Ratio",
+          "unit": "mg/g creatinine",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Urine (random or timed as specified)",
+      "short_name": "BIO-0086",
+      "specimen_rules": null,
+      "specimen_type": "Urine (random or timed as specified)",
+      "test_type": "Single",
+      "unit": "mg/g creatinine",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "BIO-0133",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Sterile container",
+      "department": "Clinical Biochemistry",
+      "id": "b1e8cfaf-2eec-4e03-ae4d-b406bd646b96",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Validated chemistry method",
+      "name": "Ascitic Fluid Albumin",
+      "parameters": [
+        {
+          "code": "BIO-0133",
+          "id": "4521bcd4-e60b-4438-948c-e9db6f5cf514",
+          "name": "Ascitic Fluid Albumin",
+          "unit": "g/dL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Specified body fluid",
+      "short_name": "BIO-0133",
+      "specimen_rules": null,
+      "specimen_type": "Specified body fluid",
+      "test_type": "Single",
+      "unit": "g/dL",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "BIO-0134",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Sterile container",
+      "department": "Clinical Biochemistry",
+      "id": "726a0fcf-8d27-4fef-ba1e-76b09b1e0c8b",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Validated chemistry method",
+      "name": "Serum-Ascites Albumin Gradient (SAAG)",
+      "parameters": [
+        {
+          "code": "BIO-0134",
+          "id": "2353371d-b96d-4fe0-9a67-e603dc61eca2",
+          "name": "Serum-Ascites Albumin Gradient (SAAG)",
+          "unit": "g/dL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Specified body fluid",
+      "short_name": "BIO-0134",
+      "specimen_rules": null,
+      "specimen_type": "Specified body fluid",
+      "test_type": "Single",
+      "unit": "g/dL",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "Vitamins",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "Vitamins Profile",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "भिटामिन प्रोफाइल",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": false,
+      "clinical_reporting_enabled": false,
+      "code": "IMM-VITAMINS",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Yellow Top (SST)",
+      "department": "Clinical Biochemistry",
+      "id": "8e42764b-3098-4552-85c5-9fdbf853f99a",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Fluorescence Immunoassay (FIAcheck)",
+      "name": "Vitamins Suite (Vit D & B12)",
+      "parameters": [
+        {
+          "code": "IMM-VITAMINS",
+          "id": "8c932496-22b5-4298-8f17-318fcc432d10",
+          "name": "Vitamins Suite (Vit D & B12)",
+          "unit": null,
+          "value_type": "Heading"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "IMM-VITAMINS",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Panel",
+      "unit": null,
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "D-Dimer",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "D_DIMER",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "D-Dimer FEU",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "D Dimer",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "डी-डाइमर",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "COA-0006",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Sodium Citrate (Blue)",
+      "department": "Coagulation",
+      "id": "b6594b04-b486-46a2-a431-a647962ab2b2",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Fluorescence Immunoassay",
+      "name": "D-Dimer",
+      "parameters": [
+        {
+          "code": "COA-0006",
+          "id": "19660461-27c0-4427-9e47-24c0e2fd589c",
+          "name": "D-Dimer",
+          "unit": "µg/mL FEU",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Citrated Plasma",
+      "short_name": "COA-0006",
+      "specimen_rules": [
+        {
+          "allowed_specimens": [
+            "Citrated Whole Blood"
+          ],
+          "preferred_specimen": "Citrated Plasma"
+        }
+      ],
+      "specimen_type": "Citrated Plasma",
+      "test_type": "Single",
+      "unit": "µg/mL FEU",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "COA-0017",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Sodium Citrate (Blue)",
+      "department": "Coagulation",
+      "id": "f526121b-edc7-4286-a5eb-85c6c83532f5",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Immunoassay",
+      "name": "Von Willebrand Factor Antigen",
+      "parameters": [
+        {
+          "code": "COA-0017",
+          "id": "1c7e9104-2d41-4f27-92de-80966d0d20b4",
+          "name": "Von Willebrand Factor Antigen",
+          "unit": "%",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Citrated Plasma",
+      "short_name": "COA-0017",
+      "specimen_rules": null,
+      "specimen_type": "Citrated Plasma",
+      "test_type": "Single",
+      "unit": "%",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "CYT-0001",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Slides / Cytology fixative / sterile container",
+      "department": "Cytology",
+      "id": "e0416b01-a558-4a2b-8738-6be683361d75",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Cytology microscopy",
+      "name": "FNAC - Thyroid",
+      "parameters": [
+        {
+          "code": "CYT-0001",
+          "id": "c4b2f5ab-e753-4946-842a-bf197178c07c",
+          "name": "FNAC - Thyroid",
+          "unit": "Descriptive",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "PathologyNarrative",
+      "sample_type": "Cytology specimen",
+      "short_name": "CYT-0001",
+      "specimen_rules": null,
+      "specimen_type": "Cytology specimen",
+      "test_type": "Single",
+      "unit": "Descriptive",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "TSH",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Thyroid Stimulating Hormone",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "IMM_TSH",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "थाइरोइड हर्मोन TSH",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "END-0001",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Endocrinology",
+      "id": "52165ea0-4741-4bde-a590-fab693d42ceb",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Fluorescence Immunoassay",
+      "name": "TSH",
+      "parameters": [
+        {
+          "code": "END-0001",
+          "id": "0ebacc5b-4410-4b00-be2e-68828042a1fb",
+          "name": "TSH",
+          "unit": "µIU/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 40000,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum / Plasma",
+      "short_name": "END-0001",
+      "specimen_rules": [
+        {
+          "allowed_specimens": [
+            "Heparin Plasma"
+          ],
+          "preferred_specimen": "Serum"
+        }
+      ],
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "µIU/mL",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "FT4",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Free T4",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "IMM_FT4",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Free Thyroxine",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "END-0002",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Endocrinology",
+      "id": "8a5bd95d-bf55-47e6-8ee1-82b4358e70e7",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Fluorescence Immunoassay",
+      "name": "Free T4 (FT4)",
+      "parameters": [
+        {
+          "code": "END-0002",
+          "id": "222f25c8-e1ef-4038-960e-4819fdc9167b",
+          "name": "Free T4 (FT4)",
+          "unit": "ng/dL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 50000,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum / Plasma",
+      "short_name": "END-0002",
+      "specimen_rules": [
+        {
+          "allowed_specimens": [
+            "Heparin Plasma"
+          ],
+          "preferred_specimen": "Serum"
+        }
+      ],
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "ng/dL",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "FT3",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Free T3",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "IMM_FT3",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Free Triiodothyronine",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "END-0003",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Endocrinology",
+      "id": "d0bfc69a-74cc-4ce9-ba42-0953b877ce43",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Fluorescence Immunoassay",
+      "name": "Free T3 (FT3)",
+      "parameters": [
+        {
+          "code": "END-0003",
+          "id": "18359d7b-ef42-4847-ace7-4ddb058422b4",
+          "name": "Free T3 (FT3)",
+          "unit": "pg/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 50000,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum / Plasma",
+      "short_name": "END-0003",
+      "specimen_rules": [
+        {
+          "allowed_specimens": [
+            "Heparin Plasma"
+          ],
+          "preferred_specimen": "Serum"
+        }
+      ],
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "pg/mL",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "TT4",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Total T4",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "END-0004",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Endocrinology",
+      "id": "817437d8-4e76-452f-ba6c-38d8dec8794c",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Fluorescence Immunoassay",
+      "name": "Total T4",
+      "parameters": [
+        {
+          "code": "END-0004",
+          "id": "24492a1e-bbdf-4590-bd6f-7da61d71e05c",
+          "name": "Total T4",
+          "unit": "µg/dL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum / Plasma",
+      "short_name": "END-0004",
+      "specimen_rules": [
+        {
+          "allowed_specimens": [
+            "Heparin Plasma"
+          ],
+          "preferred_specimen": "Serum"
+        }
+      ],
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "µg/dL",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "TT3",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Total T3",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "END-0005",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Endocrinology",
+      "id": "6300981c-970c-4741-9fcc-cc6be1fb44b3",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Fluorescence Immunoassay",
+      "name": "Total T3",
+      "parameters": [
+        {
+          "code": "END-0005",
+          "id": "7d6b7651-0f14-4619-8e7c-7da40532d686",
+          "name": "Total T3",
+          "unit": "ng/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum / Plasma",
+      "short_name": "END-0005",
+      "specimen_rules": [
+        {
+          "allowed_specimens": [
+            "Heparin Plasma"
+          ],
+          "preferred_specimen": "Serum"
+        }
+      ],
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "ng/mL",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "END-0010",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Endocrinology",
+      "id": "b332bec0-562d-45cd-a26c-a3e8ce74d4d9",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Chemiluminescent Immunoassay (CLIA / LC-MS)",
+      "name": "Thyroid Stimulating Immunoglobulin (TSI)",
+      "parameters": [
+        {
+          "code": "END-0010",
+          "id": "5f9d2124-fa2e-4834-b308-1949607c1335",
+          "name": "Thyroid Stimulating Immunoglobulin (TSI)",
+          "unit": "%/IU/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum / Plasma",
+      "short_name": "END-0010",
+      "specimen_rules": null,
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "%/IU/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "END-0025",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Endocrinology",
+      "id": "48b583e2-0c39-49a2-bfe9-60ea757db9c6",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "CLIA/ECLIA/Validated immunoassay",
+      "name": "Prolactin",
+      "parameters": [
+        {
+          "code": "END-0025",
+          "id": "99fe2680-35a6-4f7a-b2af-79920a8ea9ac",
+          "name": "Prolactin",
+          "unit": "ng/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum / Plasma",
+      "short_name": "END-0025",
+      "specimen_rules": null,
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "ng/mL",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "END-0026",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Endocrinology",
+      "id": "05e4cead-e07e-4549-a397-3e35c2d51d8b",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "CLIA/ECLIA/Validated immunoassay",
+      "name": "Macroprolactin",
+      "parameters": [
+        {
+          "code": "END-0026",
+          "id": "a28909ef-e251-4b69-89f7-a815e378a1ac",
+          "name": "Macroprolactin",
+          "unit": "% recovery",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum / Plasma",
+      "short_name": "END-0026",
+      "specimen_rules": null,
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "% recovery",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "END-0031",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Endocrinology",
+      "id": "d5586451-406f-4a1f-ad02-f57ba6c10bb5",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "CLIA/ECLIA/Validated immunoassay",
+      "name": "Testosterone, Total",
+      "parameters": [
+        {
+          "code": "END-0031",
+          "id": "4b36d4a4-5981-41a1-986c-d8cc4940c80d",
+          "name": "Testosterone, Total",
+          "unit": "ng/dL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum / Plasma",
+      "short_name": "END-0031",
+      "specimen_rules": null,
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "ng/dL",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "END-0032",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Endocrinology",
+      "id": "9cbc2404-86df-400c-8171-ed24b107422f",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "CLIA/ECLIA/Validated immunoassay",
+      "name": "Testosterone, Free",
+      "parameters": [
+        {
+          "code": "END-0032",
+          "id": "9dec5b23-1c8d-4c4c-9c99-b95191645ad5",
+          "name": "Testosterone, Free",
+          "unit": "pg/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum / Plasma",
+      "short_name": "END-0032",
+      "specimen_rules": null,
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "pg/mL",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "Beta-hCG",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Beta hCG Quantitative",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "B_HCG",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "END-0039",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Endocrinology",
+      "id": "03733900-4869-4b77-b9ce-c060f7d6e8c1",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Fluorescence Immunoassay",
+      "name": "Beta-hCG, Quantitative",
+      "parameters": [
+        {
+          "code": "END-0039",
+          "id": "6820b077-8fda-453a-83b9-aa9cd2bd64b4",
+          "name": "Beta-hCG, Quantitative",
+          "unit": "mIU/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum / Plasma",
+      "short_name": "END-0039",
+      "specimen_rules": [
+        {
+          "allowed_specimens": [
+            "Heparin Plasma"
+          ],
+          "preferred_specimen": "Serum"
+        }
+      ],
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "mIU/mL",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "END-0040",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Endocrinology",
+      "id": "640f6c7a-6ae9-4190-8276-a9d318202c69",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "CLIA/ECLIA/Validated immunoassay",
+      "name": "Beta-hCG, Qualitative",
+      "parameters": [
+        {
+          "code": "END-0040",
+          "id": "cf2a8ab3-53a2-4ea6-8353-83df3eccab46",
+          "name": "Beta-hCG, Qualitative",
+          "unit": "Qualitative",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "PositiveNegative",
+      "sample_type": "Serum / Plasma",
+      "short_name": "END-0040",
+      "specimen_rules": null,
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "Qualitative",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "END-0068",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Appropriate tube",
+      "department": "Endocrinology",
+      "id": "53a88d8b-9568-4d5f-8680-6120e8d714b9",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "LC-MS/MS or validated immunoassay",
+      "name": "Thyroxine Binding Globulin",
+      "parameters": [
+        {
+          "code": "END-0068",
+          "id": "3daaecb3-7dd9-44f3-aac2-5d67efd9d702",
+          "name": "Thyroxine Binding Globulin",
+          "unit": "µg/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum / Plasma / Saliva as specified",
+      "short_name": "END-0068",
+      "specimen_rules": null,
+      "specimen_type": "Serum / Plasma / Saliva as specified",
+      "test_type": "Single",
+      "unit": "µg/mL",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "END-0079",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Appropriate tube",
+      "department": "Endocrinology",
+      "id": "16d1d2ee-5d82-45af-af16-60e43bcd3354",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "LC-MS/MS or validated immunoassay",
+      "name": "Dihydrotestosterone",
+      "parameters": [
+        {
+          "code": "END-0079",
+          "id": "7d1a1eba-5505-4e0d-b5db-6c6bde26889c",
+          "name": "Dihydrotestosterone",
+          "unit": "ng/dL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum / Plasma / Saliva as specified",
+      "short_name": "END-0079",
+      "specimen_rules": null,
+      "specimen_type": "Serum / Plasma / Saliva as specified",
+      "test_type": "Single",
+      "unit": "ng/dL",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "END-0080",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Appropriate tube",
+      "department": "Endocrinology",
+      "id": "0b0416ac-dcfa-46ac-ac1b-d440bf050bd3",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "LC-MS/MS or validated immunoassay",
+      "name": "Free Testosterone by Equilibrium Dialysis",
+      "parameters": [
+        {
+          "code": "END-0080",
+          "id": "c3b34a3d-2c56-46c3-af97-1e0e06e425ed",
+          "name": "Free Testosterone by Equilibrium Dialysis",
+          "unit": "pg/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum / Plasma / Saliva as specified",
+      "short_name": "END-0080",
+      "specimen_rules": null,
+      "specimen_type": "Serum / Plasma / Saliva as specified",
+      "test_type": "Single",
+      "unit": "pg/mL",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "END-0082",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Appropriate tube",
+      "department": "Endocrinology",
+      "id": "da41bfa6-3277-4a6a-af23-3c8a3c058ac0",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "LC-MS/MS or validated immunoassay",
+      "name": "Anti-Mullerian Hormone - Pediatric",
+      "parameters": [
+        {
+          "code": "END-0082",
+          "id": "a710e0b8-0519-4555-8461-c648193335a6",
+          "name": "Anti-Mullerian Hormone - Pediatric",
+          "unit": "ng/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum / Plasma / Saliva as specified",
+      "short_name": "END-0082",
+      "specimen_rules": null,
+      "specimen_type": "Serum / Plasma / Saliva as specified",
+      "test_type": "Single",
+      "unit": "ng/mL",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "HIS-0008",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "10% Neutral Buffered Formalin",
+      "department": "Histopathology",
+      "id": "4e3f0057-b281-4271-99c8-95feba1f230e",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Grossing + H&E histopathology",
+      "name": "Prostate Core Biopsy",
+      "parameters": [
+        {
+          "code": "HIS-0008",
+          "id": "7ab679a8-339a-4aef-beaf-e359155dc073",
+          "name": "Prostate Core Biopsy",
+          "unit": "Descriptive",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "PathologyNarrative",
+      "sample_type": "Tissue",
+      "short_name": "HIS-0008",
+      "specimen_rules": null,
+      "specimen_type": "Tissue",
+      "test_type": "Single",
+      "unit": "Descriptive",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "HIS-0018",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "10% Neutral Buffered Formalin",
+      "department": "Histopathology",
+      "id": "69fca51a-4fe9-476b-bd0c-356f9052e6c0",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Grossing + H&E histopathology",
+      "name": "Thyroid Biopsy Histology",
+      "parameters": [
+        {
+          "code": "HIS-0018",
+          "id": "2cea6898-1752-4c44-9262-14030eddb73f",
+          "name": "Thyroid Biopsy Histology",
+          "unit": "Descriptive",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "PathologyNarrative",
+      "sample_type": "Tissue",
+      "short_name": "HIS-0018",
+      "specimen_rules": null,
+      "specimen_type": "Tissue",
+      "test_type": "Single",
+      "unit": "Descriptive",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "HIS-0029",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "10% Neutral Buffered Formalin",
+      "department": "Histopathology",
+      "id": "2ea79168-f81a-43c2-8564-df6f6e8336b2",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Grossing + H&E histopathology",
+      "name": "Resection Specimen - Prostate",
+      "parameters": [
+        {
+          "code": "HIS-0029",
+          "id": "87a0d919-2548-4758-8a44-853ff2d2c79f",
+          "name": "Resection Specimen - Prostate",
+          "unit": "Descriptive",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "PathologyNarrative",
+      "sample_type": "Tissue",
+      "short_name": "HIS-0029",
+      "specimen_rules": null,
+      "specimen_type": "Tissue",
+      "test_type": "Single",
+      "unit": "Descriptive",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "IMM-0001",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Immunology",
+      "id": "b4849da7-7758-4e92-976a-9363b0549382",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ELISA/IFA/Immunoassay as validated",
+      "name": "CRP, Quantitative",
+      "parameters": [
+        {
+          "code": "IMM-0001",
+          "id": "aadf599e-9a0f-4cba-a27e-8fb8beae3b4e",
+          "name": "CRP, Quantitative",
+          "unit": "mg/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 40000,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "IMM-0001",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "mg/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "IMM-0002",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Immunology",
+      "id": "3e315f26-399e-40ac-88a4-762e4b4174d7",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ELISA/IFA/Immunoassay as validated",
+      "name": "Rheumatoid Factor (RF)",
+      "parameters": [
+        {
+          "code": "IMM-0002",
+          "id": "d3e22b05-4731-43bb-b155-bfcb45893ae0",
+          "name": "Rheumatoid Factor (RF)",
+          "unit": "IU/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 45000,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "IMM-0002",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "IU/mL",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "IMM-0004",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Immunology",
+      "id": "38a765c3-3f09-43e5-98c1-fdfc3e690665",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ELISA/IFA/Immunoassay as validated",
+      "name": "Anti-CCP",
+      "parameters": [
+        {
+          "code": "IMM-0004",
+          "id": "13c0339d-35a5-4706-b5d5-da6b9e9fa231",
+          "name": "Anti-CCP",
+          "unit": "U/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "IMM-0004",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "U/mL",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "IMM-0031",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Immunology",
+      "id": "f2e2aff0-b125-4312-ad6e-4795cb1637d2",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ELISA/IFA/Immunoassay as validated",
+      "name": "Total IgE",
+      "parameters": [
+        {
+          "code": "IMM-0031",
+          "id": "395df667-8192-42f1-b008-e8e4038183c3",
+          "name": "Total IgE",
+          "unit": "IU/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "IMM-0031",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "IU/mL",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "IMM-0053",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Immunology",
+      "id": "7b4c3b45-87f6-4966-aaee-df69c49c2da1",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ELISA/IFA/Immunoassay as validated",
+      "name": "Soluble Liver Antigen Antibody",
+      "parameters": [
+        {
+          "code": "IMM-0053",
+          "id": "f719ecaa-ec70-425e-8d1b-e9ff24e1f09a",
+          "name": "Soluble Liver Antigen Antibody",
+          "unit": "U/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "IMM-0053",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "U/mL",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "IMM-0079",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST / EDTA",
+      "department": "Immunology",
+      "id": "c613a25b-0d0d-4d2c-949d-848ec7b74708",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ELISA/Flow/Functional assay as validated",
+      "name": "Anti-CCP3",
+      "parameters": [
+        {
+          "code": "IMM-0079",
+          "id": "074e851a-0403-4603-81a6-6353f230721c",
+          "name": "Anti-CCP3",
+          "unit": "U/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum / Whole Blood as applicable",
+      "short_name": "IMM-0079",
+      "specimen_rules": null,
+      "specimen_type": "Serum / Whole Blood as applicable",
+      "test_type": "Single",
+      "unit": "U/mL",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "IMM-0092",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST / EDTA",
+      "department": "Immunology",
+      "id": "c4f99820-70db-4c23-be78-e5b216b86c48",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ELISA/Flow/Functional assay as validated",
+      "name": "Serum Immunoglobulin Electrophoresis",
+      "parameters": [
+        {
+          "code": "IMM-0092",
+          "id": "f4249efa-3d1f-4dab-b834-18fbf359cbbb",
+          "name": "Serum Immunoglobulin Electrophoresis",
+          "unit": "U/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "PathologyNarrative",
+      "sample_type": "Serum / Whole Blood as applicable",
+      "short_name": "IMM-0092",
+      "specimen_rules": null,
+      "specimen_type": "Serum / Whole Blood as applicable",
+      "test_type": "Single",
+      "unit": "U/mL",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "Procalcitonin",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "PCT",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "PCT Sepsis",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Serum Procalcitonin",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": false,
+      "clinical_reporting_enabled": false,
+      "code": "PCT_SEPSIS",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Yellow Top (SST)",
+      "department": "Immunology",
+      "id": "9a7e8a3b-d01c-4255-8534-eaffd968436f",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Fluorescence Immunoassay",
+      "name": "Procalcitonin (PCT)",
+      "parameters": [
+        {
+          "code": "PCT_SEPSIS",
+          "id": "d415a7ef-b14f-43a6-98db-9f9d4d9070f6",
+          "name": "Procalcitonin (PCT)",
+          "unit": "ng/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "PCT_SEPSIS",
+      "specimen_rules": [
+        {
+          "allowed_specimens": [
+            "EDTA Whole Blood",
+            "EDTA Plasma",
+            "Heparin Plasma"
+          ],
+          "preferred_specimen": "Serum"
+        }
+      ],
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "ng/mL",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "MOL-0006",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Molecular collection tube / sterile container",
+      "department": "Molecular Diagnostics",
+      "id": "40d30b8e-5444-49b0-8efb-e1716c481e89",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Real-time RT-PCR",
+      "name": "HCV RNA Quantitative",
+      "parameters": [
+        {
+          "code": "MOL-0006",
+          "id": "2d5912d5-2cad-4fd7-8803-718a08311cbc",
+          "name": "HCV RNA Quantitative",
+          "unit": "IU/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "EDTA Plasma",
+      "short_name": "MOL-0006",
+      "specimen_rules": null,
+      "specimen_type": "EDTA Plasma",
+      "test_type": "Single",
+      "unit": "IU/mL",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "MOL-0024",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Molecular collection tube / sterile container",
+      "department": "Molecular Diagnostics",
+      "id": "bf9c3c33-fab4-4dda-a531-1a5d9b50df37",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "RT-PCR",
+      "name": "Dengue RT-PCR",
+      "parameters": [
+        {
+          "code": "MOL-0024",
+          "id": "fed39f2e-0f08-4b0b-b438-3c7956ce47d6",
+          "name": "Dengue RT-PCR",
+          "unit": "Qualitative",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "DetectedNotDetected",
+      "sample_type": "Serum",
+      "short_name": "MOL-0024",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "Qualitative",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "MOL-0026",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Molecular collection tube / sterile container",
+      "department": "Molecular Diagnostics",
+      "id": "f2b159ca-a601-4f06-8f35-597c4f0f6d64",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "PCR",
+      "name": "Scrub Typhus PCR",
+      "parameters": [
+        {
+          "code": "MOL-0026",
+          "id": "87560055-22d5-42ea-9618-790972528159",
+          "name": "Scrub Typhus PCR",
+          "unit": "Qualitative",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "DetectedNotDetected",
+      "sample_type": "Whole Blood",
+      "short_name": "MOL-0026",
+      "specimen_rules": null,
+      "specimen_type": "Whole Blood",
+      "test_type": "Single",
+      "unit": "Qualitative",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "IMM-THYROID",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Thyroid",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "Thyroid Profile",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "TFT",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "Free Thyroid Profile",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "थाइरोइड प्रोफाइल",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "थाइरोइड परीक्षण",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "PRO-0004",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "As required",
+      "department": "Profiles / Packages",
+      "id": "e9a337d8-15f2-4a7a-bd7a-8b60ab50b254",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Fluorescence Immunoassay (FIAcheck)",
+      "name": "Thyroid Profile (FT3, FT4, TSH)",
+      "parameters": [
+        {
+          "code": "PRO-0004",
+          "id": "71162a93-b906-4a59-b5ac-9b337afa09e3",
+          "name": "Thyroid Profile",
+          "unit": "Panel",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Panel",
+      "sample_type": "Multiple specimens as applicable",
+      "short_name": "TFT (Free)",
+      "specimen_rules": null,
+      "specimen_type": "Multiple specimens as applicable",
+      "test_type": "Panel",
+      "unit": "Panel",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "PRO-0017",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "As required",
+      "department": "Profiles / Packages",
+      "id": "8f09d742-dd55-49e9-a93a-2f1a7a3a56e7",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Composite panel",
+      "name": "Hepatitis B Profile",
+      "parameters": [
+        {
+          "code": "PRO-0017",
+          "id": "ff0217d3-833f-4641-a531-4282b8601035",
+          "name": "Hepatitis B Profile",
+          "unit": "Panel",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Panel",
+      "sample_type": "Multiple specimens as applicable",
+      "short_name": "PRO-0017",
+      "specimen_rules": null,
+      "specimen_type": "Multiple specimens as applicable",
+      "test_type": "Panel",
+      "unit": "Panel",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0004",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST or specified collection",
+      "department": "Serology / Infectious Disease",
+      "id": "7cb903f2-e78b-4d2a-8dc2-fc9c34ada3f5",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Flocculation / Carbon Particle Agglutination",
+      "name": "HBsAg",
+      "parameters": [
+        {
+          "code": "SER-0004",
+          "id": "0a375acc-bebe-4799-8599-1e6922976135",
+          "name": "HBsAg",
+          "unit": "Index/S/CO",
+          "value_type": "Text"
+        }
+      ],
+      "price_paisa": 35000,
+      "report_data_type": "ReactiveNonReactive",
+      "sample_type": "Serum/Plasma",
+      "short_name": "SER-0004",
+      "specimen_rules": null,
+      "specimen_type": "Serum/Plasma",
+      "test_type": "Single",
+      "unit": "Index/S/CO",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0010",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST or specified collection",
+      "department": "Serology / Infectious Disease",
+      "id": "e90a5c0a-3d4b-49bc-8fa2-29db7295b6eb",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Latex Agglutination / Immunoturbidimetry",
+      "name": "Anti-HCV",
+      "parameters": [
+        {
+          "code": "SER-0010",
+          "id": "f616448b-7f37-43dc-8708-22a0befddf01",
+          "name": "Anti-HCV",
+          "unit": "Index/S/CO",
+          "value_type": "Text"
+        }
+      ],
+      "price_paisa": 45000,
+      "report_data_type": "ReactiveNonReactive",
+      "sample_type": "Serum/Plasma",
+      "short_name": "SER-0010",
+      "specimen_rules": null,
+      "specimen_type": "Serum/Plasma",
+      "test_type": "Single",
+      "unit": "Index/S/CO",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0015",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST or specified collection",
+      "department": "Serology / Infectious Disease",
+      "id": "5c1164f1-804e-4755-9aa8-15d98f03cebe",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ELISA/Rapid/CLIA",
+      "name": "Dengue NS1 Antigen",
+      "parameters": [
+        {
+          "code": "SER-0015",
+          "id": "2e737b54-7ac7-42be-8e54-012c79b3e990",
+          "name": "Dengue NS1 Antigen",
+          "unit": "Index",
+          "value_type": "Text"
+        }
+      ],
+      "price_paisa": 60000,
+      "report_data_type": "PositiveNegative",
+      "sample_type": "Serum",
+      "short_name": "SER-0015",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "Index",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0016",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST or specified collection",
+      "department": "Serology / Infectious Disease",
+      "id": "0b21071b-ed2d-4ed9-8244-2e665f5547a8",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ELISA/CLIA",
+      "name": "Dengue IgM",
+      "parameters": [
+        {
+          "code": "SER-0016",
+          "id": "b0df7f37-a5e4-45fc-8616-9e66302f6d3c",
+          "name": "Dengue IgM",
+          "unit": "Index",
+          "value_type": "Text"
+        }
+      ],
+      "price_paisa": 80000,
+      "report_data_type": "PositiveNegative",
+      "sample_type": "Serum",
+      "short_name": "SER-0016",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "Index",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0017",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST or specified collection",
+      "department": "Serology / Infectious Disease",
+      "id": "57c94e10-52b9-46dd-a030-a7d534770873",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ELISA/CLIA",
+      "name": "Dengue IgG",
+      "parameters": [
+        {
+          "code": "SER-0017",
+          "id": "fc9af244-6147-4a6e-ac12-0051d8a18749",
+          "name": "Dengue IgG",
+          "unit": "Index",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "PositiveNegative",
+      "sample_type": "Serum",
+      "short_name": "SER-0017",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "Index",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0020",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST or specified collection",
+      "department": "Serology / Infectious Disease",
+      "id": "949b29a3-1023-4cf1-b325-7dabe0b07498",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ELISA",
+      "name": "Scrub Typhus IgM",
+      "parameters": [
+        {
+          "code": "SER-0020",
+          "id": "7f09a2e2-1d88-4a84-b17a-816be24835a6",
+          "name": "Scrub Typhus IgM",
+          "unit": "Index",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "PositiveNegative",
+      "sample_type": "Serum",
+      "short_name": "SER-0020",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "Index",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0041",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST or specified collection",
+      "department": "Serology / Infectious Disease",
+      "id": "8ec9573b-e6df-4d41-b206-a3a843671dcd",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "CLIA/ELISA",
+      "name": "EBV Early Antigen IgG",
+      "parameters": [
+        {
+          "code": "SER-0041",
+          "id": "dcbba5b2-72aa-42d1-83ab-812147247202",
+          "name": "EBV Early Antigen IgG",
+          "unit": "Index",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "PositiveNegative",
+      "sample_type": "Serum",
+      "short_name": "SER-0041",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "Index",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0042",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST or specified collection",
+      "department": "Serology / Infectious Disease",
+      "id": "14ca9414-68cd-4d55-b264-484848c0a564",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "ELISA",
+      "name": "H. pylori IgG",
+      "parameters": [
+        {
+          "code": "SER-0042",
+          "id": "75f28764-8c9b-4aa9-9e97-ad4a53262e99",
+          "name": "H. pylori IgG",
+          "unit": "U/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum",
+      "short_name": "SER-0042",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "U/mL",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0043",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST or specified collection",
+      "department": "Serology / Infectious Disease",
+      "id": "ade8406c-ff94-4f53-8a77-374befc8b46e",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Immunoassay",
+      "name": "H. pylori Stool Antigen",
+      "parameters": [
+        {
+          "code": "SER-0043",
+          "id": "85ce72c4-fd9f-4533-a19b-b51510b1c252",
+          "name": "H. pylori Stool Antigen",
+          "unit": "Qualitative",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "PositiveNegative",
+      "sample_type": "Stool",
+      "short_name": "SER-0043",
+      "specimen_rules": null,
+      "specimen_type": "Stool",
+      "test_type": "Single",
+      "unit": "Qualitative",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0044",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST or specified collection",
+      "department": "Serology / Infectious Disease",
+      "id": "5778193a-69cf-4fe2-9b6b-d124068f7f87",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "13C/14C UBT",
+      "name": "H. pylori Urea Breath Test",
+      "parameters": [
+        {
+          "code": "SER-0044",
+          "id": "58328641-e6a1-41cc-9e17-0b116f455015",
+          "name": "H. pylori Urea Breath Test",
+          "unit": "Delta over baseline",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Breath",
+      "short_name": "SER-0044",
+      "specimen_rules": null,
+      "specimen_type": "Breath",
+      "test_type": "Single",
+      "unit": "Delta over baseline",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0045",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST or specified collection",
+      "department": "Serology / Infectious Disease",
+      "id": "2aa7d388-a98a-4db6-973a-078f480aabd6",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Lateral flow/Immunoassay",
+      "name": "COVID-19 SARS-CoV-2 Antigen",
+      "parameters": [
+        {
+          "code": "SER-0045",
+          "id": "67de497e-c31c-4970-aa48-3b66e87e7b67",
+          "name": "COVID-19 SARS-CoV-2 Antigen",
+          "unit": "Qualitative",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "PositiveNegative",
+      "sample_type": "Nasopharyngeal swab",
+      "short_name": "SER-0045",
+      "specimen_rules": null,
+      "specimen_type": "Nasopharyngeal swab",
+      "test_type": "Single",
+      "unit": "Qualitative",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0048",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST or specified collection",
+      "department": "Serology / Infectious Disease",
+      "id": "6f19308b-525e-4818-97d5-4b0f888f7507",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Immunoassay",
+      "name": "Influenza A Antigen",
+      "parameters": [
+        {
+          "code": "SER-0048",
+          "id": "75112bdc-e38b-4041-86f6-8a94aae09efc",
+          "name": "Influenza A Antigen",
+          "unit": "Qualitative",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "PositiveNegative",
+      "sample_type": "Respiratory swab",
+      "short_name": "SER-0048",
+      "specimen_rules": null,
+      "specimen_type": "Respiratory swab",
+      "test_type": "Single",
+      "unit": "Qualitative",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0049",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST or specified collection",
+      "department": "Serology / Infectious Disease",
+      "id": "a66fb759-6175-474b-88bd-56f51a625535",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Immunoassay",
+      "name": "Influenza B Antigen",
+      "parameters": [
+        {
+          "code": "SER-0049",
+          "id": "6e2805c9-7b81-41cf-92e6-d890b8bf97c7",
+          "name": "Influenza B Antigen",
+          "unit": "Qualitative",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "PositiveNegative",
+      "sample_type": "Respiratory swab",
+      "short_name": "SER-0049",
+      "specimen_rules": null,
+      "specimen_type": "Respiratory swab",
+      "test_type": "Single",
+      "unit": "Qualitative",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0050",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST or specified collection",
+      "department": "Serology / Infectious Disease",
+      "id": "c536f246-cb29-4fce-bc72-2a3a145adfd3",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Immunoassay",
+      "name": "RSV Antigen",
+      "parameters": [
+        {
+          "code": "SER-0050",
+          "id": "da3747d6-84ce-4430-9c8b-f1ee160a8d44",
+          "name": "RSV Antigen",
+          "unit": "Qualitative",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "PositiveNegative",
+      "sample_type": "Respiratory swab",
+      "short_name": "SER-0050",
+      "specimen_rules": null,
+      "specimen_type": "Respiratory swab",
+      "test_type": "Single",
+      "unit": "Qualitative",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0051",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST or specified collection",
+      "department": "Serology / Infectious Disease",
+      "id": "19265462-802b-4cd8-b8e1-aa391715fc5f",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Immunoassay",
+      "name": "Rotavirus Antigen",
+      "parameters": [
+        {
+          "code": "SER-0051",
+          "id": "2b0275d0-c1bb-48a3-80d6-e52b0ede113b",
+          "name": "Rotavirus Antigen",
+          "unit": "Qualitative",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "PositiveNegative",
+      "sample_type": "Stool",
+      "short_name": "SER-0051",
+      "specimen_rules": null,
+      "specimen_type": "Stool",
+      "test_type": "Single",
+      "unit": "Qualitative",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0052",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST or specified collection",
+      "department": "Serology / Infectious Disease",
+      "id": "9ae9c269-cc4c-4e3a-bd32-ef44f0c9d525",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Immunoassay",
+      "name": "Adenovirus Antigen, Stool",
+      "parameters": [
+        {
+          "code": "SER-0052",
+          "id": "910ae996-7248-4b9a-8a0e-f87f6ac520bc",
+          "name": "Adenovirus Antigen, Stool",
+          "unit": "Qualitative",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "PositiveNegative",
+      "sample_type": "Stool",
+      "short_name": "SER-0052",
+      "specimen_rules": null,
+      "specimen_type": "Stool",
+      "test_type": "Single",
+      "unit": "Qualitative",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0053",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST or specified collection",
+      "department": "Serology / Infectious Disease",
+      "id": "7219423d-934e-44e2-beb8-79a2763819f5",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Immunoassay",
+      "name": "Cryptosporidium Antigen",
+      "parameters": [
+        {
+          "code": "SER-0053",
+          "id": "39ea3d5c-f271-44f1-b9d8-e55cac911c5d",
+          "name": "Cryptosporidium Antigen",
+          "unit": "Qualitative",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "PositiveNegative",
+      "sample_type": "Stool",
+      "short_name": "SER-0053",
+      "specimen_rules": null,
+      "specimen_type": "Stool",
+      "test_type": "Single",
+      "unit": "Qualitative",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0054",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST or specified collection",
+      "department": "Serology / Infectious Disease",
+      "id": "374c3871-bfdf-4289-aaf4-279316b43212",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Immunoassay",
+      "name": "Giardia Antigen",
+      "parameters": [
+        {
+          "code": "SER-0054",
+          "id": "453c7200-bb17-4ce9-ba37-b33cad2e8f7e",
+          "name": "Giardia Antigen",
+          "unit": "Qualitative",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "PositiveNegative",
+      "sample_type": "Stool",
+      "short_name": "SER-0054",
+      "specimen_rules": null,
+      "specimen_type": "Stool",
+      "test_type": "Single",
+      "unit": "Qualitative",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0055",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST or specified collection",
+      "department": "Serology / Infectious Disease",
+      "id": "79095854-e7af-4a11-a38e-0919ba3c27b7",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Immunoassay",
+      "name": "Entamoeba histolytica Antigen",
+      "parameters": [
+        {
+          "code": "SER-0055",
+          "id": "761a587c-2c09-48b3-b2ea-6412b984deeb",
+          "name": "Entamoeba histolytica Antigen",
+          "unit": "Qualitative",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "PositiveNegative",
+      "sample_type": "Stool",
+      "short_name": "SER-0055",
+      "specimen_rules": null,
+      "specimen_type": "Stool",
+      "test_type": "Single",
+      "unit": "Qualitative",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0056",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST or specified collection",
+      "department": "Serology / Infectious Disease",
+      "id": "8ec439fc-2a58-4625-baec-2fc9c7ba7c31",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Immunoassay",
+      "name": "Clostridioides difficile GDH Antigen",
+      "parameters": [
+        {
+          "code": "SER-0056",
+          "id": "3aa86c3e-52a1-4364-a48c-65c67bda2d8e",
+          "name": "Clostridioides difficile GDH Antigen",
+          "unit": "Qualitative",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "PositiveNegative",
+      "sample_type": "Stool",
+      "short_name": "SER-0056",
+      "specimen_rules": null,
+      "specimen_type": "Stool",
+      "test_type": "Single",
+      "unit": "Qualitative",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0058",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST or specified collection",
+      "department": "Serology / Infectious Disease",
+      "id": "4d40f452-9a8c-47a9-944c-85dcb280bdeb",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Rapid immunochromatography",
+      "name": "Malaria Pf/Pv Antigen",
+      "parameters": [
+        {
+          "code": "SER-0058",
+          "id": "383c6de7-681f-4ae8-ac76-d9216c2bbbfa",
+          "name": "Malaria Pf/Pv Antigen",
+          "unit": "Qualitative",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "PositiveNegative",
+      "sample_type": "Whole Blood",
+      "short_name": "SER-0058",
+      "specimen_rules": null,
+      "specimen_type": "Whole Blood",
+      "test_type": "Single",
+      "unit": "Qualitative",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0060",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST or specified collection",
+      "department": "Serology / Infectious Disease",
+      "id": "684813b7-c162-4558-ad7f-8b8c9def2f36",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Immunoassay",
+      "name": "Filariasis Antigen",
+      "parameters": [
+        {
+          "code": "SER-0060",
+          "id": "a735056e-1a9a-4a75-8fb8-18c0b17b1ea6",
+          "name": "Filariasis Antigen",
+          "unit": "Qualitative",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "PositiveNegative",
+      "sample_type": "Whole Blood",
+      "short_name": "SER-0060",
+      "specimen_rules": null,
+      "specimen_type": "Whole Blood",
+      "test_type": "Single",
+      "unit": "Qualitative",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "HBsAg Rapid",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "HBs Ag Rapid",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "HBsAg Rapid Screening",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Hepatitis B Rapid",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "हेपाटाइटिस बी र्‍यापिड",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0087",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Container per approved laboratory SOP",
+      "department": "Serology / Infectious Disease",
+      "id": "3b3cc2f7-e1f4-4dd2-818d-5de6311785e8",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Rapid Immunochromatography (Rapid Screening Test)",
+      "name": "HEPATITIS B SURFACE ANTIGEN (HBsAg), RAPID SCREENING TEST",
+      "parameters": [
+        {
+          "code": "SER-0087",
+          "id": "eddc778c-2309-4a69-b4fa-de7d8f2cb984",
+          "name": "HEPATITIS B SURFACE ANTIGEN (HBsAg), RAPID SCREENING TEST",
+          "unit": null,
+          "value_type": "Select"
+        }
+      ],
+      "price_paisa": 35000,
+      "report_data_type": "ReactiveNonReactive",
+      "sample_type": "Serum",
+      "short_name": "HBsAg Rapid",
+      "specimen_rules": null,
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": null,
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "HCV Rapid",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Anti-HCV Rapid",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "HCV Rapid Screening",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Hepatitis C Rapid",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "हेपाटाइटिस सी र्‍यापिड",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0088",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Container Pending Lab SOP",
+      "department": "Serology / Infectious Disease",
+      "id": "333f1896-c755-4df2-a348-00bdd13b9bf3",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Rapid Immunochromatography (Rapid Screening Test)",
+      "name": "HCV RAPID SCREENING TEST",
+      "parameters": [
+        {
+          "code": "SER-0088",
+          "id": "bf2b5698-0b7b-4260-b214-dc001963cb7f",
+          "name": "HCV RAPID SCREENING TEST",
+          "unit": null,
+          "value_type": "Select"
+        }
+      ],
+      "price_paisa": 45000,
+      "report_data_type": "ReactiveNonReactive",
+      "sample_type": "Specimen Pending Validation",
+      "short_name": "HCV Rapid",
+      "specimen_rules": null,
+      "specimen_type": "Specimen Pending Validation",
+      "test_type": "Single",
+      "unit": null,
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SPC-0011",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Appropriate collection device",
+      "department": "Special Chemistry",
+      "id": "90113426-b406-475d-b0db-da1eb9dc48b1",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Validated screening/LC-MS/MS method",
+      "name": "Alpha-Fetoprotein Maternal Serum",
+      "parameters": [
+        {
+          "code": "SPC-0011",
+          "id": "6d9ec3cb-4c5d-46dc-b94d-a3fba57f7a43",
+          "name": "Alpha-Fetoprotein Maternal Serum",
+          "unit": "MoM",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Blood/DBS/Urine/Sweat as specified",
+      "short_name": "SPC-0011",
+      "specimen_rules": null,
+      "specimen_type": "Blood/DBS/Urine/Sweat as specified",
+      "test_type": "Single",
+      "unit": "MoM",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SPC-0013",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Appropriate collection device",
+      "department": "Special Chemistry",
+      "id": "aff3e30d-7aa0-4ffd-9b6b-6e4c740f6e4c",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "Validated screening/LC-MS/MS method",
+      "name": "Free Beta-hCG, First Trimester",
+      "parameters": [
+        {
+          "code": "SPC-0013",
+          "id": "21830869-8cb8-489c-9cf2-dd65c5675725",
+          "name": "Free Beta-hCG, First Trimester",
+          "unit": "MoM",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Blood/DBS/Urine/Sweat as specified",
+      "short_name": "SPC-0013",
+      "specimen_rules": null,
+      "specimen_type": "Blood/DBS/Urine/Sweat as specified",
+      "test_type": "Single",
+      "unit": "MoM",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "TUM-0010",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Tumor Markers",
+      "id": "5955c03e-cb1b-4309-80f3-53d03dcb3586",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "CLIA/ECLIA/Validated immunoassay",
+      "name": "Beta-hCG Tumor Marker",
+      "parameters": [
+        {
+          "code": "TUM-0010",
+          "id": "4cb32ceb-2717-4073-b66d-1ea1e016c216",
+          "name": "Beta-hCG Tumor Marker",
+          "unit": "mIU/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum / Plasma",
+      "short_name": "TUM-0010",
+      "specimen_rules": null,
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "mIU/mL",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "TUM-0015",
+      "configuration_status": "PENDING_APPROVAL",
+      "container": "Plain/SST",
+      "department": "Tumor Markers",
+      "id": "81ce9003-68f6-46dd-8c60-18e20df485b3",
+      "is_active": true,
+      "lifecycle_status": "Active",
+      "method": "CLIA/ECLIA/Validated immunoassay",
+      "name": "SCC Antigen",
+      "parameters": [
+        {
+          "code": "TUM-0015",
+          "id": "be37da4e-cdec-4445-8078-a261c7db23a3",
+          "name": "SCC Antigen",
+          "unit": "ng/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_paisa": 0,
+      "report_data_type": "Numeric",
+      "sample_type": "Serum / Plasma",
+      "short_name": "TUM-0015",
+      "specimen_rules": null,
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "ng/mL",
+      "validation_status": "REQUIRES_VALIDATION"
+    }
+  ],
+  "panels": [
+    {
+      "billing_enabled": true,
+      "components": [
+        {
+          "component_test_id": "6ffc6f64-53dd-4244-88b0-a11842efd705",
+          "display_order": 1,
+          "is_required": true,
+          "test_code": "HEM-0002",
+          "test_name": "Hemoglobin (Hb)"
+        },
+        {
+          "component_test_id": "be9c96cb-0ba2-40d8-ba8f-753e9b976576",
+          "display_order": 2,
+          "is_required": true,
+          "test_code": "HEM-0004",
+          "test_name": "RBC Count"
+        },
+        {
+          "component_test_id": "1d701fb0-84e0-46bb-aa46-f67510c3059b",
+          "display_order": 3,
+          "is_required": true,
+          "test_code": "HEM-0003",
+          "test_name": "Hematocrit (HCT/PCV)"
+        },
+        {
+          "component_test_id": "5fc1fd8f-b497-4b23-a5a0-90eda78cf129",
+          "display_order": 4,
+          "is_required": true,
+          "test_code": "HEM-0007",
+          "test_name": "MCV"
+        },
+        {
+          "component_test_id": "3e2ab27a-d4e3-4c4e-ac01-9f7c7806247f",
+          "display_order": 5,
+          "is_required": true,
+          "test_code": "HEM-0008",
+          "test_name": "MCH"
+        },
+        {
+          "component_test_id": "4c2e89d0-d879-477b-b7f5-8414363c71bd",
+          "display_order": 6,
+          "is_required": true,
+          "test_code": "HEM-0009",
+          "test_name": "MCHC"
+        },
+        {
+          "component_test_id": "06edbf11-50a4-41b6-9d90-795f7560c7ac",
+          "display_order": 7,
+          "is_required": true,
+          "test_code": "HEM-0010",
+          "test_name": "RDW-CV"
+        },
+        {
+          "component_test_id": "11449343-bcac-42c7-87e0-28c5f0c8d713",
+          "display_order": 8,
+          "is_required": true,
+          "test_code": "HEM-0011",
+          "test_name": "RDW-SD"
+        },
+        {
+          "component_test_id": "c2973de0-99d9-4735-ae8a-5ccb860f3fb1",
+          "display_order": 9,
+          "is_required": true,
+          "test_code": "HEM-0005",
+          "test_name": "WBC Count / TLC"
+        },
+        {
+          "component_test_id": "6af3aa48-99bd-4a59-aa1b-bd5a6805e7c6",
+          "display_order": 10,
+          "is_required": false,
+          "test_code": "HEM-0015",
+          "test_name": "Neutrophil %"
+        },
+        {
+          "component_test_id": "ead47445-beff-472b-a9d8-0f702b9f5828",
+          "display_order": 11,
+          "is_required": false,
+          "test_code": "HEM-0016",
+          "test_name": "Lymphocyte %"
+        },
+        {
+          "component_test_id": "3c1d919c-f960-450e-89f6-6d1e2b8f9dcf",
+          "display_order": 12,
+          "is_required": false,
+          "test_code": "HEM-0017",
+          "test_name": "Monocyte %"
+        },
+        {
+          "component_test_id": "df5da3a1-31b5-453d-aa06-319496fc18b3",
+          "display_order": 13,
+          "is_required": false,
+          "test_code": "HEM-0018",
+          "test_name": "Eosinophil %"
+        },
+        {
+          "component_test_id": "b9fc90fe-5913-4fa1-a3e1-33c807bb95b1",
+          "display_order": 14,
+          "is_required": false,
+          "test_code": "HEM-0019",
+          "test_name": "Basophil %"
+        },
+        {
+          "component_test_id": "b2d170ca-a78d-4fce-a0c5-ce7233a77801",
+          "display_order": 15,
+          "is_required": false,
+          "test_code": "HEM-0020",
+          "test_name": "Absolute Neutrophil Count"
+        },
+        {
+          "component_test_id": "49086d90-176c-4129-a3f0-c2fbf64755d7",
+          "display_order": 16,
+          "is_required": false,
+          "test_code": "HEM-0021",
+          "test_name": "Absolute Lymphocyte Count"
+        },
+        {
+          "component_test_id": "80d00995-249f-4f0b-9da3-039acfbd8062",
+          "display_order": 17,
+          "is_required": false,
+          "test_code": "HEM-0022",
+          "test_name": "Absolute Eosinophil Count"
+        },
+        {
+          "component_test_id": "9ee25d34-baa5-4ec8-a67d-93f2670aabea",
+          "display_order": 18,
+          "is_required": true,
+          "test_code": "HEM-0006",
+          "test_name": "Platelet Count"
+        },
+        {
+          "component_test_id": "3c14285a-2191-45a4-94ee-41a9d1f0337d",
+          "display_order": 19,
+          "is_required": true,
+          "test_code": "HEM-0012",
+          "test_name": "MPV"
+        },
+        {
+          "component_test_id": "21ee192e-91d3-48f1-bbd8-ec47bdce2813",
+          "display_order": 20,
+          "is_required": true,
+          "test_code": "HEM-0013",
+          "test_name": "PDW"
+        },
+        {
+          "component_test_id": "afaf5fe5-9aa1-49d6-9706-eb42fe1c538c",
+          "display_order": 21,
+          "is_required": true,
+          "test_code": "HEM-0014",
+          "test_name": "PCT (Plateletcrit)"
+        }
+      ],
+      "department": "Hematology",
+      "id": "5cf7ecbc-d378-488f-b4ae-f916b4dc2348",
+      "is_active": true,
+      "panel_code": "HEM-0001",
+      "panel_name": "Complete Blood Count (CBC)",
+      "price_paisa": 40000
+    },
+    {
+      "billing_enabled": true,
+      "components": [
+        {
+          "component_test_id": "5cafb5f2-d426-41bd-b6f1-db1a66bdb52a",
+          "display_order": 1,
+          "is_required": true,
+          "test_code": "CLP-0002",
+          "test_name": "Urine Color"
+        },
+        {
+          "component_test_id": "64a9c7d5-b14b-4e9a-a30c-a04134948948",
+          "display_order": 2,
+          "is_required": true,
+          "test_code": "CLP-0003",
+          "test_name": "Urine Appearance"
+        },
+        {
+          "component_test_id": "5cb802bb-85ca-4c29-89e6-f7df3f5a6849",
+          "display_order": 3,
+          "is_required": true,
+          "test_code": "CLP-0004",
+          "test_name": "Urine Specific Gravity"
+        },
+        {
+          "component_test_id": "e1c476b3-5099-40a4-8183-9d3f3de466ef",
+          "display_order": 4,
+          "is_required": true,
+          "test_code": "CLP-0005",
+          "test_name": "Urine pH"
+        },
+        {
+          "component_test_id": "f4af06f9-dd9c-4718-a90b-c25cc4633fc5",
+          "display_order": 5,
+          "is_required": true,
+          "test_code": "CLP-0006",
+          "test_name": "Urine Protein, Dipstick"
+        },
+        {
+          "component_test_id": "07251802-4576-41de-a230-1be181141609",
+          "display_order": 6,
+          "is_required": true,
+          "test_code": "CLP-0007",
+          "test_name": "Urine Glucose, Dipstick"
+        },
+        {
+          "component_test_id": "c303b286-32b1-481d-8a4c-ee1eeeadb306",
+          "display_order": 7,
+          "is_required": true,
+          "test_code": "CLP-0008",
+          "test_name": "Urine Ketone"
+        },
+        {
+          "component_test_id": "360751c2-7cf2-40b4-99d4-3ed8443c75fd",
+          "display_order": 8,
+          "is_required": true,
+          "test_code": "CLP-0009",
+          "test_name": "Urine Blood/Hemoglobin"
+        },
+        {
+          "component_test_id": "2a61515f-a9d4-41bd-8729-fe33030a82a3",
+          "display_order": 9,
+          "is_required": true,
+          "test_code": "CLP-0010",
+          "test_name": "Urine Bilirubin"
+        },
+        {
+          "component_test_id": "fd3a23ea-faec-42e0-889b-e12affff56f5",
+          "display_order": 10,
+          "is_required": true,
+          "test_code": "CLP-0011",
+          "test_name": "Urine Urobilinogen"
+        },
+        {
+          "component_test_id": "3411de27-4d59-4e21-9f6e-6f70a0f79832",
+          "display_order": 11,
+          "is_required": true,
+          "test_code": "CLP-0012",
+          "test_name": "Urine Nitrite"
+        },
+        {
+          "component_test_id": "739ae3ca-41b8-4a46-9d76-1e74550aea93",
+          "display_order": 12,
+          "is_required": true,
+          "test_code": "CLP-0013",
+          "test_name": "Urine Leukocyte Esterase"
+        },
+        {
+          "component_test_id": "600a989a-244e-4b66-8c2d-b9df05872866",
+          "display_order": 13,
+          "is_required": true,
+          "test_code": "CLP-0014",
+          "test_name": "Urine RBC Microscopy"
+        },
+        {
+          "component_test_id": "dff47fae-c5a5-4624-bc45-68bfc675739f",
+          "display_order": 14,
+          "is_required": true,
+          "test_code": "CLP-0015",
+          "test_name": "Urine WBC/Pus Cells"
+        },
+        {
+          "component_test_id": "0b7bad61-6d2d-4b7a-a5f2-3fb7b6c43fe5",
+          "display_order": 15,
+          "is_required": true,
+          "test_code": "CLP-0016",
+          "test_name": "Urine Epithelial Cells"
+        },
+        {
+          "component_test_id": "aa3cad77-e0f9-4e7d-b4b0-e731d57e181d",
+          "display_order": 16,
+          "is_required": false,
+          "test_code": "CLP-0017",
+          "test_name": "Urine Casts"
+        },
+        {
+          "component_test_id": "4db58d97-44ee-4371-b744-9b74c34f5be3",
+          "display_order": 17,
+          "is_required": false,
+          "test_code": "CLP-0018",
+          "test_name": "Urine Crystals"
+        },
+        {
+          "component_test_id": "06cc6dfe-ee34-48b2-b5b3-42e8de73019b",
+          "display_order": 18,
+          "is_required": false,
+          "test_code": "CLP-0019",
+          "test_name": "Urine Bacteria"
+        }
+      ],
+      "department": "Clinical Pathology",
+      "id": "bbf4383c-b433-4073-85cc-b91766955275",
+      "is_active": true,
+      "panel_code": "CLP-0001",
+      "panel_name": "Urine Routine Examination (RE/ME)",
+      "price_paisa": 20000
+    },
+    {
+      "billing_enabled": true,
+      "components": [
+        {
+          "component_test_id": "9f835354-26d1-449e-a05c-0fa9579a5346",
+          "display_order": 1,
+          "is_required": true,
+          "test_code": "BIO-0008",
+          "test_name": "Urea"
+        },
+        {
+          "component_test_id": "f076bab1-77b5-4980-9f23-0c439f99bb9d",
+          "display_order": 2,
+          "is_required": true,
+          "test_code": "BIO-0009",
+          "test_name": "Blood Urea Nitrogen (BUN)"
+        },
+        {
+          "component_test_id": "1de8a1df-9d55-48c4-9dbc-83de477d5edb",
+          "display_order": 3,
+          "is_required": true,
+          "test_code": "BIO-0010",
+          "test_name": "Creatinine"
+        },
+        {
+          "component_test_id": "04c31478-286c-4686-8d2a-b9e267bf4d1f",
+          "display_order": 4,
+          "is_required": false,
+          "test_code": "BIO-0011",
+          "test_name": "eGFR"
+        },
+        {
+          "component_test_id": "d8d8a5f9-0b08-44b4-8084-e2c024e76b55",
+          "display_order": 4,
+          "is_required": true,
+          "test_code": "BIO-0012",
+          "test_name": "Uric Acid"
+        },
+        {
+          "component_test_id": "7791f8bf-fd97-4d37-a354-d095bc35d89c",
+          "display_order": 5,
+          "is_required": false,
+          "test_code": "BIO-0037",
+          "test_name": "Sodium"
+        },
+        {
+          "component_test_id": "f0fe2a2c-f948-4cba-b1ed-5c0ad953984f",
+          "display_order": 6,
+          "is_required": false,
+          "test_code": "BIO-0038",
+          "test_name": "Potassium"
+        },
+        {
+          "component_test_id": "4ceb32e1-9155-498b-a035-4042f07f01c1",
+          "display_order": 7,
+          "is_required": false,
+          "test_code": "BIO-0039",
+          "test_name": "Chloride"
+        }
+      ],
+      "department": "Profiles / Packages",
+      "id": "a8be572c-7418-4909-8c79-0c0fffdc1394",
+      "is_active": true,
+      "panel_code": "PRO-0002",
+      "panel_name": "Renal Function Test (RFT/KFT)",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": [
+        {
+          "component_test_id": "2424240c-3091-4e46-803a-2dc9b561d534",
+          "display_order": 1,
+          "is_required": true,
+          "test_code": "BIO-0027",
+          "test_name": "Total Cholesterol"
+        },
+        {
+          "component_test_id": "d5982b00-9047-4fa9-9d2c-6b3a8acf60e1",
+          "display_order": 2,
+          "is_required": true,
+          "test_code": "BIO-0028",
+          "test_name": "Triglycerides"
+        },
+        {
+          "component_test_id": "a23c2171-30bd-446b-8d22-ef315a673e8d",
+          "display_order": 3,
+          "is_required": true,
+          "test_code": "BIO-0029",
+          "test_name": "HDL Cholesterol"
+        },
+        {
+          "component_test_id": "d34bde87-2a7b-4c5f-b543-4f87af4d98b4",
+          "display_order": 4,
+          "is_required": true,
+          "test_code": "BIO-0031",
+          "test_name": "LDL Cholesterol, Calculated"
+        },
+        {
+          "component_test_id": "0244fa97-7dd0-4854-b9f6-97e2bb45c0bc",
+          "display_order": 5,
+          "is_required": true,
+          "test_code": "BIO-0032",
+          "test_name": "VLDL Cholesterol"
+        },
+        {
+          "component_test_id": "cc0d3950-3409-4f4a-a15e-30927ccc275a",
+          "display_order": 6,
+          "is_required": true,
+          "test_code": "BIO-0033",
+          "test_name": "Non-HDL Cholesterol"
+        }
+      ],
+      "department": "Profiles / Packages",
+      "id": "45df0f55-fb15-495f-9872-c5d2819f9991",
+      "is_active": true,
+      "panel_code": "PRO-0003",
+      "panel_name": "Lipid Profile",
+      "price_paisa": 70000
+    },
+    {
+      "billing_enabled": true,
+      "components": [
+        {
+          "component_test_id": "7791f8bf-fd97-4d37-a354-d095bc35d89c",
+          "display_order": 1,
+          "is_required": true,
+          "test_code": "BIO-0037",
+          "test_name": "Sodium"
+        },
+        {
+          "component_test_id": "f0fe2a2c-f948-4cba-b1ed-5c0ad953984f",
+          "display_order": 2,
+          "is_required": true,
+          "test_code": "BIO-0038",
+          "test_name": "Potassium"
+        },
+        {
+          "component_test_id": "4ceb32e1-9155-498b-a035-4042f07f01c1",
+          "display_order": 3,
+          "is_required": true,
+          "test_code": "BIO-0039",
+          "test_name": "Chloride"
+        },
+        {
+          "component_test_id": "14e8cffd-fd0e-4673-8c5e-e7c1775a1b92",
+          "display_order": 4,
+          "is_required": true,
+          "test_code": "BIO-0040",
+          "test_name": "Bicarbonate / Total CO2"
+        }
+      ],
+      "department": "Profiles / Packages",
+      "id": "252fdab2-32af-4ebb-8c82-86c74fa77628",
+      "is_active": true,
+      "panel_code": "PRO-0008",
+      "panel_name": "Electrolyte Panel",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": false,
+      "components": [
+        {
+          "component_test_id": "52bc94a9-1c73-4fa2-a93f-0668a5b9a73c",
+          "display_order": 1,
+          "is_required": true,
+          "test_code": "BIO-0053",
+          "test_name": "Vitamin D, 25-OH"
+        },
+        {
+          "component_test_id": "1731fd3f-cabc-4892-b01b-2183d47a3fa9",
+          "display_order": 2,
+          "is_required": true,
+          "test_code": "BIO-0051",
+          "test_name": "Vitamin B12"
+        }
+      ],
+      "department": "Clinical Biochemistry",
+      "id": "8e42764b-3098-4552-85c5-9fdbf853f99a",
+      "is_active": true,
+      "panel_code": "IMM-VITAMINS",
+      "panel_name": "Vitamins Suite (Vit D & B12)",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": false,
+      "components": [
+        {
+          "component_test_id": "021e2230-37ab-433d-8529-53edb189fc31",
+          "display_order": 1,
+          "is_required": true,
+          "test_code": "BIO-0068",
+          "test_name": "hs-CRP"
+        },
+        {
+          "component_test_id": "9a7e8a3b-d01c-4255-8534-eaffd968436f",
+          "display_order": 2,
+          "is_required": true,
+          "test_code": "PCT_SEPSIS",
+          "test_name": "Procalcitonin (PCT)"
+        }
+      ],
+      "department": "Immunology",
+      "id": "847b326c-f571-4cb0-a87f-0bb8de603147",
+      "is_active": true,
+      "panel_code": "IMM-INFLAMMATION",
+      "panel_name": "Sepsis & Inflammatory Markers Panel",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": null,
+      "department": "Endocrinology",
+      "id": "e6a3fe2c-fe2a-40ef-9da9-13c3a2872eeb",
+      "is_active": true,
+      "panel_code": "END-0065",
+      "panel_name": "Water Deprivation Test",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": [
+        {
+          "component_test_id": "fa197b77-6142-4e54-8ac6-06f5e6905243",
+          "display_order": 1,
+          "is_required": true,
+          "test_code": "BIO-0017",
+          "test_name": "Total Bilirubin"
+        },
+        {
+          "component_test_id": "aabc150b-5772-4dac-8d6f-2c0bb658ae0b",
+          "display_order": 2,
+          "is_required": true,
+          "test_code": "BIO-0018",
+          "test_name": "Direct Bilirubin"
+        },
+        {
+          "component_test_id": "8ea45b9a-2bc5-4edd-8f1c-f4e3eb34bd62",
+          "display_order": 3,
+          "is_required": true,
+          "test_code": "BIO-0019",
+          "test_name": "Indirect Bilirubin"
+        },
+        {
+          "component_test_id": "5f6d7b47-d013-4bfa-b46e-85484e2ed196",
+          "display_order": 3,
+          "is_required": true,
+          "test_code": "BIO-0020",
+          "test_name": "AST (SGOT)"
+        },
+        {
+          "component_test_id": "abe11942-b00b-4dbc-a3bb-bbed67ba03c3",
+          "display_order": 4,
+          "is_required": true,
+          "test_code": "BIO-0021",
+          "test_name": "ALT (SGPT)"
+        },
+        {
+          "component_test_id": "56a7e91e-381e-41f9-854c-f858945733b0",
+          "display_order": 5,
+          "is_required": true,
+          "test_code": "BIO-0022",
+          "test_name": "Alkaline Phosphatase (ALP)"
+        },
+        {
+          "component_test_id": "42c88d20-8e7a-4c0f-a9fa-889c477a67ef",
+          "display_order": 6,
+          "is_required": true,
+          "test_code": "BIO-0013",
+          "test_name": "Total Protein"
+        },
+        {
+          "component_test_id": "d1356bb0-88e1-4947-966a-b392cad353f1",
+          "display_order": 7,
+          "is_required": true,
+          "test_code": "BIO-0014",
+          "test_name": "Albumin"
+        },
+        {
+          "component_test_id": "6ef3b943-be05-4e00-9ef8-b759a2b3c6fa",
+          "display_order": 8,
+          "is_required": true,
+          "test_code": "BIO-0015",
+          "test_name": "Globulin"
+        },
+        {
+          "component_test_id": "c2a6e503-2da1-4ee3-b1d8-ab5ce9d15389",
+          "display_order": 9,
+          "is_required": true,
+          "test_code": "BIO-0016",
+          "test_name": "A/G Ratio"
+        },
+        {
+          "component_test_id": "468c6ad8-0102-46d6-8d7c-8950cba17d13",
+          "display_order": 10,
+          "is_required": false,
+          "test_code": "BIO-0023",
+          "test_name": "GGT"
+        }
+      ],
+      "department": "Profiles / Packages",
+      "id": "6f60cdd2-e358-4e9c-8e7b-337dd07fcf30",
+      "is_active": true,
+      "panel_code": "PRO-0001",
+      "panel_name": "Liver Function Test (LFT)",
+      "price_paisa": 80000
+    },
+    {
+      "billing_enabled": true,
+      "components": null,
+      "department": "Endocrinology",
+      "id": "28c24d96-3a6c-4906-b1b5-a7d5e87d3737",
+      "is_active": true,
+      "panel_code": "END-0056",
+      "panel_name": "Oral Glucose Tolerance Test (75 g)",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": null,
+      "department": "Endocrinology",
+      "id": "0056380c-61bf-48c0-b81c-cd2fdabcf421",
+      "is_active": true,
+      "panel_code": "END-0057",
+      "panel_name": "Gestational OGTT 75 g",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": null,
+      "department": "Endocrinology",
+      "id": "24dea4b3-77e7-4bc0-9f4b-14b5912d1c2e",
+      "is_active": true,
+      "panel_code": "END-0058",
+      "panel_name": "Glucose Challenge Test 50 g",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": null,
+      "department": "Endocrinology",
+      "id": "316cc36e-ad60-49fa-b93c-a64b50d6cb7f",
+      "is_active": true,
+      "panel_code": "END-0059",
+      "panel_name": "Dexamethasone Suppression Test - Overnight",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": null,
+      "department": "Endocrinology",
+      "id": "85e023b8-7567-43e4-ae0c-0bf13a066339",
+      "is_active": true,
+      "panel_code": "END-0060",
+      "panel_name": "Low Dose Dexamethasone Suppression Test",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": null,
+      "department": "Endocrinology",
+      "id": "f818b23a-a502-4908-b775-131719206c73",
+      "is_active": true,
+      "panel_code": "END-0061",
+      "panel_name": "High Dose Dexamethasone Suppression Test",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": null,
+      "department": "Endocrinology",
+      "id": "66099bed-0083-4944-833c-327efa6d8f48",
+      "is_active": true,
+      "panel_code": "END-0062",
+      "panel_name": "ACTH Stimulation Test",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": null,
+      "department": "Endocrinology",
+      "id": "250b86d6-3300-4bd8-ae81-d038ed116210",
+      "is_active": true,
+      "panel_code": "END-0063",
+      "panel_name": "Growth Hormone Suppression Test",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": null,
+      "department": "Endocrinology",
+      "id": "3db3d775-b93a-4af5-a5f4-c127edf62f02",
+      "is_active": true,
+      "panel_code": "END-0064",
+      "panel_name": "Growth Hormone Stimulation Test",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": null,
+      "department": "Allergy",
+      "id": "aef41b9f-579d-46a7-8ea5-ad5a8d6784a1",
+      "is_active": true,
+      "panel_code": "ALG-0050",
+      "panel_name": "Inhalant Allergy Panel",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": null,
+      "department": "Allergy",
+      "id": "a77253f1-fef4-4fc1-a106-d54b48a47fa2",
+      "is_active": true,
+      "panel_code": "ALG-0051",
+      "panel_name": "Pediatric Allergy Panel",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": null,
+      "department": "Allergy",
+      "id": "4b9cc15c-f025-4a59-bf73-d6618e670b7c",
+      "is_active": true,
+      "panel_code": "ALG-0052",
+      "panel_name": "Atopy Screen",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": [
+        {
+          "component_test_id": "dc365e32-a6f5-4a15-a9ec-2b22ed230392",
+          "display_order": 1,
+          "is_required": true,
+          "test_code": "CLP-0022",
+          "test_name": "Stool Color"
+        },
+        {
+          "component_test_id": "34f4a44a-c17d-454d-9912-0ccaa2b3fc86",
+          "display_order": 2,
+          "is_required": true,
+          "test_code": "CLP-0023",
+          "test_name": "Stool Consistency"
+        },
+        {
+          "component_test_id": "817b499b-5373-4df9-9ef3-ca6d23b9029e",
+          "display_order": 3,
+          "is_required": true,
+          "test_code": "CLP-0024",
+          "test_name": "Stool Mucus"
+        },
+        {
+          "component_test_id": "fc0fb11f-2b22-406d-bc84-e5d2d915a0e9",
+          "display_order": 4,
+          "is_required": true,
+          "test_code": "CLP-0025",
+          "test_name": "Stool Occult Blood"
+        },
+        {
+          "component_test_id": "de23e8f4-2993-4157-9181-f65a101c4ee9",
+          "display_order": 5,
+          "is_required": false,
+          "test_code": "CLP-0028",
+          "test_name": "Stool Reducing Substance"
+        },
+        {
+          "component_test_id": "dbc7962f-fae1-4070-8cb9-fd8c6d87940f",
+          "display_order": 6,
+          "is_required": true,
+          "test_code": "CLP-0032",
+          "test_name": "Stool Ova & Parasite Examination"
+        },
+        {
+          "component_test_id": "07292ff9-53b5-4fe2-9c7c-76b8878a18cb",
+          "display_order": 7,
+          "is_required": true,
+          "test_code": "CLP-0033",
+          "test_name": "Stool RBC"
+        },
+        {
+          "component_test_id": "c6ced44c-7f08-4f0e-8546-df7fddb53a7f",
+          "display_order": 8,
+          "is_required": true,
+          "test_code": "CLP-0034",
+          "test_name": "Stool WBC/Pus Cells"
+        }
+      ],
+      "department": "Clinical Pathology",
+      "id": "9aa9f5da-2f30-4809-a917-f3c6c9bbc895",
+      "is_active": true,
+      "panel_code": "CLP-0021",
+      "panel_name": "Stool Routine Examination",
+      "price_paisa": 20000
+    },
+    {
+      "billing_enabled": true,
+      "components": [
+        {
+          "component_test_id": "6e2ae494-fbb5-4d8c-9778-8a433a507328",
+          "display_order": 1,
+          "is_required": true,
+          "test_code": "CLP-0039",
+          "test_name": "Semen Volume"
+        },
+        {
+          "component_test_id": "cca8e469-d028-4f5a-95f7-1800854f6d30",
+          "display_order": 2,
+          "is_required": true,
+          "test_code": "CLP-0040",
+          "test_name": "Semen pH"
+        },
+        {
+          "component_test_id": "f322fbbf-f1e3-4f31-81b6-6d302a43a7e4",
+          "display_order": 3,
+          "is_required": true,
+          "test_code": "CLP-0041",
+          "test_name": "Sperm Concentration"
+        },
+        {
+          "component_test_id": "ec8f633a-1deb-47ad-9413-22c52fdb0130",
+          "display_order": 4,
+          "is_required": true,
+          "test_code": "CLP-0042",
+          "test_name": "Total Sperm Count"
+        },
+        {
+          "component_test_id": "24690efd-d44d-4cde-9157-ba5ad8beca4b",
+          "display_order": 5,
+          "is_required": true,
+          "test_code": "CLP-0043",
+          "test_name": "Progressive Motility"
+        },
+        {
+          "component_test_id": "e0eedfb3-4649-4e4c-9de3-d8cd83bde31b",
+          "display_order": 6,
+          "is_required": true,
+          "test_code": "CLP-0044",
+          "test_name": "Non-progressive Motility"
+        },
+        {
+          "component_test_id": "89cf30f7-1eda-4ca0-95d9-48ff1e0b57e4",
+          "display_order": 7,
+          "is_required": true,
+          "test_code": "CLP-0045",
+          "test_name": "Immotile Sperm"
+        },
+        {
+          "component_test_id": "2a6e06cd-2698-4934-85a1-8518b0f5aeca",
+          "display_order": 8,
+          "is_required": true,
+          "test_code": "CLP-0046",
+          "test_name": "Normal Morphology"
+        },
+        {
+          "component_test_id": "7fbdc684-ee19-4448-9f5d-defa51b19e54",
+          "display_order": 9,
+          "is_required": true,
+          "test_code": "CLP-0047",
+          "test_name": "Sperm Vitality"
+        },
+        {
+          "component_test_id": "f59dac3e-0165-4964-9217-d5cacd50f5c6",
+          "display_order": 10,
+          "is_required": false,
+          "test_code": "CLP-0048",
+          "test_name": "Round Cells"
+        }
+      ],
+      "department": "Clinical Pathology",
+      "id": "6f26a344-6685-4d97-b68b-36464bcbe820",
+      "is_active": true,
+      "panel_code": "CLP-0038",
+      "panel_name": "Semen Analysis",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": null,
+      "department": "Point of Care / Blood Gas",
+      "id": "8c859ce3-e46e-4b0b-9760-92799c80bd47",
+      "is_active": true,
+      "panel_code": "POC-0002",
+      "panel_name": "Venous Blood Gas (VBG)",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": null,
+      "department": "Allergy",
+      "id": "1b316a21-7c76-4f21-be75-eb32e47717af",
+      "is_active": true,
+      "panel_code": "ALG-0049",
+      "panel_name": "Food Allergy Panel",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": [
+        {
+          "component_test_id": "95f519e3-c090-4574-803b-c6a076a27191",
+          "display_order": 1,
+          "is_required": true,
+          "test_code": "BIO-0045",
+          "test_name": "Iron"
+        },
+        {
+          "component_test_id": "cb9b883e-f402-4959-a26b-1c10643eae26",
+          "display_order": 2,
+          "is_required": true,
+          "test_code": "BIO-0046",
+          "test_name": "TIBC"
+        },
+        {
+          "component_test_id": "364e7742-b242-40f4-9e30-f788485ef248",
+          "display_order": 3,
+          "is_required": false,
+          "test_code": "BIO-0047",
+          "test_name": "UIBC"
+        },
+        {
+          "component_test_id": "a8926cd6-9579-44fa-9c9a-905bb9891bfa",
+          "display_order": 4,
+          "is_required": true,
+          "test_code": "BIO-0049",
+          "test_name": "Transferrin Saturation"
+        },
+        {
+          "component_test_id": "18219d0b-5806-447c-b46f-89e1a3db4903",
+          "display_order": 5,
+          "is_required": true,
+          "test_code": "BIO-0050",
+          "test_name": "Ferritin"
+        }
+      ],
+      "department": "Profiles / Packages",
+      "id": "650d21ad-17cc-4045-bdda-858b1003bc9b",
+      "is_active": true,
+      "panel_code": "PRO-0005",
+      "panel_name": "Iron Profile",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": [
+        {
+          "component_test_id": "f5702561-737b-44b1-93f1-9df32b46ef02",
+          "display_order": 1,
+          "is_required": true,
+          "test_code": "BIO-0001",
+          "test_name": "Glucose, Fasting"
+        },
+        {
+          "component_test_id": "1f95121e-b4ce-484a-9692-f72e5fb637d6",
+          "display_order": 2,
+          "is_required": true,
+          "test_code": "BIO-0003",
+          "test_name": "Glucose, Postprandial 2 hr"
+        },
+        {
+          "component_test_id": "2e1adb6d-42c4-4d20-95ae-1035ee351ab8",
+          "display_order": 3,
+          "is_required": true,
+          "test_code": "BIO-0006",
+          "test_name": "HbA1c"
+        }
+      ],
+      "department": "Profiles / Packages",
+      "id": "f2ecf043-c4d3-4afd-bc3d-fb798d194cf2",
+      "is_active": true,
+      "panel_code": "PRO-0006",
+      "panel_name": "Diabetes Profile",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": [
+        {
+          "component_test_id": "d59beba7-1545-4b7c-8eac-7fb41297f4f3",
+          "display_order": 1,
+          "is_required": true,
+          "test_code": "BIO-0041",
+          "test_name": "Calcium, Total"
+        },
+        {
+          "component_test_id": "a18769b3-a6e0-4a6e-843c-9b3875cfdb09",
+          "display_order": 2,
+          "is_required": true,
+          "test_code": "BIO-0043",
+          "test_name": "Phosphorus"
+        },
+        {
+          "component_test_id": "56a7e91e-381e-41f9-854c-f858945733b0",
+          "display_order": 3,
+          "is_required": true,
+          "test_code": "BIO-0022",
+          "test_name": "Alkaline Phosphatase (ALP)"
+        },
+        {
+          "component_test_id": "52bc94a9-1c73-4fa2-a93f-0668a5b9a73c",
+          "display_order": 4,
+          "is_required": true,
+          "test_code": "BIO-0053",
+          "test_name": "Vitamin D, 25-OH"
+        },
+        {
+          "component_test_id": "dab39a53-a030-489d-b7d2-1adf71971854",
+          "display_order": 5,
+          "is_required": true,
+          "test_code": "END-0011",
+          "test_name": "PTH, Intact"
+        }
+      ],
+      "department": "Profiles / Packages",
+      "id": "e861236c-ece9-4aa4-b26a-f690417b76fc",
+      "is_active": true,
+      "panel_code": "PRO-0009",
+      "panel_name": "Bone Mineral Profile",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": null,
+      "department": "Profiles / Packages",
+      "id": "dd7dcc57-9a44-4c31-b43a-6c7aa3a1f0f2",
+      "is_active": true,
+      "panel_code": "PRO-0010",
+      "panel_name": "Fertility Female Profile",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": null,
+      "department": "Profiles / Packages",
+      "id": "e03e5a01-17e0-4345-9af7-d01fdecb8925",
+      "is_active": true,
+      "panel_code": "PRO-0011",
+      "panel_name": "Fertility Male Profile",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": null,
+      "department": "Profiles / Packages",
+      "id": "297d2cea-dd7e-4cd8-b395-efd60afca95c",
+      "is_active": true,
+      "panel_code": "PRO-0012",
+      "panel_name": "PCOS Profile",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": null,
+      "department": "Profiles / Packages",
+      "id": "9433be6d-92e1-4c91-a740-25fd47ac5c46",
+      "is_active": true,
+      "panel_code": "PRO-0013",
+      "panel_name": "Anemia Profile",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": [
+        {
+          "component_test_id": "2f8b4df3-40e4-4141-b003-9a124fdc75a8",
+          "display_order": 1,
+          "is_required": true,
+          "test_code": "COA-0001",
+          "test_name": "Prothrombin Time (PT)"
+        },
+        {
+          "component_test_id": "327a90fa-c2fd-4af9-ba3b-84fb478caf4a",
+          "display_order": 2,
+          "is_required": true,
+          "test_code": "COA-0002",
+          "test_name": "INR"
+        },
+        {
+          "component_test_id": "271e3cc9-185a-4391-99bb-b9dda33b3347",
+          "display_order": 3,
+          "is_required": true,
+          "test_code": "COA-0003",
+          "test_name": "Activated Partial Thromboplastin Time (APTT)"
+        }
+      ],
+      "department": "Profiles / Packages",
+      "id": "53d44b38-15dd-4b12-a296-cfd0d4cb1381",
+      "is_active": true,
+      "panel_code": "PRO-0014",
+      "panel_name": "Coagulation Screen",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": [
+        {
+          "component_test_id": "d0bfc69a-74cc-4ce9-ba42-0953b877ce43",
+          "display_order": 1,
+          "is_required": true,
+          "test_code": "END-0003",
+          "test_name": "Free T3 (FT3)"
+        },
+        {
+          "component_test_id": "8a5bd95d-bf55-47e6-8ee1-82b4358e70e7",
+          "display_order": 2,
+          "is_required": true,
+          "test_code": "END-0002",
+          "test_name": "Free T4 (FT4)"
+        },
+        {
+          "component_test_id": "52165ea0-4741-4bde-a590-fab693d42ceb",
+          "display_order": 3,
+          "is_required": true,
+          "test_code": "END-0001",
+          "test_name": "TSH"
+        }
+      ],
+      "department": "Profiles / Packages",
+      "id": "e9a337d8-15f2-4a7a-bd7a-8b60ab50b254",
+      "is_active": true,
+      "panel_code": "PRO-0004",
+      "panel_name": "Thyroid Profile (FT3, FT4, TSH)",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": [
+        {
+          "component_test_id": "6ad3e9d7-07e7-48d1-b330-ce1a1e7906be",
+          "display_order": 1,
+          "is_required": true,
+          "test_code": "BIO-0063",
+          "test_name": "Troponin I, High Sensitivity"
+        },
+        {
+          "component_test_id": "7504528b-6709-4ecb-bde2-ace123cb2b7c",
+          "display_order": 2,
+          "is_required": true,
+          "test_code": "BIO-0061",
+          "test_name": "CK-MB Mass"
+        },
+        {
+          "component_test_id": "9a82ab3b-e114-4881-b80d-ca39d51a8167",
+          "display_order": 3,
+          "is_required": true,
+          "test_code": "BIO-0065",
+          "test_name": "Myoglobin"
+        },
+        {
+          "component_test_id": "ed7944e9-3ff9-40ab-b8e5-fe827d86bf63",
+          "display_order": 4,
+          "is_required": true,
+          "test_code": "BIO-0067",
+          "test_name": "NT-proBNP"
+        },
+        {
+          "component_test_id": "b6594b04-b486-46a2-a431-a647962ab2b2",
+          "display_order": 5,
+          "is_required": true,
+          "test_code": "COA-0006",
+          "test_name": "D-Dimer"
+        }
+      ],
+      "department": "Profiles / Packages",
+      "id": "48822021-edb0-4d5f-b557-8fb29ab2614a",
+      "is_active": true,
+      "panel_code": "PRO-0007",
+      "panel_name": "Cardiac Marker Panel",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": null,
+      "department": "Profiles / Packages",
+      "id": "29287c5f-c503-4263-9932-f865a4756cdf",
+      "is_active": true,
+      "panel_code": "PRO-0015",
+      "panel_name": "Thrombophilia Profile",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": null,
+      "department": "Profiles / Packages",
+      "id": "4b31e1a0-5f25-4371-83cb-47f7c72e6585",
+      "is_active": true,
+      "panel_code": "PRO-0016",
+      "panel_name": "TORCH Profile",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": null,
+      "department": "Profiles / Packages",
+      "id": "8f09d742-dd55-49e9-a93a-2f1a7a3a56e7",
+      "is_active": true,
+      "panel_code": "PRO-0017",
+      "panel_name": "Hepatitis B Profile",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": null,
+      "department": "Profiles / Packages",
+      "id": "62ecf560-4c0b-42b9-94de-13a93c973308",
+      "is_active": true,
+      "panel_code": "PRO-0018",
+      "panel_name": "Autoimmune Screen",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": null,
+      "department": "Profiles / Packages",
+      "id": "f4631ddf-4dec-4c82-8741-0382f126d49d",
+      "is_active": true,
+      "panel_code": "PRO-0019",
+      "panel_name": "Rheumatology Profile",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": null,
+      "department": "Profiles / Packages",
+      "id": "29775e8b-2827-4067-afb5-9110e94ac2dd",
+      "is_active": true,
+      "panel_code": "PRO-0020",
+      "panel_name": "Multiple Myeloma Screen",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": null,
+      "department": "Profiles / Packages",
+      "id": "42e3f754-7036-4f5d-824b-3edf3a376b3b",
+      "is_active": true,
+      "panel_code": "PRO-0021",
+      "panel_name": "Antenatal Basic Profile",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": null,
+      "department": "Profiles / Packages",
+      "id": "9451fafc-5a3f-4d0d-b714-9db3ef0a1002",
+      "is_active": true,
+      "panel_code": "PRO-0022",
+      "panel_name": "Preoperative Basic Profile",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": null,
+      "department": "Profiles / Packages",
+      "id": "69af18d8-a934-4c02-9117-d2fe1b259bb7",
+      "is_active": true,
+      "panel_code": "PRO-0023",
+      "panel_name": "Fever Panel - Basic",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": null,
+      "department": "Profiles / Packages",
+      "id": "4bfedd24-a4c2-4101-b359-62e0fe06df8f",
+      "is_active": true,
+      "panel_code": "PRO-0024",
+      "panel_name": "Hypertension Secondary Screen",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": null,
+      "department": "Profiles / Packages",
+      "id": "bf5a5994-a8e0-4ad1-8c69-5d2cba2db2eb",
+      "is_active": true,
+      "panel_code": "PRO-0025",
+      "panel_name": "Pituitary Profile",
+      "price_paisa": 0
+    },
+    {
+      "billing_enabled": true,
+      "components": [
+        {
+          "component_test_id": "9aee7634-c1da-481b-b4c9-2869925a0664",
+          "display_order": 1,
+          "is_required": true,
+          "test_code": "POC-0003",
+          "test_name": "pH, Blood Gas"
+        },
+        {
+          "component_test_id": "15304494-d6a5-4f75-8803-4fd99688ce2e",
+          "display_order": 2,
+          "is_required": true,
+          "test_code": "POC-0004",
+          "test_name": "pCO2, Blood Gas"
+        },
+        {
+          "component_test_id": "9997110c-4806-4bbd-919b-be20e691c4f1",
+          "display_order": 3,
+          "is_required": true,
+          "test_code": "POC-0005",
+          "test_name": "pO2, Blood Gas"
+        },
+        {
+          "component_test_id": "8eb79764-9931-4319-9c3e-33b37a43d605",
+          "display_order": 4,
+          "is_required": true,
+          "test_code": "POC-0006",
+          "test_name": "HCO3-, Blood Gas"
+        },
+        {
+          "component_test_id": "180c3bb6-6648-428d-bfa1-e378c46cc7c5",
+          "display_order": 5,
+          "is_required": true,
+          "test_code": "POC-0007",
+          "test_name": "Base Excess"
+        },
+        {
+          "component_test_id": "2ed616be-4603-4330-8669-44df020e8245",
+          "display_order": 6,
+          "is_required": true,
+          "test_code": "POC-0008",
+          "test_name": "Oxygen Saturation, Blood Gas"
+        },
+        {
+          "component_test_id": "317be352-6d96-423f-b086-f2e1d19b5351",
+          "display_order": 7,
+          "is_required": false,
+          "test_code": "POC-0009",
+          "test_name": "Lactate, Blood Gas"
+        }
+      ],
+      "department": "Point of Care / Blood Gas",
+      "id": "6027ccaa-a6b0-4c4b-8eb8-7577ddab8561",
+      "is_active": true,
+      "panel_code": "POC-0001",
+      "panel_name": "Arterial Blood Gas (ABG)",
+      "price_paisa": 0
+    }
+  ],
+  "total_tests_count": 1128
+}

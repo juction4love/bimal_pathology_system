@@ -1,0 +1,13 @@
+import {createHash} from 'node:crypto';
+import fs from 'node:fs/promises';
+import {createClient} from '@supabase/supabase-js';
+import {assertSyntheticStagingTarget} from './staging-target-guard.js';
+const label=process.argv[2],head=process.env.STAGING_EXPECTED_MIGRATION_HEAD;
+if(!['before','after'].includes(label)||!/^000(53|55)$/.test(head||''))throw Error('Usage: STAGING_EXPECTED_MIGRATION_HEAD=<00053|00055> node scripts/capture-foundation-fingerprint.js <before|after>');
+assertSyntheticStagingTarget({expectedHead:head});
+const {STAGING_SUPABASE_URL:url,STAGING_SERVICE_KEY:key}=process.env;if(!key)throw Error('STAGING_SERVICE_KEY is required');
+const db=createClient(url,key,{auth:{persistSession:false,autoRefreshToken:false}});
+const specs={patients:'id,uhid,mobile,full_name,dob,age_years,age_months,age_days,gender,address,created_at',bills:'id,bill_number,patient_id,gross_amount_paisa,discount_amount_paisa,net_amount_paisa,paid_amount_paisa,due_amount_paisa,payment_status,created_at',payment_transactions:'id,bill_id,receipt_number,amount_paisa,payment_mode,created_at',clinical_orders:'id,bill_id,patient_id,order_number,order_date_ad,order_date_bs,status,created_at',samples:'id,barcode,order_id,patient_id,status,collected_at,collected_by,received_at,received_by,rejected_at,rejected_by,rejection_reason,recollected_from_sample_id,created_at',test_results:'id,order_item_id,parameter_id,numeric_value,text_value,display_value,flag,is_critical,status,entered_at,verified_at,signed_off_at,created_at',diagnostic_reports:'id,order_id,report_number,version,status,integrity_hash,clinical_snapshot_json,signed_at,created_at',public_report_tokens:'id,diagnostic_report_id,token_hash,expires_at,revoked_at,is_active,created_at',sms_queue_items:'id,idempotency_key,sms_type,diagnostic_report_id,bill_id,status,created_at',audit_logs:'id,user_id,action,entity_type,entity_id,old_data,new_data,timestamp'};
+const evidence={label,project_ref:process.env.STAGING_PROJECT_REF,migration_head:head,captured_at:new Date().toISOString(),tables:{}};
+for(const [table,cols]of Object.entries(specs)){const hash=createHash('sha256');let count=0;for(let from=0;;from+=500){const {data,error}=await db.from(table).select(cols).order('id').range(from,from+499);if(error)throw error;for(const row of data){hash.update(JSON.stringify(row));hash.update('\n');count++}if(data.length<500)break}evidence.tables[table]={count,sha256:hash.digest('hex')}}
+await fs.mkdir('artifacts/foundation',{recursive:true});await fs.writeFile(`artifacts/foundation/fingerprint-${label}-${head}.json`,JSON.stringify(evidence,null,2));console.log(JSON.stringify(evidence,null,2));

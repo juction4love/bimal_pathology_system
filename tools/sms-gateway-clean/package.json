@@ -1,0 +1,18 @@
+{
+  "name": "@bimal-pathology/sms-gateway-clean",
+  "version": "2.0.0-clean.1",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24 <25" },
+  "scripts": {
+    "clean": "node scripts/clean.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "build": "tsc -p tsconfig.build.json",
+    "test": "npm run build && node --test dist/tests/*.test.js",
+    "package:windows": "powershell -NoProfile -ExecutionPolicy Bypass -File installer/Build-Package.ps1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "~6.0.0"
+  }
+}

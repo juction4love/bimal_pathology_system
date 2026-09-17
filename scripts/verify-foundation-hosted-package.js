@@ -1,0 +1,25 @@
+import fs from 'node:fs';
+import { APPROVED, APPROVED_SET_SHA256, PERMANENT_STAGING_REF, PRODUCTION_REF, verifyFoundationFiles } from './foundation-candidate-contract.js';
+
+const read = name => fs.readFileSync(name, 'utf8');
+const checks = [];
+const check = (value, label) => { if (!value) throw new Error(`FAIL: ${label}`); checks.push(label); };
+const candidate = verifyFoundationFiles();
+check(candidate.migrationSetSha256 === APPROVED_SET_SHA256, 'migration-set hash independently verified');
+check(Object.keys(APPROVED).length === 6, 'exactly six foundation candidates after 00053, including ACL pre-convergence');
+const apply = read('scripts/prepare-hosted-foundation-apply.js');
+const cutover = read('scripts/production-foundation-cutover-guard.js');
+const runner = read('scripts/run-hosted-foundation-acceptance.js');
+const browser = read('scripts/playwright/foundation-result-conflict.spec.js');
+check(apply.includes("['00054', '00055', '00056', '000565', '00057', '00058']"), 'clean acceptance apply expects the complete converged foundation tail');
+check(cutover.includes(PRODUCTION_REF) || read('scripts/foundation-candidate-contract.js').includes(PRODUCTION_REF), 'production ref is exact and centralized');
+check(cutover.includes('verifyCandidate00079') && cutover.includes('BASELINE_HEAD'), 'production promotion guard uses the current 00075-to-00079 candidate contract');
+check(cutover.includes('Object.keys(CANDIDATE)') && cutover.includes('CANDIDATE_HEAD'), 'production promotion pending/final heads are candidate-derived');
+check(cutover.includes('FOUNDATION_PRODUCTION_APPLY_CONFIRMATION'), 'production apply has second confirmation');
+check(runner.includes('cloud_sms_suite_executed: false') && !runner.includes('cloud_sms_dispatch_coordination'), 'hosted runner excludes cloud SMS');
+check(browser.includes('Reload Latest') && browser.includes('two browser contexts'), 'two-browser persistent conflict is covered');
+check(read('scripts/staging-target-guard.js').includes('QUARANTINED_STAGING_REFUSED') || read('scripts/foundation-candidate-contract.js').includes('QUARANTINED_STAGING_REFUSED'), 'legacy staging is refused');
+check(PERMANENT_STAGING_REF === 'ilcnctiaumrjbnlmnise' && read('scripts/staging-target-guard.js').includes(PERMANENT_STAGING_REF), 'permanent staging is exactly pinned');
+check(fs.existsSync('supabase/deferred_migrations/00070_cloud_sms_dispatch_coordination.sql'), 'cloud SMS remains deferred at 00070 outside migration path');
+check(!fs.readdirSync('supabase/migrations').some(name => /cloud[_-]sms/i.test(name)), 'deployable migration path excludes cloud SMS');
+console.log(JSON.stringify({ pass: true, checks: checks.length, evidence: checks, candidate }, null, 2));

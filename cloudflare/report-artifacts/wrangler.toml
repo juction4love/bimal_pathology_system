@@ -1,0 +1,30 @@
+name = "bimal-pathology-report-artifacts"
+account_id = "c0032014d8ed600a4451ed6b7063db76"
+main = "src/index.ts"
+compatibility_date = "2026-08-29"
+workers_dev = false
+preview_urls = false
+
+# This Worker is the complete origin for the dedicated patient-report host.
+# It returns controlled responses for root/unknown routes and never affects the
+# LIS or main-site hostnames.
+routes = [
+  { pattern = "dashboard.bimalpathology.com.np/*", zone_name = "bimalpathology.com.np" }
+]
+
+[vars]
+GENERATION_ENABLED = "true"
+GENERATOR_NAME = "bimal-pathology-frozen-snapshot-pdf"
+GENERATOR_VERSION = "2.1.0"
+
+[triggers]
+crons = ["*/2 * * * *"]
+
+[[rules]]
+type = "Data"
+globs = ["**/*.ttf", "**/*.png"]
+fallthrough = true
+
+[[r2_buckets]]
+binding = "REPORT_PDFS"
+bucket_name = "bimal-pathology-private-reports"

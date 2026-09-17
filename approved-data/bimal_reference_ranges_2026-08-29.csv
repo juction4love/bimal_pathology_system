@@ -1,0 +1,109 @@
+test_code,parameter_code,sex,age_min_days,age_max_days,normal_min,normal_max,critical_low,critical_high,reference_text,qualitative_normal,method,effective_from,effective_to,is_active
+THYROID_ECLIA,FT3,All,0,43800,1.3,2.7,,,"","","",2026-08-19,,true
+THYROID_ECLIA,FT4,All,0,43800,78,154,,,"","","",2026-08-19,,true
+THYROID_ECLIA,TSH,All,0,43800,0.4,4,,,"","","",2026-08-19,,true
+CBC,HB,Male,6570,43800,13,17,,,"13.0 - 17.0 g/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+CBC,HB,Female,6570,43800,12,15,,,"12.0 - 15.0 g/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+CBC,TLC,All,6570,43800,4000,11000,,,"4000 - 11000 /cumm","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+CBC,NEUT,All,6570,43800,40,75,,,"40 - 75 %","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+CBC,LYMPH,All,6570,43800,20,45,,,"20 - 45 %","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+CBC,EOSIN,All,6570,43800,1,6,,,"1 - 6 %","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+CBC,MONO,All,6570,43800,2,10,,,"2 - 10 %","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+ANTI_HCV,HCV_RES,All,6570,43800,,,,,"Non-Reactive","Non-Reactive","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+HIV,HIV_RES,All,6570,43800,,,,,"Non-Reactive","Non-Reactive","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+VDRL,VDRL_RES,All,6570,43800,,,,,"Non-Reactive","Non-Reactive","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+DENGUE_NS1,DENGUE_NS1_RES,All,6570,43800,,,,,"Negative","Negative","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+CBC,BASO,All,6570,43800,0,1,,,"0 - 1 %","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+CBC,RBC,Male,6570,43800,4.5,5.9,,,"4.5 - 5.9 million/cumm","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+CBC,RBC,Female,6570,43800,4.1,5.1,,,"4.1 - 5.1 million/cumm","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+CBC,PCV,Male,6570,43800,40,52,,,"40 - 52 %","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+CBC,PCV,Female,6570,43800,36,48,,,"36 - 48 %","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+CBC,MCV,All,6570,43800,80,100,,,"80 - 100 fL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+CBC,MCH,All,6570,43800,27,33,,,"27 - 33 pg","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+CBC,MCHC,All,6570,43800,32,36,,,"32 - 36 g/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+CBC,RDW,All,6570,43800,11.5,14.5,,,"11.5 - 14.5 %","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+CBC,PLT,All,6570,43800,150000,450000,,,"150000 - 450000 /cumm","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+HB,HB_VAL,Male,6570,43800,13,17,,,"13.0 - 17.0 g/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+HB,HB_VAL,Female,6570,43800,12,15,,,"12.0 - 15.0 g/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+TLC,TLC_VAL,All,6570,43800,4000,11000,,,"4000 - 11000 /cumm","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+DLC,NEUT_VAL,All,6570,43800,40,75,,,"40 - 75 %","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+DLC,LYMPH_VAL,All,6570,43800,20,45,,,"20 - 45 %","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+DLC,EOSIN_VAL,All,6570,43800,1,6,,,"1 - 6 %","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+DLC,MONO_VAL,All,6570,43800,2,10,,,"2 - 10 %","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+DLC,BASO_VAL,All,6570,43800,0,1,,,"0 - 1 %","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+PLT,PLT_VAL,All,6570,43800,150000,450000,,,"150000 - 450000 /cumm","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+ESR,ESR_VAL,Male,6570,43800,0,15,,,"0 - 15 mm/hr","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+ESR,ESR_VAL,Female,6570,43800,0,20,,,"0 - 20 mm/hr","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+PCV,PCV_VAL,Male,6570,43800,40,52,,,"40 - 52 %","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+PCV,PCV_VAL,Female,6570,43800,36,48,,,"36 - 48 %","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+RBC_COUNT,RBC_VAL,Male,6570,43800,4.5,5.9,,,"4.5 - 5.9 million/cumm","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+RBC_COUNT,RBC_VAL,Female,6570,43800,4.1,5.1,,,"4.1 - 5.1 million/cumm","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+FBS,GLU_FASTING,All,6570,43800,70,99,,,"70 - 99 mg/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+PPBS,GLU_PP,All,6570,43800,,140,,,"< 140 mg/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+RBS,GLU_RANDOM,All,6570,43800,70,140,,,"70 - 140 mg/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+HBA1C,HBA1C_VAL,All,6570,43800,4,5.6,,,"4.0 - 5.6 % (Non-diabetic)","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+UREA,UREA_VAL,All,6570,43800,15,45,,,"15 - 45 mg/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+CREATININE,CREAT_VAL,Male,6570,43800,0.7,1.3,,,"0.7 - 1.3 mg/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+CREATININE,CREAT_VAL,Female,6570,43800,0.6,1.1,,,"0.6 - 1.1 mg/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+URIC_ACID,URIC_VAL,Male,6570,43800,3.4,7,,,"3.4 - 7.0 mg/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+URIC_ACID,URIC_VAL,Female,6570,43800,2.4,6,,,"2.4 - 6.0 mg/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+SODIUM,NA_VAL,All,6570,43800,135,145,,,"135 - 145 mmol/L","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+POTASSIUM,K_VAL,All,6570,43800,3.5,5.1,,,"3.5 - 5.1 mmol/L","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+CHLORIDE,CL_VAL,All,6570,43800,98,107,,,"98 - 107 mmol/L","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+CALCIUM,CA_VAL,All,6570,43800,8.5,10.5,,,"8.5 - 10.5 mg/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+PHOSPHORUS,PHOS_VAL,All,6570,43800,2.5,4.5,,,"2.5 - 4.5 mg/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+MAGNESIUM,MG_VAL,All,6570,43800,1.7,2.4,,,"1.7 - 2.4 mg/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+LFT,TBIL,All,6570,43800,0.3,1.2,,,"0.3 - 1.2 mg/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+LFT,DBIL,All,6570,43800,0,0.3,,,"0.0 - 0.3 mg/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+LFT,IBIL,All,6570,43800,0.2,0.9,,,"0.2 - 0.9 mg/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+LFT,SGOT,All,6570,43800,10,40,,,"10 - 40 U/L","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+LFT,SGPT,All,6570,43800,7,56,,,"7 - 56 U/L","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+LFT,ALP,All,6570,43800,44,147,,,"44 - 147 U/L","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+LFT,TP,All,6570,43800,6.4,8.3,,,"6.4 - 8.3 g/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+LFT,ALB,All,6570,43800,3.5,5,,,"3.5 - 5.0 g/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+LFT,GLOB,All,6570,43800,2,3.5,,,"2.0 - 3.5 g/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+LFT,AG_RATIO,All,6570,43800,1,2.5,,,"1.0 - 2.5","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+KFT,UREA,All,6570,43800,15,45,,,"15 - 45 mg/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+KFT,CREAT,Male,6570,43800,0.7,1.3,,,"0.7 - 1.3 mg/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+KFT,CREAT,Female,6570,43800,0.6,1.1,,,"0.6 - 1.1 mg/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+KFT,NA,All,6570,43800,135,145,,,"135 - 145 mmol/L","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+KFT,K,All,6570,43800,3.5,5.1,,,"3.5 - 5.1 mmol/L","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+KFT,URIC,Male,6570,43800,3.4,7,,,"3.4 - 7.0 mg/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+KFT,URIC,Female,6570,43800,2.4,6,,,"2.4 - 6.0 mg/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+LIPID_PROFILE,CHOL,All,6570,43800,,200,,,"Desirable: < 200 mg/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+LIPID_PROFILE,TRIG,All,6570,43800,,150,,,"Normal: < 150 mg/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+LIPID_PROFILE,HDL,Male,6570,43800,40,,,,"> 40 mg/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+LIPID_PROFILE,HDL,Female,6570,43800,50,,,,"> 50 mg/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+LIPID_PROFILE,LDL,All,6570,43800,,100,,,"Optimal: < 100 mg/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+LIPID_PROFILE,VLDL,All,6570,43800,5,40,,,"5 - 40 mg/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+THYROID_PROFILE,T3,All,6570,43800,80,200,,,"80 - 200 ng/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+THYROID_PROFILE,T4,All,6570,43800,5,12,,,"5.0 - 12.0 µg/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+THYROID_PROFILE,TSH,All,6570,43800,0.4,4,,,"0.4 - 4.0 µIU/mL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+T3,T3_VAL,All,6570,43800,80,200,,,"80 - 200 ng/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+T4,T4_VAL,All,6570,43800,5,12,,,"5.0 - 12.0 µg/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+TSH,TSH_VAL,All,6570,43800,0.4,4,,,"0.4 - 4.0 µIU/mL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+FT3,FT3_VAL,All,6570,43800,2.3,4.2,,,"2.3 - 4.2 pg/mL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+FT4,FT4_VAL,All,6570,43800,0.8,1.8,,,"0.8 - 1.8 ng/dL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+CRP,CRP_VAL,All,6570,43800,,6,,,"< 6 mg/L","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+RA_FACTOR,RA_VAL,All,6570,43800,,14,,,"< 14 IU/mL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+ASO,ASO_VAL,All,6570,43800,,200,,,"< 200 IU/mL","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+HBSAG,HBSAG_RES,All,6570,43800,,,,,"Non-Reactive","Non-Reactive","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+DENGUE_IGM,DENGUE_IGM_RES,All,6570,43800,,,,,"Negative","Negative","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+DENGUE_IGG,DENGUE_IGG_RES,All,6570,43800,,,,,"Negative","Negative","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+URINE_RE,PROTEIN,All,6570,43800,,,,,"Negative","Negative","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+URINE_RE,GLUCOSE,All,6570,43800,,,,,"Negative","Negative","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+URINE_RE,KETONE,All,6570,43800,,,,,"Negative","Negative","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+URINE_RE,BILE_SALT,All,6570,43800,,,,,"Negative","Negative","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+URINE_RE,BILE_PIGMENT,All,6570,43800,,,,,"Negative","Negative","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+URINE_RE,PUS_CELLS,All,6570,43800,0,5,,,"0 - 5 /HPF","0 - 5","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+URINE_RE,RBC_URINE,All,6570,43800,0,2,,,"0 - 2 /HPF","0 - 2","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+URINE_RE,EPITHELIAL,All,6570,43800,0,5,,,"0 - 5 /HPF","0 - 5","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+URINE_RE,CASTS,All,6570,43800,,,,,"Nil","Nil","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+URINE_RE,CRYSTALS,All,6570,43800,,,,,"Nil","Nil","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+URINE_RE,SP_GRAVITY,All,6570,43800,1.005,1.03,,,"1.005 - 1.030","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+URINE_RE,PH,All,6570,43800,4.5,8,,,"4.5 - 8.0","","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+STOOL_RE,STOOL_PUS,All,6570,43800,0,2,,,"0 - 2 /HPF","0 - 2","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+STOOL_RE,STOOL_RBC,All,6570,43800,,,,,"Nil","Nil","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+STOOL_RE,STOOL_OVA,All,6570,43800,,,,,"Not Seen","Not Seen","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+STOOL_RE,STOOL_CYST,All,6570,43800,,,,,"Not Seen","Not Seen","Default reference interval - verify with analyzer/reagent",2026-08-19,,true
+STOOL_OB,FOBT_RES,All,6570,43800,,,,,"Negative","Negative","Default reference interval - verify with analyzer/reagent",2026-08-19,,true

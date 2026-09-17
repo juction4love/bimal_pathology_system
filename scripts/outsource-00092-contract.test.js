@@ -1,0 +1,13 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const migration=fs.readFileSync('supabase/migrations/00092_multi_report_group_lifecycle.sql','utf8');
+const resultEntry=fs.readFileSync('src/features/worklist/ResultEntryPage.tsx','utf8');
+test('execution route is frozen on order item and report membership',()=>{assert.match(migration,/clinical_execution_route_enum/);assert.match(migration,/trg_freeze_order_item_execution_route/);assert.match(migration,/frozen_reference_laboratory_id/)});
+test('reference laboratory master is reused through guarded configuration',()=>{assert.match(migration,/CREATE TABLE public\.reference_laboratories/);assert.match(migration,/configure_reference_laboratory/);assert.match(migration,/can_manage_outsource_tracking/)});
+test('outsource lifecycle is item scoped and transition guarded',()=>{for(const state of ['AwaitingDispatch','Dispatched','AwaitingExternalResult','ResultReceived','InternalReview','Verified','Signed','RecollectionRequired','UnableToPerform'])assert.match(migration,new RegExp(`'${state}'`));assert.match(migration,/transition_outsource_order_item/)});
+test('external results require governed type, structured values and source evidence',()=>{assert.match(migration,/result_type.*NUMERIC.*QUALITATIVE.*NARRATIVE.*STRUCTURED/s);assert.match(migration,/source_report_reference/);assert.match(migration,/No external result matched the governed test structure/)});
+test('outsource state blocks group signoff until internally verified',()=>{assert.match(migration,/oi\.execution_route='OUTSOURCE' AND oi\.outsource_state NOT IN \('Verified','Signed'\)/)});
+test('frozen report snapshot carries outsource provenance',()=>{for(const field of ['execution_route','outsource_external_reference','outsource_source_report_reference','outsource_method','outsource_interpretation','outsource_result_payload'])assert.match(migration,new RegExp(`'${field}'`))});
+test('rejection preserves old tracker and creates recollection lineage',()=>{assert.match(migration,/recollects_outsource_sample_id/);assert.match(migration,/REFERENCE_LAB_REJECTION/);assert.match(migration,/Recollection required:/)});
+test('order workspace visibly distinguishes outsource siblings',()=>{assert.match(resultEntry,/execution_route.*OUTSOURCE/s);assert.match(resultEntry,/Outsource ·/)});

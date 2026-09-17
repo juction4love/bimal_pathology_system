@@ -1,0 +1,125 @@
+{
+  "source2ServiceRows": 304,
+  "source2UniqueNormalized": 294,
+  "exactDuplicateGroups": 10,
+  "additionalUniqueCandidates": 211,
+  "methodVariantReviews": 6,
+  "counts": {
+    "AdditionalCandidate": 144,
+    "Existing256Match": 74,
+    "MethodOrAssayVariantReview": 6,
+    "ProfileCandidate": 15,
+    "SpecialistExistingOrVariant": 5,
+    "SpecialistNewCandidate": 52,
+    "StructuredExistingOrVariant": 3,
+    "StructuredNewCandidate": 5
+  },
+  "sectionCounts": {
+    "Biochemistry & Clinical Chemistry": 39,
+    "Hematology": 35,
+    "Hormones & Endocrinology": 32,
+    "Serology & Immunology": 31,
+    "Molecular & PCR Tests": 28,
+    "Microbiology & Culture": 24,
+    "Hepatitis & HIV Panel": 20,
+    "Tumor Markers & Cancer Screening": 13,
+    "Histopathology & Biopsy": 15,
+    "Allergy Testing": 2,
+    "Vitamins & Minerals": 18,
+    "Genetic Testing & Karyotyping": 9,
+    "Drug Testing & Toxicology": 19,
+    "General & Other Tests": 19
+  },
+  "duplicates": [
+    {
+      "name": "Calcium Serum",
+      "count": 2,
+      "sections": [
+        "Biochemistry & Clinical Chemistry",
+        "Vitamins & Minerals"
+      ]
+    },
+    {
+      "name": "Magnesium",
+      "count": 2,
+      "sections": [
+        "Biochemistry & Clinical Chemistry",
+        "Vitamins & Minerals"
+      ]
+    },
+    {
+      "name": "Iron",
+      "count": 2,
+      "sections": [
+        "Biochemistry & Clinical Chemistry",
+        "Vitamins & Minerals"
+      ]
+    },
+    {
+      "name": "ESR",
+      "count": 2,
+      "sections": [
+        "Hematology",
+        "Hematology"
+      ]
+    },
+    {
+      "name": "G6PD",
+      "count": 2,
+      "sections": [
+        "Hematology",
+        "General & Other Tests"
+      ]
+    },
+    {
+      "name": "Haptoglobin",
+      "count": 2,
+      "sections": [
+        "Hematology",
+        "Serology & Immunology"
+      ]
+    },
+    {
+      "name": "Vitamin D (25-Hydroxy)",
+      "count": 2,
+      "sections": [
+        "Serology & Immunology",
+        "Vitamins & Minerals"
+      ]
+    },
+    {
+      "name": "Vitamin D3 (1,25-Dihydroxy)",
+      "count": 2,
+      "sections": [
+        "Serology & Immunology",
+        "Vitamins & Minerals"
+      ]
+    },
+    {
+      "name": "Widal Test",
+      "count": 2,
+      "sections": [
+        "Microbiology & Culture",
+        "General & Other Tests"
+      ]
+    },
+    {
+      "name": "Scrub Typhus IgM",
+      "count": 2,
+      "sections": [
+        "Microbiology & Culture",
+        "General & Other Tests"
+      ]
+    }
+  ],
+  "package": {
+    "name": "Basic Health Package",
+    "externalPrice": "3699",
+    "components": "CBC, Glucose F, Uric acid, Calcium, RFT, LFT, Lipid Profile, TSH, Urine R/E, ESR"
+  },
+  "ihcEvidence": {
+    "markerText": "ER, PR, HER2, Ki67, p53, p63, CK7, CK20, CD3, CD20, CD45, CD5, CD10, CD15, CD30, CD34, CD56, CD117, S100, Vimentin, Desmin, EMA, CEA, AFP, Actin, Calretinin, Synaptophysin, Chromogranin, TTF-1, PAX-5, PAX-8, GATA-3, WT-1, and 100+ others",
+    "externalPrice": "3,300-4,400 each"
+  },
+  "source1Rows": 256
+}

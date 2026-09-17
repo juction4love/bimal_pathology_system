@@ -1,0 +1,36 @@
+{
+  "created_ids": {
+    "barcode": "BAR-QA-20260916-075413-330",
+    "bill_id": "4c2fb77d-cd2b-47d3-b7f2-1a59a0e99580",
+    "bill_no": "BILL-QA-20260916-075413-330",
+    "order_id": "023969fa-afe9-47a3-ba84-d1275f63129e",
+    "order_no": "ORD-QA-20260916-075413-330",
+    "patient_id": "2b0a3365-4b24-4dba-8f57-3ae0fb444bf0",
+    "payment_id": "7d0661ed-5786-4724-b3ef-9335aa4c8018",
+    "receipt_no": "REC-QA-20260916-075413-330",
+    "report_id": "09acf29e-a0d3-4a72-a638-cd4711ddbef4",
+    "report_no": "REP-QA-20260916-075413-330",
+    "sample_id": "230a9695-3a2a-4c0e-987e-113719107a1d",
+    "uhid": "2609169637"
+  },
+  "qa_marker": "FINAL_PRODUCTION_QA_20260916_997c5906-5f75-4be8-8003-61dd9934e46f",
+  "remaining_counts_after_cleanup": {
+    "bill": 0,
+    "order": 0,
+    "patient": 0,
+    "payment": 0,
+    "report": 0,
+    "report_groups": 0,
+    "sample": 0
+  },
+  "status": "SUCCESS",
+  "verification_counts_before_cleanup": {
+    "bill": 1,
+    "order": 1,
+    "patient": 1,
+    "payment": 1,
+    "report": 1,
+    "report_groups": 1,
+    "sample": 1
+  }
+}

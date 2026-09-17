@@ -1,0 +1,31 @@
+{
+  "id": "https://lis.bimalpathology.com.np/",
+  "name": "Bimal Pathology LIS",
+  "short_name": "Bimal LIS",
+  "description": "Cloud Laboratory Information System for Bimal Pathology & Diagnostic Center.",
+  "start_url": "https://lis.bimalpathology.com.np/",
+  "scope": "https://lis.bimalpathology.com.np/",
+  "display": "standalone",
+  "background_color": "#f2f7f4",
+  "theme_color": "#0b6b3a",
+  "icons": [
+    {
+      "src": "/pwa/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

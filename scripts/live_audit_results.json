@@ -1,0 +1,2417 @@
+{
+  "counts": {
+    "total_aliases": 358,
+    "total_analyzer_mappings": 81,
+    "total_analyzers": 3,
+    "total_bill_items": 0,
+    "total_bills": 0,
+    "total_order_items": 0,
+    "total_orders": 0,
+    "total_panel_components": 132,
+    "total_panels": 51,
+    "total_parameters": 1128,
+    "total_patients": 0,
+    "total_permissions": 56,
+    "total_rate_versions": 40,
+    "total_reference_ranges": 93,
+    "total_results": 0,
+    "total_samples": 0,
+    "total_singles": 1084,
+    "total_specimen_rules": 64,
+    "total_tests": 1135,
+    "total_user_roles": 2,
+    "total_users": 5
+  },
+  "duplicates": {
+    "duplicate_test_codes": 0,
+    "duplicate_test_names": 0
+  },
+  "orphans": {
+    "orphan_aliases": 0,
+    "orphan_bill_items": 0,
+    "orphan_component_test_ids": 0,
+    "orphan_order_items": 0,
+    "orphan_panel_ids": 0,
+    "orphan_parameters": 0
+  },
+  "panels_audit": [
+    {
+      "components": [
+        {
+          "code": "END-0003",
+          "display_order": 1,
+          "name": "Free T3 (FT3)"
+        },
+        {
+          "code": "END-0002",
+          "display_order": 2,
+          "name": "Free T4 (FT4)"
+        },
+        {
+          "code": "END-0001",
+          "display_order": 3,
+          "name": "TSH"
+        }
+      ],
+      "panel_code": "PRO-0004",
+      "panel_name": "Thyroid Profile (FT3, FT4, TSH)",
+      "price_npr": 0,
+      "reporting_enabled": false,
+      "validation_status": "VALIDATED"
+    },
+    {
+      "components": [
+        {
+          "code": "BIO-0063",
+          "display_order": 1,
+          "name": "Troponin I, High Sensitivity"
+        },
+        {
+          "code": "BIO-0061",
+          "display_order": 2,
+          "name": "CK-MB Mass"
+        },
+        {
+          "code": "BIO-0065",
+          "display_order": 3,
+          "name": "Myoglobin"
+        },
+        {
+          "code": "BIO-0067",
+          "display_order": 4,
+          "name": "NT-proBNP"
+        },
+        {
+          "code": "COA-0006",
+          "display_order": 5,
+          "name": "D-Dimer"
+        }
+      ],
+      "panel_code": "PRO-0007",
+      "panel_name": "Cardiac Marker Panel",
+      "price_npr": 0,
+      "reporting_enabled": false,
+      "validation_status": "VALIDATED"
+    },
+    {
+      "components": [
+        {
+          "code": "BIO-0063",
+          "display_order": 1,
+          "name": "Troponin I, High Sensitivity"
+        },
+        {
+          "code": "BIO-0061",
+          "display_order": 2,
+          "name": "CK-MB Mass"
+        },
+        {
+          "code": "BIO-0065",
+          "display_order": 3,
+          "name": "Myoglobin"
+        }
+      ],
+      "panel_code": "PRO-0026",
+      "panel_name": "CARDIAC MARKERS COMBO",
+      "price_npr": 2500,
+      "reporting_enabled": false,
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "components": [
+        {
+          "code": "PCT_SEPSIS",
+          "display_order": 1,
+          "name": "Procalcitonin (PCT)"
+        },
+        {
+          "code": "IMM-0001",
+          "display_order": 2,
+          "name": "CRP, Quantitative"
+        }
+      ],
+      "panel_code": "PRO-0027",
+      "panel_name": "PCT + CRP COMBO",
+      "price_npr": 3000,
+      "reporting_enabled": false,
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "components": [
+        {
+          "code": "END-0005",
+          "display_order": 1,
+          "name": "Total T3"
+        },
+        {
+          "code": "END-0004",
+          "display_order": 2,
+          "name": "Total T4"
+        },
+        {
+          "code": "END-0001",
+          "display_order": 3,
+          "name": "TSH"
+        }
+      ],
+      "panel_code": "PRO-0028",
+      "panel_name": "COMPLETE THYROID PROFILE (T3, T4, TSH)",
+      "price_npr": 1200,
+      "reporting_enabled": false,
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "components": [
+        {
+          "code": "SER-0015",
+          "display_order": 1,
+          "name": "Dengue NS1 Antigen"
+        },
+        {
+          "code": "SER-0016",
+          "display_order": 2,
+          "name": "Dengue IgM"
+        },
+        {
+          "code": "SER-0017",
+          "display_order": 3,
+          "name": "Dengue IgG"
+        }
+      ],
+      "panel_code": "PRO-0029",
+      "panel_name": "DENGUE COMBO (NS1 + IgM + IgG)",
+      "price_npr": 1200,
+      "reporting_enabled": false,
+      "validation_status": "REQUIRES_VALIDATION"
+    }
+  ],
+  "recent_tests": [
+    {
+      "aliases": [
+        {
+          "alias_name": "HbA1c",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "Glycated Hemoglobin",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "A1c",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "एचबिएवानसी",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "BIO-0006",
+      "container": "EDTA (Purple)",
+      "department": "Clinical Biochemistry",
+      "is_active": true,
+      "method": "HPLC / Enzymatic / Immunoturbidimetry (NGSP/IFCC Certified)",
+      "name": "HbA1c",
+      "parameters": [
+        {
+          "code": "BIO-0006",
+          "interpretation_config": null,
+          "name": "HbA1c",
+          "options": null,
+          "unit": "%",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 800,
+      "price_paisa": 80000,
+      "sample_type": "EDTA Whole Blood",
+      "short_name": "BIO-0006",
+      "specimen_type": "EDTA Whole Blood",
+      "test_type": "Single",
+      "unit": "%",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "Ferritin",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Serum Ferritin",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "फेरिटीन",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "BIO-0050",
+      "container": "Plain/SST",
+      "department": "Clinical Biochemistry",
+      "is_active": true,
+      "method": "Fluorescence Immunoassay",
+      "name": "Ferritin",
+      "parameters": [
+        {
+          "code": "BIO-0050",
+          "interpretation_config": null,
+          "name": "Ferritin",
+          "options": null,
+          "unit": "ng/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 1000,
+      "price_paisa": 100000,
+      "sample_type": "Serum / Plasma",
+      "short_name": "BIO-0050",
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "ng/mL",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "Vitamin D",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "25-OH Vitamin D",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "VIT_D",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "IMM_VITD",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Vit D",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "25-OH",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "25-Hydroxy Vitamin D",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "भिटामिन डी",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "25-OH-VD",
+          "alias_type": "Acronym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "BIO-0053",
+      "container": "Plain/SST",
+      "department": "Clinical Biochemistry",
+      "is_active": true,
+      "method": "Fluorescence Immunoassay",
+      "name": "Vitamin D, 25-OH",
+      "parameters": [
+        {
+          "code": "BIO-0053",
+          "interpretation_config": null,
+          "name": "Vitamin D, 25-OH",
+          "options": null,
+          "unit": "ng/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 2000,
+      "price_paisa": 200000,
+      "sample_type": "Serum / Plasma",
+      "short_name": "BIO-0053",
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "ng/mL",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "CK-MB Mass",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "CKMB Mass",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "CKMB_MASS",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "CK-MB",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "CKMB",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "सीके-एमबी",
+          "alias_type": "Acronym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "BIO-0061",
+      "container": "Plain/SST",
+      "department": "Clinical Biochemistry",
+      "is_active": true,
+      "method": "Fluorescence Immunoassay",
+      "name": "CK-MB Mass",
+      "parameters": [
+        {
+          "code": "BIO-0061",
+          "interpretation_config": null,
+          "name": "CK-MB Mass",
+          "options": null,
+          "unit": "ng/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 700,
+      "price_paisa": 70000,
+      "sample_type": "Serum / Plasma",
+      "short_name": "BIO-0061",
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "ng/mL",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "CK-MB",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "CPK-MB",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "BIO-0062",
+      "container": "Plain/SST",
+      "department": "Clinical Biochemistry",
+      "is_active": true,
+      "method": "Immunoinhibition Kinetic",
+      "name": "CK-MB Activity",
+      "parameters": [
+        {
+          "code": "BIO-0062",
+          "interpretation_config": null,
+          "name": "CK-MB Activity",
+          "options": null,
+          "unit": "U/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 0,
+      "price_paisa": 0,
+      "sample_type": "Serum / Plasma",
+      "short_name": "BIO-0062",
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "U/L",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "Troponin I",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "cTnI",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "CTNI",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "IMM_CTNI",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Troponin",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "hs-cTnI",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "Cardiac Troponin I",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "कार्डियाक ट्रोपोनिन",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Trop I",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "ट्रोपोनिन आई",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "BIO-0063",
+      "container": "Plain/SST",
+      "department": "Clinical Biochemistry",
+      "is_active": true,
+      "method": "Fluorescence Immunoassay",
+      "name": "Troponin I, High Sensitivity",
+      "parameters": [
+        {
+          "code": "BIO-0063",
+          "interpretation_config": null,
+          "name": "Troponin I, High Sensitivity",
+          "options": null,
+          "unit": "ng/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 1200,
+      "price_paisa": 120000,
+      "sample_type": "Serum / Plasma",
+      "short_name": "BIO-0063",
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "ng/mL",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "cTnT",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "Troponin T",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Trop T",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "ट्रोपोनिन टी",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "BIO-0064",
+      "container": "Plain/SST",
+      "department": "Clinical Biochemistry",
+      "is_active": true,
+      "method": "High-sensitivity immunoassay",
+      "name": "Troponin T, High Sensitivity",
+      "parameters": [
+        {
+          "code": "BIO-0064",
+          "interpretation_config": null,
+          "name": "Troponin T, High Sensitivity",
+          "options": null,
+          "unit": "ng/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 1800,
+      "price_paisa": 180000,
+      "sample_type": "Serum / Plasma",
+      "short_name": "BIO-0064",
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "ng/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "Myoglobin",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "MYO",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Myo",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "मायोग्लोबिन",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "BIO-0065",
+      "container": "Plain/SST",
+      "department": "Clinical Biochemistry",
+      "is_active": true,
+      "method": "Fluorescence Immunoassay",
+      "name": "Myoglobin",
+      "parameters": [
+        {
+          "code": "BIO-0065",
+          "interpretation_config": null,
+          "name": "Myoglobin",
+          "options": null,
+          "unit": "ng/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 0,
+      "price_paisa": 0,
+      "sample_type": "Serum / Plasma",
+      "short_name": "BIO-0065",
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "ng/mL",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "NT-proBNP",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "NT_PROBNP",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "N-Terminal proBNP",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "IMM_BNP",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "BNP",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "Brain Natriuretic Peptide",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "proBNP",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "एनटी-प्रोबिएनपी",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "BIO-0067",
+      "container": "Plain/SST",
+      "department": "Clinical Biochemistry",
+      "is_active": true,
+      "method": "Fluorescence Immunoassay",
+      "name": "NT-proBNP",
+      "parameters": [
+        {
+          "code": "BIO-0067",
+          "interpretation_config": null,
+          "name": "NT-proBNP",
+          "options": null,
+          "unit": "pg/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 3000,
+      "price_paisa": 300000,
+      "sample_type": "Serum / Plasma",
+      "short_name": "BIO-0067",
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "pg/mL",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "hs-CRP",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "hsCRP",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "High Sensitivity CRP",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "CRP",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "C-Reactive Protein",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "सीआरपी",
+          "alias_type": "Acronym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "BIO-0068",
+      "container": "Plain/SST",
+      "department": "Clinical Biochemistry",
+      "is_active": true,
+      "method": "Fluorescence Immunoassay",
+      "name": "hs-CRP",
+      "parameters": [
+        {
+          "code": "BIO-0068",
+          "interpretation_config": null,
+          "name": "hs-CRP",
+          "options": null,
+          "unit": "mg/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 700,
+      "price_paisa": 70000,
+      "sample_type": "Serum / Plasma",
+      "short_name": "BIO-0068",
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "mg/L",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "Microalbumin",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "mAlb",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "Urine Microalbumin",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Microalbumin Urine",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "BIO-0085",
+      "container": "Sterile urine container / 24h container",
+      "department": "Clinical Biochemistry",
+      "is_active": true,
+      "method": "Analyzer/Validated chemistry method",
+      "name": "Urine Microalbumin",
+      "parameters": [
+        {
+          "code": "BIO-0085",
+          "interpretation_config": null,
+          "name": "Urine Microalbumin",
+          "options": null,
+          "unit": "mg/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 800,
+      "price_paisa": 80000,
+      "sample_type": "Urine (random or timed as specified)",
+      "short_name": "BIO-0085",
+      "specimen_type": "Urine (random or timed as specified)",
+      "test_type": "Single",
+      "unit": "mg/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "Cystatin C",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "CysC",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "Cystatin",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "सिस्टाटिन सी",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "BIO-0141",
+      "container": "Container Pending Lab SOP",
+      "department": "Clinical Biochemistry",
+      "is_active": true,
+      "method": "Method Pending Clinical Validation",
+      "name": "Cystatin C",
+      "parameters": null,
+      "price_npr": 1200,
+      "price_paisa": 120000,
+      "sample_type": "Specimen Pending Validation",
+      "short_name": "CysC",
+      "specimen_type": "Specimen Pending Validation",
+      "test_type": "Single",
+      "unit": null,
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "D-Dimer",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "D_DIMER",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "D-Dimer FEU",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "D Dimer",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "डी-डाइमर",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "COA-0006",
+      "container": "Sodium Citrate (Blue)",
+      "department": "Coagulation",
+      "is_active": true,
+      "method": "Fluorescence Immunoassay",
+      "name": "D-Dimer",
+      "parameters": [
+        {
+          "code": "COA-0006",
+          "interpretation_config": null,
+          "name": "D-Dimer",
+          "options": null,
+          "unit": "µg/mL FEU",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 1500,
+      "price_paisa": 150000,
+      "sample_type": "Citrated Plasma",
+      "short_name": "COA-0006",
+      "specimen_type": "Citrated Plasma",
+      "test_type": "Single",
+      "unit": "µg/mL FEU",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "TSH",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Thyroid Stimulating Hormone",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "IMM_TSH",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "थाइरोइड हर्मोन TSH",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "END-0001",
+      "container": "Plain/SST",
+      "department": "Endocrinology",
+      "is_active": true,
+      "method": "Fluorescence Immunoassay",
+      "name": "TSH",
+      "parameters": [
+        {
+          "code": "END-0001",
+          "interpretation_config": null,
+          "name": "TSH",
+          "options": null,
+          "unit": "µIU/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 500,
+      "price_paisa": 50000,
+      "sample_type": "Serum / Plasma",
+      "short_name": "END-0001",
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "µIU/mL",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "FT4",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Free T4",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "IMM_FT4",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Free Thyroxine",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "END-0002",
+      "container": "Plain/SST",
+      "department": "Endocrinology",
+      "is_active": true,
+      "method": "Fluorescence Immunoassay",
+      "name": "Free T4 (FT4)",
+      "parameters": [
+        {
+          "code": "END-0002",
+          "interpretation_config": null,
+          "name": "Free T4 (FT4)",
+          "options": null,
+          "unit": "ng/dL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 550,
+      "price_paisa": 55000,
+      "sample_type": "Serum / Plasma",
+      "short_name": "END-0002",
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "ng/dL",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "FT3",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Free T3",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "IMM_FT3",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Free Triiodothyronine",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "END-0003",
+      "container": "Plain/SST",
+      "department": "Endocrinology",
+      "is_active": true,
+      "method": "Fluorescence Immunoassay",
+      "name": "Free T3 (FT3)",
+      "parameters": [
+        {
+          "code": "END-0003",
+          "interpretation_config": null,
+          "name": "Free T3 (FT3)",
+          "options": null,
+          "unit": "pg/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 550,
+      "price_paisa": 55000,
+      "sample_type": "Serum / Plasma",
+      "short_name": "END-0003",
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "pg/mL",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "TT4",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Total T4",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "T4",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "Thyroxine Total",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "END-0004",
+      "container": "Plain/SST",
+      "department": "Endocrinology",
+      "is_active": true,
+      "method": "Fluorescence Immunoassay",
+      "name": "Total T4",
+      "parameters": [
+        {
+          "code": "END-0004",
+          "interpretation_config": null,
+          "name": "Total T4",
+          "options": null,
+          "unit": "µg/dL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 0,
+      "price_paisa": 0,
+      "sample_type": "Serum / Plasma",
+      "short_name": "END-0004",
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "µg/dL",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "TT3",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Total T3",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "T3",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "Triiodothyronine Total",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "END-0005",
+      "container": "Plain/SST",
+      "department": "Endocrinology",
+      "is_active": true,
+      "method": "Fluorescence Immunoassay",
+      "name": "Total T3",
+      "parameters": [
+        {
+          "code": "END-0005",
+          "interpretation_config": null,
+          "name": "Total T3",
+          "options": null,
+          "unit": "ng/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 0,
+      "price_paisa": 0,
+      "sample_type": "Serum / Plasma",
+      "short_name": "END-0005",
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "ng/mL",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "Prolactin",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "PRL",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "प्रोल्याक्टिन",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "END-0025",
+      "container": "Plain/SST",
+      "department": "Endocrinology",
+      "is_active": true,
+      "method": "CLIA/ECLIA/Validated immunoassay",
+      "name": "Prolactin",
+      "parameters": [
+        {
+          "code": "END-0025",
+          "interpretation_config": null,
+          "name": "Prolactin",
+          "options": null,
+          "unit": "ng/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 800,
+      "price_paisa": 80000,
+      "sample_type": "Serum / Plasma",
+      "short_name": "END-0025",
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "ng/mL",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "FSH",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "Follicle Stimulating Hormone",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "END-0027",
+      "container": "Plain/SST",
+      "department": "Endocrinology",
+      "is_active": true,
+      "method": "CLIA/ECLIA/Validated immunoassay",
+      "name": "FSH",
+      "parameters": [
+        {
+          "code": "END-0027",
+          "interpretation_config": null,
+          "name": "FSH",
+          "options": null,
+          "unit": "mIU/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 800,
+      "price_paisa": 80000,
+      "sample_type": "Serum / Plasma",
+      "short_name": "END-0027",
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "mIU/mL",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "LH",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "Luteinizing Hormone",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "END-0028",
+      "container": "Plain/SST",
+      "department": "Endocrinology",
+      "is_active": true,
+      "method": "CLIA/ECLIA/Validated immunoassay",
+      "name": "LH",
+      "parameters": [
+        {
+          "code": "END-0028",
+          "interpretation_config": null,
+          "name": "LH",
+          "options": null,
+          "unit": "mIU/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 800,
+      "price_paisa": 80000,
+      "sample_type": "Serum / Plasma",
+      "short_name": "END-0028",
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "mIU/mL",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "Testosterone",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Total Testosterone",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "टेस्टोस्टेरोन",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "END-0031",
+      "container": "Plain/SST",
+      "department": "Endocrinology",
+      "is_active": true,
+      "method": "CLIA/ECLIA/Validated immunoassay",
+      "name": "Testosterone, Total",
+      "parameters": [
+        {
+          "code": "END-0031",
+          "interpretation_config": null,
+          "name": "Testosterone, Total",
+          "options": null,
+          "unit": "ng/dL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 1200,
+      "price_paisa": 120000,
+      "sample_type": "Serum / Plasma",
+      "short_name": "END-0031",
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "ng/dL",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "AMH",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "Anti-Mullerian Hormone",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Anti Mullerian Hormone",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "END-0037",
+      "container": "Plain/SST",
+      "department": "Endocrinology",
+      "is_active": true,
+      "method": "CLIA/ECLIA/Validated immunoassay",
+      "name": "AMH",
+      "parameters": [
+        {
+          "code": "END-0037",
+          "interpretation_config": null,
+          "name": "AMH",
+          "options": null,
+          "unit": "ng/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 3500,
+      "price_paisa": 350000,
+      "sample_type": "Serum / Plasma",
+      "short_name": "END-0037",
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "ng/mL",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "Beta-hCG",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Beta hCG Quantitative",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "B_HCG",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Beta HCG",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "beta-hCG",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "Beta-hCG Quantitative",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "HCG Quantitative",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "END-0039",
+      "container": "Plain/SST",
+      "department": "Endocrinology",
+      "is_active": true,
+      "method": "Fluorescence Immunoassay",
+      "name": "Beta-hCG, Quantitative",
+      "parameters": [
+        {
+          "code": "END-0039",
+          "interpretation_config": null,
+          "name": "Beta-hCG, Quantitative",
+          "options": null,
+          "unit": "mIU/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 1000,
+      "price_paisa": 100000,
+      "sample_type": "Serum / Plasma",
+      "short_name": "END-0039",
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "mIU/mL",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "CRP",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "CRP Quantitative",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "C-Reactive Protein",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "IMM-0001",
+      "container": "Plain/SST",
+      "department": "Immunology",
+      "is_active": true,
+      "method": "ELISA/IFA/Immunoassay as validated",
+      "name": "CRP, Quantitative",
+      "parameters": [
+        {
+          "code": "IMM-0001",
+          "interpretation_config": null,
+          "name": "CRP, Quantitative",
+          "options": null,
+          "unit": "mg/L",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 700,
+      "price_paisa": 70000,
+      "sample_type": "Serum",
+      "short_name": "IMM-0001",
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "mg/L",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "RF",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "Rheumatoid Factor",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "RF Quantitative",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "IMM-0002",
+      "container": "Plain/SST",
+      "department": "Immunology",
+      "is_active": true,
+      "method": "ELISA/IFA/Immunoassay as validated",
+      "name": "Rheumatoid Factor (RF)",
+      "parameters": [
+        {
+          "code": "IMM-0002",
+          "interpretation_config": null,
+          "name": "Rheumatoid Factor (RF)",
+          "options": null,
+          "unit": "IU/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 600,
+      "price_paisa": 60000,
+      "sample_type": "Serum",
+      "short_name": "IMM-0002",
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "IU/mL",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "ASO",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "ASO Titer",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "ASO Quantitative",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "IMM-0003",
+      "container": "Plain/SST",
+      "department": "Immunology",
+      "is_active": true,
+      "method": "ELISA/IFA/Immunoassay as validated",
+      "name": "ASO Titer",
+      "parameters": [
+        {
+          "code": "IMM-0003",
+          "interpretation_config": null,
+          "name": "ASO Titer",
+          "options": null,
+          "unit": "IU/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 600,
+      "price_paisa": 60000,
+      "sample_type": "Serum",
+      "short_name": "IMM-0003",
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "IU/mL",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "Anti CCP",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Anti-CCP",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "CCP",
+          "alias_type": "Acronym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "IMM-0004",
+      "container": "Plain/SST",
+      "department": "Immunology",
+      "is_active": true,
+      "method": "ELISA/IFA/Immunoassay as validated",
+      "name": "Anti-CCP",
+      "parameters": [
+        {
+          "code": "IMM-0004",
+          "interpretation_config": null,
+          "name": "Anti-CCP",
+          "options": null,
+          "unit": "U/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 2200,
+      "price_paisa": 220000,
+      "sample_type": "Serum",
+      "short_name": "IMM-0004",
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "U/mL",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "IgE",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "Total IgE",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Immunoglobulin E",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "IMM-0031",
+      "container": "Plain/SST",
+      "department": "Immunology",
+      "is_active": true,
+      "method": "ELISA/IFA/Immunoassay as validated",
+      "name": "Total IgE",
+      "parameters": [
+        {
+          "code": "IMM-0031",
+          "interpretation_config": null,
+          "name": "Total IgE",
+          "options": null,
+          "unit": "IU/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 1200,
+      "price_paisa": 120000,
+      "sample_type": "Serum",
+      "short_name": "IMM-0031",
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "IU/mL",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "IL-6",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "IL6",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "Interleukin-6",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Interleukin 6",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "IMM-0093",
+      "container": "Container Pending Lab SOP",
+      "department": "Immunology",
+      "is_active": true,
+      "method": "Method Pending Clinical Validation",
+      "name": "Interleukin-6 (IL-6)",
+      "parameters": null,
+      "price_npr": 3000,
+      "price_paisa": 300000,
+      "sample_type": "Specimen Pending Validation",
+      "short_name": "IL-6",
+      "specimen_type": "Specimen Pending Validation",
+      "test_type": "Single",
+      "unit": null,
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "Procalcitonin",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "PCT",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "PCT Sepsis",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Serum Procalcitonin",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "प्रोकैल्सिटोनिन",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "PCT_SEPSIS",
+      "container": "Yellow Top (SST)",
+      "department": "Immunology",
+      "is_active": true,
+      "method": "Fluorescence Immunoassay",
+      "name": "Procalcitonin (PCT)",
+      "parameters": [
+        {
+          "code": "PCT_SEPSIS",
+          "interpretation_config": null,
+          "name": "Procalcitonin (PCT)",
+          "options": null,
+          "unit": "ng/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 2500,
+      "price_paisa": 250000,
+      "sample_type": "Serum",
+      "short_name": "PCT_SEPSIS",
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "ng/mL",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "IMM-THYROID",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Thyroid",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "Thyroid Profile",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "TFT",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "Free Thyroid Profile",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "थाइरोइड प्रोफाइल",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "थाइरोइड परीक्षण",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "PRO-0004",
+      "container": "As required",
+      "department": "Profiles / Packages",
+      "is_active": true,
+      "method": "Fluorescence Immunoassay (FIAcheck)",
+      "name": "Thyroid Profile (FT3, FT4, TSH)",
+      "parameters": [
+        {
+          "code": "PRO-0004",
+          "interpretation_config": null,
+          "name": "Thyroid Profile",
+          "options": null,
+          "unit": "Panel",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 0,
+      "price_paisa": 0,
+      "sample_type": "Multiple specimens as applicable",
+      "short_name": "TFT (Free)",
+      "specimen_type": "Multiple specimens as applicable",
+      "test_type": "Panel",
+      "unit": "Panel",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "IMM-CARDIAC",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Cardiac",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "Cardiac Panel",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Cardiac Profile",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "मुटु सम्बन्धी परीक्षण",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "PRO-0007",
+      "container": "As required",
+      "department": "Profiles / Packages",
+      "is_active": true,
+      "method": "Fluorescence Immunoassay (FIAcheck)",
+      "name": "Cardiac Marker Panel",
+      "parameters": [
+        {
+          "code": "PRO-0007",
+          "interpretation_config": null,
+          "name": "Cardiac Marker Panel",
+          "options": null,
+          "unit": "Panel",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 0,
+      "price_paisa": 0,
+      "sample_type": "Multiple specimens as applicable",
+      "short_name": "PRO-0007",
+      "specimen_type": "Multiple specimens as applicable",
+      "test_type": "Panel",
+      "unit": "Panel",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "PRO-0026",
+      "container": "Standard Container",
+      "department": "Profiles / Packages",
+      "is_active": true,
+      "method": "Fluorescence Immunoassay (FIAcheck)",
+      "name": "CARDIAC MARKERS COMBO",
+      "parameters": null,
+      "price_npr": 2500,
+      "price_paisa": 250000,
+      "sample_type": "Serum / Plasma",
+      "short_name": "Cardiac Combo",
+      "specimen_type": "Multiple specimens as applicable",
+      "test_type": "Panel",
+      "unit": "Panel",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "PRO-0027",
+      "container": "Standard Container",
+      "department": "Profiles / Packages",
+      "is_active": true,
+      "method": "Multi-method composite (FIAcheck + Quantitative CRP)",
+      "name": "PCT + CRP COMBO",
+      "parameters": null,
+      "price_npr": 3000,
+      "price_paisa": 300000,
+      "sample_type": "Serum / Plasma",
+      "short_name": "PCT + CRP",
+      "specimen_type": "Multiple specimens as applicable",
+      "test_type": "Panel",
+      "unit": "Panel",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "PRO-0028",
+      "container": "Standard Container",
+      "department": "Profiles / Packages",
+      "is_active": true,
+      "method": "Fluorescence Immunoassay (FIAcheck)",
+      "name": "COMPLETE THYROID PROFILE (T3, T4, TSH)",
+      "parameters": null,
+      "price_npr": 1200,
+      "price_paisa": 120000,
+      "sample_type": "Serum / Plasma",
+      "short_name": "Thyroid Profile (Total)",
+      "specimen_type": "Multiple specimens as applicable",
+      "test_type": "Panel",
+      "unit": "Panel",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "PRO-0029",
+      "container": "Standard Container",
+      "department": "Profiles / Packages",
+      "is_active": true,
+      "method": "Multi-analyte Immunoassay / Rapid Combo",
+      "name": "DENGUE COMBO (NS1 + IgM + IgG)",
+      "parameters": null,
+      "price_npr": 1200,
+      "price_paisa": 120000,
+      "sample_type": "Serum / Plasma",
+      "short_name": "Dengue Combo",
+      "specimen_type": "Multiple specimens as applicable",
+      "test_type": "Panel",
+      "unit": "Panel",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0001",
+      "container": "Plain/SST or specified collection",
+      "department": "Serology / Infectious Disease",
+      "is_active": true,
+      "method": "4th Generation Rapid Immunochromatography (Ag/Ab)",
+      "name": "HIV 1/2 Ag/Ab 4th Generation",
+      "parameters": [
+        {
+          "code": "SER-0001",
+          "interpretation_config": null,
+          "name": "HIV 1/2 Ag/Ab 4th Generation",
+          "options": null,
+          "unit": "Index/S/CO",
+          "value_type": "Text"
+        }
+      ],
+      "price_npr": 500,
+      "price_paisa": 50000,
+      "sample_type": "Serum/Plasma",
+      "short_name": "SER-0001",
+      "specimen_type": "Serum/Plasma",
+      "test_type": "Single",
+      "unit": "Index/S/CO",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0004",
+      "container": "Plain/SST or specified collection",
+      "department": "Serology / Infectious Disease",
+      "is_active": true,
+      "method": "Flocculation / Carbon Particle Agglutination",
+      "name": "HBsAg",
+      "parameters": [
+        {
+          "code": "SER-0004",
+          "interpretation_config": null,
+          "name": "HBsAg",
+          "options": null,
+          "unit": "Index/S/CO",
+          "value_type": "Text"
+        }
+      ],
+      "price_npr": 350,
+      "price_paisa": 35000,
+      "sample_type": "Serum/Plasma",
+      "short_name": "SER-0004",
+      "specimen_type": "Serum/Plasma",
+      "test_type": "Single",
+      "unit": "Index/S/CO",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0010",
+      "container": "Plain/SST or specified collection",
+      "department": "Serology / Infectious Disease",
+      "is_active": true,
+      "method": "Latex Agglutination / Immunoturbidimetry",
+      "name": "Anti-HCV",
+      "parameters": [
+        {
+          "code": "SER-0010",
+          "interpretation_config": null,
+          "name": "Anti-HCV",
+          "options": null,
+          "unit": "Index/S/CO",
+          "value_type": "Text"
+        }
+      ],
+      "price_npr": 450,
+      "price_paisa": 45000,
+      "sample_type": "Serum/Plasma",
+      "short_name": "SER-0010",
+      "specimen_type": "Serum/Plasma",
+      "test_type": "Single",
+      "unit": "Index/S/CO",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "Dengue NS1",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "NS1",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "Dengue Antigen",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0015",
+      "container": "Plain/SST or specified collection",
+      "department": "Serology / Infectious Disease",
+      "is_active": true,
+      "method": "ELISA/Rapid/CLIA",
+      "name": "Dengue NS1 Antigen",
+      "parameters": [
+        {
+          "code": "SER-0015",
+          "interpretation_config": null,
+          "name": "Dengue NS1 Antigen",
+          "options": null,
+          "unit": "Index",
+          "value_type": "Text"
+        }
+      ],
+      "price_npr": 800,
+      "price_paisa": 80000,
+      "sample_type": "Serum",
+      "short_name": "SER-0015",
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "Index",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0016",
+      "container": "Plain/SST or specified collection",
+      "department": "Serology / Infectious Disease",
+      "is_active": true,
+      "method": "ELISA/CLIA",
+      "name": "Dengue IgM",
+      "parameters": [
+        {
+          "code": "SER-0016",
+          "interpretation_config": null,
+          "name": "Dengue IgM",
+          "options": null,
+          "unit": "Index",
+          "value_type": "Text"
+        }
+      ],
+      "price_npr": 800,
+      "price_paisa": 80000,
+      "sample_type": "Serum",
+      "short_name": "SER-0016",
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "Index",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": null,
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0017",
+      "container": "Plain/SST or specified collection",
+      "department": "Serology / Infectious Disease",
+      "is_active": true,
+      "method": "ELISA/CLIA",
+      "name": "Dengue IgG",
+      "parameters": [
+        {
+          "code": "SER-0017",
+          "interpretation_config": null,
+          "name": "Dengue IgG",
+          "options": null,
+          "unit": "Index",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 0,
+      "price_paisa": 0,
+      "sample_type": "Serum",
+      "short_name": "SER-0017",
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "Index",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "Scrub Typhus",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Scrub Typhus IgM",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0020",
+      "container": "Plain/SST or specified collection",
+      "department": "Serology / Infectious Disease",
+      "is_active": true,
+      "method": "ELISA",
+      "name": "Scrub Typhus IgM",
+      "parameters": [
+        {
+          "code": "SER-0020",
+          "interpretation_config": null,
+          "name": "Scrub Typhus IgM",
+          "options": null,
+          "unit": "Index",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 1000,
+      "price_paisa": 100000,
+      "sample_type": "Serum",
+      "short_name": "SER-0020",
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": "Index",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "H pylori",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "H. pylori",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "H. pylori Antigen (Stool)",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "H Pylori Stool",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0043",
+      "container": "Plain/SST or specified collection",
+      "department": "Serology / Infectious Disease",
+      "is_active": true,
+      "method": "Immunoassay",
+      "name": "H. pylori Stool Antigen",
+      "parameters": [
+        {
+          "code": "SER-0043",
+          "interpretation_config": null,
+          "name": "H. pylori Stool Antigen",
+          "options": null,
+          "unit": "Qualitative",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 1000,
+      "price_paisa": 100000,
+      "sample_type": "Stool",
+      "short_name": "SER-0043",
+      "specimen_type": "Stool",
+      "test_type": "Single",
+      "unit": "Qualitative",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "HIV Rapid",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "HIV Rapid Screening",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "HIV Screening",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "HIV Rapid Test",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "एचआईभी र्‍यापिड",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "एचआईभी स्क्रिनिङ",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0086",
+      "container": "Container per approved laboratory SOP",
+      "department": "Serology / Infectious Disease",
+      "is_active": true,
+      "method": "Rapid Immunochromatography (Rapid Screening Test)",
+      "name": "HUMAN IMMUNODEFICIENCY VIRUS (HIV), RAPID SCREENING TEST",
+      "parameters": [
+        {
+          "code": "SER-0086",
+          "interpretation_config": {
+            "control": "Select"
+          },
+          "name": "HUMAN IMMUNODEFICIENCY VIRUS (HIV), RAPID SCREENING TEST",
+          "options": [
+            "Negative",
+            "Reactive"
+          ],
+          "unit": null,
+          "value_type": "Select"
+        }
+      ],
+      "price_npr": 500,
+      "price_paisa": 50000,
+      "sample_type": "Serum",
+      "short_name": "HIV Rapid",
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": null,
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "HBsAg Rapid",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "HBs Ag Rapid",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "HBsAg Rapid Screening",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Hepatitis B Rapid",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "हेपाटाइटिस बी र्‍यापिड",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0087",
+      "container": "Container per approved laboratory SOP",
+      "department": "Serology / Infectious Disease",
+      "is_active": true,
+      "method": "Rapid Immunochromatography (Rapid Screening Test)",
+      "name": "HEPATITIS B SURFACE ANTIGEN (HBsAg), RAPID SCREENING TEST",
+      "parameters": [
+        {
+          "code": "SER-0087",
+          "interpretation_config": {
+            "control": "Select"
+          },
+          "name": "HEPATITIS B SURFACE ANTIGEN (HBsAg), RAPID SCREENING TEST",
+          "options": [
+            "Negative",
+            "Reactive"
+          ],
+          "unit": null,
+          "value_type": "Select"
+        }
+      ],
+      "price_npr": 600,
+      "price_paisa": 60000,
+      "sample_type": "Serum",
+      "short_name": "HBsAg Rapid",
+      "specimen_type": "Serum",
+      "test_type": "Single",
+      "unit": null,
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "HCV Rapid",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Anti-HCV Rapid",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "HCV Rapid Screening",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Hepatitis C Rapid",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "हेपाटाइटिस सी र्‍यापिड",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0088",
+      "container": "Container Pending Lab SOP",
+      "department": "Serology / Infectious Disease",
+      "is_active": true,
+      "method": "Rapid Immunochromatography (Rapid Screening Test)",
+      "name": "HCV RAPID SCREENING TEST",
+      "parameters": [
+        {
+          "code": "SER-0088",
+          "interpretation_config": {
+            "control": "Select"
+          },
+          "name": "HCV RAPID SCREENING TEST",
+          "options": [
+            "Negative",
+            "Reactive"
+          ],
+          "unit": null,
+          "value_type": "Select"
+        }
+      ],
+      "price_npr": 600,
+      "price_paisa": 60000,
+      "sample_type": "Specimen Pending Validation",
+      "short_name": "HCV Rapid",
+      "specimen_type": "Specimen Pending Validation",
+      "test_type": "Single",
+      "unit": null,
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "Scrub Typhus FIA",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Scrub Typhus (FIA IgM/IgG)",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "SER-0089",
+      "container": "Container Pending Lab SOP",
+      "department": "Serology / Infectious Disease",
+      "is_active": true,
+      "method": "Fluorescence Immunoassay (FIA)",
+      "name": "Scrub Typhus (FIA IgM/IgG)",
+      "parameters": null,
+      "price_npr": 1000,
+      "price_paisa": 100000,
+      "sample_type": "Specimen Pending Validation",
+      "short_name": "Scrub Typhus FIA",
+      "specimen_type": "Specimen Pending Validation",
+      "test_type": "Single",
+      "unit": null,
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "AFP",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "Alpha-Fetoprotein",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Alpha Fetoprotein",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "TUM-0001",
+      "container": "Plain/SST",
+      "department": "Tumor Markers",
+      "is_active": true,
+      "method": "CLIA/ECLIA/Validated immunoassay",
+      "name": "AFP",
+      "parameters": [
+        {
+          "code": "TUM-0001",
+          "interpretation_config": null,
+          "name": "AFP",
+          "options": null,
+          "unit": "ng/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 1400,
+      "price_paisa": 140000,
+      "sample_type": "Serum / Plasma",
+      "short_name": "TUM-0001",
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "ng/mL",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "CEA",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "Carcinoembryonic Antigen",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "TUM-0002",
+      "container": "Plain/SST",
+      "department": "Tumor Markers",
+      "is_active": true,
+      "method": "CLIA/ECLIA/Validated immunoassay",
+      "name": "CEA",
+      "parameters": [
+        {
+          "code": "TUM-0002",
+          "interpretation_config": null,
+          "name": "CEA",
+          "options": null,
+          "unit": "ng/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 1400,
+      "price_paisa": 140000,
+      "sample_type": "Serum / Plasma",
+      "short_name": "TUM-0002",
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "ng/mL",
+      "validation_status": "REQUIRES_VALIDATION"
+    },
+    {
+      "aliases": [
+        {
+          "alias_name": "PSA",
+          "alias_type": "Acronym"
+        },
+        {
+          "alias_name": "Total PSA",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "PSA Total",
+          "alias_type": "Synonym"
+        },
+        {
+          "alias_name": "Prostate Specific Antigen",
+          "alias_type": "Synonym"
+        }
+      ],
+      "billing_enabled": true,
+      "clinical_reporting_enabled": false,
+      "code": "TUM-0007",
+      "container": "Plain/SST",
+      "department": "Tumor Markers",
+      "is_active": true,
+      "method": "CLIA/ECLIA/Validated immunoassay",
+      "name": "PSA, Total",
+      "parameters": [
+        {
+          "code": "TUM-0007",
+          "interpretation_config": null,
+          "name": "PSA, Total",
+          "options": null,
+          "unit": "ng/mL",
+          "value_type": "Numeric"
+        }
+      ],
+      "price_npr": 1200,
+      "price_paisa": 120000,
+      "sample_type": "Serum / Plasma",
+      "short_name": "TUM-0007",
+      "specimen_type": "Serum / Plasma",
+      "test_type": "Single",
+      "unit": "ng/mL",
+      "validation_status": "REQUIRES_VALIDATION"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+name = "bimal-pathology-sms-dispatcher"
+main = "src/index.ts"
+compatibility_date = "2026-08-28"
+
+[vars]
+DISPATCH_ENABLED = "false"

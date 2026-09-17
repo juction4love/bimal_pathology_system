@@ -1,0 +1,24 @@
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/404.html
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/index.html
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/r/*
+  Cache-Control: private, no-store, max-age=0, must-revalidate
+  Pragma: no-cache
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: no-referrer
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://rncjxstujioagcezvfkb.supabase.co; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'
+
+/release-manifest.json
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/service-worker.js
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/manifest.webmanifest
+  Cache-Control: public, max-age=300, must-revalidate

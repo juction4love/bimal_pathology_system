@@ -1,0 +1,29 @@
+{
+  "name": "@bimal-pathology/report-artifacts",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260827.1",
+    "@napi-rs/canvas": "^1.0.8",
+    "@types/pixelmatch": "^5.2.6",
+    "@types/pngjs": "^6.0.5",
+    "@types/qrcode": "^1.5.6",
+    "jsqr": "^1.4.0",
+    "pdfjs-dist": "^6.2.108",
+    "pixelmatch": "^7.2.0",
+    "pngjs": "^7.0.0",
+    "typescript": "^5.9.3",
+    "wrangler": "^4.127.1"
+  },
+  "dependencies": {
+    "@fontsource-variable/noto-sans-devanagari": "^5.3.0",
+    "@pdf-lib/fontkit": "^1.1.1",
+    "pdf-lib": "^1.17.1",
+    "qrcode": "^1.5.4",
+    "regenerator-runtime": "^0.14.1"
+  }
+}

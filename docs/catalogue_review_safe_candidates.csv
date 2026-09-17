@@ -1,0 +1,21 @@
+canonical_category,unique_test_code,canonical_test_name,is_profile_or_package,specimen,sample_volume,method,price_npr,reporting_type,duplicate_conflict_status,existing_new_status,reference_range_readiness,proposed_state
+Clinical Biochemistry,CHOL_TOTAL,Total Cholesterol,false,Fasting Serum,1 ml,,300,NoReporting,no exact baseline test,new,not_ready,hold
+Clinical Biochemistry,HDL_CHOL,HDL Cholesterol,false,Fasting Serum,1 ml,,350,NoReporting,no exact baseline test,new,not_ready,inactive_review
+Clinical Biochemistry,LDL_CHOL,LDL Cholesterol,false,Fasting Serum,1 ml,,350,NoReporting,no exact baseline test,new,not_ready,inactive_review
+Clinical Biochemistry,TRIGLYCERIDES,Triglycerides,false,Serum,2 ml,,300,NoReporting,component of existing lipid profile,new_individual,not_ready,inactive_review
+Clinical Biochemistry,BILIRUBIN_TD,Bilirubin Total and Direct,true,Serum,1 ml,,300,NoReporting,overlaps existing LFT parameters,new_profile_candidate,not_ready,inactive_review
+Clinical Biochemistry,AST,AST / SGOT,false,Serum,2 ml,,250,NoReporting,component of existing LFT,new_individual,not_ready,inactive_review
+Clinical Biochemistry,ALT,ALT / SGPT,false,Serum,2 ml,,250,NoReporting,component of existing LFT,new_individual,not_ready,inactive_review
+Clinical Biochemistry,ALP,Alkaline Phosphatase,false,Serum,1 ml,,300,NoReporting,component of existing LFT,new_individual,not_ready,inactive_review
+Clinical Biochemistry,GGT,Gamma-Glutamyl Transferase,false,Serum,2 ml,,800,NoReporting,no exact baseline test,new,not_ready,inactive_review
+Clinical Biochemistry,LDH,Lactate Dehydrogenase,false,Body Fluid / Serum,2 ml,,800,NoReporting,multi-specimen review required,new,not_ready,inactive_review
+Clinical Biochemistry,LIPASE,Lipase,false,Serum / Body Fluid,2 ml,,1000,NoReporting,multi-specimen review required,new,not_ready,inactive_review
+Clinical Biochemistry,AMYLASE,Amylase,false,Serum / Body Fluid,1 ml,,800,NoReporting,multi-specimen review required,new,not_ready,inactive_review
+Clinical Biochemistry,CK_TOTAL,Creatine Kinase Total,false,Serum,1 ml,,700,NoReporting,no exact baseline test,new,not_ready,inactive_review
+Clinical Biochemistry,CK_MB,Creatine Kinase MB,false,Serum,1 ml,,2000,NoReporting,no exact baseline test,new,not_ready,inactive_review
+Clinical Biochemistry,BICARBONATE,Bicarbonate,false,Serum,1 ml,,1600,NoReporting,no exact baseline test,new,not_ready,inactive_review
+Clinical Biochemistry,GLOBULIN,Globulin,false,Serum,2 ml,,600,NoReporting,existing calculated LFT parameter conflict,new_individual,not_ready,inactive_review
+Clinical Biochemistry,EGFR,Estimated Glomerular Filtration Rate,false,Serum,2 ml,,650,NoReporting,calculation dependencies not supplied,new,not_ready,inactive_review
+Hematology,RETIC_COUNT,Reticulocyte Count,false,Whole Blood EDTA,3 ml,,600,NoReporting,no exact baseline test,new,not_ready,inactive_review
+Hematology,AEC,Absolute Eosinophil Count,false,Whole Blood EDTA,3 ml,,400,NoReporting,CBC-derived relationship requires review,new,not_ready,inactive_review
+Hematology,ANC,Absolute Neutrophil Count,false,Whole Blood EDTA,3 ml,,400,NoReporting,CBC-derived relationship requires review,new,not_ready,inactive_review

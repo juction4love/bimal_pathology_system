@@ -1,0 +1,25 @@
+import { lazyWithChunkRecovery } from './lazyWithChunkRecovery';
+
+export const LoginPage = lazyWithChunkRecovery('LoginPage', () => import('@/features/auth/LoginPage').then((module) => ({ default: module.LoginPage })));
+export const ForgotPasswordPage = lazyWithChunkRecovery('ForgotPasswordPage', () => import('@/features/auth/ForgotPasswordPage').then((module) => ({ default: module.ForgotPasswordPage })));
+export const ResetPasswordPage = lazyWithChunkRecovery('ResetPasswordPage', () => import('@/features/auth/ResetPasswordPage').then((module) => ({ default: module.ResetPasswordPage })));
+export const ChangePasswordPage = lazyWithChunkRecovery('ChangePasswordPage', () => import('@/features/auth/ChangePasswordPage').then((module) => ({ default: module.ChangePasswordPage })));
+export const DashboardPage = lazyWithChunkRecovery('DashboardPage', () => import('@/features/dashboard/DashboardPage').then((module) => ({ default: module.DashboardPage })));
+export const NewBillPage = lazyWithChunkRecovery('NewBillPage', () => import('@/features/billing/NewBillPage').then((module) => ({ default: module.NewBillPage })));
+export const BillListPage = lazyWithChunkRecovery('BillListPage', () => import('@/features/billing/BillListPage').then((module) => ({ default: module.BillListPage })));
+export const PatientsPage = lazyWithChunkRecovery('PatientsPage', () => import('@/features/patients/PatientsPage').then((module) => ({ default: module.PatientsPage })));
+export const SampleAccessioningPage = lazyWithChunkRecovery('SampleAccessioningPage', () => import('@/features/samples/SampleAccessioningPage').then((module) => ({ default: module.SampleAccessioningPage })));
+export const WorklistPage = lazyWithChunkRecovery('WorklistPage', () => import('@/features/worklist/WorklistPage').then((module) => ({ default: module.WorklistPage })));
+export const ResultEntryPage = lazyWithChunkRecovery('ResultEntryPage', () => import('@/features/worklist/ResultEntryPage').then((module) => ({ default: module.ResultEntryPage })));
+export const ReportsPage = lazyWithChunkRecovery('ReportsPage', () => import('@/features/reports/ReportsPage').then((module) => ({ default: module.ReportsPage })));
+export const CataloguePage = lazyWithChunkRecovery('CataloguePage', () => import('@/features/catalogue/CataloguePage').then((module) => ({ default: module.CataloguePage })));
+export const ReferringDoctorsPage = lazyWithChunkRecovery('ReferringDoctorsPage', () => import('@/features/personnel/ReferringDoctorsPage').then((module) => ({ default: module.ReferringDoctorsPage })));
+export const ReportingPersonnelPage = lazyWithChunkRecovery('ReportingPersonnelPage', () => import('@/features/personnel/ReportingPersonnelPage').then((module) => ({ default: module.ReportingPersonnelPage })));
+export const UserManagementPage = lazyWithChunkRecovery('UserManagementPage', () => import('@/features/admin/UserManagementPage').then((module) => ({ default: module.UserManagementPage })));
+export const RolePermissionsPage = lazyWithChunkRecovery('RolePermissionsPage', () => import('@/features/admin/RolePermissionsPage').then((module) => ({ default: module.RolePermissionsPage })));
+export const AuditLogPage = lazyWithChunkRecovery('AuditLogPage', () => import('@/features/admin/AuditLogPage').then((module) => ({ default: module.AuditLogPage })));
+export const SmsDeliveryPage = lazyWithChunkRecovery('SmsDeliveryPage', () => import('@/features/admin/SmsDeliveryPage').then((module) => ({ default: module.SmsDeliveryPage })));
+export const SettingsPage = lazyWithChunkRecovery('SettingsPage', () => import('@/features/settings/SettingsPage').then((module) => ({ default: module.SettingsPage })));
+export const PublicReportPage = lazyWithChunkRecovery('PublicReportPage', () => import('@/features/public/PublicReportPage').then((module) => ({ default: module.PublicReportPage })));
+export const OutsourceTrackingPage = lazyWithChunkRecovery('OutsourceTrackingPage', () => import('@/features/outsource/OutsourceTrackingPage').then((module) => ({ default: module.OutsourceTrackingPage })));
+export const HmisMonthlyReportPage = lazyWithChunkRecovery('HmisMonthlyReportPage', () => import('@/features/hmis/HmisMonthlyReportPage').then((module) => ({ default: module.HmisMonthlyReportPage })));

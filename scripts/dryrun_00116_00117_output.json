@@ -1,0 +1,58 @@
+{
+  "combined_verification": {
+    "has_check_order_report_readiness": true,
+    "has_clone_test_easy": true,
+    "has_create_patient_bill_order_with_panel_service": true,
+    "has_delete_analyzer_mapping_easy": true,
+    "has_delete_parameter_guarded": true,
+    "has_delete_range_guarded": true,
+    "has_delete_test_guarded": true,
+    "has_get_test_history": true,
+    "has_guard_clinical_result_write": true,
+    "has_reorder_parameters_easy": true,
+    "has_replace_role_permission_matrix": true,
+    "has_save_analyzer_mapping_easy": true,
+    "has_save_parameter_easy": true,
+    "has_save_range_easy": true,
+    "has_save_test_aliases_easy": true,
+    "has_save_test_easy": true,
+    "has_save_test_results_unversioned_internal": true,
+    "has_search_laboratory_worklist": true
+  },
+  "historical_bill_items_delta": 0,
+  "historical_bills_delta": 0,
+  "historical_order_items_delta": 0,
+  "historical_orders_delta": 0,
+  "historical_reports_delta": 0,
+  "historical_results_delta": 0,
+  "perm_verification": {
+    "admin_can_manage_catalogue": true,
+    "lab_tech_can_manage_catalogue": true
+  },
+  "post_state": {
+    "post_aliases": 358,
+    "post_bill_items": 0,
+    "post_bills": 0,
+    "post_order_items": 0,
+    "post_orders": 0,
+    "post_parameters": 1128,
+    "post_ranges": 93,
+    "post_rate_versions": 40,
+    "post_reports": 0,
+    "post_test_results": 0,
+    "post_total_tests": 1135
+  },
+  "pre_state": {
+    "pre_aliases": 358,
+    "pre_bill_items": 0,
+    "pre_bills": 0,
+    "pre_order_items": 0,
+    "pre_orders": 0,
+    "pre_parameters": 1128,
+    "pre_ranges": 93,
+    "pre_rate_versions": 40,
+    "pre_reports": 0,
+    "pre_test_results": 0,
+    "pre_total_tests": 1135
+  }
+}

@@ -1,0 +1,47 @@
+import fs from 'node:fs';
+
+const read = (path) => fs.readFileSync(path, 'utf8');
+const payment = read('supabase/migrations/00043_payment_receivables_integrity.sql');
+const report = read('supabase/migrations/00041_standardize_report_ready_sms.sql');
+const hardening = read('supabase/migrations/00075_catalogue_readiness_approval_workflow.sql');
+const edge = read('supabase/functions/dispatch-sms/index.ts');
+const cloud = read('cloudflare/sms-dispatcher/src/index.ts');
+const cloudConfig = read('cloudflare/sms-dispatcher/wrangler.toml');
+const gateway = read('tools/sms-gateway/SupabaseQueueClient.cs');
+const provider = read('tools/sms-gateway/SparrowClient.cs');
+const admin = read('src/features/admin/SmsDeliveryPage.tsx');
+let passed = 0;
+const check = (value, label) => { if (!value) throw new Error(`FAIL: ${label}`); passed++; console.log(`PASS: ${label}`); };
+
+check(payment.includes("'PAYMENT_CONFIRMATION:'||v_payment.id::TEXT") && payment.includes('ON CONFLICT(idempotency_key)DO NOTHING'), 'payment enqueue is transaction-scoped and idempotent');
+check(payment.includes("Bimal Pathology: Payment of NPR ") && payment.includes(" received for Lab No: ") && payment.includes(". Thank you."), 'payment wording remains approved');
+check(report.includes("'REPORT_READY:' || p_report_id::TEXT || ':' || v_report.version::TEXT") && report.includes('ON CONFLICT (idempotency_key) DO NOTHING'), 'report enqueue is version-scoped and idempotent');
+check(report.includes("^https://lis[.]bimalpathology[.]com[.]np/r/") && !report.includes('storage URL'), 'report message uses only the production opaque-token route');
+check(report.includes("v_report.status NOT IN ('SignedOff', 'Amended')"), 'unsigned reports cannot queue Report Ready');
+check(hardening.includes('normalize_nepal_sms_mobile') && hardening.includes("'^(97|98)[0-9]{8}$'"), 'one strict Nepal mobile normalizer guards queue rows');
+check(hardening.includes('claim_next_sms_gateway_item') && hardening.includes('FOR UPDATE SKIP LOCKED'), 'atomic concurrent claim uses skip locked');
+check(hardening.includes('lease_owner') && hardening.includes('lease_expires_at'), 'claims are worker-leased');
+check(hardening.includes('mark_sms_provider_call_started') && hardening.includes('ProviderOutcomeUnknown'), 'provider-call interruption is distinguished and quarantined');
+check(hardening.includes("status='Sent'") && hardening.includes("already_completed',true"), 'Sent completion is idempotent');
+check(hardening.includes("next_status:=CASE WHEN NOT p_retryable") && hardening.includes("THEN 'DeadLetter' ELSE 'Failed'"), 'bounded retry separates Failed from DeadLetter');
+check(hardening.includes('SMS lease ownership conflict'), 'wrong-worker completion is rejected');
+check(hardening.includes('retry_sms_delivery') && hardening.includes("Only Failed or DeadLetter SMS may be retried"), 'manual retry is state guarded');
+check(hardening.includes("Sent SMS cannot be retried") && hardening.includes('SMS_MANUAL_RETRY'), 'Sent retry is refused and authorized retry is audited');
+check(hardening.includes("has_permission('can_manage_users') OR public.is_super_admin()"), 'manual retry is Admin-only');
+check(hardening.includes('FROM PUBLIC,anon,authenticated') && hardening.includes('TO service_role'), 'gateway mutation RPCs are service-role-only');
+check(gateway.includes('claim_next_sms_gateway_item') && gateway.includes('complete_sms_gateway_item'), 'Windows Gateway uses hardened lease RPCs');
+check(gateway.includes('mark_sms_provider_call_started'), 'Windows Gateway records provider boundary before send');
+check(provider.includes('https://api.sparrowsms.com/v2/sms/') && provider.includes('FormUrlEncodedContent'), 'Windows Gateway alone holds Sparrow transport implementation');
+check(provider.includes('httpStatus == 200') && provider.includes('parsed.ResponseCode == 200') && provider.includes('parsed.Count >= 1'), 'provider success requires exact acceptance contract');
+check(provider.includes('httpStatus is 408 or 429 || httpStatus >= 500'), 'temporary HTTP failures remain retryable');
+check(edge.includes('providerEnabled = false') && edge.includes('status: 410') && !/sparrowsms|SPARROW_SMS_TOKEN|sms_queue_items/i.test(edge), 'Supabase Edge sender is a non-sending tombstone');
+check(cloud.includes('status: 410') && !/sparrowsms|SPARROW_TOKEN|sms_queue_items/i.test(cloud), 'Cloudflare sender is a non-sending tombstone');
+check(!/SPARROW_API_URL|SPARROW_FROM|queues\.consumers|crons/.test(cloudConfig), 'Cloudflare dispatcher has no provider or queue bindings');
+check(admin.includes('Payment Confirmation') && admin.includes('Report Ready') && admin.includes('DeadLetter'), 'Admin page filters operational SMS types and states');
+check(admin.includes("rpc('retry_sms_delivery'") && admin.includes('Reason for retry'), 'Admin page exposes reasoned manual retry');
+check(!admin.includes('message_body') && !admin.includes('provider_response_json'), 'Admin page omits message bodies and raw provider payloads');
+const frontend = fs.readdirSync('src', { recursive: true }).filter((name) => /\.(ts|tsx|js|jsx)$/.test(name)).map((name) => read(`src/${name}`)).join('\n');
+check(!/SPARROW_SMS_TOKEN|SPARROW_TOKEN|api\.sparrowsms\.com/.test(frontend), 'frontend contains no Sparrow credential or endpoint');
+check(!frontend.includes("from('sms_queue_items').insert") && !frontend.includes("from('sms_queue_items').update"), 'frontend has no direct SMS queue mutation');
+
+console.log(`\nPhase 23 transactional SMS verification: ${passed} passed, 0 failed`);
