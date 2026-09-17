@@ -27,12 +27,79 @@ export function rupeesToPaisa(rupees: number | string): number {
 
 /** Strict form parser: accepts at most two decimal places and never persists a float. */
 export function parseRupeesToPaisa(value: string): number | null {
-  const normalized = value.trim();
+  let normalized = value.trim();
+  if (normalized.startsWith('.')) normalized = '0' + normalized;
   if (!/^(?:0|[1-9][0-9]*)(?:\.[0-9]{1,2})?$/.test(normalized)) return null;
   const [whole, fraction = ''] = normalized.split('.');
   const paisa = Number(whole) * 100 + Number(fraction.padEnd(2, '0'));
   return Number.isSafeInteger(paisa) ? paisa : null;
 }
+
+/**
+ * Validates intermediate user typing for money inputs (digits, optional one dot, at most 2 decimal places).
+ * Allows intermediate states such as "", "0", "3", "3.", "3.0", "3.00", "500", "500.00".
+ */
+export function isValidMoneyIntermediate(value: string): boolean {
+  return value === '' || /^\d*(\.\d{0,2})?$/.test(value);
+}
+
+/**
+ * Validates committed money string on blur/submit and returns validation outcome + integer paisa.
+ */
+export function validateMoneyCommitted(
+  value: string,
+  options: { required?: boolean; fieldName?: string; allowZero?: boolean; maxPaisa?: number } = {}
+): { isValid: boolean; paisa: number | null; error: string | null; normalizedText: string } {
+  const { required = false, fieldName = 'Rate', allowZero = true, maxPaisa } = options;
+  const trimmed = value.trim();
+
+  if (trimmed === '') {
+    if (required) {
+      return { isValid: false, paisa: null, error: `${fieldName} is required.`, normalizedText: '' };
+    }
+    return { isValid: true, paisa: 0, error: null, normalizedText: '' };
+  }
+
+  let cleanVal = trimmed;
+  if (cleanVal.startsWith('.')) cleanVal = '0' + cleanVal;
+  if (cleanVal.endsWith('.')) cleanVal = cleanVal.slice(0, -1);
+  if (cleanVal === '') cleanVal = '0';
+  const paisa = parseRupeesToPaisa(cleanVal);
+  if (paisa === null || paisa < 0) {
+    return {
+      isValid: false,
+      paisa: null,
+      error: `${fieldName} must be a non-negative amount with no more than two decimal places.`,
+      normalizedText: trimmed,
+    };
+  }
+
+  if (!allowZero && paisa === 0) {
+    return {
+      isValid: false,
+      paisa: null,
+      error: `NPR 0 is not authorized for ${fieldName.toLowerCase()}. Enter the agreed rate.`,
+      normalizedText: '0.00',
+    };
+  }
+
+  if (maxPaisa !== undefined && paisa > maxPaisa) {
+    return {
+      isValid: false,
+      paisa,
+      error: `${fieldName} cannot exceed ${formatPaisa(maxPaisa)}.`,
+      normalizedText: (paisa / 100).toFixed(2),
+    };
+  }
+
+  return {
+    isValid: true,
+    paisa,
+    error: null,
+    normalizedText: (paisa / 100).toFixed(2),
+  };
+}
+
 
 /**
  * Converts integer paisa to rupees number for form input display

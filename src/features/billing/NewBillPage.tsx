@@ -37,6 +37,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { PageHeader } from '@/components/common/PageHeader';
 import { MoneyDisplay } from '@/components/common/MoneyDisplay';
+import { MoneyInputField } from '@/components/common/MoneyInputField';
 import { rupeesToPaisa, paisaToRupees, calculateBillTotals, parseRupeesToPaisa } from '@/lib/currency';
 import { formatBsDateIso, formatDualDate } from '@/lib/dateTime';
 import { PAYMENT_MODES, PaymentMode } from '@/config/constants';
@@ -399,21 +400,55 @@ export const NewBillPage: React.FC = () => {
     }
   };
 
-  // Update Manual Price for Item (e.g. IHC)
-  const handleUpdateItemPrice = (testId: string, rupeesVal: string | number) => {
-    const newPaisa = parseRupeesToPaisa(String(rupeesVal));
-    if (newPaisa === null) { setErrorMsg('Rate must be a non-negative amount with no more than two decimal places.'); return; }
+  // Commit Manual Price for Item (e.g. IHC or unconfigured rate)
+  const handleCommitItemPrice = (testId: string, newPaisa: number | null) => {
+    if (newPaisa === null) {
+      setSelectedItems((prev) =>
+        prev.map((item) =>
+          item.test.id === testId ? { ...item, rateResolved: false, isManuallyEdited: true } : item
+        )
+      );
+      return;
+    }
     const selected = selectedItems.find((item) => item.test.id === testId);
-    if (newPaisa === 0 && !selected?.test.allowZeroPriceBilling) { setErrorMsg('NPR 0 is not authorized for this item. Enter the agreed rate.'); return; }
-    if (newPaisa === 0 && !zeroPriceAcknowledgedIds.has(testId)) { setPendingZeroRateTestId(testId); return; }
+    if (newPaisa === 0 && !selected?.test.allowZeroPriceBilling) {
+      setSelectedItems((prev) =>
+        prev.map((item) =>
+          item.test.id === testId ? { ...item, rateResolved: false, isManuallyEdited: true } : item
+        )
+      );
+      return;
+    }
+    if (newPaisa === 0 && !zeroPriceAcknowledgedIds.has(testId)) {
+      setPendingZeroRateTestId(testId);
+      return;
+    }
     const updated = selectedItems.map((item) =>
-      item.test.id === testId ? { ...item, unitPricePaisa: newPaisa, rateResolved: true } : item
+      item.test.id === testId
+        ? {
+            ...item,
+            unitPricePaisa: newPaisa,
+            rateResolved: true,
+            isManuallyEdited: Boolean(!item.test.priceConfigured || item.test.pricePaisa !== newPaisa),
+          }
+        : item
     );
     setSelectedItems(updated);
     const customDiscountPaisa = rupeesToPaisa(customDiscountRupees || 0);
     const newTotals = calculateBillTotals(updated, customDiscountPaisa, 0);
     setPaidRupees(paisaToRupees(newTotals.netPaisa));
   };
+
+  // Update Manual Price for Item (programmatic / direct compatibility wrapper)
+  const handleUpdateItemPrice = (testId: string, rupeesVal: string | number) => {
+    const newPaisa = parseRupeesToPaisa(String(rupeesVal));
+    if (newPaisa === null) {
+      setErrorMsg('Rate must be a non-negative amount with no more than two decimal places.');
+      return;
+    }
+    handleCommitItemPrice(testId, newPaisa);
+  };
+  void handleUpdateItemPrice;
 
   // Update Item Description for Invoice (e.g. IHC - ER/PR/HER2)
   const handleUpdateItemDescription = (testId: string, desc: string) => {
@@ -1054,16 +1089,36 @@ export const NewBillPage: React.FC = () => {
                           <TableCell align="right" sx={{ minWidth: 160 }}>
                             {item.test.allowManualPrice ? (
                               <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-                                <TextField
+                                <MoneyInputField
                                   size="small"
                                   label="Rate (NPR) *"
-                                  value={item.rateResolved ? paisaToRupees(item.unitPricePaisa).toFixed(2) : ''}
-                                  onChange={(e) => handleUpdateItemPrice(item.test.id, e.target.value)}
-                                  inputProps={{ inputMode: 'decimal', style: { textAlign: 'right', fontWeight: 700, fontSize: '0.85rem' } }}
+                                  valuePaisa={item.rateResolved ? item.unitPricePaisa : null}
+                                  required
+                                  allowZero={item.test.allowZeroPriceBilling}
+                                  fieldName="Rate"
+                                  onCommitPaisa={(newPaisa) => handleCommitItemPrice(item.test.id, newPaisa)}
+                                  inputProps={{ style: { textAlign: 'right', fontWeight: 700, fontSize: '0.85rem' } }}
                                   sx={{ width: 140 }}
                                 />
-                                <Typography variant="caption" color="text.secondary" sx={{ mt: 0.25, fontStyle: 'italic' }}>
-                                  {item.test.priceConfigured ? 'Catalogue default — editable agreed rate' : 'Price not configured — enter agreed rate'}
+                                <Typography
+                                  variant="caption"
+                                  sx={{
+                                    mt: 0.25,
+                                    fontWeight: 500,
+                                    color:
+                                      item.test.priceConfigured && item.test.pricePaisa > 0
+                                        ? 'text.secondary'
+                                        : item.isManuallyEdited
+                                        ? 'info.main'
+                                        : 'warning.main',
+                                  }}
+                                >
+                                  {/* Price not configured — enter agreed rate */}
+                                  {item.test.priceConfigured && item.test.pricePaisa > 0
+                                    ? 'Catalogue rate'
+                                    : item.isManuallyEdited
+                                    ? 'Manual rate'
+                                    : 'Default rate — verify'}
                                 </Typography>
                               </Box>
                             ) : (
@@ -1139,15 +1194,24 @@ export const NewBillPage: React.FC = () => {
               {/* Discount Inputs */}
               <Grid container spacing={1.5} sx={{ mb: 2 }}>
                 <Grid item xs={6}>
-                  <TextField
+                  <MoneyInputField
                     fullWidth
-                    type="number"
                     size="small"
                     label="Discount (NPR)"
-                    value={customDiscountRupees}
-                    onChange={(e) => {
-                      const val = e.target.value ? Number(e.target.value) : '';
-                      setCustomDiscountRupees(val);
+                    valuePaisa={customDiscountRupees !== '' ? rupeesToPaisa(customDiscountRupees) : null}
+                    fieldName="Discount"
+                    allowZero={true}
+                    maxPaisa={totals.grossPaisa}
+                    onCommitPaisa={(newPaisa) => {
+                      if (newPaisa === null || newPaisa === 0) {
+                        setCustomDiscountRupees('');
+                        const newTotals = calculateBillTotals(selectedItems, 0, 0);
+                        setPaidRupees(paisaToRupees(newTotals.netPaisa));
+                      } else {
+                        setCustomDiscountRupees(paisaToRupees(newPaisa));
+                        const newTotals = calculateBillTotals(selectedItems, newPaisa, 0);
+                        setPaidRupees(paisaToRupees(newTotals.netPaisa));
+                      }
                     }}
                   />
                 </Grid>
@@ -1182,14 +1246,23 @@ export const NewBillPage: React.FC = () => {
                   </TextField>
                 </Grid>
                 <Grid item xs={6}>
-                  <TextField
+                  <MoneyInputField
                     inputRef={paidAmountInputRef}
                     fullWidth
-                    type="number"
                     size="small"
                     label="Paid Amount (NPR) *"
-                    value={paidRupees}
-                    onChange={(e) => setPaidRupees(e.target.value ? Number(e.target.value) : '')}
+                    valuePaisa={paidRupees !== '' ? rupeesToPaisa(paidRupees) : null}
+                    fieldName="Paid amount"
+                    required
+                    allowZero={true}
+                    maxPaisa={totals.netPaisa}
+                    onCommitPaisa={(newPaisa) => {
+                      if (newPaisa === null) {
+                        setPaidRupees('');
+                      } else {
+                        setPaidRupees(paisaToRupees(newPaisa));
+                      }
+                    }}
                     onKeyDown={handleEnterKeyNavigation}
                   />
                 </Grid>

@@ -43,7 +43,7 @@ import { formatAdDateTime, formatDualDate } from '@/lib/dateTime';
 import { usePermissions } from '@/hooks/usePermissions';
 import { PERMISSION_KEYS } from '@/types/permissions';
 import { supabase } from '@/lib/supabase';
-import { parseRupeesToPaisa } from '@/lib/currency';
+import { parseRupeesToPaisa, isValidMoneyIntermediate } from '@/lib/currency';
 import { safeErrorMessage } from '@/lib/safeError';
 import { SmartMessageDialog } from '@/components/common/SmartMessageDialog';
 import { PAYMENT_MODES, PaymentMode } from '@/config/constants';
@@ -379,7 +379,7 @@ export const BillListPage: React.FC = () => {
         <DialogContent dividers>
           <Box sx={{ display: 'grid', gap: 2, pt: 0.5 }}>
             <Alert severity="info">Bill total: <strong>NPR {((selectedBill?.net_amount_paisa || 0) / 100).toFixed(2)}</strong> · Paid: <strong>NPR {((selectedBill?.paid_amount_paisa || 0) / 100).toFixed(2)}</strong> · Due: <strong>NPR {((selectedBill?.due_amount_paisa || 0) / 100).toFixed(2)}</strong></Alert>
-            <TextField required label="Amount received (NPR)" value={paymentAmount} onChange={(e) => setPaymentAmount(e.target.value)} inputProps={{ inputMode: 'decimal' }} helperText="One immutable receipt will be created for this amount." />
+            <TextField required label="Amount received (NPR)" value={paymentAmount} onChange={(e) => { if (isValidMoneyIntermediate(e.target.value)) setPaymentAmount(e.target.value); }} inputProps={{ inputMode: 'decimal' }} helperText="One immutable receipt will be created for this amount." />
             <TextField select required label="Payment method" value={paymentMode} onChange={(e) => setPaymentMode(e.target.value as PaymentMode)}>{Object.values(PAYMENT_MODES).map((mode) => <MenuItem key={mode} value={mode}>{mode}</MenuItem>)}</TextField>
             {paymentMode !== PAYMENT_MODES.CASH && <TextField required label="Transaction reference" value={paymentReference} onChange={(e) => setPaymentReference(e.target.value)} inputProps={{ maxLength: 100 }} />}
             <TextField label="Remarks (optional)" value={paymentRemarks} onChange={(e) => setPaymentRemarks(e.target.value)} multiline rows={2} />
