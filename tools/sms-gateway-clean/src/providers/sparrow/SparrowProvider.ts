@@ -1,4 +1,5 @@
 import type { SmsMessage, SmsProvider, SmsProviderResult } from '../SmsProvider.js';
+import { containsSmsLink } from '../SmsContentSafety.js';
 
 interface SparrowPayload { response_code?: number; response?: string; message_id?: string; count?: number }
 
@@ -15,6 +16,9 @@ export class SparrowProvider implements SmsProvider {
     if (!this.endpoint.startsWith('https://')) throw new Error('SPARROW_ENDPOINT_INSECURE');
   }
   async send(message: SmsMessage, signal: AbortSignal): Promise<SmsProviderResult> {
+    if (containsSmsLink(message.body)) {
+      return { outcome: 'permanent_failure', safeErrorCode: 'SMS_URL_BLOCKED' };
+    }
     this.validateConfiguration();
     const form = new URLSearchParams([['token', this.token], ['from', this.sender], ['to', message.recipient], ['text', message.body]]);
     let response: Response;

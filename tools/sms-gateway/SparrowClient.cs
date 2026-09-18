@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text.Json;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -29,6 +31,11 @@ namespace BimalPathology.SmsGateway
 
         public async Task<SparrowSendResult> SendSmsAsync(string recipientPhone, string messageBody, CancellationToken ct = default)
         {
+            // Mirror SmsContentSafety.ts for the legacy sender; never transmit or log rejected content.
+            var normalizedBody = Regex.Replace(messageBody.Normalize(NormalizationForm.FormKC), @"[\u200B-\u200D\uFEFF]", "");
+            if (Regex.IsMatch(normalizedBody, @"[a-z][a-z0-9+.-]*://|https?:|www\.|bimalpathology|(?:[\p{L}\p{N}](?:[\p{L}\p{N}-]*[\p{L}\p{N}])?\.)+[\p{L}]{2,63}\b|(?:\d{1,3}\.){3}\d{1,3}|/(?:r|o)/[a-z0-9_-]+|mailto:|tel:", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
+                return new SparrowSendResult(false, null, null, null, "SMS_URL_BLOCKED", "SMS_URL_BLOCKED", false);
+
             var form = new List<KeyValuePair<string, string>>
             {
                 new("token", _token),

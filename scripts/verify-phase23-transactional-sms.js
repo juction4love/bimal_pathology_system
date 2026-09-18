@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+const smsPolicy = fs.readFileSync('supabase/migrations/00122_url_free_sms_notifications.sql', 'utf8');
 
 const read = (path) => fs.readFileSync(path, 'utf8');
 const payment = read('supabase/migrations/00043_payment_receivables_integrity.sql');
@@ -16,7 +17,7 @@ const check = (value, label) => { if (!value) throw new Error(`FAIL: ${label}`);
 check(payment.includes("'PAYMENT_CONFIRMATION:'||v_payment.id::TEXT") && payment.includes('ON CONFLICT(idempotency_key)DO NOTHING'), 'payment enqueue is transaction-scoped and idempotent');
 check(payment.includes("Bimal Pathology: Payment of NPR ") && payment.includes(" received for Lab No: ") && payment.includes(". Thank you."), 'payment wording remains approved');
 check(report.includes("'REPORT_READY:' || p_report_id::TEXT || ':' || v_report.version::TEXT") && report.includes('ON CONFLICT (idempotency_key) DO NOTHING'), 'report enqueue is version-scoped and idempotent');
-check(report.includes("^https://lis[.]bimalpathology[.]com[.]np/r/") && !report.includes('storage URL'), 'report message uses only the production opaque-token route');
+check(smsPolicy.includes('Bimal Pathology: Your laboratory report is ready. Please collect it from the lab or contact 056-593288. Thank you.') && !smsPolicy.includes('. View report'), 'ReportReady SMS uses the neutral URL-free template');
 check(report.includes("v_report.status NOT IN ('SignedOff', 'Amended')"), 'unsigned reports cannot queue Report Ready');
 check(hardening.includes('normalize_nepal_sms_mobile') && hardening.includes("'^(97|98)[0-9]{8}$'"), 'one strict Nepal mobile normalizer guards queue rows');
 check(hardening.includes('claim_next_sms_gateway_item') && hardening.includes('FOR UPDATE SKIP LOCKED'), 'atomic concurrent claim uses skip locked');

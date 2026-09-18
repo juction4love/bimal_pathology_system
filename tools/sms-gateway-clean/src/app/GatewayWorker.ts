@@ -6,6 +6,7 @@ import type { SmsProvider, SmsProviderResult } from '../providers/SmsProvider.js
 import type { ClaimedSms } from '../supabase/Contracts.js';
 import type { GatewayRpcClient } from '../supabase/GatewayRpcClient.js';
 import { countSmsSegments } from './SmsSegments.js';
+import { containsSmsLink } from '../providers/SmsContentSafety.js';
 
 export class GatewayWorker {
   private readonly inflight = new Set<Promise<void>>();
@@ -49,6 +50,11 @@ export class GatewayWorker {
   }
 
   private async deliver(row: ClaimedSms, outer?: AbortSignal): Promise<void> {
+    if (containsSmsLink(row.message_body)) {
+      await this.queue.rejectLocal(this.config.instanceId, row.id, this.workerId, 'SMS_URL_BLOCKED', outer);
+      await this.logger.warn('sms.content_rejected', { queueId: row.id, code: 'SMS_URL_BLOCKED' });
+      return;
+    }
     const segmentInfo = countSmsSegments(row.message_body);
     if (!/^(97|98)\d{8}$/.test(row.recipient_phone)) { await this.queue.rejectLocal(this.config.instanceId, row.id, this.workerId, 'INVALID_NEPAL_MOBILE', outer); return; }
     if (!row.message_body) { await this.queue.rejectLocal(this.config.instanceId, row.id, this.workerId, 'EMPTY_MESSAGE', outer); return; }

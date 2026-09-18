@@ -11,3 +11,13 @@ test('lease loss prevents provider invocation',async()=>{let sends=0;const queue
 test('explicit process worker identity is used for claims and health correlation',()=>{const worker=new GatewayWorker(base,{} as never,{} as never,new HealthState(base.instanceId,'process-worker',base.version,'active'),logger as never,'process-worker');assert.equal(worker.workerId,'process-worker');});
 test('idle shutdown cancels the losing drain timer',async()=>{const controller=new AbortController();controller.abort();const worker=new GatewayWorker(base,{} as never,{} as never,new HealthState(base.instanceId,'worker',base.version,'active'),logger as never);const started=performance.now();await worker.run(controller.signal);assert.ok(performance.now()-started<200);});
 test('shutdown stops new claims and drains an already fenced delivery',async()=>{const calls:string[]=[];let release!:()=>void;const providerWait=new Promise<void>(resolve=>release=resolve);const queue={recover:async()=>calls.push('recover'),claim:async()=>{calls.push('claim');return[row()]},markStarted:async()=>{calls.push('fence');return true},complete:async()=>calls.push('complete'),rejectLocal:async()=>{}};const provider={name:'mock',validateConfiguration(){},async send(){calls.push('send');await providerWait;return{outcome:'accepted' as const,providerMessageId:'id'}}};const controller=new AbortController();const worker=new GatewayWorker({...base,pollMs:10},queue as never,provider,new HealthState(base.instanceId,'worker',base.version,'active'),logger as never);const running=worker.run(controller.signal);while(!calls.includes('send'))await new Promise(resolve=>setTimeout(resolve,1));controller.abort();release();await running;assert.deepEqual(calls,['recover','claim','fence','send','complete']);});
+
+test('URL queue rows including resends are rejected and audited before fence', async () => {
+ const calls: string[]=[];
+ const queue={recover:async()=>{},claim:async()=>[{...row(),message_body:'Report: https://lis.bimalpathology.com.np/r/secret'}],rejectLocal:async(_i:unknown,_q:unknown,_w:unknown,code:string)=>{calls.push(code)},markStarted:async()=>{throw new Error('must not fence')}};
+ const provider={name:'mock',validateConfiguration(){},async send(){throw new Error('must not send')}};
+ const audit={...logger,warn:async(event:string,data:unknown)=>{calls.push(event);assert.equal(JSON.stringify(data).includes('secret'),false)}};
+ await new GatewayWorker(base,queue as never,provider as never,new HealthState(base.instanceId,'w',base.version,'active'),audit as never).poll();
+ await new Promise(resolve=>setTimeout(resolve,10));
+ assert.deepEqual(calls,['SMS_URL_BLOCKED','sms.content_rejected']);
+});

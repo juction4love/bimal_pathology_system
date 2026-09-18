@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+const smsPolicy = fs.readFileSync('supabase/migrations/00122_url_free_sms_notifications.sql', 'utf8');
 
 const read = (path) => fs.readFileSync(path, 'utf8');
 let passed = 0;
@@ -26,7 +27,6 @@ const renderer = read('src/lib/reportRenderer.ts');
 const outsource = read('src/features/outsource/OutsourceTrackingPage.tsx');
 const dateTime = read('src/lib/dateTime.ts');
 const payment = read('supabase/migrations/00040_short_payment_confirmation_sms.sql');
-const reportSms = read('supabase/migrations/00041_standardize_report_ready_sms.sql');
 const signoff = read('src/features/worklist/ResultEntryPage.tsx');
 const publicGateway = read('supabase/functions/public-report/index.ts');
 
@@ -48,7 +48,7 @@ check(!outsource.includes("useState('National Reference Lab')") && !outsource.in
 check(dateTime.includes("return '-';"), 'missing age renders as unknown instead of fabricated zero years');
 check(signoff.includes("(supabase.rpc as any)('sign_and_queue_report_group'"), 'report sign-off uses the group-scoped atomic orchestration RPC');
 check(payment.includes('Bimal Pathology: Payment of NPR '), 'payment SMS uses the approved short template');
-check(reportSms.includes('Bimal Pathology: Your report is ready. Lab No: '), 'ReportReady SMS uses the approved secure-link template');
+check(smsPolicy.includes('Bimal Pathology: Your laboratory report is ready. Please collect it from the lab or contact 056-593288. Thank you.') && !smsPolicy.includes('. View report'), 'ReportReady SMS uses the neutral URL-free template');
 check(publicGateway.includes("'https://lis.bimalpathology.com.np'") && !publicGateway.includes('localhost'), 'public report Edge gateway allows only the canonical production origin');
 check(publicGateway.includes('/^[A-Za-z0-9_-]{32,256}$/') && !publicGateway.includes('rpcErr.message'), 'public report Edge gateway validates tokens and suppresses backend internals');
 
