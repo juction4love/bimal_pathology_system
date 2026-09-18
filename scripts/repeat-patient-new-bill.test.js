@@ -80,7 +80,7 @@ test('new reportable visit follows sample readiness into Worklist and Result Ent
   assert.match(traceabilitySql, /x\.clinical_reporting_enabled,x\.collection_required/);
   assert.match(resultSql, /sample\.status NOT IN \('Collected','Received','Processing','Completed'\)/);
   assert.match(read('supabase/migrations/00072_worklist_server_search_pagination.sql'), /coi\.clinical_reporting_enabled=TRUE[\s\S]*coi\.reporting_type IN \('InHouse','OutsourceWithBimalReport'\)/);
-  assert.match(read('src/features/worklist/WorklistPage.tsx'), /worklist\/entry\/\$\{item\.id\}/);
+  assert.match(read('src/features/worklist/WorklistPage.tsx'), /worklist\/order\/\$\{item\.order_id\}/);
 });
 
 test('new bill and sample transitions invalidate immediate operational consumers', () => {

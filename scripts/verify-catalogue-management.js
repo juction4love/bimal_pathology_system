@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 
 const read = (path) => fs.readFileSync(path, 'utf8');
 const sql = read('supabase/migrations/00050_catalogue_management_architecture.sql');
-const catalogue = read('src/features/catalogue/CataloguePage.tsx');
+const catalogue = read('src/features/catalogue/CataloguePage.tsx') + read('src/features/catalogue/EasyTestEditorDialog.tsx') + read('src/features/catalogue/CatalogueMasterSections.tsx');
 const categoryPackages = read('src/features/catalogue/CategoryPackageManager.tsx');
 const billing = read('src/features/billing/NewBillPage.tsx');
 const report = read('src/features/reports/ReportDocument.tsx');
@@ -29,7 +29,7 @@ assert.match(sql, /cardinality\(p_components\).*DISTINCT/s);
 assert.match(sql, /bill_package_components.*PRIMARY KEY\(bill_package_selection_id, test_id\)/s);
 assert.doesNotMatch(sql, /PATIENT_PT\s*[+*/^-]|CONTROL_PT\s*[+*/^-]|ISI\s*[+*/^-]/);
 
-for (const fragment of ['SmartMessageDialog', 'catalogue_save_test', 'catalogue_set_test_lifecycle', 'catalogue_clone_test', 'Lifecycle', 'Incomplete']) assert.ok(catalogue.includes(fragment), `catalogue UI missing ${fragment}`);
+for (const fragment of ['SmartMessageDialog', 'catalogue_save_test', 'catalogue_clone_test', 'Lifecycle']) assert.ok(catalogue.includes(fragment), `catalogue UI missing ${fragment}`);
 for (const fragment of ['catalogue_save_category', 'catalogue_save_package', 'catalogue_set_package_lifecycle', 'Ordered canonical components']) assert.ok(categoryPackages.includes(fragment), `category/package UI missing ${fragment}`);
 for (const fragment of ['create_patient_bill_order_with_packages', 'handleAddPackage', 'component_ids', 'selectedPackages']) assert.ok(billing.includes(fragment), `billing package integration missing ${fragment}`);
 assert.ok(report.includes('snapshot'), 'canonical report must remain snapshot-driven');

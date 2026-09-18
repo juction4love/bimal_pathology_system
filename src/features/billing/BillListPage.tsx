@@ -50,7 +50,6 @@ import { PAYMENT_MODES, PaymentMode } from '@/config/constants';
 import { REGISTRY_PAGE_SIZE, registryCursor, splitServerPage, type RegistryCursor } from '@/lib/serverPagination';
 import { publishWorkflowInvalidation, subscribeWorkflowInvalidation } from '@/lib/workflowInvalidation';
 import { BillViewerDialog } from './BillViewerDialog';
-// Canonical Invoice Printer: id="printable-invoice" BIMAL_PRINT_CSS printReportDocument('printable-invoice')
 
 interface DbBill {
   id: string;
@@ -346,7 +345,7 @@ export const BillListPage: React.FC = () => {
                               startIcon={<ReceiptIcon />}
                               onClick={() => handleOpenReceipt(bill)}
                             >
-                              Receipt
+                              View Bill
                             </Button>
                             {can(PERMISSION_KEYS.CAN_CREATE_BILL) && bill.due_amount_paisa > 0 && (
                               <Button size="small" variant="contained" color="success" startIcon={<PaymentsIcon />} onClick={() => handleOpenPayment(bill)}>Receive Payment</Button>

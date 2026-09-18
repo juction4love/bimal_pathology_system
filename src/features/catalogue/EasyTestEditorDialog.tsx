@@ -618,7 +618,6 @@ export const EasyTestEditorDialog: React.FC<EasyTestEditorDialogProps> = ({
   };
 
   const handleDeleteParam = async (p: DbParameterForEditor) => {
-    if (!confirm(`Are you sure you want to delete parameter "${p.name}" (${p.code})?`)) return;
     setBusy(true);
     try {
       const { error: delErr } = await supabase.rpc('catalogue_delete_parameter_guarded', {
@@ -733,7 +732,6 @@ export const EasyTestEditorDialog: React.FC<EasyTestEditorDialogProps> = ({
   };
 
   const handleDeleteRange = async (r: DbRefRangeForEditor) => {
-    if (!confirm('Are you sure you want to delete this reference range?')) return;
     setBusy(true);
     try {
       const { error: delErr } = await supabase.rpc('catalogue_delete_range_guarded', {
@@ -1608,7 +1606,6 @@ export const EasyTestEditorDialog: React.FC<EasyTestEditorDialogProps> = ({
                             size="small"
                             color="error"
                             onClick={async () => {
-                              if (!confirm(`Remove mapping for channel ${m.channel_code}?`)) return;
                               await supabase.rpc('catalogue_delete_analyzer_mapping_easy', { p_mapping_id: m.id });
                               loadTestData(test!.id);
                             }}

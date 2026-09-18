@@ -28,7 +28,7 @@ test('safe delete checks billing, orders, results, packages, profiles and panels
 });
 test('rate list is server filtered sorted and paginated with required production columns',()=>{
  for(const field of ['p_query','p_category_id','p_lifecycle','p_priced','p_sort','p_offset','p_limit'])assert.ok(sql.includes(field),field);
- for(const label of ['Test Code','Test Name','Category','Current Rate','Status','Last Updated','Update action'])assert.ok(ui.includes(label),label);
+ for(const label of ['Test Code','Test Name','Category','Current Rate','Status','Last Updated','Actions'])assert.ok(ui.includes(label),label);
  assert.match(ui,/TablePagination/);assert.match(ui,/parseRupeesToPaisa/);assert.match(ui,/Reason for change/);
 });
 test('panel billing remains bound to bundled authoritative rate version',()=>{

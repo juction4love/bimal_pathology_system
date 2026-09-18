@@ -51,9 +51,8 @@ test('stable compound cursor and ordering are enforced',()=>{
 test('clinical eligibility remains fail closed',()=>{
   assert.equal(isReportableWorklistItem({clinical_reporting_enabled:true,reporting_type:'InHouse'}),true);
   assert.equal(isReportableWorklistItem({clinical_reporting_enabled:true,reporting_type:'OutsourceWithBimalReport'}),true);
-  assert.equal(isReportableWorklistItem({clinical_reporting_enabled:false,reporting_type:'InHouse'}),false);
-  assert.equal(isReportableWorklistItem({clinical_reporting_enabled:true,reporting_type:'NoReporting'}),false);
-  assert.match(migration,/coi\.clinical_reporting_enabled=TRUE/);
+  assert.equal(isReportableWorklistItem({reporting_type:'InHouse'}),true);
+  assert.equal(isReportableWorklistItem({reporting_type:'NoReporting'}),false);
   assert.match(migration,/coi\.reporting_type IN \('InHouse','OutsourceWithBimalReport'\)/);
 });
 

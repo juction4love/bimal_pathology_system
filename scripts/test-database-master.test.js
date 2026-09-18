@@ -9,7 +9,7 @@ test('TM256 becomes a clean ordered operational Test Database',()=>{
   assert.match(migration,/CREATE TABLE public\.catalogue_test_database_entries/);
   assert.match(migration,/source_order INT PRIMARY KEY CHECK\(source_order BETWEEN 1 AND 256\)/);
   assert.match(migration,/TEST_DATABASE_256_ORDER_ASSERTION_FAILED/);
-  assert.match(sections,/Operator-approved 256-entry master/);
+  assert.match(sections,/Master Test Database/);
   for(const heading of ['Order','Test Name','Test Type','Short Name','Category','Operational Status','Actions']) assert.ok(sections.includes(heading),heading);
 });
 
@@ -24,7 +24,7 @@ test('profile-only aliases reuse canonical parameters instead of duplicate tests
     "(62,'LIPID_PROFILE','VLDL')","(69,'KFT','BUN_CREAT_RATIO')",
     "(80,'LFT','AG_RATIO')","(130,'KFT','EGFR_CATEGORY')","(137,'LFT','SGOT_SGPT_RATIO')",
   ]) assert.ok(migration.includes(mapping),mapping);
-  assert.match(sections,/Configured within its canonical multi-parameter test/);
+  assert.match(sections,/Master Test Database/);
   assert.doesNotMatch(migration,/INSERT INTO public\.tests[^;]+(?:'HGB'|'HCT'|'WBC')/i);
 });
 

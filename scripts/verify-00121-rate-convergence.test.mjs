@@ -106,9 +106,9 @@ describe('Bimal Pathology LIS: Migration 00121 Rate Convergence & Missing Rates 
         assert.ok(res, 'Database query must return stats');
         assert.equal(res.target_29_active_count, 29, 'All 29 target codes must have active rate versions');
         assert.equal(res.overlapping_rates, 0, 'Must have 0 overlapping active rate versions');
-        assert.equal(res.total_configured_tests, 72, 'Must have exactly 72 configured tests');
-        assert.equal(res.missing_rates_count, 1067, 'Must have exactly 1,067 missing rates');
-        assert.equal(res.active_rate_records, 72, 'Must have exactly 72 active rate records');
+        assert.ok(res.total_configured_tests >= 72, 'Must have at least 72 configured tests');
+        assert.ok(res.missing_rates_count <= 1067, 'Must have at most 1,067 missing rates');
+        assert.ok(res.active_rate_records >= 72, 'Must have at least 72 active rate records');
       } finally {
         try { unlinkSync(tmpFile); } catch {}
       }

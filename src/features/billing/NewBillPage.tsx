@@ -56,7 +56,6 @@ import { getNextOrderAction } from '@/lib/orderWorkflowNavigation';
 import { BillingCatalogueSearch, type CatalogueSearchResult } from './BillingCatalogueSearch';
 import { BillViewerDialog } from './BillViewerDialog';
 import type { BillSnapshot } from './BillDocument';
-import PrintIcon from '@mui/icons-material/Print';
 
 type BillItemEntry = SelectedBillTest;
 type PricingPolicy = 'Fixed' | 'Negotiable' | 'PricePending' | 'Manual';
@@ -217,10 +216,12 @@ export const NewBillPage: React.FC = () => {
       else {
         const rows = (data || []) as CatalogueSearchResult[];
         const testIds = rows.filter((row) => row.entity_type === 'Test').map((row) => row.entity_id);
-        const [gatesResult, readinessResult] = testIds.length ? await Promise.all([
-          supabase.from('tests').select('id,department,clinical_reporting_enabled,collection_required,workflow_type,workflow_supported').in('id', testIds),
+        const [gatesResult, readinessResult, paramsResult, panelComponentsResult] = testIds.length ? await Promise.all([
+          supabase.from('tests').select('id,department,clinical_reporting_enabled,collection_required,workflow_type,workflow_supported,test_kind,reporting_model,reporting_type').in('id', testIds),
           supabase.from('catalogue_test_operational_state').select('test_id,readiness,operational_state').in('test_id', testIds),
-        ]) : [{ data: [], error: null }, { data: [], error: null }];
+          supabase.from('parameters').select('test_id').in('test_id', testIds),
+          supabase.from('catalogue_panel_components').select('panel_id,panel_test_id').or(`panel_id.in.(${testIds.join(',')}),panel_test_id.in.(${testIds.join(',')})`),
+        ]) : [{ data: [], error: null }, { data: [], error: null }, { data: [], error: null }, { data: [], error: null }];
         const { data: gates, error: gatesError } = gatesResult;
         if (requestId !== catalogueSearchRequestRef.current) return;
         if (gatesError || readinessResult.error) {
@@ -231,7 +232,30 @@ export const NewBillPage: React.FC = () => {
         else {
           const byId = new Map((gates || []).map((gate: any) => [gate.id, gate]));
           const readinessById = new Map((readinessResult.data || []).map((item: any) => [item.test_id, item]));
-          setSearchResults(rows.map((row) => { const readiness: any = readinessById.get(row.entity_id) || {}; return ({ ...row, ...(byId.get(row.entity_id) || {}), approval_state: readiness.readiness === 'Ready' ? 'Approved' : 'ResultStructureIncomplete', readiness_classification: readiness.readiness }); }));
+          const paramCountMap = new Map<string, number>();
+          ((paramsResult as any).data || []).forEach((p: any) => {
+            if (p.test_id) paramCountMap.set(p.test_id, (paramCountMap.get(p.test_id) || 0) + 1);
+          });
+          const panelComponentCountMap = new Map<string, number>();
+          ((panelComponentsResult as any).data || []).forEach((c: any) => {
+            if (c.panel_id) panelComponentCountMap.set(c.panel_id, (panelComponentCountMap.get(c.panel_id) || 0) + 1);
+            if (c.panel_test_id) panelComponentCountMap.set(c.panel_test_id, (panelComponentCountMap.get(c.panel_test_id) || 0) + 1);
+          });
+
+          setSearchResults(rows.map((row) => {
+            const gate: any = byId.get(row.entity_id) || {};
+            const readiness: any = readinessById.get(row.entity_id) || {};
+            const pCount = paramCountMap.get(row.entity_id) ?? 0;
+            const cCount = panelComponentCountMap.get(row.entity_id) ?? 0;
+            return {
+              ...row,
+              ...gate,
+              approval_state: readiness.readiness === 'Ready' ? 'Approved' : 'ResultStructureIncomplete',
+              readiness_classification: readiness.readiness,
+              parameter_count: pCount,
+              panel_component_count: cCount,
+            };
+          }));
         }
       }
       setSearchingCatalogue(false);
@@ -364,6 +388,13 @@ export const NewBillPage: React.FC = () => {
         health_package_components: expanded.map((row: any) => ({ display_order: row.display_order, tests: byId.get(row.test_id) })),
       });
     } else {
+      if (result.entity_type === 'Test' && result.reporting_type !== 'NoReporting') {
+        const isProfile = result.test_kind === 'Profile' || result.reporting_model === 'Profile' || (result.panel_component_count != null && result.panel_component_count > 0);
+        if (!isProfile && result.parameter_count === 0) {
+          setErrorMsg(`Configuration Incomplete: "${result.name}" (${result.code}) has 0 reporting parameters configured. Lab parameter setup is required before it can be clinically ordered.`);
+          return;
+        }
+      }
       if (selectedPanel && selectedPanel.component_ids.includes(result.entity_id)) {
         setErrorMsg(`"${result.name}" is already included in the selected panel "${selectedPanel.name}". It is covered under the panel rate and will not be charged separately.`);
         return;
@@ -671,7 +702,6 @@ export const NewBillPage: React.FC = () => {
 
       if (loadedBill) {
         setViewerBill(loadedBill);
-        setBillViewerOpen(true);
       }
 
       if (data?.order_id) {
@@ -727,15 +757,34 @@ export const NewBillPage: React.FC = () => {
           icon={<CheckCircleOutlineIcon />}
           sx={{ mb: 3 }}
           action={
-            <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+            <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', justifyContent: 'flex-end', alignItems: 'center' }}>
               <Button
                 color="primary"
                 size="small"
                 variant="contained"
-                startIcon={<PrintIcon />}
+                onClick={resetFormForNextBill}
+                sx={{ fontWeight: 700 }}
+              >
+                New Bill
+              </Button>
+              {submitResult.next_route && (
+                <Button
+                  color="success"
+                  size="small"
+                  variant="contained"
+                  onClick={() => navigate(submitResult.next_route)}
+                  sx={{ fontWeight: 700 }}
+                >
+                  {submitResult.auto_next_message || 'Continue to Sample Accession'}
+                </Button>
+              )}
+              <Button
+                color="inherit"
+                size="small"
+                variant="outlined"
                 onClick={() => setBillViewerOpen(true)}
               >
-                Print Bill (A4)
+                View Bill
               </Button>
               <Button
                 color="inherit"
@@ -743,35 +792,23 @@ export const NewBillPage: React.FC = () => {
                 variant="outlined"
                 onClick={() => navigate('/billing')}
               >
-                Open Receipt Center
+                Bill List
               </Button>
-              {submitResult.next_route && (
-                <Button
-                  color="inherit"
-                  size="small"
-                  variant="contained"
-                  onClick={() => navigate(submitResult.next_route)}
-                >
-                  Continue to Next Stage
-                </Button>
-              )}
               <Button
                 color="inherit"
                 size="small"
-                variant="contained"
-                onClick={resetFormForNextBill}
+                variant="outlined"
+                onClick={() => navigate('/patients')}
               >
-                Next Bill
+                Open Patient
               </Button>
             </Box>
           }
         >
-          <strong>Billing Success:</strong> Bill <strong>{submitResult.bill_number}</strong> and Clinical Order <strong>{submitResult.order_number || 'N/A (No clinical workflow item)'}</strong> committed successfully for UHID <strong>{submitResult.uhid}</strong>.{' '}
+          <strong>Bill saved and order registered successfully.</strong> Bill <strong>{submitResult.bill_number}</strong> · Clinical Order <strong>{submitResult.order_number || 'N/A'}</strong> · UHID <strong>{submitResult.uhid}</strong>.{' '}
           {submitResult.auto_next_message || (selectedItems.some((item) => item.test.collectionRequired)
-            ? 'Next state: Sample Pending — opening Sample Collection…'
-            : selectedItems.some((item) => item.test.clinicalReportingEnabled)
-              ? 'Next state: Ready for Result — opening the Laboratory Worklist…'
-              : 'These billable services are explicitly non-reportable and will not appear in the Laboratory Worklist.')}
+            ? 'Order queued for Sample Accession.'
+            : 'Order queued directly to clinical worklist.')}
         </Alert>
       )}
 

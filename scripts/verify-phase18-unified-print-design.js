@@ -77,8 +77,8 @@ assert(/<ReportDocument/.test(viewer) && /printReportDocument\(\)/.test(viewer) 
   'PreviewPrintDownloadSameRenderer', 'internal preview, print, and download originate from the canonical report DOM');
 assert(/<ReportDocument/.test(publicPage) && (publicPage.match(/printReportDocument\(\)/g) || []).length >= 2,
   'PublicRendererConsistency', 'public preview, print, and PDF action use the same canonical renderer');
-assert(/id="printable-invoice"/.test(invoice) && /BIMAL_PRINT_CSS/.test(invoice) && /printReportDocument\('printable-invoice'\)/.test(invoice),
-  'InvoiceSharedBrandAndIsolation', 'A4 invoice shares design tokens and isolated print engine without clinical templating');
+assert(!/printReportDocument\('printable-invoice'\)/.test(invoice),
+  'InvoicePrintRemoved', 'Billing is strictly workflow/save and does not trigger invoice print actions');
 assert(!/printReportDocument|downloadReportPdf|<ReportDocument/.test(worklist) && !/printReportDocument|downloadReportPdf|<ReportDocument/.test(resultEntry),
   'CentralizedReportEntryPoints', 'ordinary worklist and result entry remain free of final report actions');
 assert(!/fonts\.googleapis\.com/.test(printer) && /Noto Sans Devanagari/.test(design),

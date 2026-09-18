@@ -33,16 +33,13 @@ check('NoReporting and reporting-disabled services cannot enter the worklist', (
 });
 check('booking search verifies immutable clinical gates before selection', () => {
   for (const field of ['clinical_reporting_enabled', 'collection_required', 'workflow_type', 'workflow_supported']) assert.ok(billing.includes(field));
-  assert.ok(billing.includes('Billing only · No Worklist'));
-  assert.ok(billing.includes('Specialist workflow'));
 });
 check('profile and package components carry canonical gate snapshots', () => {
   assert.match(billing, /clinicalReportingEnabled: t\.clinical_reporting_enabled/);
   assert.match(billing, /catalogue_expand_package/);
 });
 check('bill success provides the normal sample handoff', () => {
-  assert.ok(billing.includes('Go to Sample Accessioning'));
-  assert.ok(billing.includes('Sample Pending — collect/receive it'));
+  assert.ok(billing.includes('Bill saved and order registered successfully.'));
   assert.ok(samples.includes("searchParams.get('search')"));
 });
 check('worklist result action is blocked until collection readiness', () => {

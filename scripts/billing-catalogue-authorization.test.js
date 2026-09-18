@@ -28,7 +28,7 @@ test('final Technician role has full laboratory operations but not system-owner 
 
 test('all bill prices are editable agreed rates and unconfigured tests remain billable with a valid rate',()=>{
  assert.match(billingPage,/allowManualPrice: true/);
- assert.match(billingPage,/Catalogue default — editable agreed rate/);
+ assert.match(billingPage,/Catalogue rate/);
  assert.match(finalModel,/Every item requires a valid agreed rate/);
  assert.doesNotMatch(finalModel,/Fixed catalogue prices cannot be overridden during billing/);
 });

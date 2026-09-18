@@ -98,7 +98,7 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
             open
             variant="error"
             message="This screen could not be displayed."
-            guidance={`Reload the application. If the problem continues, contact the Super Admin and provide reference ${this.state.reference}.`}
+            guidance={`Reload the application. If the problem continues, contact the Super Admin and provide Reference: ${this.state.reference}.`}
             primaryLabel="Reload Application"
             onPrimary={this.handleReset}
             allowEscape={false}

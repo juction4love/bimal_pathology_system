@@ -46,7 +46,7 @@ check(!/set(?:Error|ErrorMsg|CatalogueError)\([^\n]*(?:err|error|caught)\.messag
 check(pageHeader.includes('<SmartMessageDialog') && pageHeader.includes('Reference: ${this.state.reference}') && !pageHeader.includes('this.state.error?.message'), 'root runtime boundary uses a safe centered dialog without exposing exception text');
 check(patients.includes('variant="confirm"') && patients.includes('Delete unused patient'), 'patient archive/delete uses smart confirmation');
 check(bills.includes('finalPaymentConfirmOpen') && bills.includes('Record final payment'), 'final receipt uses smart confirmation');
-check(resultEntry.includes('signOffConfirmOpen') && resultEntry.includes('Sign and finalize this diagnostic report?'), 'report sign-off uses smart confirmation');
+check(resultEntry.includes('signOffConfirmOpen') && resultEntry.includes('Sign and finalize the'), 'report sign-off uses smart confirmation');
 check([
   'src/features/patients/PatientsPage.tsx',
   'src/features/billing/NewBillPage.tsx',
