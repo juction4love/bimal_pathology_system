@@ -71,6 +71,7 @@ import {
   buildAnalyzerLookup,
   resolveConfiguredParameterSource,
 } from '@/lib/testSourceResolver';
+import { isReportableParameter } from '@/features/reports/reportPagination';
 
 const CANONICAL_FORMULA_MAP: Record<string, string> = {
   LFT_INDIRECT_BILIRUBIN_V1: 'TBIL - DBIL',
@@ -430,8 +431,17 @@ export const ResultEntryPage: React.FC = () => {
         }))
       ));
 
-      // 7. Fetch approved reference ranges for these parameters
-      const paramIds = (masterParams || []).map((p) => p.id);
+      // 7. Filter reportable parameters (excluding structural panel dummy rows)
+      const reportableMasterParams = (masterParams || []).filter((mp) =>
+        isReportableParameter(mp, {
+          test_code: itemData.test?.code,
+          test_name: itemData.test_name,
+          results: masterParams,
+        })
+      );
+
+      // 8. Fetch approved reference ranges for these parameters
+      const paramIds = reportableMasterParams.map((p) => p.id);
       let allRanges: DbReferenceRange[] = [];
 
       if (paramIds.length > 0) {
@@ -445,7 +455,7 @@ export const ResultEntryPage: React.FC = () => {
         allRanges = (rangeData || []) as DbReferenceRange[];
       }
 
-      // 8. Fetch existing test_results rows
+      // 9. Fetch existing test_results rows
       const { data: existingResults, error: resErr } = await supabase
         .from('test_results')
         .select('*')
@@ -465,8 +475,8 @@ export const ResultEntryPage: React.FC = () => {
 
       const existingMap = new Map((existingResults || []).map((r) => [r.parameter_id, r]));
 
-      // 9. Assemble state with authoritative patient-specific reference range
-      const assembled: ParamResultState[] = (masterParams || []).map((mp) => {
+      // 10. Assemble state with authoritative patient-specific reference range
+      const assembled: ParamResultState[] = reportableMasterParams.map((mp) => {
         const existing = existingMap.get(mp.id);
         const paramRanges = allRanges.filter((r) => r.parameter_id === mp.id);
         const resolvedRange = patientAgeDays == null
@@ -1277,7 +1287,16 @@ export const ResultEntryPage: React.FC = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {results.map((param, index) => {
+                  {results.length === 0 ? (
+                    <TableRow>
+                      <TableCell colSpan={6} sx={{ py: 5, textAlign: 'center' }}>
+                        <Alert severity="info" sx={{ display: 'inline-flex', alignItems: 'center' }}>
+                          Clinical parameters are not configured for this test.
+                        </Alert>
+                      </TableCell>
+                    </TableRow>
+                  ) : (
+                    results.map((param, index) => {
                     const isCalc = param.value_type === 'Calculated';
                     const isHeading = param.value_type === 'Heading';
 
@@ -1469,7 +1488,7 @@ export const ResultEntryPage: React.FC = () => {
                         </TableCell>
                       </TableRow>
                     );
-                  })}
+                  }))}
                 </TableBody>
               </Table>
             </TableContainer>
@@ -1484,7 +1503,7 @@ export const ResultEntryPage: React.FC = () => {
                 variant="outlined"
                 color="inherit"
                 startIcon={<SaveIcon />}
-                disabled={saving || (isCurrentVerified && !amendReportId)}
+                disabled={saving || results.length === 0 || (isCurrentVerified && !amendReportId)}
                 onClick={() => handleSaveResults(RESULT_STATUSES.DRAFT)}
               >
                 {saving ? 'Saving...' : 'Save Draft'}
@@ -1512,6 +1531,7 @@ export const ResultEntryPage: React.FC = () => {
                     startIcon={<VerifiedIcon />}
                     disabled={
                       saving ||
+                      results.length === 0 ||
                       hasUnackCritical ||
                       (isCurrentVerified && !amendReportId)
                     }
@@ -1526,7 +1546,7 @@ export const ResultEntryPage: React.FC = () => {
                     variant="contained"
                     color="primary"
                     startIcon={<FactCheckIcon />}
-                    disabled={saving}
+                    disabled={saving || results.length === 0}
                     onClick={() => handleSaveResults(RESULT_STATUSES.SUBMITTED_FOR_VERIFICATION)}
                   >
                     Submit for Verification

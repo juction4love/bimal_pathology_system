@@ -158,4 +158,29 @@ describe('Bimal Pathology LIS: Clean Diagnostic Report PDF & Preview Suite', () 
       assert.ok(docSrc.includes('patient-identity-strip'), 'Must render compact patient identity strip');
     });
   });
+
+  describe('5. ResultEntryPage & Migration 00132 Active Parameter Sanitation', () => {
+    it('verifies ResultEntryPage imports and applies isReportableParameter to masterParams', () => {
+      const entrySrc = readFileSync(
+        path.resolve(process.cwd(), 'src/features/worklist/ResultEntryPage.tsx'),
+        'utf8'
+      );
+
+      assert.ok(entrySrc.includes('isReportableParameter'), 'ResultEntryPage must import isReportableParameter');
+      assert.ok(entrySrc.includes('reportableMasterParams'), 'ResultEntryPage must filter masterParams into reportableMasterParams');
+    });
+
+    it('verifies Migration 00132 SQL structure and archival logic', () => {
+      const migSrc = readFileSync(
+        path.resolve(process.cwd(), 'supabase/migrations/00132_remove_structural_panel_parameters.sql'),
+        'utf8'
+      );
+
+      assert.ok(migSrc.includes('00132'), 'Must identify as migration 00132');
+      assert.ok(migSrc.includes('is_active = FALSE'), 'Must deactivate dummy parameters');
+      assert.ok(migSrc.includes('HEM-0001'), 'Must explicitly guard HEM-0001');
+      assert.ok(migSrc.includes('expected 24 leaf parameters'), 'Must assert 24 leaf parameters for CBC');
+    });
+  });
 });
+

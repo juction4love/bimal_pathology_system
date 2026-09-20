@@ -233,16 +233,6 @@ export const BillingCatalogueSearch: React.FC<BillingCatalogueSearchProps> = ({
       onPanelConflictWarning?.(msg);
     }
 
-    // Check if reportable single test has zero parameters configured (and is not a valid profile container)
-    const isProfile = isPanel || result.test_kind === 'Profile' || result.reporting_model === 'Profile' || (result.panel_component_count != null && result.panel_component_count > 0);
-    const isIncomplete = result.entity_type === 'Test' && result.reporting_type !== 'NoReporting' && !isProfile && result.parameter_count === 0;
-    if (isIncomplete) {
-      const msg = `"${result.name}" (${result.code}) has 0 reporting parameters configured. Lab parameter setup is required before it can be clinically ordered.`;
-      setComponentWarning(msg);
-      onPanelConflictWarning?.(msg);
-      return;
-    }
-
     onSelectResult(result);
   };
 
@@ -389,9 +379,6 @@ export const BillingCatalogueSearch: React.FC<BillingCatalogueSearchProps> = ({
               const panelComponents = panelComponentsMap[result.entity_id];
               const isLoadingComponents = loadingPanelDetails === result.entity_id;
 
-              const isProfile = isPanel || result.test_kind === 'Profile' || result.reporting_model === 'Profile' || (result.panel_component_count != null && result.panel_component_count > 0);
-              const isIncomplete = result.entity_type === 'Test' && result.reporting_type !== 'NoReporting' && !isProfile && result.parameter_count === 0;
-
               return (
                 <Box
                   key={`${result.entity_type}-${result.entity_id}`}
@@ -402,7 +389,7 @@ export const BillingCatalogueSearch: React.FC<BillingCatalogueSearchProps> = ({
                     bgcolor: isHighlighted ? '#ffffff' : '#f8fafc',
                     borderLeft: isHighlighted ? '4px solid #2563eb' : '4px solid transparent',
                     transition: 'all 0.15s ease-in-out',
-                    opacity: isDuplicate || isIncomplete ? 0.65 : 1,
+                    opacity: isDuplicate ? 0.65 : 1,
                   }}
                 >
                   {/* Result Card Header */}
@@ -421,15 +408,6 @@ export const BillingCatalogueSearch: React.FC<BillingCatalogueSearchProps> = ({
                             size="small"
                             label={clinicalMeta.abbreviation}
                             sx={{ ml: 1, height: 20, fontSize: '0.72rem', fontWeight: 700, bgcolor: '#e0f2fe', color: '#0369a1' }}
-                          />
-                        )}
-                        {isIncomplete && (
-                          <Chip
-                            size="small"
-                            label="Needs Parameter Setup"
-                            color="warning"
-                            variant="outlined"
-                            sx={{ ml: 1, height: 20, fontSize: '0.72rem', fontWeight: 700 }}
                           />
                         )}
                       </Typography>
@@ -469,8 +447,8 @@ export const BillingCatalogueSearch: React.FC<BillingCatalogueSearchProps> = ({
                         <Button
                           size="small"
                           variant="contained"
-                          color={isDuplicate ? 'inherit' : isIncomplete ? 'warning' : 'primary'}
-                          disabled={isDuplicate || isIncomplete}
+                          color={isDuplicate ? 'inherit' : 'primary'}
+                          disabled={isDuplicate}
                           onClick={(e) => {
                             e.stopPropagation();
                             handleAddItem(result);
@@ -485,7 +463,7 @@ export const BillingCatalogueSearch: React.FC<BillingCatalogueSearchProps> = ({
                             borderRadius: 1.5,
                           }}
                         >
-                          {isIncomplete ? 'Incomplete Setup' : isDuplicate ? 'Added' : '+ Add'}
+                          {isDuplicate ? 'Added' : '+ Add'}
                         </Button>
                       </Box>
                     </Box>

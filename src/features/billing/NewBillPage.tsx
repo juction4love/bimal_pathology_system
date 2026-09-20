@@ -388,13 +388,6 @@ export const NewBillPage: React.FC = () => {
         health_package_components: expanded.map((row: any) => ({ display_order: row.display_order, tests: byId.get(row.test_id) })),
       });
     } else {
-      if (result.entity_type === 'Test' && result.reporting_type !== 'NoReporting') {
-        const isProfile = result.test_kind === 'Profile' || result.reporting_model === 'Profile' || (result.panel_component_count != null && result.panel_component_count > 0);
-        if (!isProfile && result.parameter_count === 0) {
-          setErrorMsg(`Configuration Incomplete: "${result.name}" (${result.code}) has 0 reporting parameters configured. Lab parameter setup is required before it can be clinically ordered.`);
-          return;
-        }
-      }
       if (selectedPanel && selectedPanel.component_ids.includes(result.entity_id)) {
         setErrorMsg(`"${result.name}" is already included in the selected panel "${selectedPanel.name}". It is covered under the panel rate and will not be charged separately.`);
         return;
