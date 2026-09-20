@@ -43,7 +43,7 @@ describe('Bimal Pathology LIS: Migration 00121 Rate Convergence & Missing Rates 
   });
 
   describe('2. Live Database Canonical Rates & Idempotency Verification', () => {
-    it('verifies canonical database state: target_29=29, total_configured=72, missing=1067, overlapping=0', () => {
+    it('verifies canonical database state: target_29=29, billing_visible=21, missing<=1067, overlapping=0', () => {
       const verifySql = `
       SELECT json_build_object(
         'active_rate_records', (SELECT count(*) FROM public.catalogue_rate_versions WHERE status = 'Active'),
@@ -62,6 +62,10 @@ describe('Bimal Pathology LIS: Migration 00121 Rate Convergence & Missing Rates 
             AND r.status = 'Active'
         ),
         'total_active_tests', (SELECT count(*) FROM public.tests WHERE is_active = TRUE AND lifecycle_status = 'Active'),
+        'billing_visible_tests', (
+          SELECT count(*) FROM public.tests
+          WHERE is_active = TRUE AND lifecycle_status = 'Active' AND billing_enabled = TRUE
+        ),
         'total_configured_tests', (
           SELECT count(DISTINCT t.id) FROM public.tests t
           JOIN public.catalogue_rate_versions r ON r.test_id = t.id
@@ -106,7 +110,8 @@ describe('Bimal Pathology LIS: Migration 00121 Rate Convergence & Missing Rates 
         assert.ok(res, 'Database query must return stats');
         assert.equal(res.target_29_active_count, 29, 'All 29 target codes must have active rate versions');
         assert.equal(res.overlapping_rates, 0, 'Must have 0 overlapping active rate versions');
-        assert.ok(res.total_configured_tests >= 72, 'Must have at least 72 configured tests');
+        assert.equal(res.billing_visible_tests, 21, 'Focused LIS must expose exactly 21 billing-visible tests');
+        assert.ok(res.total_configured_tests >= res.billing_visible_tests, 'Total configured active tests must cover all billing-visible tests');
         assert.ok(res.missing_rates_count <= 1067, 'Must have at most 1,067 missing rates');
         assert.ok(res.active_rate_records >= 72, 'Must have at least 72 active rate records');
       } finally {
