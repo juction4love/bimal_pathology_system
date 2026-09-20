@@ -22,7 +22,7 @@ DO $$
 DECLARE
   v_admin_id UUID;
 BEGIN
-  SELECT id INTO v_admin_id FROM auth.users LIMIT 1;
+  SELECT id INTO v_admin_id FROM public.user_profiles WHERE is_super_admin = TRUE AND is_active = TRUE LIMIT 1;
   IF v_admin_id IS NOT NULL THEN
     PERFORM set_config('request.jwt.claim.sub', v_admin_id::text, true);
     PERFORM set_config('request.jwt.claim.role', 'authenticated', true);

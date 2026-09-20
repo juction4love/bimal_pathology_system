@@ -67,6 +67,10 @@ import {
   getHighestPriorityOrderItem,
   scheduleOrderNavigation,
 } from '@/lib/orderWorkflowNavigation';
+import {
+  buildAnalyzerLookup,
+  resolveConfiguredParameterSource,
+} from '@/lib/testSourceResolver';
 
 const CANONICAL_FORMULA_MAP: Record<string, string> = {
   LFT_INDIRECT_BILIRUBIN_V1: 'TBIL - DBIL',
@@ -158,6 +162,8 @@ export const ResultEntryPage: React.FC = () => {
   const initialAmendReason = searchParams.get('reason') || '';
 
   const [orderItem, setOrderItem] = useState<any | null>(null);
+  // Maps parameter_id → analyzer display names (e.g. ["CounCell 23 Excel"])
+  const [analyzerLookup, setAnalyzerLookup] = useState<Map<string, string[]>>(new Map());
   const [results, setResults] = useState<ParamResultState[]>([]);
   const [siblings, setSiblings] = useState<SiblingItem[]>([]);
   const [readiness, setReadiness] = useState<any | null>(null);
@@ -403,6 +409,26 @@ export const ResultEntryPage: React.FC = () => {
         .order('display_order', { ascending: true });
 
       if (paramErr) throw paramErr;
+
+      // 6b. Fetch analyzer mappings for this test to power the Source chip
+      const { data: mappingRows } = await supabase
+        .from('analyzer_parameter_mappings')
+        .select('parameter_id, analyzer_id, analyzers(name, code, lifecycle_status)')
+        .eq('test_id', itemData.test_id);
+
+      setAnalyzerLookup(buildAnalyzerLookup(
+        ((mappingRows ?? []) as unknown as Array<{
+          parameter_id: string;
+          analyzer_id?: string;
+          is_active?: boolean;
+          analyzers: Array<{ name: string; code?: string; lifecycle_status?: string }> | { name: string; code?: string; lifecycle_status?: string } | null;
+        }>).map((m) => ({
+          parameter_id: m.parameter_id,
+          analyzer_id: m.analyzer_id,
+          is_active: m.is_active,
+          analyzers: Array.isArray(m.analyzers) ? (m.analyzers[0] ?? null) : m.analyzers,
+        }))
+      ));
 
       // 7. Fetch approved reference ranges for these parameters
       const paramIds = (masterParams || []).map((p) => p.id);
@@ -1415,17 +1441,28 @@ export const ResultEntryPage: React.FC = () => {
                           )}
                         </TableCell>
                         <TableCell align="center">
-                          <Chip
-                            label={isCalc ? 'CALCULATED' : param.result_source || 'MANUAL'}
-                            size="small"
-                            sx={{
-                              bgcolor: isCalc ? '#f3e8ff' : param.result_source === 'ANALYZER' ? '#e0f2fe' : '#f1f5f9',
-                              color: isCalc ? '#7e22ce' : param.result_source === 'ANALYZER' ? '#0369a1' : '#475569',
-                              fontWeight: 700,
-                              fontSize: '0.68rem',
-                              height: 22,
-                            }}
-                          />
+                          {(() => {
+                            const src = resolveConfiguredParameterSource({
+                              valueType: param.value_type,
+                              parameterId: param.parameter_id,
+                              analyzerLookup,
+                            });
+                            return (
+                              <Chip
+                                label={src.label}
+                                size="small"
+                                sx={{
+                                  bgcolor: src.bgcolor,
+                                  color: src.color,
+                                  fontWeight: 700,
+                                  fontSize: '0.68rem',
+                                  height: 22,
+                                  maxWidth: 140,
+                                  '& .MuiChip-label': { overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' },
+                                }}
+                              />
+                            );
+                          })()}
                         </TableCell>
                         <TableCell align="center">
                           {flagBadge}

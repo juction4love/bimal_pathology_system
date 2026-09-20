@@ -55,15 +55,20 @@ export class GatewayWorker {
       await this.logger.warn('sms.content_rejected', { queueId: row.id, code: 'SMS_URL_BLOCKED' });
       return;
     }
-    const segmentInfo = countSmsSegments(row.message_body);
+    const messageBody = row.message_body;
     if (!/^(97|98)\d{8}$/.test(row.recipient_phone)) { await this.queue.rejectLocal(this.config.instanceId, row.id, this.workerId, 'INVALID_NEPAL_MOBILE', outer); return; }
-    if (!row.message_body) { await this.queue.rejectLocal(this.config.instanceId, row.id, this.workerId, 'EMPTY_MESSAGE', outer); return; }
-    if (segmentInfo.segments > this.config.maxSegments) { await this.queue.rejectLocal(this.config.instanceId, row.id, this.workerId, 'SEGMENT_LIMIT_EXCEEDED', outer); return; }
+    if (!messageBody) { await this.queue.rejectLocal(this.config.instanceId, row.id, this.workerId, 'EMPTY_MESSAGE', outer); return; }
+    const segmentInfo = countSmsSegments(messageBody);
+    if (segmentInfo.segments > this.config.maxSegments || (segmentInfo.encoding === 'UCS-2' && messageBody.length > 70)) {
+      await this.queue.rejectLocal(this.config.instanceId, row.id, this.workerId, 'SEGMENT_LIMIT_EXCEEDED', outer);
+      await this.logger.warn('sms.content_rejected', { queueId: row.id, code: 'SEGMENT_LIMIT_EXCEEDED', length: messageBody.length, segments: segmentInfo.segments });
+      return;
+    }
     if (!await this.queue.markStarted(this.config.instanceId, row.id, this.workerId, outer)) throw new Error('Lease lost before provider call.');
     const timeout = AbortSignal.timeout(this.config.providerTimeoutMs);
     const signal = outer ? AbortSignal.any([outer, timeout]) : timeout;
     let result: SmsProviderResult;
-    try { result = await this.provider.send({ queueId: row.id, recipient: row.recipient_phone, body: row.message_body }, signal); }
+    try { result = await this.provider.send({ queueId: row.id, recipient: row.recipient_phone, body: messageBody }, signal); }
     catch { result = { outcome: 'unknown_outcome', safeErrorCode: 'PROVIDER_OUTCOME_UNKNOWN' }; }
     await this.queue.complete(this.config.instanceId, row.id, this.workerId, { ...result, accepted: result.outcome === 'accepted' }, outer);
     if (result.outcome === 'accepted') { this.health.providerOk(); await this.logger.info('sms.accepted', { queueId: row.id, workerId: this.workerId, segments: segmentInfo.segments, encoding: segmentInfo.encoding }); }
