@@ -83,6 +83,7 @@ const CANONICAL_FORMULA_MAP: Record<string, string> = {
   LIPID_NON_HDL_V1: 'CHOL - HDL',
   PT_INR_V1: '(PT / MNPT) ^ ISI',
   COAG_PROFILE_INR_V1: '(PT / MNPT) ^ ISI',
+  HIGH_DOSE_DST_SUPPRESSION_V1: '((BASELINE - POST) / BASELINE) * 100',
 };
 
 function resolveParameterFormula(code: string, calculationIdentifier?: string | null, rawFormula?: string | null): string | null {
@@ -97,6 +98,7 @@ function resolveParameterFormula(code: string, calculationIdentifier?: string | 
   if (upperCode === 'TC_HDL_RATIO') return 'CHOL / HDL';
   if (upperCode === 'NON_HDL') return 'CHOL - HDL';
   if (upperCode === 'INR' || upperCode === 'COA-0002') return '(PT / MNPT) ^ ISI';
+  if (upperCode === 'END-0061-03' || upperCode.includes('SUPPRESSION_PERCENT')) return '((BASELINE - POST) / BASELINE) * 100';
 
   if (rawFormula && /^[A-Za-z0-9_\s+\-*/^()]+$/.test(rawFormula)) {
     return rawFormula;
@@ -131,6 +133,7 @@ interface ParamResultState {
   resolved_range?: DbReferenceRange | null;
   result_source?: 'ANALYZER' | 'CALCULATED' | 'MANUAL';
   status: ResultStatus;
+  is_mandatory?: boolean;
 }
 
 interface SiblingItem {
@@ -404,7 +407,7 @@ export const ResultEntryPage: React.FC = () => {
       // 6. Fetch master parameters for this test
       const { data: masterParams, error: paramErr } = await supabase
         .from('parameters')
-        .select('id, code, name, value_type, unit, formula, calculation_identifier, display_order, options, interpretation_config')
+        .select('id, code, name, value_type, unit, formula, calculation_identifier, display_order, options, interpretation_config, is_mandatory')
         .eq('test_id', itemData.test_id)
         .eq('is_active', true)
         .order('display_order', { ascending: true });
@@ -522,6 +525,7 @@ export const ResultEntryPage: React.FC = () => {
           resolved_range: resolvedRange,
           result_source: (existing as any)?.result_source || (mp.value_type === 'Calculated' ? 'CALCULATED' : 'MANUAL'),
           status: (existing?.status as ResultStatus) || RESULT_STATUSES.DRAFT,
+          is_mandatory: mp.is_mandatory !== false,
         };
       });
 
@@ -690,6 +694,7 @@ export const ResultEntryPage: React.FC = () => {
       const emptyRequired = results.find(r =>
         r.value_type !== 'Calculated' &&
         r.value_type !== 'Heading' &&
+        r.is_mandatory !== false &&
         r.display_value.trim() === ''
       );
       if (emptyRequired) {

@@ -1,0 +1,21 @@
+category,pending_test_count,missing_parameters,missing_reference_ranges,missing_methods,missing_specimens,missing_mappings,missing_rates
+"Histopathology",133,0,133,0,0,132,130
+"Clinical Biochemistry",97,1,97,0,0,95,92
+"Immunology",90,1,90,0,0,87,85
+"Hematology",83,0,83,0,0,78,77
+"Molecular Diagnostics",83,0,83,0,0,83,82
+"Endocrinology",79,10,79,0,0,74,68
+"Serology / Infectious Disease",79,0,79,0,0,69,70
+"Clinical Pathology",69,0,69,0,0,11,68
+"Microbiology",66,0,66,0,0,57,61
+"Allergy",52,4,52,0,0,52,52
+"Toxicology / TDM",49,0,49,0,0,49,49
+"Genetics / Cytogenetics",31,0,31,0,0,31,31
+"Special Chemistry",30,3,30,0,0,30,29
+"Coagulation",24,0,24,0,0,24,24
+"Tumor Markers",24,0,24,0,0,21,18
+"Cytology",18,0,18,0,0,0,18
+"Profiles / Packages",15,15,15,0,0,15,15
+"Point of Care / Blood Gas",11,1,11,0,0,10,11
+"Serology & Immunology",6,2,6,0,0,2,0
+"Haematology",1,0,1,0,0,0,0

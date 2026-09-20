@@ -79,9 +79,9 @@ export function getParameterPrecision(paramCode: string, _unit?: string | null):
   if (['RBC', 'MCV', 'MCH', 'MCHC', 'RDW'].includes(code)) {
     return 2;
   }
-  // Thyroid & Hormones -> 2 decimals
-  if (['T3', 'T4', 'TSH', 'FT3', 'FT4'].includes(code)) {
-    return 2;
+  // Suppression Percentage / Ratios -> 1 or 2 decimals
+  if (code === 'END-0061-03' || code.includes('SUPPRESSION') || code.includes('PERCENT')) {
+    return 1;
   }
   // Default fallback for biochemistry formulas
   return 2;
@@ -587,6 +587,13 @@ export function recalculateInvestigationParameters<
         if (upperCode === 'COA-0001' || (p.name && p.name.toUpperCase().includes('PROTHROMBIN'))) {
           numericValueMap['PT'] = num;
           numericValueMap['PATIENT_PT'] = num;
+        }
+        // Map High Dose DST parameters -> BASELINE, POST
+        if (upperCode === 'END-0061-01' || (upperCode.startsWith('END-0061') && p.name && p.name.toUpperCase().includes('BASELINE'))) {
+          numericValueMap['BASELINE'] = num;
+        }
+        if (upperCode === 'END-0061-02' || (upperCode.startsWith('END-0061') && p.name && p.name.toUpperCase().includes('POST'))) {
+          numericValueMap['POST'] = num;
         }
       }
     }
