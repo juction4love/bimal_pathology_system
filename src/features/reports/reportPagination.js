@@ -6,44 +6,48 @@ export const REPORT_PAGINATION_MM = Object.freeze({
   fullPageHeader: 68,
   clinicalNote: 7,
   footer: 13,
-  clinicalEndMarker: 8,
+  clinicalEndMarker: 6,
   signatoryBlock: 23,
   signatoryFooterGap: 2,
-  // Physical reserve for font fallback and multi-line table metrics. This is
-  // intentionally conservative: browser glyph metrics can exceed the simple
-  // deterministic line-height estimate for Devanagari and long clinical text.
-  // Chromium measures the minimal two-signatory finalization region at about
-  // 29.5 mm. Seven millimetres covers font fallback and physical print drift
-  // without sacrificing an otherwise safe clinical page.
-  safetyGap: 10,
-  // Measured Chromium tolerance for borders/font rasterization. This is not a
-  // content reserve; normal pages otherwise use the full 212 mm workspace.
-  normalPageGeometryTolerance: 6,
-  // Chromium measurements: normal department/title block ~18.5 mm and
-  // clinical column header ~9.2 mm at the canonical print typography.
-  investigationHeader: 18.5,
-  tableHeader: 9.2,
-  investigationTitleWrapLine: 6,
-  // Includes the inline identity row, clinical table header, borders and
-  // browser font fallback. Kept conservative so the first result cannot be
-  // visually clipped even when the deterministic model otherwise looks full.
-  compactSingleInvestigationHeader: 28,
-  // Compact repeated identity + repeated clinical table columns for a report
-  // section that began on a previous physical page.
-  continuedInvestigationHeader: 16.5,
-  resultLine: 4,
-  resultRowBase: 8,
-  interpretationBase: 8,
-  interpretationLine: 4,
+  safetyGap: 6,
+  normalPageGeometryTolerance: 4,
+  investigationHeader: 11,
+  tableHeader: 5.5,
+  investigationTitleWrapLine: 4.5,
+  compactSingleInvestigationHeader: 18,
+  continuedInvestigationHeader: 12,
+  resultLine: 3.2,
+  resultRowBase: 5.2,
+  interpretationBase: 6,
+  interpretationLine: 3.5,
 });
 
 function lineCount(value, charactersPerLine) {
   return Math.max(1, Math.ceil(String(value ?? '').trim().length / charactersPerLine));
 }
 
+export function normalizeReferencePrecision(value) {
+  return String(value ?? '').replace(/-?\d+\.\d+/g, (token) => token.replace(/(\.\d*?[1-9])0+$|\.0+$/, '$1'));
+}
+
+export function formatReportReferenceRange(rawText) {
+  if (!rawText) return '—';
+  const trimmed = String(rawText).trim();
+  if (
+    trimmed === '' ||
+    trimmed.toLowerCase() === 'not configured' ||
+    trimmed.toLowerCase() === 'standard' ||
+    trimmed === '-'
+  ) {
+    return '—';
+  }
+  return normalizeReferencePrecision(trimmed);
+}
+
 function referenceText(result) {
-  return result?.reference_range ?? result?.reference_text ??
+  const text = result?.reference_range ?? result?.reference_text ??
     [result?.normal_min, result?.normal_max].filter((value) => value !== null && value !== undefined).join(' - ');
+  return formatReportReferenceRange(text);
 }
 
 export function resultHeightMm(result) {
@@ -188,8 +192,33 @@ function packForPageCount(investigations, expectedPageCount) {
   return pages.length === expectedPageCount ? pages : null;
 }
 
+export function isReportableParameter(result, investigation) {
+  if (!result) return false;
+  const unit = String(result.unit || '').trim().toLowerCase();
+  if (unit === 'panel') return false;
+  const valType = String(result.value_type || '').trim().toLowerCase();
+  if (valType === 'panel' || valType === 'profile') return false;
+  if (
+    investigation &&
+    investigation.results &&
+    investigation.results.length > 1 &&
+    (result.code === investigation.test_code || result.name === investigation.test_name) &&
+    (unit === 'panel' || unit === '' || !result.reference_range)
+  ) {
+    const hasOtherParams = investigation.results.some(
+      (other) => other !== result && String(other.unit || '').trim().toLowerCase() !== 'panel'
+    );
+    if (hasOtherParams) return false;
+  }
+  return true;
+}
+
 export function paginateInvestigations(investigations) {
-  const source = investigations ?? [];
+  const rawSource = investigations ?? [];
+  const source = rawSource.map((inv) => ({
+    ...inv,
+    results: (inv.results ?? []).filter((r) => isReportableParameter(r, inv)),
+  }));
   if (source.length === 0) {
     return [{ pageNumber: 1, isFirstPage: true, isFinalPage: true, investigations: [], usedMm: 0, capacityMm: contentCapacityMm(0, 0) }];
   }

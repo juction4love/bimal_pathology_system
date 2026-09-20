@@ -22,7 +22,11 @@ import { formatReferenceRangeText } from '@/lib/clinicalReferenceRange';
 import { formatAdDateTime, formatDualDate } from '@/lib/dateTime';
 import { generateQrSvgPath } from '@/lib/qrCode';
 import { BIMAL_PRINT, BIMAL_PRINT_CSS } from '@/lib/printDesign';
-import { paginateInvestigations } from './reportPagination';
+import {
+  paginateInvestigations,
+  isReportableParameter,
+  formatReportReferenceRange,
+} from './reportPagination';
 
 interface ReportDocumentProps {
   snapshot: ClinicalSnapshot;
@@ -40,10 +44,6 @@ function isBillPending(billNumber?: string | null): boolean {
   if (!billNumber) return true;
   const n = billNumber.trim().toUpperCase();
   return n === '' || n === 'INV-PENDING' || n === 'PENDING' || n === '-' || n === 'N/A';
-}
-
-function normalizeReferencePrecision(value: string): string {
-  return value.replace(/-?\d+\.\d+/g, (token) => token.replace(/(\.\d*?[1-9])0+$|\.0+$/, '$1'));
 }
 
 function clinicalSectionName(department?: string | null): string {
@@ -88,7 +88,13 @@ export const ReportDocument: React.FC<ReportDocumentProps> = ({
     phone: '056-593288',
   };
   const signatories = snapshot?.signatories || ({} as any);
-  const investigations = snapshot?.investigations || [];
+  const investigations = useMemo(() => {
+    const raw = snapshot?.investigations || [];
+    return raw.map((inv) => ({
+      ...inv,
+      results: (inv.results || []).filter((r: any) => isReportableParameter(r, inv)),
+    }));
+  }, [snapshot?.investigations]);
   const footerEmail = (org as { email?: string }).email || 'admin@bimalpathology.com.np';
 
   // Age formatting
@@ -119,8 +125,8 @@ export const ReportDocument: React.FC<ReportDocumentProps> = ({
 
   // Deterministic Page Split
   const pages = useMemo(
-    () => paginateInvestigations(snapshot?.investigations || []),
-    [snapshot?.investigations]
+    () => paginateInvestigations(investigations),
+    [investigations]
   );
   const totalPageCount = pages.length;
 
@@ -665,16 +671,16 @@ export const ReportDocument: React.FC<ReportDocumentProps> = ({
                           <TableCell sx={{ color: BIMAL_PRINT.brandDeep, fontWeight: 700, fontSize: '0.72rem', py: 0.6, px: 0.5, width: '39%', letterSpacing: '0.025em' }}>
                             TEST / PARAMETER
                           </TableCell>
-                          <TableCell align="center" sx={{ color: BIMAL_PRINT.brandDeep, fontWeight: 700, fontSize: '0.72rem', py: 0.6, px: 0.35, width: '7%', letterSpacing: '0.025em' }}>
+                          <TableCell align="center" sx={{ color: BIMAL_PRINT.brandDeep, fontWeight: 700, fontSize: '0.68rem', py: 0.4, px: 0.35, width: '7%', letterSpacing: '0.025em' }}>
                             FLAG
                           </TableCell>
-                          <TableCell align="right" sx={{ color: BIMAL_PRINT.brandDeep, fontWeight: 700, fontSize: '0.72rem', py: 0.6, px: 0.75, width: '17%', letterSpacing: '0.025em' }}>
+                          <TableCell align="right" sx={{ color: BIMAL_PRINT.brandDeep, fontWeight: 700, fontSize: '0.68rem', py: 0.4, px: 0.75, width: '18%', letterSpacing: '0.025em' }}>
                             VALUE
                           </TableCell>
-                          <TableCell align="left" sx={{ color: BIMAL_PRINT.brandDeep, fontWeight: 700, fontSize: '0.72rem', py: 0.6, px: 0.75, width: '13%', letterSpacing: '0.025em' }}>
+                          <TableCell align="left" sx={{ color: BIMAL_PRINT.brandDeep, fontWeight: 700, fontSize: '0.68rem', py: 0.4, px: 0.75, width: '13%', letterSpacing: '0.025em' }}>
                             UNIT
                           </TableCell>
-                          <TableCell align="left" sx={{ color: BIMAL_PRINT.brandDeep, fontWeight: 700, fontSize: '0.72rem', py: 0.6, px: 0.5, width: '24%', letterSpacing: '0.025em' }}>
+                          <TableCell align="left" sx={{ color: BIMAL_PRINT.brandDeep, fontWeight: 700, fontSize: '0.68rem', py: 0.4, px: 0.5, width: '24%', letterSpacing: '0.025em' }}>
                             REFERENCE RANGE
                           </TableCell>
                         </TableRow>
@@ -703,6 +709,8 @@ export const ReportDocument: React.FC<ReportDocumentProps> = ({
                               ? r.display_value
                               : '—';
 
+                          const formattedRange = formatReportReferenceRange(rawRangeText);
+
                           return (
                             <TableRow
                               key={r.parameter_id || idx}
@@ -713,10 +721,10 @@ export const ReportDocument: React.FC<ReportDocumentProps> = ({
                               }}
                             >
                               {/* Parameter Name */}
-                              <TableCell sx={{ py: 0.55, px: 0.5, fontSize: '0.78rem', lineHeight: 1.35, fontWeight: 600, color: '#0f172a', overflowWrap: compactSingle ? 'normal' : 'anywhere', whiteSpace: compactSingle ? 'nowrap' : 'normal' }}>
+                              <TableCell sx={{ py: 0.3, px: 0.5, fontSize: '0.74rem', lineHeight: 1.25, fontWeight: 600, color: '#0f172a', overflowWrap: compactSingle ? 'normal' : 'anywhere', whiteSpace: compactSingle ? 'nowrap' : 'normal' }}>
                                 {r.name}
                                 {r.value_type === 'Calculated' && (
-                                  <Typography component="span" sx={{ fontSize: '0.66rem', color: '#64748b', ml: 0.75, fontStyle: 'italic' }}>
+                                  <Typography component="span" sx={{ fontSize: '0.64rem', color: '#64748b', ml: 0.75, fontStyle: 'italic' }}>
                                     (Calculated)
                                   </Typography>
                                 )}
@@ -726,9 +734,9 @@ export const ReportDocument: React.FC<ReportDocumentProps> = ({
                               <TableCell
                                 align="center"
                                 sx={{
-                                  py: 0.5,
-                                  px: 0.5,
-                                  fontSize: '0.78rem',
+                                  py: 0.3,
+                                  px: 0.35,
+                                  fontSize: '0.74rem',
                                   fontWeight: 800,
                                   color: isCritical ? '#b91c1c' : isAbnormal ? '#c2410c' : 'inherit',
                                   textDecoration: isCritical ? 'double underline' : isAbnormal ? 'underline' : 'none',
@@ -742,9 +750,9 @@ export const ReportDocument: React.FC<ReportDocumentProps> = ({
                               <TableCell
                                 align="right"
                                 sx={{
-                                  py: 0.5,
-                                  px: 1,
-                                  fontSize: '0.80rem',
+                                  py: 0.3,
+                                  px: 0.75,
+                                  fontSize: '0.76rem',
                                   fontWeight: 700,
                                   color: isCritical ? '#b91c1c' : isAbnormal ? '#c2410c' : '#0f172a',
                                   fontVariantNumeric: 'tabular-nums',
@@ -757,14 +765,14 @@ export const ReportDocument: React.FC<ReportDocumentProps> = ({
                               </TableCell>
 
                               {/* Unit */}
-                              <TableCell align="left" sx={{ py: 0.55, px: 0.75, fontSize: '0.74rem', lineHeight: 1.35, color: '#475569', overflowWrap: 'anywhere' }}>
+                              <TableCell align="left" sx={{ py: 0.3, px: 0.75, fontSize: '0.70rem', lineHeight: 1.25, color: '#475569', overflowWrap: 'anywhere' }}>
                                 {r.unit || '-'}
                               </TableCell>
 
                               {/* Reference Interval */}
-                              <TableCell align="left" sx={{ py: 0.55, px: 0.5, fontSize: '0.74rem', lineHeight: 1.35, color: '#334155' }}>
+                              <TableCell align="left" sx={{ py: 0.3, px: 0.5, fontSize: '0.70rem', lineHeight: 1.25, color: '#334155' }}>
                                 <Box component="span" sx={{ whiteSpace: 'normal', overflowWrap: 'anywhere' }}>
-                                  {normalizeReferencePrecision(rawRangeText)}
+                                  {formattedRange}
                                 </Box>
                               </TableCell>
                             </TableRow>
