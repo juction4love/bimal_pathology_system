@@ -28,6 +28,10 @@ import {
   InputAdornment,
   CircularProgress,
   Snackbar,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
 } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import SearchIcon from '@mui/icons-material/Search';
@@ -115,6 +119,7 @@ export const NewBillPage: React.FC = () => {
   const [zeroPriceAcknowledgedIds, setZeroPriceAcknowledgedIds] = useState<Set<string>>(new Set());
   const [viewerBill, setViewerBill] = useState<BillSnapshot | null>(null);
   const [billViewerOpen, setBillViewerOpen] = useState(false);
+  const [postBillModalOpen, setPostBillModalOpen] = useState(false);
 
   // Keyboard Navigation Input Refs
   const mobileInputRef = useRef<HTMLInputElement>(null);
@@ -220,7 +225,7 @@ export const NewBillPage: React.FC = () => {
           supabase.from('tests').select('id,department,clinical_reporting_enabled,collection_required,workflow_type,workflow_supported,test_kind,reporting_model,reporting_type').in('id', testIds),
           supabase.from('catalogue_test_operational_state').select('test_id,readiness,operational_state').in('test_id', testIds),
           supabase.from('parameters').select('test_id').in('test_id', testIds),
-          supabase.from('catalogue_panel_components').select('panel_id,panel_test_id').or(`panel_id.in.(${testIds.join(',')}),panel_test_id.in.(${testIds.join(',')})`),
+          supabase.from('catalogue_panel_components').select('panel_test_id').in('panel_test_id', testIds),
         ]) : [{ data: [], error: null }, { data: [], error: null }, { data: [], error: null }, { data: [], error: null }];
         const { data: gates, error: gatesError } = gatesResult;
         if (requestId !== catalogueSearchRequestRef.current) return;
@@ -632,6 +637,7 @@ export const NewBillPage: React.FC = () => {
 
       setSubmitResult(data);
       setToastOpen(true);
+      setPostBillModalOpen(true);
       publishWorkflowInvalidation('order-created',['patients','bills','samples','worklist','dashboard'],data?.order_id);
 
       // Build or fetch full bill snapshot for immediate printing
@@ -1356,6 +1362,68 @@ export const NewBillPage: React.FC = () => {
           Bill {submitResult?.bill_number} posted successfully!
         </Alert>
       </Snackbar>
+
+      {/* Post-Billing Success Modal */}
+      <Dialog
+        open={postBillModalOpen}
+        onClose={() => setPostBillModalOpen(false)}
+        maxWidth="xs"
+        fullWidth
+        PaperProps={{ sx: { borderRadius: 2 } }}
+      >
+        <DialogTitle sx={{ textAlign: 'center', pt: 3, pb: 1 }}>
+          <CheckCircleOutlineIcon sx={{ fontSize: 44, color: 'success.main', mb: 0.5 }} />
+          <Typography variant="h6" fontWeight={800}>Bill Created Successfully</Typography>
+        </DialogTitle>
+        <DialogContent sx={{ textAlign: 'center', pb: 2 }}>
+          <Typography variant="h5" fontWeight={800} color="primary.main" sx={{ my: 1, fontFamily: 'monospace' }}>
+            {submitResult?.bill_number}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            UHID: <strong>{submitResult?.uhid || uhid}</strong> · {fullName}
+          </Typography>
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
+            Total: <strong>NPR {paisaToRupees(totals.netPaisa)}</strong> ({totals.duePaisa === 0 ? 'Paid in Full' : `Due: NPR ${paisaToRupees(totals.duePaisa)}`})
+          </Typography>
+        </DialogContent>
+        <DialogActions sx={{ flexDirection: 'column', gap: 1, p: 2.5, pt: 0 }}>
+          <Button
+            fullWidth
+            variant="contained"
+            color="primary"
+            size="large"
+            sx={{ fontWeight: 700 }}
+            onClick={() => {
+              setPostBillModalOpen(false);
+              navigate(submitResult?.next_route || '/samples');
+            }}
+          >
+            Collect Sample →
+          </Button>
+          <Box sx={{ display: 'flex', gap: 1, width: '100%' }}>
+            <Button
+              fullWidth
+              variant="outlined"
+              onClick={() => {
+                setPostBillModalOpen(false);
+                resetFormForNextBill();
+              }}
+            >
+              + New Bill
+            </Button>
+            <Button
+              fullWidth
+              variant="outlined"
+              onClick={() => {
+                setPostBillModalOpen(false);
+                setBillViewerOpen(true);
+              }}
+            >
+              View Bill
+            </Button>
+          </Box>
+        </DialogActions>
+      </Dialog>
 
       {/* Canonical Bill Viewer & Print Dialog */}
       <BillViewerDialog

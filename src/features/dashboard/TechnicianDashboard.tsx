@@ -37,6 +37,8 @@ import RefreshIcon from '@mui/icons-material/Refresh';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import SearchIcon from '@mui/icons-material/Search';
+import DescriptionIcon from '@mui/icons-material/Description';
 
 import { PageHeader } from '@/components/common/PageHeader';
 import { StatusChip } from '@/components/common/StatusChip';
@@ -219,7 +221,41 @@ export const TechnicianDashboard: React.FC = () => {
         title="Lab Operations Dashboard"
         subtitle={`Today's Operational Overview — ${formatAdDate(new Date())}`}
         action={
-          <Box sx={{ display: 'flex', gap: 1 }}>
+          <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', alignItems: 'center' }}>
+            <Button
+              variant="contained"
+              color="primary"
+              size="small"
+              startIcon={<AddShoppingCartIcon />}
+              onClick={() => navigate('/billing/new')}
+              sx={{ fontWeight: 700 }}
+            >
+              + New Bill
+            </Button>
+            <Button
+              variant="outlined"
+              size="small"
+              startIcon={<SearchIcon />}
+              onClick={() => navigate('/patients')}
+            >
+              Search Patient
+            </Button>
+            <Button
+              variant="outlined"
+              size="small"
+              startIcon={<AssignmentIcon />}
+              onClick={() => navigate('/worklist')}
+            >
+              Open Worklist
+            </Button>
+            <Button
+              variant="outlined"
+              size="small"
+              startIcon={<DescriptionIcon />}
+              onClick={() => navigate('/reports')}
+            >
+              Open Reports
+            </Button>
             <IconButton aria-label="Refresh dashboard" onClick={loadData} disabled={loading} color="primary" title="Refresh">
               <RefreshIcon />
             </IconButton>

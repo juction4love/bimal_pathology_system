@@ -41,6 +41,7 @@ import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import BadgeIcon from '@mui/icons-material/Badge';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import SecurityIcon from '@mui/icons-material/Security';
+import TuneIcon from '@mui/icons-material/Tune';
 import HistoryIcon from '@mui/icons-material/History';
 import LogoutIcon from '@mui/icons-material/Logout';
 import SendIcon from '@mui/icons-material/Send';
@@ -126,7 +127,7 @@ export const AppLayout: React.FC = () => {
 
   const navSections: Array<{ title: string; items: NavItem[] }> = [
     {
-      title: 'Clinical Operations',
+      title: 'Operations',
       items: [
         {
           label: 'Dashboard',
@@ -135,19 +136,25 @@ export const AppLayout: React.FC = () => {
           permission: PERMISSION_KEYS.CAN_VIEW_DASHBOARD,
         },
         {
-          label: 'New Bill / Booking',
+          label: 'New Bill',
           path: '/billing/new',
           icon: <AddShoppingCartIcon />,
           permission: PERMISSION_KEYS.CAN_CREATE_BILL,
         },
         {
-          label: 'Sample Accessioning',
+          label: 'Patients',
+          path: '/patients',
+          icon: <PeopleIcon />,
+          permission: PERMISSION_KEYS.CAN_EDIT_PATIENT,
+        },
+        {
+          label: 'Samples',
           path: '/samples',
           icon: <ScienceIcon />,
           anyPermissions: [PERMISSION_KEYS.CAN_COLLECT_SAMPLE, PERMISSION_KEYS.CAN_RECEIVE_SAMPLE, PERMISSION_KEYS.CAN_REJECT_SAMPLE],
         },
         {
-          label: 'Lab Worklist & Results',
+          label: 'Worklist / Results',
           path: '/worklist',
           icon: <AssignmentIcon />,
           anyPermissions: [PERMISSION_KEYS.CAN_ENTER_RESULTS, PERMISSION_KEYS.CAN_VERIFY_RESULTS, PERMISSION_KEYS.CAN_SIGN_REPORTS],
@@ -159,19 +166,13 @@ export const AppLayout: React.FC = () => {
           permission: PERMISSION_KEYS.CAN_PRINT_REPORTS,
         },
         {
-          label: 'Bills & Invoices',
+          label: 'Bills',
           path: '/billing',
           icon: <ReceiptLongIcon />,
           anyPermissions: [PERMISSION_KEYS.CAN_CREATE_BILL, PERMISSION_KEYS.CAN_VIEW_FINANCIALS],
         },
         {
-          label: 'Patient Registry',
-          path: '/patients',
-          icon: <PeopleIcon />,
-          permission: PERMISSION_KEYS.CAN_EDIT_PATIENT,
-        },
-        {
-          label: 'Outsource Tracking',
+          label: 'Outsource',
           path: '/outsource',
           icon: <SendIcon />,
           permission: PERMISSION_KEYS.CAN_MANAGE_OUTSOURCE_TRACKING,
@@ -179,12 +180,24 @@ export const AppLayout: React.FC = () => {
       ],
     },
     {
-      title: 'Catalogue & Personnel',
+      title: 'Clinical Master',
       items: [
         {
           label: 'Test Catalogue',
           path: '/catalogue',
           icon: <BiotechIcon />,
+          permission: PERMISSION_KEYS.CAN_MANAGE_CATALOGUE,
+        },
+        {
+          label: 'Clinical Configuration',
+          path: '/catalogue?tab=structures',
+          icon: <TuneIcon />,
+          permission: PERMISSION_KEYS.CAN_MANAGE_CATALOGUE,
+        },
+        {
+          label: 'Analyzer Setup',
+          path: '/catalogue?tab=pt_inr_reagents',
+          icon: <ScienceIcon />,
           permission: PERMISSION_KEYS.CAN_MANAGE_CATALOGUE,
         },
         {
@@ -205,37 +218,43 @@ export const AppLayout: React.FC = () => {
       title: 'Administration',
       items: [
         {
-          label: 'HMIS Monthly Report',
-          path: '/admin/hmis',
-          icon: <AssessmentIcon />,
-          permission: PERMISSION_KEYS.CAN_VIEW_HMIS_REPORTS,
+          label: 'Rates',
+          path: '/catalogue?tab=prices',
+          icon: <ReceiptLongIcon />,
+          permission: PERMISSION_KEYS.CAN_MANAGE_CATALOGUE,
         },
         {
-          label: 'User Management',
+          label: 'Financial',
+          path: '/billing?view=financial',
+          icon: <ReceiptLongIcon />,
+          permission: PERMISSION_KEYS.CAN_VIEW_FINANCIALS,
+        },
+        {
+          label: 'Users & Roles',
           path: '/admin/users',
           icon: <ManageAccountsIcon />,
           permission: PERMISSION_KEYS.CAN_MANAGE_USERS,
         },
         {
-          label: 'Roles & Permissions',
-          path: '/admin/roles',
-          icon: <SecurityIcon />,
-          permission: PERMISSION_KEYS.CAN_MANAGE_ROLES,
+          label: 'HMIS',
+          path: '/admin/hmis',
+          icon: <AssessmentIcon />,
+          permission: PERMISSION_KEYS.CAN_VIEW_HMIS_REPORTS,
         },
         {
-          label: 'SMS Delivery',
+          label: 'SMS',
           path: '/admin/sms',
           icon: <HistoryIcon />,
           permission: PERMISSION_KEYS.CAN_MANAGE_USERS,
         },
         {
-          label: 'Audit Logs',
+          label: 'Audit',
           path: '/admin/audit',
           icon: <HistoryIcon />,
           permission: PERMISSION_KEYS.CAN_VIEW_AUDIT_LOGS,
         },
         {
-          label: 'Settings',
+          label: 'System Settings',
           path: '/settings',
           icon: <SecurityIcon />,
           permission: PERMISSION_KEYS.CAN_MANAGE_USERS,

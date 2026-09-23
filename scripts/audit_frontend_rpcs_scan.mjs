@@ -1,54 +1,54 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { execSync } from 'node:child_process';
 
-function scanDirectory(dir, filterFn) {
-  const results = [];
-  const entries = fs.readdirSync(dir, { withFileTypes: true });
-  for (const entry of entries) {
-    const fullPath = path.join(dir, entry.name);
-    if (entry.isDirectory()) {
-      results.push(...scanDirectory(fullPath, filterFn));
-    } else if (filterFn(fullPath)) {
-      results.push(fullPath);
+const srcDir = path.resolve('src');
+const rpcCalls = new Set();
+
+function walk(dir) {
+  const files = fs.readdirSync(dir);
+  for (const f of files) {
+    const full = path.join(dir, f);
+    if (fs.statSync(full).isDirectory()) {
+      walk(full);
+    } else if (/\.(ts|tsx|js|jsx)$/.test(f)) {
+      const content = fs.readFileSync(full, 'utf8');
+      const matches = content.matchAll(/\.rpc\(\s*['"]([^'"]+)['"]/g);
+      for (const m of matches) {
+        rpcCalls.add(m[1]);
+      }
     }
   }
-  return results;
 }
 
-const srcFiles = scanDirectory('src', p => p.endsWith('.ts') || p.endsWith('.tsx') || p.endsWith('.js') || p.endsWith('.jsx'));
-console.log(`Found ${srcFiles.length} frontend source files in src/`);
+walk(srcDir);
+const rpcList = Array.from(rpcCalls).sort();
+console.log('Frontend RPCs found:', rpcList);
 
-const rpcCalls = new Set();
-const rpcCallLocations = [];
+const sqlQuery = `
+SELECT routine_name 
+FROM information_schema.routines 
+WHERE routine_schema = 'public' 
+  AND routine_name IN (${rpcList.map(r => `'${r}'`).join(', ')});
+`;
 
-const rpcRegex = /\.rpc\s*\(\s*['"`]([^'"`]+)['"`]/g;
+const tmpFile = path.resolve('scripts/output/tmp_rpc_check.sql');
+fs.writeFileSync(tmpFile, sqlQuery, 'utf8');
 
-for (const file of srcFiles) {
-  const content = fs.readFileSync(file, 'utf8');
-  let match;
-  while ((match = rpcRegex.exec(content)) !== null) {
-    const rpcName = match[1];
-    rpcCalls.add(rpcName);
-    rpcCallLocations.push({ file, rpcName });
+try {
+  const out = execSync(`npx supabase db query --linked -f "${tmpFile}"`, {
+    encoding: 'utf8',
+    maxBuffer: 10 * 1024 * 1024,
+    stdio: ['pipe', 'pipe', 'pipe']
+  });
+  const marker = out.indexOf('{');
+  if (marker !== -1) {
+    const json = JSON.parse(out.slice(marker));
+    const foundRpcs = new Set(json.rows.map(r => r.routine_name));
+    const missing = rpcList.filter(r => !foundRpcs.has(r));
+    console.log('Found remote RPCs:', Array.from(foundRpcs).sort());
+    console.log('Missing remote RPCs:', missing);
   }
+} finally {
+  if (fs.existsSync(tmpFile)) fs.unlinkSync(tmpFile);
 }
-
-console.log(`\nFound ${rpcCalls.size} unique frontend RPC calls:`);
-const sortedRpcs = [...rpcCalls].sort();
-sortedRpcs.forEach(r => console.log(`  - ${r}`));
-
-// Now check if baseline SQL contains CREATE OR REPLACE FUNCTION public.<rpcName>
-const baselineSql = fs.readFileSync('supabase/migrations/00001_bimal_pathology_clean_baseline.sql', 'utf8');
-
-const baselineFuncRegex = /CREATE\s+(?:OR\s+REPLACE\s+)?FUNCTION\s+public\.([a-zA-Z0-9_]+)/gi;
-const baselineFuncs = new Set();
-let fMatch;
-while ((fMatch = baselineFuncRegex.exec(baselineSql)) !== null) {
-  baselineFuncs.add(fMatch[1]);
-}
-
-console.log(`\nFound ${baselineFuncs.size} unique functions in baseline SQL`);
-
-const missingRpcs = sortedRpcs.filter(r => !baselineFuncs.has(r));
-console.log(`\nMISSING_FRONTEND_RPCS (${missingRpcs.length}):`);
-missingRpcs.forEach(r => console.log(`  MISSING: ${r}`));

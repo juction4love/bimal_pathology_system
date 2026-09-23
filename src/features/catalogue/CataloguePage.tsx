@@ -5,6 +5,7 @@
  */
 
 import React, { useState, useEffect, useCallback } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import {
   Box,
   Card,
@@ -172,7 +173,21 @@ export const CataloguePage: React.FC = () => {
   const [success, setSuccess] = useState<string | null>(null);
   const [confirmAction, setConfirmAction] = useState<{ message: string; guidance: string; run: () => Promise<void> } | null>(null);
   const [actionBusy, setActionBusy] = useState(false);
-  const [catalogueSection, setCatalogueSection] = useState<'tests' | 'categories' | 'panels' | 'structures' | 'ranges' | 'prices' | 'pt_inr_reagents' | 'templates' | 'history' | 'legacy-tests'>('tests');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialTab = (searchParams.get('tab') as any) || 'tests';
+  const [catalogueSection, setCatalogueSectionState] = useState<'tests' | 'categories' | 'panels' | 'structures' | 'ranges' | 'prices' | 'pt_inr_reagents' | 'templates' | 'history' | 'legacy-tests'>(initialTab);
+
+  useEffect(() => {
+    const tab = searchParams.get('tab');
+    if (tab && ['tests', 'categories', 'panels', 'structures', 'ranges', 'prices', 'pt_inr_reagents', 'templates', 'history', 'legacy-tests'].includes(tab)) {
+      setCatalogueSectionState(tab as any);
+    }
+  }, [searchParams]);
+
+  const setCatalogueSection = (section: any) => {
+    setCatalogueSectionState(section);
+    setSearchParams(section === 'tests' ? {} : { tab: section });
+  };
 
   // Bulk Editor & CSV Modal States
   const [bulkEditorOpen, setBulkEditorOpen] = useState(false);

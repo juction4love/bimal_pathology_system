@@ -434,7 +434,7 @@ export const ResultEntryPage: React.FC = () => {
         const { data: panelComps } = await supabase
           .from('catalogue_panel_components')
           .select('display_order, is_required, component_test_id, component_parameter_id')
-          .or(`panel_test_id.eq.${itemData.test_id},panel_id.eq.${itemData.test_id}`)
+          .eq('panel_test_id', itemData.test_id)
           .order('display_order', { ascending: true });
 
         if (panelComps && panelComps.length > 0) {
