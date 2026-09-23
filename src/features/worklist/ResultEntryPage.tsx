@@ -1413,7 +1413,7 @@ export const ResultEntryPage: React.FC = () => {
                       );
                     }
 
-                    const isNotConfigured = param.resolved_range_text === 'Not configured';
+                    const isNotConfigured = !param.resolved_range_text || param.resolved_range_text === 'Not configured' || param.resolved_range_text === '—';
 
                     return (
                       <TableRow key={param.parameter_id} hover>
@@ -1503,7 +1503,7 @@ export const ResultEntryPage: React.FC = () => {
                               fontStyle: isNotConfigured ? 'italic' : 'normal',
                             }}
                           >
-                            {param.resolved_range_text}
+                            {isNotConfigured ? '—' : param.resolved_range_text}
                           </Typography>
                           {param.critical_high !== null && (
                             <Typography variant="caption" color="error.main" sx={{ display: 'block' }}>
