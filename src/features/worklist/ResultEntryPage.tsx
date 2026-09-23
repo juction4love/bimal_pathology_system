@@ -39,6 +39,8 @@ import ReplayIcon from '@mui/icons-material/Replay';
 import DrawIcon from '@mui/icons-material/Draw';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import EditIcon from '@mui/icons-material/Edit';
+import PrintIcon from '@mui/icons-material/Print';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 
 import { StatusChip } from '@/components/common/StatusChip';
@@ -58,7 +60,7 @@ import {
   DbReferenceRange,
 } from '@/lib/clinicalReferenceRange';
 import { recalculateInvestigationParameters } from '@/lib/clinicalMath';
-import { useKeyboardShortcut } from '@/lib/keyboardNav';
+import { useGlobalShortcuts } from '@/lib/keyboardNav';
 import { publishWorkflowInvalidation } from '@/lib/workflowInvalidation';
 import { AstCultureResultEntry } from './AstCultureResultEntry';
 import { validateMinSec } from './timeResult';
@@ -243,13 +245,57 @@ export const ResultEntryPage: React.FC = () => {
     }
   }, [loading, results]);
 
-  // Global Ctrl+S Shortcut to Save Draft
-  useKeyboardShortcut('s', (e) => {
-    e.preventDefault();
-    if (!saving && (!isCurrentVerified || amendReportId)) {
-      handleSaveResults(RESULT_STATUSES.DRAFT);
+  // Global F2/F6/F8/F9/Ctrl+S Shortcuts
+  useGlobalShortcuts({
+    onNewBill: () => navigate('/billing/new'),
+    onWorklist: () => navigate('/worklist'),
+    onSave: () => {
+      if (!saving && (!isCurrentVerified || amendReportId)) {
+        handleSaveResults(RESULT_STATUSES.DRAFT);
+      }
+    },
+    onVerify: () => {
+      if (!saving && can(PERMISSION_KEYS.CAN_VERIFY_RESULTS) && !isCurrentVerified && results.length > 0 && !hasUnackCritical) {
+        handleSaveResults(RESULT_STATUSES.VERIFIED);
+      }
+    },
+    onSign: () => {
+      if (!saving && can(PERMISSION_KEYS.CAN_SIGN_REPORTS) && isOrderFullyReady && !hasExistingReport) {
+        setSignOffModalOpen(true);
+      }
+    },
+    onEscape: () => {
+      setCriticalModalOpen(false);
+      setSignOffModalOpen(false);
+      setConfigModalOpen(false);
+    },
+  });
+
+  const handleNextPendingPatient = async () => {
+    try {
+      const { data, error: fetchErr } = await supabase.rpc('search_laboratory_worklist', {
+        p_search: null,
+        p_department: null,
+        p_sample_status: null,
+        p_order_date: null,
+        p_view: 'Pending',
+        p_cursor_created_at: null,
+        p_cursor_id: null,
+        p_limit: 5,
+      });
+      if (!fetchErr && data && (data as any[]).length > 0) {
+        const list = (data as any[]).map((d) => d.item || d);
+        const nextTarget = list.find((it) => it.id !== orderItemId);
+        if (nextTarget) {
+          navigate(`/worklist/order/${nextTarget.order_id}?item=${nextTarget.id}`);
+          return;
+        }
+      }
+      navigate('/worklist');
+    } catch {
+      navigate('/worklist');
     }
-  }, { ctrlOrCmd: true });
+  };
 
   // Load Master Personnel, Order Item, Sibling Tests, Readiness & Results
   const loadItemAndResults = useCallback(async () => {
@@ -1230,9 +1276,36 @@ export const ResultEntryPage: React.FC = () => {
           {/* Quick Action Buttons */}
           <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', alignItems: 'center' }}>
             {hasExistingReport ? (
-              <Button variant="outlined" size="small" onClick={() => navigate(`/reports?reportId=${existingReport.id}`)} sx={{ fontWeight: 600 }}>
-                Open Final Report in Reporting
-              </Button>
+              <>
+                <Button
+                  variant="outlined"
+                  size="small"
+                  startIcon={<PrintIcon />}
+                  onClick={() => navigate(`/reports?reportId=${existingReport.id}`)}
+                  sx={{ fontWeight: 600 }}
+                >
+                  Open Report (Print)
+                </Button>
+                <Button
+                  variant="contained"
+                  size="small"
+                  color="primary"
+                  startIcon={<ArrowForwardIcon />}
+                  onClick={handleNextPendingPatient}
+                  sx={{ fontWeight: 600 }}
+                >
+                  Next Pending Patient →
+                </Button>
+                <Button
+                  variant="outlined"
+                  size="small"
+                  color="secondary"
+                  onClick={() => navigate('/billing/new')}
+                  sx={{ fontWeight: 600 }}
+                >
+                  + New Bill (F2)
+                </Button>
+              </>
             ) : (
               can(PERMISSION_KEYS.CAN_SIGN_REPORTS) && (
                 <Button
@@ -1245,7 +1318,7 @@ export const ResultEntryPage: React.FC = () => {
                   onClick={() => setSignOffModalOpen(true)}
                   sx={{ fontWeight: 700, px: 2 }}
                 >
-                  {amendReportId ? `Sign ${reportGroup?.title || 'Group'} Amendment` : `Sign ${reportGroup?.title || 'Report Group'} Report`}
+                  {amendReportId ? `Sign ${reportGroup?.title || 'Group'} Amendment (F9)` : `Sign ${reportGroup?.title || 'Report Group'} Report (F9)`}
                 </Button>
               )
             )}
@@ -1563,12 +1636,62 @@ export const ResultEntryPage: React.FC = () => {
                 disabled={saving || results.length === 0 || (isCurrentVerified && !amendReportId)}
                 onClick={() => handleSaveResults(RESULT_STATUSES.DRAFT)}
               >
-                {saving ? 'Saving...' : 'Save Draft'}
+                {saving ? 'Saving...' : 'Save Draft (Ctrl+S)'}
               </Button>
             ) : <Box />}
 
-            <Box sx={{ display: 'flex', gap: 1.5 }}>
-              {can(PERMISSION_KEYS.CAN_VERIFY_RESULTS) ? (
+            <Box sx={{ display: 'flex', gap: 1.5, alignItems: 'center' }}>
+              {hasExistingReport ? (
+                <>
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    startIcon={<PrintIcon />}
+                    onClick={() => navigate(`/reports?reportId=${existingReport.id}`)}
+                  >
+                    Print / View Report
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    startIcon={<ArrowForwardIcon />}
+                    onClick={handleNextPendingPatient}
+                  >
+                    Next Pending Patient →
+                  </Button>
+                  <Button
+                    variant="outlined"
+                    color="secondary"
+                    onClick={() => navigate('/billing/new')}
+                  >
+                    + New Bill (F2)
+                  </Button>
+                </>
+              ) : isCurrentVerified && !amendReportId ? (
+                <>
+                  {can(PERMISSION_KEYS.CAN_SIGN_REPORTS) && (
+                    <Button
+                      data-workflow-action="sign"
+                      variant="contained"
+                      color="success"
+                      startIcon={<DrawIcon />}
+                      disabled={!isOrderFullyReady || saving}
+                      onClick={() => setSignOffModalOpen(true)}
+                      sx={{ fontWeight: 700, px: 2.5 }}
+                    >
+                      Sign Report (F9)
+                    </Button>
+                  )}
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    startIcon={<ArrowForwardIcon />}
+                    onClick={handleNextPendingPatient}
+                  >
+                    Next Pending Patient →
+                  </Button>
+                </>
+              ) : can(PERMISSION_KEYS.CAN_VERIFY_RESULTS) ? (
                 <>
                   {currentOverallStatus === RESULT_STATUSES.SUBMITTED_FOR_VERIFICATION && (
                     <Button
@@ -1593,8 +1716,9 @@ export const ResultEntryPage: React.FC = () => {
                       (isCurrentVerified && !amendReportId)
                     }
                     onClick={() => handleSaveResults(RESULT_STATUSES.VERIFIED)}
+                    sx={{ fontWeight: 700 }}
                   >
-                    Verify Results
+                    Verify Results (F8)
                   </Button>
                 </>
               ) : (

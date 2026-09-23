@@ -88,8 +88,9 @@ export const SampleAccessioningPage: React.FC = () => {
   const navigate = useNavigate();
   const { can } = usePermissions();
 
-  const [searchTerm, setSearchTerm] = useState(searchParams.get('search') || '');
-  const [serverSearch, setServerSearch] = useState(searchParams.get('search') || '');
+  const initialSearch = searchParams.get('search') || searchParams.get('order_number') || searchParams.get('order_id') || searchParams.get('orderId') || '';
+  const [searchTerm, setSearchTerm] = useState(initialSearch);
+  const [serverSearch, setServerSearch] = useState(initialSearch);
   const [statusFilter, setStatusFilter] = useState(searchParams.get('status') || 'All');
   const [specimenFilter, setSpecimenFilter] = useState(searchParams.get('specimen') || '');
   const [dateFilter, setDateFilter] = useState(searchParams.get('date') || '');
@@ -426,6 +427,18 @@ export const SampleAccessioningPage: React.FC = () => {
                                   onClick={() => handleReceiveSample(sample)}
                                 >
                                   Receive
+                                </Button>
+                              )}
+                              {sample.status === SAMPLE_STATUSES.RECEIVED && (
+                                <Button
+                                  data-sample-action={sample.id}
+                                  size="small"
+                                  variant="contained"
+                                  color="primary"
+                                  onClick={() => navigate(`/worklist/order/${sample.order_id}`)}
+                                  sx={{ fontWeight: 700 }}
+                                >
+                                  Open Worklist →
                                 </Button>
                               )}
                               {[SAMPLE_STATUSES.PENDING, SAMPLE_STATUSES.COLLECTED, SAMPLE_STATUSES.RECEIVED].includes(sample.status as any) &&

@@ -53,6 +53,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { usePermissions } from '@/hooks/usePermissions';
 import { PERMISSION_KEYS } from '@/types/permissions';
 import { ORG_CONFIG } from '@/config/constants';
+import { useGlobalShortcuts } from '@/lib/keyboardNav';
 
 const DRAWER_WIDTH = 270;
 
@@ -68,6 +69,7 @@ interface NavItem {
   permission?: string;
   anyPermissions?: string[];
   badge?: string;
+  shortcut?: string;
 }
 
 export const AppLayout: React.FC = () => {
@@ -86,6 +88,29 @@ export const AppLayout: React.FC = () => {
     : roles.includes('admin')
       ? 'Admin'
       : 'Lab Technician';
+
+  // Global F2, F4, F6 Shortcuts
+  useGlobalShortcuts({
+    onNewBill: () => {
+      if (can(PERMISSION_KEYS.CAN_CREATE_BILL)) {
+        navigate('/billing/new');
+      }
+    },
+    onSearch: () => {
+      if (location.pathname === '/billing/new') {
+        // Handled inside NewBillPage
+        const el = document.querySelector<HTMLElement>('[data-patient-search="true"]') || document.querySelector<HTMLElement>('input[type="text"]');
+        el?.focus();
+      } else if (can(PERMISSION_KEYS.CAN_EDIT_PATIENT)) {
+        navigate('/patients');
+      }
+    },
+    onWorklist: () => {
+      if (can(PERMISSION_KEYS.CAN_ENTER_RESULTS) || can(PERMISSION_KEYS.CAN_VERIFY_RESULTS)) {
+        navigate('/worklist');
+      }
+    },
+  });
 
   useEffect(() => {
     const captureInstallPrompt = (event: Event) => {

@@ -101,10 +101,10 @@ export function useKeyboardShortcut(
 ): void {
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      const isCtrlOrCmd = options?.ctrlOrCmd ? (e.ctrlKey || e.metaKey) : true;
+      const isCtrlOrCmd = options?.ctrlOrCmd ? (e.ctrlKey || e.metaKey) : (e.ctrlKey || e.metaKey ? false : true);
       const isShift = options?.shift ? e.shiftKey : !e.shiftKey;
 
-      if (e.key.toLowerCase() === key.toLowerCase() && isCtrlOrCmd && isShift) {
+      if (e.key.toLowerCase() === key.toLowerCase() && (options?.ctrlOrCmd ? (e.ctrlKey || e.metaKey) : !e.ctrlKey && !e.metaKey) && isShift) {
         if (options?.preventDefault !== false) {
           e.preventDefault();
         }
@@ -115,4 +115,98 @@ export function useKeyboardShortcut(
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
   }, [key, callback, options]);
+}
+
+export interface GlobalShortcutHandlers {
+  onNewBill?: () => void;
+  onSearch?: () => void;
+  onWorklist?: () => void;
+  onSave?: () => void;
+  onVerify?: () => void;
+  onSign?: () => void;
+  onEscape?: () => void;
+}
+
+/**
+ * Standardized global shortcut hook across the application layout and pages.
+ * F2 = New Bill
+ * F4 = Search
+ * F6 = Worklist
+ * Ctrl+S = Save Draft / Save Bill
+ * F8 = Verify Results
+ * F9 = Sign Report
+ * Escape = Close Active Modal / Dismiss
+ */
+export function useGlobalShortcuts(handlers: GlobalShortcutHandlers): void {
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      // Ignore functional shortcuts inside certain rich text or if default prevented
+      if (e.defaultPrevented) return;
+
+      // Escape key (Dialog close / back)
+      if (e.key === 'Escape') {
+        if (handlers.onEscape) {
+          handlers.onEscape();
+        }
+        return;
+      }
+
+      // Ctrl+S or Cmd+S
+      if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S')) {
+        if (handlers.onSave) {
+          e.preventDefault();
+          handlers.onSave();
+        }
+        return;
+      }
+
+      // F2 = New Bill
+      if (e.key === 'F2') {
+        if (handlers.onNewBill) {
+          e.preventDefault();
+          handlers.onNewBill();
+        }
+        return;
+      }
+
+      // F4 = Search Patient / Test
+      if (e.key === 'F4') {
+        if (handlers.onSearch) {
+          e.preventDefault();
+          handlers.onSearch();
+        }
+        return;
+      }
+
+      // F6 = Worklist
+      if (e.key === 'F6') {
+        if (handlers.onWorklist) {
+          e.preventDefault();
+          handlers.onWorklist();
+        }
+        return;
+      }
+
+      // F8 = Verify Results
+      if (e.key === 'F8') {
+        if (handlers.onVerify) {
+          e.preventDefault();
+          handlers.onVerify();
+        }
+        return;
+      }
+
+      // F9 = Sign Report
+      if (e.key === 'F9') {
+        if (handlers.onSign) {
+          e.preventDefault();
+          handlers.onSign();
+        }
+        return;
+      }
+    };
+
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, [handlers]);
 }

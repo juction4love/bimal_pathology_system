@@ -32,11 +32,16 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
 } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import SearchIcon from '@mui/icons-material/Search';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import SaveIcon from '@mui/icons-material/Save';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { PageHeader } from '@/components/common/PageHeader';
@@ -50,7 +55,7 @@ import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
 import { toTitleCase } from '@/lib/stringUtils';
 import { BLANK_PATIENT_AGE, normalizeNepalMobile, normalizePatientName, validateNepalMobile, validatePatientAge } from '@/lib/patientEntry';
-import { handleEnterKeyNavigation, useKeyboardShortcut } from '@/lib/keyboardNav';
+import { handleEnterKeyNavigation, useKeyboardShortcut, useGlobalShortcuts } from '@/lib/keyboardNav';
 import { safeBillingDiagnosticCode, safeDiagnostic, safeErrorMessage } from '@/lib/safeError';
 import { SmartMessageDialog } from '@/components/common/SmartMessageDialog';
 import { addSelectedBillTest, removeSelectedBillTest, type SelectedBillTest } from './mixedTierSelection';
@@ -75,9 +80,33 @@ export const NewBillPage: React.FC = () => {
   const [selectedPackages, setSelectedPackages] = useState<{ package_id: string; code: string; name: string; component_ids: string[] }[]>([]);
   const [selectedPanel, setSelectedPanel] = useState<{ service_id: string; panel_version: number; name: string; component_ids: string[] } | null>(null);
 
+  // Fast Simultaneous Patient Search State
+  const [patientSearchTerm, setPatientSearchTerm] = useState('');
+  const [patientSearchResults, setPatientSearchResults] = useState<any[]>([]);
+  const [highlightedPatientIndex, setHighlightedPatientIndex] = useState(0);
+  const [isSearchingPatient, setIsSearchingPatient] = useState(false);
+
+  // Quick Patient Add Dialog State
+  const [quickAddOpen, setQuickAddOpen] = useState(false);
+  const [quickAddShowMore, setQuickAddShowMore] = useState(false);
+  const [quickAddSaving, setQuickAddSaving] = useState(false);
+  const [quickAddForm, setQuickAddForm] = useState({
+    title: 'Mr.',
+    full_name: '',
+    gender: 'Male' as 'Male' | 'Female' | 'Other',
+    dob: null as string | null,
+    age_years: '' as number | '',
+    age_months: '' as number | '',
+    age_days: '' as number | '',
+    mobile: '',
+    address: 'Bharatpur, Chitwan',
+    referring_doctor_id: '',
+    email: '',
+    identification_no: '',
+  });
+
   // Patient Demographics State
   const [mobileQuery, setMobileQuery] = useState(searchParams.get('mobile') || '');
-  const [isSearchingPatient, setIsSearchingPatient] = useState(false);
   const [isExistingPatient, setIsExistingPatient] = useState(false);
   const [existingPatientId, setExistingPatientId] = useState<string | null>(null);
 
@@ -122,7 +151,7 @@ export const NewBillPage: React.FC = () => {
   const [postBillModalOpen, setPostBillModalOpen] = useState(false);
 
   // Keyboard Navigation Input Refs
-  const mobileInputRef = useRef<HTMLInputElement>(null);
+  const patientSearchInputRef = useRef<HTMLInputElement>(null);
   const fullNameInputRef = useRef<HTMLInputElement>(null);
   const addressInputRef = useRef<HTMLInputElement>(null);
   const ageYearsInputRef = useRef<HTMLInputElement>(null);
@@ -135,22 +164,33 @@ export const NewBillPage: React.FC = () => {
   const testSearchInputRef = useRef<HTMLInputElement>(null);
   const paidAmountInputRef = useRef<HTMLInputElement>(null);
   const catalogueSearchRequestRef = useRef(0);
-  // Kept stable across failed/network-retried submissions and rotated only
-  // after the operator starts the next bill.
   const billingRequestKeyRef = useRef(crypto.randomUUID());
 
-  // Auto-focus mobile on mount
+  // Auto-focus Patient Search immediately on mount
   useEffect(() => {
-    mobileInputRef.current?.focus();
+    patientSearchInputRef.current?.focus();
   }, []);
 
-  // Global Ctrl+S Shortcut to Save Bill
-  useKeyboardShortcut('s', (e) => {
-    e.preventDefault();
-    if (!isSubmitting && selectedItems.length > 0 && fullName.trim()) {
-      handleSaveBill();
-    }
-  }, { ctrlOrCmd: true });
+  // Global F2/F4/F6/Ctrl+S Shortcuts
+  useGlobalShortcuts({
+    onNewBill: () => {
+      resetFormForNextBill();
+      patientSearchInputRef.current?.focus();
+    },
+    onSearch: () => {
+      patientSearchInputRef.current?.focus();
+      patientSearchInputRef.current?.select();
+    },
+    onSave: () => {
+      if (!isSubmitting && selectedItems.length > 0 && fullName.trim()) {
+        handleSaveBill();
+      }
+    },
+    onEscape: () => {
+      setPatientSearchResults([]);
+      setQuickAddOpen(false);
+    },
+  });
 
   // Global Ctrl+F Shortcut to Focus Test Search
   useKeyboardShortcut('f', (e) => {
@@ -268,6 +308,123 @@ export const NewBillPage: React.FC = () => {
     return () => window.clearTimeout(timer);
   }, [testSearchTerm]);
 
+  // Fast Simultaneous Patient Search (UHID, Mobile, Name)
+  useEffect(() => {
+    const query = patientSearchTerm.trim();
+    setHighlightedPatientIndex(0);
+    if (query.length < 1) {
+      setPatientSearchResults([]);
+      setIsSearchingPatient(false);
+      return;
+    }
+    const timer = window.setTimeout(async () => {
+      setIsSearchingPatient(true);
+      try {
+        const { data, error } = await supabase.rpc('search_patient_registry', {
+          p_search: query,
+          p_active_state: 'Active',
+          p_limit: 8,
+        });
+        if (!error && data) {
+          setPatientSearchResults((data as any[]).map((r) => r.item || r));
+        } else {
+          const cleanMobile = normalizeNepalMobile(query);
+          let q = supabase.from('patients').select('*').eq('is_active', true).limit(8);
+          if (cleanMobile.length >= 7) {
+            q = q.ilike('mobile', `%${cleanMobile}%`);
+          } else {
+            q = q.or(`full_name.ilike.%${query}%,uhid.ilike.%${query}%,mobile.ilike.%${query}%`);
+          }
+          const { data: directData } = await q;
+          if (directData) setPatientSearchResults(directData);
+        }
+      } catch (err) {
+        console.warn('[Billing] Patient search failure:', err);
+      } finally {
+        setIsSearchingPatient(false);
+      }
+    }, 100);
+    return () => window.clearTimeout(timer);
+  }, [patientSearchTerm]);
+
+  const handleSelectPatient = (p: any) => {
+    setIsExistingPatient(true);
+    setExistingPatientId(p.id);
+    setUhid(p.uhid);
+    setTitle(p.title || 'Mr.');
+    setFullName(p.full_name);
+    setGender(p.gender || 'Male');
+    setAgeYears(p.age_years ?? '');
+    setAgeMonths(p.age_months ?? '');
+    setAgeDays(p.age_days ?? '');
+    setAddress(p.address || 'Bharatpur, Chitwan');
+    setEmail(p.email || '');
+    setIdentificationNo(p.identification_no || '');
+    setMobileQuery(p.mobile || '');
+    setPatientSearchTerm('');
+    setPatientSearchResults([]);
+    setHighlightedPatientIndex(0);
+    window.setTimeout(() => {
+      testSearchInputRef.current?.focus();
+    }, 50);
+  };
+
+  const handleQuickAddSave = async () => {
+    const normName = normalizePatientName(quickAddForm.full_name);
+    if (!normName) {
+      setErrorMsg('Patient full legal name is required.');
+      return;
+    }
+    const mobErr = validateNepalMobile(quickAddForm.mobile);
+    if (mobErr) {
+      setErrorMsg(mobErr);
+      return;
+    }
+    const ageErr = validatePatientAge({
+      years: quickAddForm.age_years !== '' ? quickAddForm.age_years : null,
+      months: quickAddForm.age_months !== '' ? quickAddForm.age_months : null,
+      days: quickAddForm.age_days !== '' ? quickAddForm.age_days : null,
+    }, false);
+    if (ageErr) {
+      setErrorMsg(ageErr);
+      return;
+    }
+
+    setQuickAddSaving(true);
+    setErrorMsg(null);
+    try {
+      const payload = {
+        title: quickAddForm.title,
+        full_name: normName,
+        mobile: normalizeNepalMobile(quickAddForm.mobile),
+        gender: quickAddForm.gender,
+        dob: quickAddForm.dob || null,
+        age_years: quickAddForm.age_years !== '' ? Number(quickAddForm.age_years) : null,
+        age_months: quickAddForm.age_months !== '' ? Number(quickAddForm.age_months) : null,
+        age_days: quickAddForm.age_days !== '' ? Number(quickAddForm.age_days) : null,
+        address: quickAddForm.address.trim() || 'Bharatpur, Chitwan',
+        email: quickAddForm.email.trim() || null,
+        identification_no: quickAddForm.identification_no.trim() || null,
+      };
+
+      const { data, error } = await supabase.rpc('create_patient', { p_patient_data: payload });
+      if (error) throw error;
+
+      handleSelectPatient(data);
+      if (quickAddForm.referring_doctor_id) {
+        setReferringDoctorId(quickAddForm.referring_doctor_id);
+        const doc = doctors.find((d) => d.id === quickAddForm.referring_doctor_id);
+        setReferringDoctorName(doc ? doc.fullName : 'Self / Walk-in');
+      }
+      setQuickAddOpen(false);
+      setToastOpen(true);
+    } catch (err: any) {
+      setErrorMsg(safeErrorMessage(err, 'Failed to create patient record.'));
+    } finally {
+      setQuickAddSaving(false);
+    }
+  };
+
   // Handle Mobile Lookup against live patients table
   const handleMobileLookup = useCallback(async (mobileInput: string) => {
     const cleanMobile = normalizeNepalMobile(mobileInput);
@@ -293,18 +450,9 @@ export const NewBillPage: React.FC = () => {
       if (error) throw error;
 
       if (data) {
-        setIsExistingPatient(true);
         setExistingPatientId(data.id);
-        setUhid(data.uhid);
-        setTitle(data.title || 'Mr.');
-        setFullName(data.full_name);
-        setGender((data.gender as any) || 'Male');
         setAgeYears(data.age_years ?? '');
-        setAgeMonths(data.age_months ?? '');
-        setAgeDays(data.age_days ?? '');
-        setAddress(data.address || 'Bharatpur, Chitwan');
-        setEmail(data.email || '');
-        setIdentificationNo(data.identification_no || '');
+        handleSelectPatient(data);
       } else {
         setIsExistingPatient(false);
         setExistingPatientId(null);
@@ -818,67 +966,210 @@ export const NewBillPage: React.FC = () => {
           <Card sx={{ mb: 3 }}>
             <CardContent>
               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-                <Typography variant="h6" fontWeight={700} color="primary.main">
-                  1. Patient Demographics & Mobile Lookup
-                </Typography>
-                {isExistingPatient ? (
-                  <Chip
-                    label={`Existing Patient: ${uhid}`}
-                    color="success"
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <Typography variant="h6" fontWeight={700} color="primary.main">
+                    1. Patient Search & Demographics
+                  </Typography>
+                  <Chip label="F4" size="small" variant="outlined" sx={{ fontWeight: 700, height: 20, fontSize: '0.68rem' }} />
+                </Box>
+                <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+                  {isExistingPatient ? (
+                    <Chip
+                      label={`Existing Patient: ${uhid}`}
+                      color="success"
+                      size="small"
+                      variant="outlined"
+                    />
+                  ) : (
+                    <Chip label="New Patient Registration" color="secondary" size="small" />
+                  )}
+                  <Button
                     size="small"
                     variant="outlined"
-                  />
-                ) : (
-                  <Chip label="New Patient Registration" color="secondary" size="small" />
-                )}
+                    color="primary"
+                    startIcon={<PersonAddIcon />}
+                    onClick={() => {
+                      setQuickAddForm({
+                        title: 'Mr.',
+                        full_name: patientSearchTerm && isNaN(Number(patientSearchTerm)) ? patientSearchTerm : '',
+                        gender: 'Male',
+                        dob: null,
+                        age_years: '',
+                        age_months: '',
+                        age_days: '',
+                        mobile: patientSearchTerm && !isNaN(Number(patientSearchTerm)) ? patientSearchTerm : '',
+                        address: 'Bharatpur, Chitwan',
+                        referring_doctor_id: referringDoctorId || '',
+                        email: '',
+                        identification_no: '',
+                      });
+                      setQuickAddOpen(true);
+                    }}
+                    sx={{ fontWeight: 700, textTransform: 'none' }}
+                  >
+                    + Quick Add Patient
+                  </Button>
+                </Box>
               </Box>
 
-              {/* Mobile Lookup Key */}
-              <Box sx={{ p: 2, bgcolor: '#f8fafc', borderRadius: 2, border: '1px solid #e2e8f0', mb: 2.5 }}>
+              {/* Fast Simultaneous Patient Search (UHID, Mobile, Name) */}
+              <Box sx={{ position: 'relative', p: 2, bgcolor: '#f8fafc', borderRadius: 2, border: '1px solid #e2e8f0', mb: 2.5 }}>
                 <Grid container spacing={2} alignItems="center">
-                  <Grid item xs={12} sm={6}>
+                  <Grid item xs={12} sm={8}>
                     <TextField
-                      inputRef={mobileInputRef}
+                      inputRef={patientSearchInputRef}
+                      data-patient-search="true"
                       fullWidth
-                      label="Patient Mobile Number *"
-                      placeholder="e.g. 9845012345"
-                      value={mobileQuery}
-                      onChange={(e) => setMobileQuery(e.target.value)}
-                      onBlur={() => handleMobileLookup(mobileQuery)}
-                      onKeyDown={async (e) => {
-                        if (e.key === 'Enter') {
+                      label="Search Patient (UHID, Mobile, or Name) (F4) *"
+                      placeholder="Type patient name, phone number, or UHID (e.g. 9845012345, Ram Thapa, BP-2026-0001)..."
+                      value={patientSearchTerm}
+                      onChange={(e) => setPatientSearchTerm(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'ArrowDown') {
                           e.preventDefault();
-                          await handleMobileLookup(mobileQuery);
-                          if (isExistingPatient) {
-                            testSearchInputRef.current?.focus();
-                          } else {
-                            fullNameInputRef.current?.focus();
+                          setHighlightedPatientIndex((prev) => Math.min(prev + 1, patientSearchResults.length - 1));
+                        } else if (e.key === 'ArrowUp') {
+                          e.preventDefault();
+                          setHighlightedPatientIndex((prev) => Math.max(prev - 1, 0));
+                        } else if (e.key === 'Escape') {
+                          e.preventDefault();
+                          setPatientSearchTerm('');
+                          setPatientSearchResults([]);
+                        } else if (e.key === 'Enter') {
+                          e.preventDefault();
+                          if (patientSearchResults[highlightedPatientIndex]) {
+                            handleSelectPatient(patientSearchResults[highlightedPatientIndex]);
+                          } else if (patientSearchTerm.trim().length >= 2) {
+                            // If no matching patient found on Enter, prompt Quick Add
+                            setQuickAddForm({
+                              title: 'Mr.',
+                              full_name: isNaN(Number(patientSearchTerm)) ? patientSearchTerm : '',
+                              gender: 'Male',
+                              dob: null,
+                              age_years: '',
+                              age_months: '',
+                              age_days: '',
+                              mobile: !isNaN(Number(patientSearchTerm)) ? patientSearchTerm : '',
+                              address: 'Bharatpur, Chitwan',
+                              referring_doctor_id: referringDoctorId || '',
+                              email: '',
+                              identification_no: '',
+                            });
+                            setQuickAddOpen(true);
                           }
                         }
                       }}
                       InputProps={{
-                        startAdornment: <InputAdornment position="start">+977</InputAdornment>,
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <SearchIcon color="primary" />
+                          </InputAdornment>
+                        ),
                         endAdornment: isSearchingPatient ? (
                           <CircularProgress size={20} />
-                        ) : (
-                          <IconButton onClick={() => handleMobileLookup(mobileQuery)} size="small">
-                            <SearchIcon />
-                          </IconButton>
-                        ),
+                        ) : null,
+                        sx: { bgcolor: '#ffffff', fontWeight: 600 },
                       }}
-                      helperText="Mandatory lookup key. Existing patient details will auto-fill."
+                      helperText="Type UHID, mobile or name. Arrow Up/Down + Enter to select patient."
                     />
                   </Grid>
-                  <Grid item xs={12} sm={6}>
+                  <Grid item xs={12} sm={4}>
                     <TextField
                       fullWidth
-                      label="UHID (Hospital / Lab Identifier)"
+                      label="UHID (Lab Identifier)"
                       value={uhid}
                       disabled
                       InputProps={{ sx: { bgcolor: '#ffffff', fontWeight: 700 } }}
                     />
                   </Grid>
                 </Grid>
+
+                {/* Floating Patient Suggestions Dropdown */}
+                {patientSearchTerm.trim().length >= 1 && (
+                  <Paper
+                    elevation={6}
+                    sx={{
+                      position: 'absolute',
+                      zIndex: 40,
+                      left: 16,
+                      right: 16,
+                      top: '100%',
+                      mt: 0.5,
+                      maxHeight: 280,
+                      overflowY: 'auto',
+                      borderRadius: 2,
+                      border: '1px solid #cbd5e1',
+                      bgcolor: '#ffffff',
+                      boxShadow: '0 8px 24px rgba(15, 23, 42, 0.12)',
+                    }}
+                  >
+                    {patientSearchResults.length === 0 && !isSearchingPatient ? (
+                      <Box sx={{ p: 2, textAlign: 'center' }}>
+                        <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                          No patient matching &quot;{patientSearchTerm}&quot; found.
+                        </Typography>
+                        <Button
+                          size="small"
+                          variant="contained"
+                          color="primary"
+                          startIcon={<PersonAddIcon />}
+                          onClick={() => {
+                            setQuickAddForm({
+                              title: 'Mr.',
+                              full_name: isNaN(Number(patientSearchTerm)) ? patientSearchTerm : '',
+                              gender: 'Male',
+                              dob: null,
+                              age_years: '',
+                              age_months: '',
+                              age_days: '',
+                              mobile: !isNaN(Number(patientSearchTerm)) ? patientSearchTerm : '',
+                              address: 'Bharatpur, Chitwan',
+                              referring_doctor_id: referringDoctorId || '',
+                              email: '',
+                              identification_no: '',
+                            });
+                            setQuickAddOpen(true);
+                          }}
+                        >
+                          + Quick Add Patient
+                        </Button>
+                      </Box>
+                    ) : (
+                      patientSearchResults.map((pat, idx) => {
+                        const isHighlighted = idx === highlightedPatientIndex;
+                        return (
+                          <Box
+                            key={pat.id || idx}
+                            onClick={() => handleSelectPatient(pat)}
+                            onMouseEnter={() => setHighlightedPatientIndex(idx)}
+                            sx={{
+                              p: 1.5,
+                              cursor: 'pointer',
+                              borderBottom: '1px solid #f1f5f9',
+                              bgcolor: isHighlighted ? '#eff6ff' : '#ffffff',
+                              borderLeft: isHighlighted ? '4px solid #2563eb' : '4px solid transparent',
+                              display: 'flex',
+                              justifyContent: 'space-between',
+                              alignItems: 'center',
+                            }}
+                          >
+                            <Box>
+                              <Typography variant="body2" fontWeight={700}>
+                                {pat.title ? `${pat.title} ` : ''}{pat.full_name}
+                              </Typography>
+                              <Typography variant="caption" color="text.secondary">
+                                UHID: <strong style={{ color: '#0369a1' }}>{pat.uhid}</strong> · Mobile: {pat.mobile} · {pat.age_years ? `${pat.age_years}Y` : ''} / {pat.gender} · {pat.address}
+                              </Typography>
+                            </Box>
+                            <Button size="small" variant="text" sx={{ fontWeight: 700 }}>
+                              Select (Enter)
+                            </Button>
+                          </Box>
+                        );
+                      })
+                    )}
+                  </Paper>
+                )}
               </Box>
 
               {/* Demographics Fields */}
@@ -1422,6 +1713,207 @@ export const NewBillPage: React.FC = () => {
               View Bill
             </Button>
           </Box>
+        </DialogActions>
+      </Dialog>
+
+      {/* Quick Add Patient Dialog */}
+      <Dialog
+        open={quickAddOpen}
+        onClose={() => setQuickAddOpen(false)}
+        maxWidth="sm"
+        fullWidth
+        PaperProps={{ sx: { borderRadius: 2 } }}
+      >
+        <DialogTitle sx={{ fontWeight: 800, pb: 1, display: 'flex', alignItems: 'center', gap: 1 }}>
+          <PersonAddIcon color="primary" /> Quick Add Patient
+        </DialogTitle>
+        <DialogContent dividers>
+          <Grid container spacing={2} sx={{ mt: 0.2 }}>
+            <Grid item xs={12} sm={8}>
+              <TextField
+                fullWidth
+                size="small"
+                required
+                autoFocus
+                label="Full Legal Name *"
+                placeholder="e.g. Ram Bahadur Thapa"
+                value={quickAddForm.full_name}
+                onChange={(e) => setQuickAddForm({ ...quickAddForm, full_name: e.target.value })}
+                onBlur={() => setQuickAddForm({ ...quickAddForm, full_name: normalizePatientName(quickAddForm.full_name) })}
+              />
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <TextField
+                select
+                fullWidth
+                size="small"
+                label="Gender *"
+                value={quickAddForm.gender}
+                onChange={(e) => setQuickAddForm({ ...quickAddForm, gender: e.target.value as any })}
+              >
+                <MenuItem value="Male">Male</MenuItem>
+                <MenuItem value="Female">Female</MenuItem>
+                <MenuItem value="Other">Other</MenuItem>
+              </TextField>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                size="small"
+                type="number"
+                label="Age (Years) *"
+                placeholder="Age in years"
+                value={quickAddForm.age_years}
+                onChange={(e) => setQuickAddForm({ ...quickAddForm, age_years: e.target.value ? Number(e.target.value) : '' })}
+                inputProps={{ min: 0, max: 120 }}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                size="small"
+                type="tel"
+                required
+                label="Mobile Number *"
+                placeholder="9845012345"
+                value={quickAddForm.mobile}
+                onChange={(e) => setQuickAddForm({ ...quickAddForm, mobile: e.target.value })}
+                onBlur={() => setQuickAddForm({ ...quickAddForm, mobile: normalizeNepalMobile(quickAddForm.mobile) })}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start">+977</InputAdornment>,
+                }}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                size="small"
+                label="Address / District *"
+                value={quickAddForm.address}
+                onChange={(e) => setQuickAddForm({ ...quickAddForm, address: e.target.value })}
+                onBlur={() => setQuickAddForm({ ...quickAddForm, address: toTitleCase(quickAddForm.address) })}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                select
+                fullWidth
+                size="small"
+                label="Referring Doctor"
+                value={quickAddForm.referring_doctor_id}
+                onChange={(e) => setQuickAddForm({ ...quickAddForm, referring_doctor_id: e.target.value })}
+              >
+                <MenuItem value="">Self / Walk-in Patient</MenuItem>
+                {doctors.map((d) => (
+                  <MenuItem key={d.id} value={d.id}>
+                    {d.fullName} {d.institution ? `(${d.institution})` : ''}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Grid>
+
+            {/* Collapsible Additional Details */}
+            <Grid item xs={12}>
+              <Accordion
+                expanded={quickAddShowMore}
+                onChange={() => setQuickAddShowMore(!quickAddShowMore)}
+                elevation={0}
+                sx={{ border: '1px solid #e2e8f0', borderRadius: 1.5, '&:before': { display: 'none' } }}
+              >
+                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                  <Typography variant="caption" fontWeight={700} color="text.secondary">
+                    {quickAddShowMore ? 'Hide Additional Details' : '+ Additional Details (DOB, Months, Email, ID)'}
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails sx={{ pt: 0 }}>
+                  <Grid container spacing={2}>
+                    <Grid item xs={12} sm={4}>
+                      <TextField
+                        select
+                        fullWidth
+                        size="small"
+                        label="Title"
+                        value={quickAddForm.title}
+                        onChange={(e) => setQuickAddForm({ ...quickAddForm, title: e.target.value })}
+                      >
+                        {['Mr.', 'Mrs.', 'Ms.', 'Miss', 'Master', 'Dr.', 'Baby'].map((t) => (
+                          <MenuItem key={t} value={t}>{t}</MenuItem>
+                        ))}
+                      </TextField>
+                    </Grid>
+                    <Grid item xs={12} sm={4}>
+                      <TextField
+                        fullWidth
+                        size="small"
+                        type="date"
+                        label="Date of Birth"
+                        value={quickAddForm.dob || ''}
+                        onChange={(e) => setQuickAddForm({ ...quickAddForm, dob: e.target.value || null })}
+                        InputLabelProps={{ shrink: true }}
+                      />
+                    </Grid>
+                    <Grid item xs={6} sm={2}>
+                      <TextField
+                        fullWidth
+                        size="small"
+                        type="number"
+                        label="Months"
+                        value={quickAddForm.age_months}
+                        onChange={(e) => setQuickAddForm({ ...quickAddForm, age_months: e.target.value ? Number(e.target.value) : '' })}
+                        inputProps={{ min: 0, max: 11 }}
+                      />
+                    </Grid>
+                    <Grid item xs={6} sm={2}>
+                      <TextField
+                        fullWidth
+                        size="small"
+                        type="number"
+                        label="Days"
+                        value={quickAddForm.age_days}
+                        onChange={(e) => setQuickAddForm({ ...quickAddForm, age_days: e.target.value ? Number(e.target.value) : '' })}
+                        inputProps={{ min: 0, max: 31 }}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        fullWidth
+                        size="small"
+                        type="email"
+                        label="Email Address"
+                        placeholder="patient@example.com"
+                        value={quickAddForm.email}
+                        onChange={(e) => setQuickAddForm({ ...quickAddForm, email: e.target.value })}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        fullWidth
+                        size="small"
+                        label="Citizenship / ID No."
+                        value={quickAddForm.identification_no}
+                        onChange={(e) => setQuickAddForm({ ...quickAddForm, identification_no: e.target.value })}
+                      />
+                    </Grid>
+                  </Grid>
+                </AccordionDetails>
+              </Accordion>
+            </Grid>
+          </Grid>
+        </DialogContent>
+        <DialogActions sx={{ p: 2 }}>
+          <Button onClick={() => setQuickAddOpen(false)} disabled={quickAddSaving}>
+            Cancel
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleQuickAddSave}
+            disabled={quickAddSaving || !quickAddForm.full_name.trim() || !quickAddForm.mobile.trim()}
+            startIcon={quickAddSaving ? <CircularProgress size={18} color="inherit" /> : <PersonAddIcon />}
+            sx={{ fontWeight: 700 }}
+          >
+            {quickAddSaving ? 'Saving...' : 'Save & Select Patient'}
+          </Button>
         </DialogActions>
       </Dialog>
 

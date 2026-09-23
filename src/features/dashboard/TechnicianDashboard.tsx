@@ -230,31 +230,34 @@ export const TechnicianDashboard: React.FC = () => {
               onClick={() => navigate('/billing/new')}
               sx={{ fontWeight: 700 }}
             >
-              + New Bill
+              + New Bill (F2)
             </Button>
             <Button
               variant="outlined"
               size="small"
               startIcon={<SearchIcon />}
               onClick={() => navigate('/patients')}
+              sx={{ fontWeight: 600 }}
             >
-              Search Patient
+              Search Patient (F4)
             </Button>
             <Button
               variant="outlined"
               size="small"
               startIcon={<AssignmentIcon />}
               onClick={() => navigate('/worklist')}
+              sx={{ fontWeight: 600 }}
             >
-              Open Worklist
+              Open Worklist (F6)
             </Button>
             <Button
               variant="outlined"
               size="small"
               startIcon={<DescriptionIcon />}
               onClick={() => navigate('/reports')}
+              sx={{ fontWeight: 600 }}
             >
-              Open Reports
+              Reports Ready
             </Button>
             <IconButton aria-label="Refresh dashboard" onClick={loadData} disabled={loading} color="primary" title="Refresh">
               <RefreshIcon />
