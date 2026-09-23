@@ -124,8 +124,7 @@ BEGIN
         '{"investigations": []}'::jsonb, NOW()
     ) RETURNING id INTO v_report_id;
 
-    -- 7. CLEAN UP SMOKE TEST TRANSACTION
-    SET session_replication_role = 'replica';
+    -- 7. CLEAN UP SMOKE TEST TRANSACTION (EXPLICIT FIXTURE IDS ONLY)
     DELETE FROM public.diagnostic_reports WHERE id = v_report_id;
     DELETE FROM public.test_results WHERE order_item_id = v_order_item_id;
     DELETE FROM public.samples WHERE id = v_sample_id;
@@ -134,12 +133,6 @@ BEGIN
     DELETE FROM public.bill_items WHERE id = v_bill_item_id;
     DELETE FROM public.bills WHERE id = v_bill_id;
     DELETE FROM public.patients WHERE id = v_patient_id;
-    SET session_replication_role = 'origin';
-    
-    -- Reset sequences
-    FOR seq_rec IN SELECT sequencename FROM pg_sequences WHERE schemaname = 'public' LOOP
-        EXECUTE 'ALTER SEQUENCE public.' || quote_ident(seq_rec.sequencename) || ' RESTART WITH 1;';
-    END LOOP;
 END $$;
 `;
 
