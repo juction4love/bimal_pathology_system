@@ -157,7 +157,7 @@ export function formatReferenceRangeText(range?: DbReferenceRange | {
   normal_min?: number | null;
   normal_max?: number | null;
 } | null): string {
-  if (!range) return 'Not configured';
+  if (!range) return '—';
 
   // a. reference_text if explicitly configured
   if (range.reference_text && range.reference_text.trim().length > 0) {
@@ -186,7 +186,7 @@ export function formatReferenceRangeText(range?: DbReferenceRange | {
   }
 
   // e. no configured range
-  return 'Not configured';
+  return '—';
 }
 
 /**

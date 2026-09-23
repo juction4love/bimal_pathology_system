@@ -100,7 +100,7 @@ function resolvePatientReferenceRange(ranges, patientAgeDays, patientGender) {
 }
 
 function formatReferenceRangeText(range) {
-  if (!range) return 'Not configured';
+  if (!range) return '—';
 
   if (range.reference_text && range.reference_text.trim().length > 0) {
     return range.reference_text.trim();
@@ -124,7 +124,7 @@ function formatReferenceRangeText(range) {
     return range.normal_text.trim();
   }
 
-  return 'Not configured';
+  return '—';
 }
 
 function evaluateResultFlag(valueStr, valueType, range) {
@@ -200,9 +200,9 @@ console.log('================================================================');
 console.log(' REFERENCE RANGE SETUP, VALIDATION & APPROVAL SUITE');
 console.log('================================================================\n');
 
-// 1. Parameter without range -> "Not configured"
+// 1. Parameter without range -> "—"
 const unconfiguredText = formatReferenceRangeText(null);
-assert(unconfiguredText === 'Not configured', '1. UnconfiguredRange', 'Parameter without range resolves to "Not configured"');
+assert(unconfiguredText === '—', '1. UnconfiguredRange', 'Parameter without range resolves to "—"');
 
 // 2. Configured numeric min-max range
 const numericRange = {
