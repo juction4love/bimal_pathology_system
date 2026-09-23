@@ -2,8 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const migration115 = fs.readFileSync('supabase/migrations/00115_dashboard_signed_reports_and_validation_semantics.sql', 'utf8');
-const migration073 = fs.readFileSync('supabase/migrations/00073_server_search_pagination_convergence.sql', 'utf8');
+const migration115 = fs.readFileSync('supabase/migrations_legacy_archive/00115_dashboard_signed_reports_and_validation_semantics.sql', 'utf8');
+const migration073 = fs.readFileSync('supabase/migrations_legacy_archive/00073_server_search_pagination_convergence.sql', 'utf8');
 const adminDashboard = fs.readFileSync('src/features/dashboard/DashboardPage.tsx', 'utf8');
 const techDashboard = fs.readFileSync('src/features/dashboard/TechnicianDashboard.tsx', 'utf8');
 const patientOrderWorklist = fs.readFileSync('src/features/dashboard/PatientOrderWorklist.tsx', 'utf8');

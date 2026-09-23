@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-const migration=fs.readFileSync(new URL('../supabase/migrations/00092_multi_report_group_lifecycle.sql',import.meta.url),'utf8');
+const migration=fs.readFileSync(new URL('../supabase/migrations_legacy_archive/00092_multi_report_group_lifecycle.sql',import.meta.url),'utf8');
 const result=fs.readFileSync(new URL('../src/features/worklist/ResultEntryPage.tsx',import.meta.url),'utf8');
 const billing=fs.readFileSync(new URL('../src/features/billing/NewBillPage.tsx',import.meta.url),'utf8');
 const routes=fs.readFileSync(new URL('../src/app/routes.tsx',import.meta.url),'utf8');

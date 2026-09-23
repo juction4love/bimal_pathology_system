@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 
-const migration = fs.readFileSync('supabase/migrations/00063_server_authoritative_calculation_engine.sql', 'utf8');
+const migration = fs.readFileSync('supabase/migrations_legacy_archive/00063_server_authoritative_calculation_engine.sql', 'utf8');
 const resultEntry = fs.readFileSync('src/features/worklist/ResultEntryPage.tsx', 'utf8');
 const deferred = fs.readdirSync('supabase/deferred_migrations');
 let failures = 0;

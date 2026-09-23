@@ -4,8 +4,8 @@ import path from 'node:path';
 
 const root = path.resolve(import.meta.dirname, '..');
 const read = (file) => fs.readFileSync(path.join(root, file), 'utf8');
-const migration = read('supabase/migrations/00029_optional_authorized_signatory.sql');
-const runtimeFix = read('supabase/migrations/00030_fix_optional_authorizer_runtime.sql');
+const migration = read('supabase/migrations_legacy_archive/00029_optional_authorized_signatory.sql');
+const runtimeFix = read('supabase/migrations_legacy_archive/00030_fix_optional_authorizer_runtime.sql');
 const report = read('src/features/reports/ReportDocument.tsx');
 const entry = read('src/features/worklist/ResultEntryPage.tsx');
 const publicPage = read('src/features/public/PublicReportPage.tsx');
@@ -51,7 +51,7 @@ assert(
   'unsigned authorization uses FINAL REPORT and no fabricated verified registration text',
 );
 assert(
-  /resolve_public_report_by_token/.test(read('supabase/migrations/00021_final_flow_integrity_and_concurrency.sql')) &&
+  /resolve_public_report_by_token/.test(read('supabase/migrations_legacy_archive/00021_final_flow_integrity_and_concurrency.sql')) &&
     /<ReportDocument/.test(publicPage) && /integrity_hash/.test(migration),
   'QrPublicReportStillWorks',
   'public resolution and the immutable hash remain wired to the shared renderer',

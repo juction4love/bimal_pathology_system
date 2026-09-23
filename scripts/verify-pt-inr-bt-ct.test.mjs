@@ -138,7 +138,7 @@ describe('PT / INR / BT / CT Clinical Configuration & Billing Regression Suite',
 
   describe('2. Database Migration 00119 Dry Run & Schema Verification', () => {
     it('executes migration 00119 dry-run successfully with rollback', () => {
-      const migrationFile = path.resolve('supabase/migrations/00119_pt_inr_bt_ct_clinical_configuration.sql');
+      const migrationFile = path.resolve('supabase/migrations_legacy_archive/00119_pt_inr_bt_ct_clinical_configuration.sql');
       const migrationContent = readFileSync(migrationFile, 'utf8');
 
       const dryRunSql = `

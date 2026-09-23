@@ -4,7 +4,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import path from 'node:path';
 
 describe('Migration 00128: Final Clinical Range Polish & Safety Guards', () => {
-  const migPath = path.resolve('supabase/migrations/00128_final_clinical_range_polish.sql');
+  const migPath = path.resolve('supabase/migrations_legacy_archive/00128_final_clinical_range_polish.sql');
 
   test('migration file 00128 exists and has valid SQL structure', () => {
     assert.ok(existsSync(migPath), '00128 migration file must exist');

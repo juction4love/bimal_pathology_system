@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const migration117 = fs.readFileSync('supabase/migrations/00117_easy_test_catalogue_management.sql', 'utf8');
+const migration117 = fs.readFileSync('supabase/migrations_legacy_archive/00117_easy_test_catalogue_management.sql', 'utf8');
 const easyEditorDialog = fs.readFileSync('src/features/catalogue/EasyTestEditorDialog.tsx', 'utf8');
 const cataloguePage = fs.readFileSync('src/features/catalogue/CataloguePage.tsx', 'utf8');
 const catalogueSections = fs.readFileSync('src/features/catalogue/CatalogueMasterSections.tsx', 'utf8');

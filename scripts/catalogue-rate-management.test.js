@@ -2,9 +2,9 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const sql=fs.readFileSync('supabase/migrations/00087_production_catalogue_rate_management.sql','utf8');
+const sql=fs.readFileSync('supabase/migrations_legacy_archive/00087_production_catalogue_rate_management.sql','utf8');
 const ui=fs.readFileSync('src/features/catalogue/CataloguePriceMasterSection.tsx','utf8');
-const billing=fs.readFileSync('supabase/migrations/00086_repair_panel_billing_authoritative_rate.sql','utf8');
+const billing=fs.readFileSync('supabase/migrations_legacy_archive/00086_repair_panel_billing_authoritative_rate.sql','utf8');
 
 test('migration is forward-only after production head 00086 and has no business seed DML',()=>{
  assert.match(sql,/schema\/code only/i);assert.doesNotMatch(sql,/INSERT INTO public\.tests|UPDATE public\.tests SET price_paisa=[0-9]/);

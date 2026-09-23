@@ -20,7 +20,7 @@ const billingSource = fs.readFileSync('src/features/billing/NewBillPage.tsx', 'u
 const patientsSource = fs.readFileSync('src/features/patients/PatientsPage.tsx', 'utf8');
 const resultEntrySource = fs.readFileSync('src/features/worklist/ResultEntryPage.tsx', 'utf8');
 const routesSource = fs.readFileSync('src/app/routes.tsx', 'utf8');
-const technicianPermissions = fs.readFileSync('supabase/migrations/00019_technician_clinical_only_permissions.sql', 'utf8');
+const technicianPermissions = fs.readFileSync('supabase/migrations_legacy_archive/00019_technician_clinical_only_permissions.sql', 'utf8');
 const transpiled = ts.transpileModule(patientEntrySource, {
   compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 },
 }).outputText;
@@ -45,7 +45,7 @@ check(patientsSource.includes('full_name: normalizedFullName'), 'Patient Registr
 check(patientsSource.includes('validatePatientAge({ years: editForm.age_years ?? null, months: editForm.age_months ?? null, days: editForm.age_days ?? null }, false)'), 'Patient Registry uses shared optional-age validation for years, months, and days');
 check(patientsSource.includes("age_years: e.target.value === '' ? null : Number(e.target.value)"), 'Patient Registry preserves a blank edit field instead of coercing it to zero');
 check(/\.eq\('mobile', cleanMobile\)[\s\S]*?\.maybeSingle\(\)/.test(billingSource), 'mobile-based patient lookup and duplicate detection remain active');
-check(billingSource.includes("supabase.rpc('create_patient_bill_order_with_packages'") && fs.readFileSync('supabase/migrations/00050_catalogue_management_architecture.sql', 'utf8').includes('response:=public.create_patient_bill_and_order'), 'atomic billing and order creation RPC remains active');
+check(billingSource.includes("supabase.rpc('create_patient_bill_order_with_packages'") && fs.readFileSync('supabase/migrations_legacy_archive/00050_catalogue_management_architecture.sql', 'utf8').includes('response:=public.create_patient_bill_and_order'), 'atomic billing and order creation RPC remains active');
 check(!resultEntrySource.includes('age_years ?? 30'), 'technician worklist never assumes a missing patient age is 30');
 check(resultEntrySource.includes('patientAgeDays == null') && resultEntrySource.includes('? null'), 'missing worklist age produces no fabricated reference-range age');
 

@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import { createHash } from 'node:crypto';
 
-const migration = fs.readFileSync('supabase/migrations/00031_deterministic_numeric_patient_uhid.sql', 'utf8');
+const migration = fs.readFileSync('supabase/migrations_legacy_archive/00031_deterministic_numeric_patient_uhid.sql', 'utf8');
 const newBill = fs.readFileSync('src/features/billing/NewBillPage.tsx', 'utf8');
 const searchable = [
   'src/features/patients/PatientsPage.tsx',

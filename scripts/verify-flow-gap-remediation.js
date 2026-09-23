@@ -5,7 +5,7 @@ const headers = fs.readFileSync('public/_headers', 'utf8');
 const patients = fs.readFileSync('src/features/patients/PatientsPage.tsx', 'utf8');
 const reports = fs.readFileSync('src/features/reports/ReportsPage.tsx', 'utf8');
 const worklist = fs.readFileSync('src/features/worklist/WorklistPage.tsx', 'utf8');
-const migration = fs.readFileSync('supabase/migrations/00074_registry_payload_and_worklist_filter_continuity.sql', 'utf8');
+const migration = fs.readFileSync('supabase/migrations_legacy_archive/00074_registry_payload_and_worklist_filter_continuity.sql', 'utf8');
 const workerConfig = fs.readFileSync('cloudflare/report-artifacts/wrangler.toml', 'utf8');
 
 assert.match(headers, /\/r\/\*[\s\S]*?Cache-Control: private, no-store/);

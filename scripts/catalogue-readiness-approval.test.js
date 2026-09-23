@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const sql=fs.readFileSync('supabase/migrations/00075_catalogue_readiness_approval_workflow.sql','utf8');
+const sql=fs.readFileSync('supabase/migrations_legacy_archive/00075_catalogue_readiness_approval_workflow.sql','utf8');
 const ui=fs.readFileSync('src/features/catalogue/CatalogueReadinessPanel.tsx','utf8');
 const bill=fs.readFileSync('src/features/billing/NewBillPage.tsx','utf8');
 
@@ -26,7 +26,7 @@ test('technical review and operational catalogue activation remain guarded',()=>
   assert.match(sql,/PROTECTED_CATALOGUE_FIELD/);
   assert.match(sql,/PROTECTED_REFERENCE_RANGE_FIELD/);
   assert.match(sql,/catalogue_record_configuration_review[\s\S]*catalogue_require_readiness_staff/);
-  const current=fs.readFileSync('supabase/migrations/00088_runtime_contract_gap_fixes.sql','utf8');
+  const current=fs.readFileSync('supabase/migrations_legacy_archive/00088_runtime_contract_gap_fixes.sql','utf8');
   assert.match(current,/catalogue_decide_readiness[\s\S]*catalogue_require_manager\(\)/);
   assert.doesNotMatch(current,/SUPER_ADMIN_APPROVAL_REQUIRED/);
 });

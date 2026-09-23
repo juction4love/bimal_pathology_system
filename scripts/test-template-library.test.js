@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
-const sql=fs.readFileSync('supabase/migrations/00075_catalogue_readiness_approval_workflow.sql','utf8');
+const sql=fs.readFileSync('supabase/migrations_legacy_archive/00075_catalogue_readiness_approval_workflow.sql','utf8');
 const ui=fs.readFileSync('src/features/catalogue/CatalogueMasterSections.tsx','utf8');
 const page=fs.readFileSync('src/features/catalogue/CataloguePage.tsx','utf8');
 

@@ -1,5 +1,5 @@
 import fs from 'node:fs';
-const smsPolicy = fs.readFileSync('supabase/migrations/00122_url_free_sms_notifications.sql', 'utf8');
+const smsPolicy = fs.readFileSync('supabase/migrations_legacy_archive/00122_url_free_sms_notifications.sql', 'utf8');
 
 const read = (path) => fs.readFileSync(path, 'utf8');
 let passed = 0;
@@ -19,14 +19,14 @@ const layout = read('src/app/AppLayout.tsx');
 const routes = read('src/app/routes.tsx');
 const lazyPages = read('src/app/lazyPages.ts');
 const audit = read('src/features/admin/AuditLogPage.tsx');
-const catalogue75 = read('supabase/migrations/00075_catalogue_readiness_approval_workflow.sql');
+const catalogue75 = read('supabase/migrations_legacy_archive/00075_catalogue_readiness_approval_workflow.sql');
 const report = read('src/features/reports/ReportDocument.tsx');
 const publicReport = read('src/features/public/PublicReportPage.tsx');
 const token = read('src/lib/sms/tokenHelper.ts');
 const renderer = read('src/lib/reportRenderer.ts');
 const outsource = read('src/features/outsource/OutsourceTrackingPage.tsx');
 const dateTime = read('src/lib/dateTime.ts');
-const payment = read('supabase/migrations/00040_short_payment_confirmation_sms.sql');
+const payment = read('supabase/migrations_legacy_archive/00040_short_payment_confirmation_sms.sql');
 const signoff = read('src/features/worklist/ResultEntryPage.tsx');
 const publicGateway = read('supabase/functions/public-report/index.ts');
 

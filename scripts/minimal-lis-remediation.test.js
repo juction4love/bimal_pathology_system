@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
 const read = (path) => fs.readFileSync(path, 'utf8');
-const migration = read('supabase/migrations/00075_catalogue_readiness_approval_workflow.sql');
+const migration = read('supabase/migrations_legacy_archive/00075_catalogue_readiness_approval_workflow.sql');
 const pus = read('src/features/worklist/AstCultureResultEntry.tsx');
 const sms = read('src/features/admin/SmsDeliveryPage.tsx');
 const audit = read('src/features/admin/AuditLogPage.tsx');

@@ -305,7 +305,7 @@ describe('Bimal Pathology LIS: SMS Operational Hardening', () => {
 
   // --- Idempotency + migration invariants ---
   test('migration 00129: has ON CONFLICT idempotency, paid_amount_paisa guard, 4-tier alias, rejection', () => {
-    const migPath = path.resolve('supabase/migrations/00129_sms_operational_hardening.sql');
+    const migPath = path.resolve('supabase/migrations_legacy_archive/00129_sms_operational_hardening.sql');
     assert.ok(existsSync(migPath), 'Migration 00129 must exist');
     const content = readFileSync(migPath, 'utf8');
     assert.ok(content.includes('paid_amount_paisa <= 0'), 'Must guard on paid_amount_paisa <= 0');
@@ -322,7 +322,7 @@ describe('Bimal Pathology LIS: SMS Operational Hardening', () => {
   });
 
   test('migration 00128: existing idempotency + locking invariants preserved', () => {
-    const migPath = path.resolve('supabase/migrations/00128_final_clinical_range_polish.sql');
+    const migPath = path.resolve('supabase/migrations_legacy_archive/00128_final_clinical_range_polish.sql');
     assert.ok(existsSync(migPath), 'Migration 00128 must exist');
     const content = readFileSync(migPath, 'utf8');
     assert.ok(content.includes("ON CONFLICT(idempotency_key) DO NOTHING"), 'Must have idempotent ON CONFLICT');
@@ -331,7 +331,7 @@ describe('Bimal Pathology LIS: SMS Operational Hardening', () => {
   });
 
   test('migration 00129: SMS_SINGLE_SEGMENT_LIMIT_EXCEEDED added to rejection whitelist', () => {
-    const migPath = path.resolve('supabase/migrations/00129_sms_operational_hardening.sql');
+    const migPath = path.resolve('supabase/migrations_legacy_archive/00129_sms_operational_hardening.sql');
     const content = readFileSync(migPath, 'utf8');
     assert.ok(
       content.includes("'SMS_SINGLE_SEGMENT_LIMIT_EXCEEDED'"),
@@ -341,7 +341,7 @@ describe('Bimal Pathology LIS: SMS Operational Hardening', () => {
 
   // --- Security invariants ---
   test('migration 00129: security invariants hold', () => {
-    const content = readFileSync(path.resolve('supabase/migrations/00129_sms_operational_hardening.sql'), 'utf8');
+    const content = readFileSync(path.resolve('supabase/migrations_legacy_archive/00129_sms_operational_hardening.sql'), 'utf8');
     assert.ok(content.includes('SECURITY DEFINER'), 'Must use SECURITY DEFINER');
     assert.ok(content.includes("SET search_path TO 'public', 'pg_temp'"), 'Must secure search_path in DEFINER functions');
   });

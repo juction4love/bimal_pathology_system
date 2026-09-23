@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-const m54=fs.readFileSync('supabase/migrations/00054_shared_catalogue_collection_and_bpdc_foundation.sql','utf8');
-const m55=fs.readFileSync('supabase/migrations/00055_foundation_rpc_and_sample_traceability_contracts.sql','utf8');
-const m72=fs.readFileSync('supabase/migrations/00072_worklist_server_search_pagination.sql','utf8');
+const m54=fs.readFileSync('supabase/migrations_legacy_archive/00054_shared_catalogue_collection_and_bpdc_foundation.sql','utf8');
+const m55=fs.readFileSync('supabase/migrations_legacy_archive/00055_foundation_rpc_and_sample_traceability_contracts.sql','utf8');
+const m72=fs.readFileSync('supabase/migrations_legacy_archive/00072_worklist_server_search_pagination.sql','utf8');
 const sampleUi=fs.readFileSync('src/features/samples/SampleAccessioningPage.tsx','utf8');
 const worklist=fs.readFileSync('src/features/worklist/WorklistPage.tsx','utf8');
 const entry=fs.readFileSync('src/features/worklist/ResultEntryPage.tsx','utf8');

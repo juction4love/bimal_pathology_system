@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 describe('Migration 00127: CORALAB ACE & FIAcheck Reference Ranges Audit', () => {
-    const migrationPath = path.resolve('supabase/migrations/00127_coralab_fiacheck_adult_reference_ranges.sql');
+    const migrationPath = path.resolve('supabase/migrations_legacy_archive/00127_coralab_fiacheck_adult_reference_ranges.sql');
     const sql = fs.readFileSync(migrationPath, 'utf8');
 
     it('should exist and be non-empty', () => {

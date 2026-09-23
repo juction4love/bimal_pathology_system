@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
-const migration00113Path = path.join(rootDir, 'supabase', 'migrations', '00113_activate_rapid_serology_screening_tests.sql');
+const migration00113Path = path.join(rootDir, 'supabase', 'migrations_legacy_archive', '00113_activate_rapid_serology_screening_tests.sql');
 
 test('Migration 00113 exists and defines distinct rapid serology canonical tests', () => {
   assert.ok(fs.existsSync(migration00113Path), 'Migration 00113 must exist');

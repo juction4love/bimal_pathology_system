@@ -20,7 +20,7 @@ describe('Bimal Pathology LIS: Migration 00121 Rate Convergence & Missing Rates 
 
   describe('1. Migration 00121 SQL Validation & Structure', () => {
     it('verifies 00121 migration file exists and includes all 29 target codes', () => {
-      const sqlPath = path.resolve('supabase/migrations/00121_converge_legacy_test_prices_to_rate_versions.sql');
+      const sqlPath = path.resolve('supabase/migrations_legacy_archive/00121_converge_legacy_test_prices_to_rate_versions.sql');
       const content = readFileSync(sqlPath, 'utf8');
 
       assert.ok(content.includes('catalogue_rate_versions'), 'Must target catalogue_rate_versions table');
@@ -34,7 +34,7 @@ describe('Bimal Pathology LIS: Migration 00121 Rate Convergence & Missing Rates 
     });
 
     it('enforces idempotency and avoids duplicate active rate insertions', () => {
-      const sqlPath = path.resolve('supabase/migrations/00121_converge_legacy_test_prices_to_rate_versions.sql');
+      const sqlPath = path.resolve('supabase/migrations_legacy_archive/00121_converge_legacy_test_prices_to_rate_versions.sql');
       const content = readFileSync(sqlPath, 'utf8');
 
       assert.ok(content.includes('NOT EXISTS'), 'Must contain NOT EXISTS guard to prevent duplicate active rates');
@@ -119,7 +119,7 @@ describe('Bimal Pathology LIS: Migration 00121 Rate Convergence & Missing Rates 
     });
 
     it('verifies migration 00121 idempotency: re-running does not insert duplicate active rates', () => {
-      const migrationFile = path.resolve('supabase/migrations/00121_converge_legacy_test_prices_to_rate_versions.sql');
+      const migrationFile = path.resolve('supabase/migrations_legacy_archive/00121_converge_legacy_test_prices_to_rate_versions.sql');
       const migrationContent = readFileSync(migrationFile, 'utf8');
 
       const idempotencySql = `

@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const migration=fs.readFileSync('supabase/migrations/00075_catalogue_readiness_approval_workflow.sql','utf8');
+const migration=fs.readFileSync('supabase/migrations_legacy_archive/00075_catalogue_readiness_approval_workflow.sql','utf8');
 const sections=fs.readFileSync('src/features/catalogue/CatalogueMasterSections.tsx','utf8');
 
 test('TM256 becomes a clean ordered operational Test Database',()=>{

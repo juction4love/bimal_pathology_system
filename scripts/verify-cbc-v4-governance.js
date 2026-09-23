@@ -1,5 +1,5 @@
 import fs from 'node:fs';
-const migration=fs.readFileSync('supabase/migrations/00066_cbc_v4_governance_and_formula_approval.sql','utf8');
+const migration=fs.readFileSync('supabase/migrations_legacy_archive/00066_cbc_v4_governance_and_formula_approval.sql','utf8');
 const panel=fs.readFileSync('src/features/catalogue/ClinicalSourceReviewPanel.tsx','utf8');
 const deferred=fs.readdirSync('supabase/deferred_migrations');
 let failed=0;const check=(v,n)=>{if(v)console.log(`PASS ${n}`);else{console.error(`FAIL ${n}`);failed++}};

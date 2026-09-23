@@ -71,10 +71,10 @@ async function runTests() {
   // --- GROUP 2: MIGRATION & AGGREGATE FUNCTION INSPECTION ---
   console.log('\n--- TEST GROUP 2: MIGRATION & DATA SOURCE INSPECTION ---');
 
-  const mig16Path = path.resolve(__dirname, '../supabase/migrations/00016_dashboard_collection_summary.sql');
+  const mig16Path = path.resolve(__dirname, '../supabase/migrations_legacy_archive/00016_dashboard_collection_summary.sql');
   const mig16Exists = fs.existsSync(mig16Path);
   const mig16Sql = mig16Exists ? fs.readFileSync(mig16Path, 'utf8') : '';
-  const mig51Sql = fs.readFileSync(path.resolve(__dirname, '../supabase/migrations/00051_inactive_user_permission_enforcement.sql'), 'utf8');
+  const mig51Sql = fs.readFileSync(path.resolve(__dirname, '../supabase/migrations_legacy_archive/00051_inactive_user_permission_enforcement.sql'), 'utf8');
 
   // 4. DashboardSummary_UsesPaymentTransactions
   const usesPaymentTable =

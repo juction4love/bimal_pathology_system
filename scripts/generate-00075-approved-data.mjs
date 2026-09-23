@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const root = process.cwd();
-const migration = path.join(root, 'supabase/migrations/00075_catalogue_readiness_approval_workflow.sql');
+const migration = path.join(root, 'supabase/migrations_legacy_archive/00075_catalogue_readiness_approval_workflow.sql');
 const marker = '-- BEGIN GENERATED OPERATOR-APPROVED DATA RECONCILIATION';
 
 function parseCsv(text) {

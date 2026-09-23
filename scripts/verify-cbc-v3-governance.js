@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 
-const migration = fs.readFileSync('supabase/migrations/00061_cbc_v3_clinical_source_governance.sql', 'utf8');
-const hardening = fs.readFileSync('supabase/migrations/00062_cbc_source_approval_hardening.sql', 'utf8');
+const migration = fs.readFileSync('supabase/migrations_legacy_archive/00061_cbc_v3_clinical_source_governance.sql', 'utf8');
+const hardening = fs.readFileSync('supabase/migrations_legacy_archive/00062_cbc_source_approval_hardening.sql', 'utf8');
 const ui = fs.readFileSync('src/features/catalogue/ClinicalSourceReviewPanel.tsx', 'utf8');
 const catalogue = fs.readFileSync('src/features/catalogue/CataloguePage.tsx', 'utf8');
 const deferred = fs.readdirSync('supabase/deferred_migrations');

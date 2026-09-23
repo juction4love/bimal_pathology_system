@@ -56,7 +56,7 @@ function formatReferenceRangeText(range) {
 const projectRoot = process.cwd();
 
 test('Bimal Pathology LIS: Migration 00126 CounCell Adult CBC Reference Ranges Verification', async (t) => {
-  const mig126Path = path.join(projectRoot, 'supabase/migrations/00126_councell_cbc_adult_reference_ranges.sql');
+  const mig126Path = path.join(projectRoot, 'supabase/migrations_legacy_archive/00126_councell_cbc_adult_reference_ranges.sql');
 
   await t.test('1. Migration 00126 File Structure & Invariants', () => {
     assert.ok(fs.existsSync(mig126Path), 'Migration 00126 file must exist');

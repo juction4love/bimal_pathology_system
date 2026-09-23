@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 
-const migration = readFileSync(new URL('../supabase/migrations/00075_catalogue_readiness_approval_workflow.sql', import.meta.url), 'utf8');
+const migration = readFileSync(new URL('../supabase/migrations_legacy_archive/00075_catalogue_readiness_approval_workflow.sql', import.meta.url), 'utf8');
 const resultEntry = readFileSync(new URL('../src/features/worklist/ResultEntryPage.tsx', import.meta.url), 'utf8');
 
 test('final WIDAL_SLIDE identity, parameters, options and metadata are exact', () => {

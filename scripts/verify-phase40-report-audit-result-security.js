@@ -1,11 +1,11 @@
 import fs from 'node:fs';
 
 const read = (path) => fs.readFileSync(path, 'utf8');
-const migration = read('supabase/migrations/00046_report_audit_result_security_hardening.sql');
+const migration = read('supabase/migrations_legacy_archive/00046_report_audit_result_security_hardening.sql');
 const resultEntry = read('src/features/worklist/ResultEntryPage.tsx');
 const safeErrors = read('src/lib/safeError.ts');
-const payment = read('supabase/migrations/00043_payment_receivables_integrity.sql');
-const reportSms = read('supabase/migrations/00041_standardize_report_ready_sms.sql');
+const payment = read('supabase/migrations_legacy_archive/00043_payment_receivables_integrity.sql');
+const reportSms = read('supabase/migrations_legacy_archive/00041_standardize_report_ready_sms.sql');
 
 let passed = 0;
 let failed = 0;
@@ -60,7 +60,7 @@ check(migration.includes("'REPORT_READY:'||p_report_id::TEXT||':'||v_report.vers
 check(payment.includes("'PAYMENT_CONFIRMATION:'||v_payment.id::TEXT") &&
   payment.includes('ON CONFLICT(idempotency_key) DO NOTHING'),
   'Payment Confirmation idempotency remains unchanged');
-const finalMatrix = read('supabase/migrations/00077_two_role_permission_reconciliation.sql');
+const finalMatrix = read('supabase/migrations_legacy_archive/00077_two_role_permission_reconciliation.sql');
 check(finalMatrix.includes("'can_enter_results','can_verify_results','can_acknowledge_critical'") &&
   finalMatrix.includes("'can_sign_reports','can_amend_reports','can_print_reports'"),
   'final Technician matrix supports verification, signing and controlled amendments');

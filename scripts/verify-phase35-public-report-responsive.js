@@ -1,5 +1,5 @@
 import fs from 'node:fs';
-const smsPolicy = fs.readFileSync('supabase/migrations/00122_url_free_sms_notifications.sql', 'utf8');
+const smsPolicy = fs.readFileSync('supabase/migrations_legacy_archive/00122_url_free_sms_notifications.sql', 'utf8');
 
 let passed = 0;
 let failed = 0;

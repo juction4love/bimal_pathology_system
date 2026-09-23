@@ -5,11 +5,11 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = (file) => fs.readFileSync(path.join(root, file), 'utf8');
-const migration01 = read('supabase/migrations/00001_initial_schema.sql');
-const migration02 = read('supabase/migrations/00002_rls_and_permissions.sql');
-const migration14Path = path.join(root, 'supabase/migrations/00014_fix_report_sha256_digest.sql');
-const migration14 = read('supabase/migrations/00014_fix_report_sha256_digest.sql');
-const migration15 = read('supabase/migrations/00015_laboratory_calculation_engine.sql');
+const migration01 = read('supabase/migrations_legacy_archive/00001_initial_schema.sql');
+const migration02 = read('supabase/migrations_legacy_archive/00002_rls_and_permissions.sql');
+const migration14Path = path.join(root, 'supabase/migrations_legacy_archive/00014_fix_report_sha256_digest.sql');
+const migration14 = read('supabase/migrations_legacy_archive/00014_fix_report_sha256_digest.sql');
+const migration15 = read('supabase/migrations_legacy_archive/00015_laboratory_calculation_engine.sql');
 let passedCount = 0;
 let failedCount = 0;
 

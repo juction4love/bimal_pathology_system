@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 
-const migration00130 = readFileSync('supabase/migrations/00130_focused_approved_catalogue.sql', 'utf8');
+const migration00130 = readFileSync('supabase/migrations_legacy_archive/00130_focused_approved_catalogue.sql', 'utf8');
 
 test('Migration 00130: 21-Test Catalogue & 4-Antigen Widal Configuration', async (t) => {
 

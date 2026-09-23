@@ -2,9 +2,9 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
 const read = (path) => fs.readFileSync(path, 'utf8');
-const migration50 = read('supabase/migrations/00050_catalogue_management_architecture.sql');
-const migration51 = read('supabase/migrations/00051_inactive_user_permission_enforcement.sql');
-const migration52 = read('supabase/migrations/00052_admin_rbac_and_critical_amendment_safety.sql');
+const migration50 = read('supabase/migrations_legacy_archive/00050_catalogue_management_architecture.sql');
+const migration51 = read('supabase/migrations_legacy_archive/00051_inactive_user_permission_enforcement.sql');
+const migration52 = read('supabase/migrations_legacy_archive/00052_admin_rbac_and_critical_amendment_safety.sql');
 const permissions = read('src/types/permissions.ts');
 const billing = read('src/features/billing/NewBillPage.tsx');
 const catalogue = read('src/features/catalogue/CataloguePage.tsx') + read('src/features/catalogue/EasyTestEditorDialog.tsx');

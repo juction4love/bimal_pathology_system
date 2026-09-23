@@ -1,6 +1,6 @@
 import test from 'node:test';import assert from'node:assert/strict';import fs from'node:fs';
-const migration=fs.readFileSync('supabase/migrations/00073_server_search_pagination_convergence.sql','utf8');
-const continuity=fs.readFileSync('supabase/migrations/00074_registry_payload_and_worklist_filter_continuity.sql','utf8');
+const migration=fs.readFileSync('supabase/migrations_legacy_archive/00073_server_search_pagination_convergence.sql','utf8');
+const continuity=fs.readFileSync('supabase/migrations_legacy_archive/00074_registry_payload_and_worklist_filter_continuity.sql','utf8');
 const worklist=fs.readFileSync('src/features/worklist/WorklistPage.tsx','utf8');
 const pages={patient:fs.readFileSync('src/features/patients/PatientsPage.tsx','utf8'),sample:fs.readFileSync('src/features/samples/SampleAccessioningPage.tsx','utf8'),bill:fs.readFileSync('src/features/billing/BillListPage.tsx','utf8'),report:fs.readFileSync('src/features/reports/ReportsPage.tsx','utf8')};
 const functions=['search_patient_registry','search_sample_accessioning','search_bill_registry','search_report_registry','search_dashboard_orders'];

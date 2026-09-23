@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 
-const migration = fs.readFileSync('supabase/migrations/00048_atomic_user_access_management.sql', 'utf8');
-const finalModel = fs.readFileSync('supabase/migrations/00087_production_catalogue_rate_management.sql', 'utf8');
+const migration = fs.readFileSync('supabase/migrations_legacy_archive/00048_atomic_user_access_management.sql', 'utf8');
+const finalModel = fs.readFileSync('supabase/migrations_legacy_archive/00087_production_catalogue_rate_management.sql', 'utf8');
 const page = fs.readFileSync('src/features/admin/UserManagementPage.tsx', 'utf8');
 let passed = 0;
 const check = (condition, label) => {

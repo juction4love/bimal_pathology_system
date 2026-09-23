@@ -49,6 +49,8 @@ export const LAB_TECHNICIAN_PERMISSION_ALLOWLIST: PermissionKey[] = [
   PERMISSION_KEYS.CAN_MANAGE_OUTSOURCE_TRACKING,
 ];
 
+export const ADMIN_PERMISSION_ALLOWLIST: PermissionKey[] = Object.values(PERMISSION_KEYS);
+
 export interface RoleDefinition {
   id: string;
   name: string;
@@ -62,8 +64,8 @@ export const SYSTEM_ROLES: Record<string, { code: string; name: string; descript
   ADMIN: {
     code: 'admin',
     name: 'Administrator',
-    description: 'Compatibility-only historical role; not normally assignable.',
-    defaultPermissions: [],
+    description: 'Complete system, clinical master, security, and financial administration with full operational access.',
+    defaultPermissions: ADMIN_PERMISSION_ALLOWLIST,
   },
   LAB_TECHNICIAN: {
     code: 'lab_technician',
@@ -74,7 +76,7 @@ export const SYSTEM_ROLES: Record<string, { code: string; name: string; descript
   VERIFIER: {
     code: 'verifier',
     name: 'Verifier',
-    description: 'Legacy compatibility role; inactive in the current two-role workflow.',
+    description: 'Legacy compatibility role; consolidated into Lab Technician in the two-role workflow.',
     defaultPermissions: [
       PERMISSION_KEYS.CAN_VIEW_DASHBOARD,
       PERMISSION_KEYS.CAN_VERIFY_RESULTS,
@@ -85,7 +87,7 @@ export const SYSTEM_ROLES: Record<string, { code: string; name: string; descript
   SIGNATORY: {
     code: 'signatory',
     name: 'Signatory',
-    description: 'Legacy compatibility role; inactive in the current two-role workflow.',
+    description: 'Legacy compatibility role; consolidated into Lab Technician in the two-role workflow.',
     defaultPermissions: [
       PERMISSION_KEYS.CAN_VIEW_DASHBOARD,
       PERMISSION_KEYS.CAN_SIGN_REPORTS,

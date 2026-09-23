@@ -37,7 +37,7 @@ describe('Bimal Pathology LIS: Migration 00124 CBC Reporting Parameters Verifica
 
   describe('1. Migration 00124 SQL Structure & Syntax', () => {
     it('verifies 00124 migration file exists and configures the exact 24 CBC parameters', () => {
-      const sqlPath = path.resolve('supabase/migrations/00124_cbc_reporting_parameters.sql');
+      const sqlPath = path.resolve('supabase/migrations_legacy_archive/00124_cbc_reporting_parameters.sql');
       const content = readFileSync(sqlPath, 'utf8');
 
       assert.ok(content.includes('HEM-0001'), 'Must target HEM-0001 test');
@@ -52,7 +52,7 @@ describe('Bimal Pathology LIS: Migration 00124 CBC Reporting Parameters Verifica
     });
 
     it('enforces idempotency and safe conflict resolution', () => {
-      const sqlPath = path.resolve('supabase/migrations/00124_cbc_reporting_parameters.sql');
+      const sqlPath = path.resolve('supabase/migrations_legacy_archive/00124_cbc_reporting_parameters.sql');
       const content = readFileSync(sqlPath, 'utf8');
 
       assert.ok(content.includes('ON CONFLICT (test_id, code) DO UPDATE'), 'Must use ON CONFLICT for parameters');
@@ -60,7 +60,7 @@ describe('Bimal Pathology LIS: Migration 00124 CBC Reporting Parameters Verifica
     });
 
     it('cleans up dummy placeholder parameter with unit Panel', () => {
-      const sqlPath = path.resolve('supabase/migrations/00124_cbc_reporting_parameters.sql');
+      const sqlPath = path.resolve('supabase/migrations_legacy_archive/00124_cbc_reporting_parameters.sql');
       const content = readFileSync(sqlPath, 'utf8');
 
       assert.ok(content.includes("unit = 'Panel'"), 'Must detect and clean placeholder parameter');
@@ -69,7 +69,7 @@ describe('Bimal Pathology LIS: Migration 00124 CBC Reporting Parameters Verifica
 
   describe('2. CBC Single Billing Item & Parameter Hierarchy Invariant', () => {
     it('preserves HEM-0001 as one single billable item without creating 24 separate billing tests', () => {
-      const sqlPath = path.resolve('supabase/migrations/00124_cbc_reporting_parameters.sql');
+      const sqlPath = path.resolve('supabase/migrations_legacy_archive/00124_cbc_reporting_parameters.sql');
       const content = readFileSync(sqlPath, 'utf8');
 
       // Migration must NOT insert new rows into public.tests or public.catalogue_rate_versions
@@ -88,7 +88,7 @@ describe('Bimal Pathology LIS: Migration 00124 CBC Reporting Parameters Verifica
 
   describe('3. ANC Safety & Manual Microscopy Isolation', () => {
     it('does NOT derive or fabricate automated ANC in the 3-part CBC parameters', () => {
-      const sqlPath = path.resolve('supabase/migrations/00124_cbc_reporting_parameters.sql');
+      const sqlPath = path.resolve('supabase/migrations_legacy_archive/00124_cbc_reporting_parameters.sql');
       const content = readFileSync(sqlPath, 'utf8');
 
       // CBC parameters must not include automated ANC
@@ -100,7 +100,7 @@ describe('Bimal Pathology LIS: Migration 00124 CBC Reporting Parameters Verifica
 
   describe('4. Reference Range Integrity & Zero Range Invention', () => {
     it('configures HGB reference range from approved lab data and keeps unapproved as MISSING_RANGE', () => {
-      const sqlPath = path.resolve('supabase/migrations/00124_cbc_reporting_parameters.sql');
+      const sqlPath = path.resolve('supabase/migrations_legacy_archive/00124_cbc_reporting_parameters.sql');
       const content = readFileSync(sqlPath, 'utf8');
 
       // Female 12-15, Male 13-17

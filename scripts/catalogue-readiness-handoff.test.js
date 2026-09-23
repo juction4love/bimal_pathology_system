@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 
-const migration = readFileSync('supabase/migrations/00089_catalogue_readiness_creation_handoff.sql', 'utf8');
+const migration = readFileSync('supabase/migrations_legacy_archive/00089_catalogue_readiness_creation_handoff.sql', 'utf8');
 
 test('new and subsequently edited tests enter readiness governance conservatively', () => {
   assert.match(migration, /AFTER INSERT OR UPDATE ON public\.tests/);

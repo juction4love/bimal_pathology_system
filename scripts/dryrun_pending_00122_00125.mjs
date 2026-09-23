@@ -4,10 +4,10 @@ import fs from 'node:fs';
 async function main() {
   console.log('=== DRY-RUN SIMULATION OF 00122-00125 ON LINKED PRODUCTION DATABASE ===');
 
-  const m122 = fs.readFileSync('supabase/migrations/00122_url_free_sms_notifications.sql', 'utf8');
-  const m123 = fs.readFileSync('supabase/migrations/00123_import_missing_rates_from_gm_reference.sql', 'utf8');
-  const m124 = fs.readFileSync('supabase/migrations/00124_cbc_reporting_parameters.sql', 'utf8');
-  const m125 = fs.readFileSync('supabase/migrations/00125_three_analyzer_reporting_configuration.sql', 'utf8');
+  const m122 = fs.readFileSync('supabase/migrations_legacy_archive/00122_url_free_sms_notifications.sql', 'utf8');
+  const m123 = fs.readFileSync('supabase/migrations_legacy_archive/00123_import_missing_rates_from_gm_reference.sql', 'utf8');
+  const m124 = fs.readFileSync('supabase/migrations_legacy_archive/00124_cbc_reporting_parameters.sql', 'utf8');
+  const m125 = fs.readFileSync('supabase/migrations_legacy_archive/00125_three_analyzer_reporting_configuration.sql', 'utf8');
 
   // Strip standalone BEGIN/COMMIT from individual migrations
   function stripTx(sql) {

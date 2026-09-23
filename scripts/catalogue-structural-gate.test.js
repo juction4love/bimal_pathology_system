@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 
-const sql=readFileSync('supabase/migrations/00075_catalogue_readiness_approval_workflow.sql','utf8');
+const sql=readFileSync('supabase/migrations_legacy_archive/00075_catalogue_readiness_approval_workflow.sql','utf8');
 const catalogue=readFileSync('src/features/catalogue/CataloguePage.tsx','utf8');
 const billing=readFileSync('src/features/billing/NewBillPage.tsx','utf8');
 

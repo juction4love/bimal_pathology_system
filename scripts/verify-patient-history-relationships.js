@@ -2,10 +2,10 @@ import fs from 'node:fs';
 import assert from 'node:assert/strict';
 
 const page = fs.readFileSync('src/features/patients/PatientsPage.tsx', 'utf8');
-const schema = fs.readFileSync('supabase/migrations/00001_initial_schema.sql', 'utf8');
-const m42 = fs.readFileSync('supabase/migrations/00042_safe_patient_management.sql', 'utf8');
-const m43 = fs.readFileSync('supabase/migrations/00043_payment_receivables_integrity.sql', 'utf8');
-const m75 = fs.readFileSync('supabase/migrations/00075_catalogue_readiness_approval_workflow.sql', 'utf8');
+const schema = fs.readFileSync('supabase/migrations_legacy_archive/00001_initial_schema.sql', 'utf8');
+const m42 = fs.readFileSync('supabase/migrations_legacy_archive/00042_safe_patient_management.sql', 'utf8');
+const m43 = fs.readFileSync('supabase/migrations_legacy_archive/00043_payment_receivables_integrity.sql', 'utf8');
+const m75 = fs.readFileSync('supabase/migrations_legacy_archive/00075_catalogue_readiness_approval_workflow.sql', 'utf8');
 let passed = 0;
 
 const check = (name, fn) => {

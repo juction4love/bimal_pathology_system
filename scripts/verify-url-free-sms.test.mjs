@@ -2,12 +2,13 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 const read = path => fs.readFileSync(path, 'utf8');
-const migration = read('supabase/migrations/00122_url_free_sms_notifications.sql');
+const migration = read('supabase/migrations_legacy_archive/00122_url_free_sms_notifications.sql');
 const message = 'Bimal Pathology: Your laboratory report is ready. Please collect it from the lab or contact 056-593288. Thank you.';
 const definitions = text => [...text.matchAll(/CREATE OR REPLACE FUNCTION public\.(\w+)\([\s\S]*?\bAS\s+(\$\w*\$)[\s\S]*?\2\s*;/gi)];
 const before = new Map();
-for (const file of fs.readdirSync('supabase/migrations').filter(x => x.endsWith('.sql') && x < '00122').sort()) {
- for (const m of definitions(read('supabase/migrations/' + file))) before.set(m[1], m[0]);
+const migDir = fs.existsSync('supabase/migrations_legacy_archive') ? 'supabase/migrations_legacy_archive' : 'supabase/migrations';
+for (const file of fs.readdirSync(migDir).filter(x => x.endsWith('.sql') && x < '00122').sort()) {
+ for (const m of definitions(read(migDir + '/' + file))) before.set(m[1], m[0]);
 }
 test('all three live report SMS construction paths use the neutral template; token and URL operations unchanged', () => {
  const changes = definitions(migration).filter(m => m[1] !== 'reject_sms_gateway_v2_local_validation');

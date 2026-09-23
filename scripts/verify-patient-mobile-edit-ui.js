@@ -3,12 +3,12 @@ import assert from 'node:assert/strict';
 
 const read = (path) => fs.readFileSync(path, 'utf8');
 const page = read('src/features/patients/PatientsPage.tsx');
-const m42 = read('supabase/migrations/00042_safe_patient_management.sql');
-const m43 = read('supabase/migrations/00043_payment_receivables_integrity.sql');
-const m45 = read('supabase/migrations/00045_presignoff_patient_demographic_audit.sql');
-const signoff = read('supabase/migrations/00030_fix_optional_authorizer_runtime.sql');
-const reportReady = read('supabase/migrations/00041_standardize_report_ready_sms.sql');
-const technician = read('supabase/migrations/00019_technician_clinical_only_permissions.sql');
+const m42 = read('supabase/migrations_legacy_archive/00042_safe_patient_management.sql');
+const m43 = read('supabase/migrations_legacy_archive/00043_payment_receivables_integrity.sql');
+const m45 = read('supabase/migrations_legacy_archive/00045_presignoff_patient_demographic_audit.sql');
+const signoff = read('supabase/migrations_legacy_archive/00030_fix_optional_authorizer_runtime.sql');
+const reportReady = read('supabase/migrations_legacy_archive/00041_standardize_report_ready_sms.sql');
+const technician = read('supabase/migrations_legacy_archive/00019_technician_clinical_only_permissions.sql');
 let passed = 0;
 const check = (name, fn) => { try { fn(); passed += 1; console.log(`PASS ${name}`); } catch (error) { console.error(`FAIL ${name}: ${error.message}`); process.exitCode = 1; } };
 

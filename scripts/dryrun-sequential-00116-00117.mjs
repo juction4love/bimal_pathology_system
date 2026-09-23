@@ -2,8 +2,8 @@ import { readFileSync, writeFileSync, unlinkSync } from 'node:fs';
 import { execSync } from 'node:child_process';
 import path from 'node:path';
 
-const migrationSql116 = readFileSync('supabase/migrations/00116_remove_catalogue_readiness_workflow_blocks.sql', 'utf8');
-const migrationSql117 = readFileSync('supabase/migrations/00117_easy_test_catalogue_management.sql', 'utf8');
+const migrationSql116 = readFileSync('supabase/migrations_legacy_archive/00116_remove_catalogue_readiness_workflow_blocks.sql', 'utf8');
+const migrationSql117 = readFileSync('supabase/migrations_legacy_archive/00117_easy_test_catalogue_management.sql', 'utf8');
 
 const migrationInner116 = migrationSql116
   .replace(/^BEGIN;/m, '')

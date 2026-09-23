@@ -9,8 +9,8 @@ test('3-Analyzer Configuration & Safety Verification Test Suite', async (t) => {
 
   await t.test('COUNCELL 23 EXCEL: CBC 24-Parameter Authoritative Suite & Governance', async () => {
     // 1. Verify Migration 00124 and 00125 exist
-    const mig124Path = path.join(projectRoot, 'supabase/migrations/00124_cbc_reporting_parameters.sql');
-    const mig125Path = path.join(projectRoot, 'supabase/migrations/00125_three_analyzer_reporting_configuration.sql');
+    const mig124Path = path.join(projectRoot, 'supabase/migrations_legacy_archive/00124_cbc_reporting_parameters.sql');
+    const mig125Path = path.join(projectRoot, 'supabase/migrations_legacy_archive/00125_three_analyzer_reporting_configuration.sql');
     assert.ok(fs.existsSync(mig124Path), 'Migration 00124 must exist');
     assert.ok(fs.existsSync(mig125Path), 'Migration 00125 must exist');
 
@@ -85,8 +85,8 @@ test('3-Analyzer Configuration & Safety Verification Test Suite', async (t) => {
   });
 
   await t.test('CORALAB ACE: Photometric Method Integrity & Assay Safety', async () => {
-    const mig107Path = path.join(projectRoot, 'supabase/migrations/00107_coralab_ace_biochemistry_integration.sql');
-    const mig125Path = path.join(projectRoot, 'supabase/migrations/00125_three_analyzer_reporting_configuration.sql');
+    const mig107Path = path.join(projectRoot, 'supabase/migrations_legacy_archive/00107_coralab_ace_biochemistry_integration.sql');
+    const mig125Path = path.join(projectRoot, 'supabase/migrations_legacy_archive/00125_three_analyzer_reporting_configuration.sql');
     assert.ok(fs.existsSync(mig107Path), 'Migration 00107 must exist');
 
     const mig125Content = fs.readFileSync(mig125Path, 'utf8');
@@ -113,8 +113,8 @@ test('3-Analyzer Configuration & Safety Verification Test Suite', async (t) => {
   });
 
   await t.test('FIACHECK: Immunoassay Analytical Safety & Identity Preservation', async () => {
-    const mig109Path = path.join(projectRoot, 'supabase/migrations/00109_fiacheck_analyzer_integration.sql');
-    const mig125Path = path.join(projectRoot, 'supabase/migrations/00125_three_analyzer_reporting_configuration.sql');
+    const mig109Path = path.join(projectRoot, 'supabase/migrations_legacy_archive/00109_fiacheck_analyzer_integration.sql');
+    const mig125Path = path.join(projectRoot, 'supabase/migrations_legacy_archive/00125_three_analyzer_reporting_configuration.sql');
     assert.ok(fs.existsSync(mig109Path), 'Migration 00109 must exist');
 
     const mig125Content = fs.readFileSync(mig125Path, 'utf8');
@@ -151,7 +151,7 @@ test('3-Analyzer Configuration & Safety Verification Test Suite', async (t) => {
   });
 
   await t.test('COUNCELL 23 EXCEL & MANUAL MICROSCOPY: Physical vs Microscopy Channel Isolation', async () => {
-    const mig125Path = path.join(projectRoot, 'supabase/migrations/00125_three_analyzer_reporting_configuration.sql');
+    const mig125Path = path.join(projectRoot, 'supabase/migrations_legacy_archive/00125_three_analyzer_reporting_configuration.sql');
     const mig125Content = fs.readFileSync(mig125Path, 'utf8');
 
     // 1. Verify MANUAL_MICROSCOPY analyzer master is created
@@ -182,7 +182,7 @@ test('3-Analyzer Configuration & Safety Verification Test Suite', async (t) => {
     );
 
     // 2. Verify SMS templates remain 100% URL-free across all pending migrations
-    const mig122Path = path.join(projectRoot, 'supabase/migrations/00122_url_free_sms_notifications.sql');
+    const mig122Path = path.join(projectRoot, 'supabase/migrations_legacy_archive/00122_url_free_sms_notifications.sql');
     const mig122Content = fs.readFileSync(mig122Path, 'utf8');
     const smsMatches = [...mig122Content.matchAll(/'Bimal Pathology: ([^']*)'/g)];
     assert.ok(smsMatches.length > 0, 'Must contain Bimal Pathology SMS template literals');

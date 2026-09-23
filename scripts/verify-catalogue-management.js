@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import assert from 'node:assert/strict';
 
 const read = (path) => fs.readFileSync(path, 'utf8');
-const sql = read('supabase/migrations/00050_catalogue_management_architecture.sql');
+const sql = read('supabase/migrations_legacy_archive/00050_catalogue_management_architecture.sql');
 const catalogue = read('src/features/catalogue/CataloguePage.tsx') + read('src/features/catalogue/EasyTestEditorDialog.tsx') + read('src/features/catalogue/CatalogueMasterSections.tsx');
 const categoryPackages = read('src/features/catalogue/CategoryPackageManager.tsx');
 const billing = read('src/features/billing/NewBillPage.tsx');

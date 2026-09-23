@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const migration118 = fs.readFileSync('supabase/migrations/00118_lab_technician_operational_rbac.sql', 'utf8');
+const migration118 = fs.readFileSync('supabase/migrations_legacy_archive/00118_lab_technician_operational_rbac.sql', 'utf8');
 const permissionsFile = fs.readFileSync('src/types/permissions.ts', 'utf8');
 const routesFile = fs.readFileSync('src/app/routes.tsx', 'utf8');
 const appLayoutFile = fs.readFileSync('src/app/AppLayout.tsx', 'utf8');

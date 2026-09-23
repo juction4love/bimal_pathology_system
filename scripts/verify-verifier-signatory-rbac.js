@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const finalAuthorization=fs.readFileSync('supabase/migrations/00087_production_catalogue_rate_management.sql','utf8');
+const finalAuthorization=fs.readFileSync('supabase/migrations_legacy_archive/00087_production_catalogue_rate_management.sql','utf8');
 const permissions=fs.readFileSync('src/types/permissions.ts','utf8');
 const userManagement=fs.readFileSync('src/features/admin/UserManagementPage.tsx','utf8');
 

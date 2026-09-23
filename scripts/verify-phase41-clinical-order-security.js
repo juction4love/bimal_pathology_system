@@ -1,10 +1,10 @@
 import fs from 'node:fs';
 
-const migration = fs.readFileSync('supabase/migrations/00047_clinical_order_direct_write_hardening.sql', 'utf8');
-const billing = fs.readFileSync('supabase/migrations/00018_outsource_sample_tracking.sql', 'utf8');
-const samples = fs.readFileSync('supabase/migrations/00021_final_flow_integrity_and_concurrency.sql', 'utf8');
-const results = fs.readFileSync('supabase/migrations/00046_report_audit_result_security_hardening.sql', 'utf8');
-const signoff = fs.readFileSync('supabase/migrations/00030_fix_optional_authorizer_runtime.sql', 'utf8');
+const migration = fs.readFileSync('supabase/migrations_legacy_archive/00047_clinical_order_direct_write_hardening.sql', 'utf8');
+const billing = fs.readFileSync('supabase/migrations_legacy_archive/00018_outsource_sample_tracking.sql', 'utf8');
+const samples = fs.readFileSync('supabase/migrations_legacy_archive/00021_final_flow_integrity_and_concurrency.sql', 'utf8');
+const results = fs.readFileSync('supabase/migrations_legacy_archive/00046_report_audit_result_security_hardening.sql', 'utf8');
+const signoff = fs.readFileSync('supabase/migrations_legacy_archive/00030_fix_optional_authorizer_runtime.sql', 'utf8');
 const source = fs.readFileSync('src/features/worklist/ResultEntryPage.tsx', 'utf8');
 
 let passed = 0;

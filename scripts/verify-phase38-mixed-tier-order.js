@@ -7,16 +7,16 @@ let passed = 0;
 const check = (description, fn) => { fn(); passed += 1; console.log(`PASS ${description}`); };
 const billing = read('src/features/billing/NewBillPage.tsx');
 const selection = read('src/features/billing/mixedTierSelection.ts');
-const atomicBilling = read('supabase/migrations/00018_outsource_sample_tracking.sql');
-const latestBilling = read('supabase/migrations/00040_short_payment_confirmation_sms.sql');
-const catalogueBilling = read('supabase/migrations/00050_catalogue_management_architecture.sql');
-const readiness = read('supabase/migrations/00005_reporting_signoff_and_pdf.sql');
-const signoff = read('supabase/migrations/00030_fix_optional_authorizer_runtime.sql');
+const atomicBilling = read('supabase/migrations_legacy_archive/00018_outsource_sample_tracking.sql');
+const latestBilling = read('supabase/migrations_legacy_archive/00040_short_payment_confirmation_sms.sql');
+const catalogueBilling = read('supabase/migrations_legacy_archive/00050_catalogue_management_architecture.sql');
+const readiness = read('supabase/migrations_legacy_archive/00005_reporting_signoff_and_pdf.sql');
+const signoff = read('supabase/migrations_legacy_archive/00030_fix_optional_authorizer_runtime.sql');
 const worklist = read('src/features/worklist/WorklistPage.tsx');
-const worklistSearch = read('supabase/migrations/00072_worklist_server_search_pagination.sql');
+const worklistSearch = read('supabase/migrations_legacy_archive/00072_worklist_server_search_pagination.sql');
 const resultEntry = read('src/features/worklist/ResultEntryPage.tsx');
 const reportDocument = read('src/features/reports/ReportDocument.tsx');
-const multiReport = read('supabase/migrations/00092_multi_report_group_lifecycle.sql');
+const multiReport = read('supabase/migrations_legacy_archive/00092_multi_report_group_lifecycle.sql');
 
 check('billing exposes one unified fast search and no routing-tier selector', () => {
   assert.match(billing, /const \[selectedItems, setSelectedItems\] = useState<BillItemEntry\[]>\(\[\]\)/);

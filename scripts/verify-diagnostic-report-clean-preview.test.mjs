@@ -172,7 +172,7 @@ describe('Bimal Pathology LIS: Clean Diagnostic Report PDF & Preview Suite', () 
 
     it('verifies Migration 00132 SQL structure and archival logic', () => {
       const migSrc = readFileSync(
-        path.resolve(process.cwd(), 'supabase/migrations/00132_remove_structural_panel_parameters.sql'),
+        path.resolve(process.cwd(), 'supabase/migrations_legacy_archive/00132_remove_structural_panel_parameters.sql'),
         'utf8'
       );
 

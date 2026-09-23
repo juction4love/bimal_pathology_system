@@ -77,10 +77,14 @@ export const AppLayout: React.FC = () => {
   const [installPrompt, setInstallPrompt] = useState<BeforeInstallPromptEvent | null>(null);
 
   const { user, profile, signOut, isConfigured, isLoading } = useAuth();
-  const { can } = usePermissions();
+  const { can, roles } = usePermissions();
   const location = useLocation();
   const navigate = useNavigate();
-  const operationalRoleLabel = profile?.isSuperAdmin ? 'Super Admin' : 'Lab Technician';
+  const operationalRoleLabel = profile?.isSuperAdmin
+    ? 'Super Admin'
+    : roles.includes('admin')
+      ? 'Admin'
+      : 'Lab Technician';
 
   useEffect(() => {
     const captureInstallPrompt = (event: Event) => {

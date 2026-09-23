@@ -6,9 +6,9 @@ const billing = read('src/features/billing/NewBillPage.tsx');
 const samples = read('src/features/samples/SampleAccessioningPage.tsx');
 const worklist = read('src/features/worklist/WorklistPage.tsx');
 const resultEntry = read('src/features/worklist/ResultEntryPage.tsx');
-const m55 = read('supabase/migrations/00055_foundation_rpc_and_sample_traceability_contracts.sql');
-const m56 = read('supabase/migrations/00056_foundation_result_readiness_and_revision.sql');
-const m72 = read('supabase/migrations/00072_worklist_server_search_pagination.sql');
+const m55 = read('supabase/migrations_legacy_archive/00055_foundation_rpc_and_sample_traceability_contracts.sql');
+const m56 = read('supabase/migrations_legacy_archive/00056_foundation_result_readiness_and_revision.sql');
+const m72 = read('supabase/migrations_legacy_archive/00072_worklist_server_search_pagination.sql');
 
 const checks = [];
 const check = (name, fn) => { fn(); checks.push(name); console.log(`PASS ${name}`); };

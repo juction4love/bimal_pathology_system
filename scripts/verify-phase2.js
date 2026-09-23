@@ -180,8 +180,8 @@ function calculateBillTotals(items, discountPaisa = 0, paidPaisa = 0) {
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const migration50 = fs.readFileSync(path.resolve(__dirname, '../supabase/migrations/00050_catalogue_management_architecture.sql'), 'utf8');
-const migration51 = fs.readFileSync(path.resolve(__dirname, '../supabase/migrations/00051_inactive_user_permission_enforcement.sql'), 'utf8');
+const migration50 = fs.readFileSync(path.resolve(__dirname, '../supabase/migrations_legacy_archive/00050_catalogue_management_architecture.sql'), 'utf8');
+const migration51 = fs.readFileSync(path.resolve(__dirname, '../supabase/migrations_legacy_archive/00051_inactive_user_permission_enforcement.sql'), 'utf8');
 
 let passedCount = 0;
 let failedCount = 0;

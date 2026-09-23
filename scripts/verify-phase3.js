@@ -11,7 +11,7 @@ import crypto from 'node:crypto';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const signoffMigration = fs.readFileSync(path.resolve(__dirname, '../supabase/migrations/00015_laboratory_calculation_engine.sql'), 'utf8');
+const signoffMigration = fs.readFileSync(path.resolve(__dirname, '../supabase/migrations_legacy_archive/00015_laboratory_calculation_engine.sql'), 'utf8');
 
 let passedCount = 0;
 let failedCount = 0;

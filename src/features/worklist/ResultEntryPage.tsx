@@ -404,21 +404,82 @@ export const ResultEntryPage: React.FC = () => {
         }
       }
 
-      // 6. Fetch master parameters for this test
-      const { data: masterParams, error: paramErr } = await supabase
+      // 6. Fetch master parameters for this test:
+      // Supports direct parameters and profile components resolution (e.g., PRO-0001 LFT)
+      let reportableMasterParams: any[] = [];
+      const testIdsForLookup = [itemData.test_id];
+
+      // 6a. Query direct parameters
+      const { data: directParams, error: directParamErr } = await supabase
         .from('parameters')
-        .select('id, code, name, value_type, unit, formula, calculation_identifier, display_order, options, interpretation_config, is_mandatory')
+        .select('id, test_id, code, name, value_type, unit, formula, calculation_identifier, display_order, options, interpretation_config, is_mandatory')
         .eq('test_id', itemData.test_id)
         .eq('is_active', true)
         .order('display_order', { ascending: true });
 
-      if (paramErr) throw paramErr;
+      if (directParamErr) throw directParamErr;
 
-      // 6b. Fetch analyzer mappings for this test to power the Source chip
+      const directReportable = (directParams || []).filter((mp) =>
+        isReportableParameter(mp, {
+          test_code: itemData.test?.code,
+          test_name: itemData.test_name,
+          results: directParams,
+        })
+      );
+
+      if (directReportable.length > 0) {
+        reportableMasterParams = directReportable;
+      } else {
+        // Check catalogue_panel_components for profile/panel definitions
+        const { data: panelComps } = await supabase
+          .from('catalogue_panel_components')
+          .select('display_order, is_required, component_test_id, component_parameter_id')
+          .or(`panel_test_id.eq.${itemData.test_id},panel_id.eq.${itemData.test_id}`)
+          .order('display_order', { ascending: true });
+
+        if (panelComps && panelComps.length > 0) {
+          const compTestIds = panelComps.map((c) => c.component_test_id).filter(Boolean);
+          testIdsForLookup.push(...compTestIds);
+
+          const { data: childParams } = await supabase
+            .from('parameters')
+            .select('id, test_id, code, name, value_type, unit, formula, calculation_identifier, display_order, options, interpretation_config, is_mandatory')
+            .in('test_id', compTestIds)
+            .eq('is_active', true)
+            .order('display_order', { ascending: true });
+
+          const childParamsByTest = new Map<string, any[]>();
+          for (const cp of childParams || []) {
+            if (!childParamsByTest.has(cp.test_id)) {
+              childParamsByTest.set(cp.test_id, []);
+            }
+            childParamsByTest.get(cp.test_id)!.push(cp);
+          }
+
+          const assembledPanelParams: any[] = [];
+          for (const comp of panelComps) {
+            if (comp.component_test_id) {
+              const params = childParamsByTest.get(comp.component_test_id) || [];
+              for (const p of params) {
+                if (isReportableParameter(p, { test_code: itemData.test?.code, test_name: itemData.test_name, results: params })) {
+                  assembledPanelParams.push(p);
+                }
+              }
+            } else if (comp.component_parameter_id) {
+              const matched = (childParams || []).find((p) => p.id === comp.component_parameter_id);
+              if (matched) assembledPanelParams.push(matched);
+            }
+          }
+
+          reportableMasterParams = assembledPanelParams;
+        }
+      }
+
+      // 6b. Fetch analyzer mappings for this test & component tests to power the Source chip
       const { data: mappingRows } = await supabase
         .from('analyzer_parameter_mappings')
         .select('parameter_id, analyzer_id, analyzers(name, code, lifecycle_status)')
-        .eq('test_id', itemData.test_id);
+        .in('test_id', testIdsForLookup);
 
       setAnalyzerLookup(buildAnalyzerLookup(
         ((mappingRows ?? []) as unknown as Array<{
@@ -433,15 +494,6 @@ export const ResultEntryPage: React.FC = () => {
           analyzers: Array.isArray(m.analyzers) ? (m.analyzers[0] ?? null) : m.analyzers,
         }))
       ));
-
-      // 7. Filter reportable parameters (excluding structural panel dummy rows)
-      const reportableMasterParams = (masterParams || []).filter((mp) =>
-        isReportableParameter(mp, {
-          test_code: itemData.test?.code,
-          test_name: itemData.test_name,
-          results: masterParams,
-        })
-      );
 
       // 8. Fetch approved reference ranges for these parameters
       const paramIds = reportableMasterParams.map((p) => p.id);
@@ -505,7 +557,7 @@ export const ResultEntryPage: React.FC = () => {
           unit: mp.unit,
           formula: resolveParameterFormula(mp.code, mp.calculation_identifier, mp.formula),
           options: Array.isArray(mp.options)
-            ? mp.options.filter((option): option is string => typeof option === 'string')
+            ? (mp.options as unknown[]).filter((option: unknown): option is string => typeof option === 'string')
             : [],
           multiline: interpretation.control === 'Text Multi-line',
           timeControl: ['Time','Time/Duration'].includes(String(interpretation.control||'')) && mp.unit === 'Min:Sec',

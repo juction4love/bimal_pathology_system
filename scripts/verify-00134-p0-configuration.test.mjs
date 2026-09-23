@@ -5,7 +5,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import path from 'node:path';
 
 describe('Migration 00134: 15 P0 Lab-Approved Clinical Configuration', () => {
-    const migrationPath = path.resolve('supabase/migrations/00134_p0_lab_approved_configuration.sql');
+    const migrationPath = path.resolve('supabase/migrations_legacy_archive/00134_p0_lab_approved_configuration.sql');
 
     it('1. Migration 00134 file exists', () => {
         assert.ok(existsSync(migrationPath), 'Migration 00134 should exist');

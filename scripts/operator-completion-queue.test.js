@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
 const ui=fs.readFileSync('src/features/catalogue/CatalogueCompletionQueue.tsx','utf8');
-const migration=fs.readFileSync('supabase/migrations/00075_catalogue_readiness_approval_workflow.sql','utf8');
+const migration=fs.readFileSync('supabase/migrations_legacy_archive/00075_catalogue_readiness_approval_workflow.sql','utf8');
 const extract=(name)=>JSON.parse(`[${ui.match(new RegExp(`const ${name} = \\[([^;]+)\\];`))[1].replaceAll("'",'"')}]`);
 
 test('completion queue contains only the exact current actions',()=>{

@@ -6,9 +6,9 @@ import { randomUUID } from 'node:crypto';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = (file) => fs.readFileSync(path.join(root, file), 'utf8');
-const migration01 = read('supabase/migrations/00001_initial_schema.sql');
-const migration12 = read('supabase/migrations/00012_fix_test_results_id_and_draft_save.sql');
-const migration46 = read('supabase/migrations/00046_report_audit_result_security_hardening.sql');
+const migration01 = read('supabase/migrations_legacy_archive/00001_initial_schema.sql');
+const migration12 = read('supabase/migrations_legacy_archive/00012_fix_test_results_id_and_draft_save.sql');
+const migration46 = read('supabase/migrations_legacy_archive/00046_report_audit_result_security_hardening.sql');
 const resultEntrySource = read('src/features/worklist/ResultEntryPage.tsx');
 let passedCount = 0;
 let failedCount = 0;
@@ -62,7 +62,9 @@ async function runRegressionSuite() {
   console.log(' BIMAL PATHOLOGY - PHASE 6 DRAFT SAVE & WORKFLOW REGRESSION SUITE');
   console.log('================================================================\n');
 
-  const files = fs.readdirSync(path.join(root, 'supabase/migrations'));
+  const activeDir = path.join(root, 'supabase/migrations');
+  const legacyDir = path.join(root, 'supabase/migrations_legacy_archive');
+  const files = (fs.existsSync(legacyDir) ? fs.readdirSync(legacyDir) : []).concat(fs.existsSync(activeDir) ? fs.readdirSync(activeDir) : []);
   const migrationsPresent = Array.from({ length: 18 }, (_, i) =>
     files.some((name) => name.startsWith(String(i + 1).padStart(5, '0'))));
   assert(migrationsPresent.every(Boolean), '0. MigrationBaseline', 'Migrations 00001 through 00018 are present');

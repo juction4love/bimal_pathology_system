@@ -2,9 +2,9 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const acl=fs.readFileSync('supabase/migrations/00078_two_role_authorization_and_catalogue_access.sql','utf8');
+const acl=fs.readFileSync('supabase/migrations_legacy_archive/00078_two_role_authorization_and_catalogue_access.sql','utf8');
 const billingPage=fs.readFileSync('src/features/billing/NewBillPage.tsx','utf8');
-const finalModel=fs.readFileSync('supabase/migrations/00087_production_catalogue_rate_management.sql','utf8');
+const finalModel=fs.readFileSync('supabase/migrations_legacy_archive/00087_production_catalogue_rate_management.sql','utf8');
 
 test('billing UI uses guarded RPC then RLS-preserving follow-up reads',()=>{
  assert.match(billingPage,/rpc\('search_billable_catalogue'/);

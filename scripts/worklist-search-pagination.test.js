@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import test from 'node:test';
 import { isReportableWorklistItem, splitWorklistPage, worklistCursor } from '../src/features/worklist/worklistQuery.ts';
 
-const migration = fs.readFileSync('supabase/migrations/00072_worklist_server_search_pagination.sql','utf8');
+const migration = fs.readFileSync('supabase/migrations_legacy_archive/00072_worklist_server_search_pagination.sql','utf8');
 const page = (count) => Array.from({length:count},(_,index)=>({
   id:`00000000-0000-4000-8000-${String(index).padStart(12,'0')}`,
   created_at:new Date(Date.UTC(2026,0,1,0,0,200-index)).toISOString(),

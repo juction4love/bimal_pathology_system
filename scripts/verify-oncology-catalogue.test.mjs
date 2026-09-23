@@ -7,7 +7,7 @@ import path from 'node:path';
 test('Oncology, Routine Monitoring, Pre-Op, Tumor Marker & Supportive Care Regression Suite', async (t) => {
 
   await t.test('1. Migration 00120 SQL Validation & Structure', () => {
-    const migration = readFileSync('supabase/migrations/00120_oncology_routine_preop_tumor_marker_catalogue_reconciliation.sql', 'utf8');
+    const migration = readFileSync('supabase/migrations_legacy_archive/00120_oncology_routine_preop_tumor_marker_catalogue_reconciliation.sql', 'utf8');
     
     // LBC is billing only
     assert.ok(migration.includes("WHERE code = 'CYT-0008'"), 'Reconciles CYT-0008 (LBC)');
@@ -34,8 +34,8 @@ test('Oncology, Routine Monitoring, Pre-Op, Tumor Marker & Supportive Care Regre
   });
 
   await t.test('2. Live Database Dry-Run of Migration 00119 + 00120', () => {
-    const m119 = readFileSync('supabase/migrations/00119_pt_inr_bt_ct_clinical_configuration.sql', 'utf8');
-    const m120 = readFileSync('supabase/migrations/00120_oncology_routine_preop_tumor_marker_catalogue_reconciliation.sql', 'utf8');
+    const m119 = readFileSync('supabase/migrations_legacy_archive/00119_pt_inr_bt_ct_clinical_configuration.sql', 'utf8');
+    const m120 = readFileSync('supabase/migrations_legacy_archive/00120_oncology_routine_preop_tumor_marker_catalogue_reconciliation.sql', 'utf8');
 
     const dryRunSql = `
     BEGIN;

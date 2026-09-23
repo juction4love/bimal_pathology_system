@@ -38,10 +38,10 @@ console.log(' BIMAL PATHOLOGY - PHASE 16 OUTSOURCE SAMPLE TRACKING SUITE');
 console.log('================================================================\n');
 
 try {
-  const migrationPath = path.resolve('supabase/migrations/00018_outsource_sample_tracking.sql');
+  const migrationPath = path.resolve('supabase/migrations_legacy_archive/00018_outsource_sample_tracking.sql');
   const migContent = fs.readFileSync(migrationPath, 'utf8');
   const auditFixContent = fs.readFileSync(
-    path.resolve('supabase/migrations/00020_flow_audit_security_and_rpc_fixes.sql'),
+    path.resolve('supabase/migrations_legacy_archive/00020_flow_audit_security_and_rpc_fixes.sql'),
     'utf8'
   );
 

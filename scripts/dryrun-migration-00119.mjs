@@ -3,7 +3,7 @@ import { execSync } from 'node:child_process';
 import path from 'node:path';
 
 async function main() {
-  const migrationContent = readFileSync('supabase/migrations/00119_pt_inr_bt_ct_clinical_configuration.sql', 'utf8');
+  const migrationContent = readFileSync('supabase/migrations_legacy_archive/00119_pt_inr_bt_ct_clinical_configuration.sql', 'utf8');
   
   // Wrap migration content with ROLLBACK instead of COMMIT for safety
   const dryRunSql = `

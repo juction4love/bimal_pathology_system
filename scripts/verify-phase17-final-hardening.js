@@ -4,12 +4,12 @@ import path from 'node:path';
 
 const root = path.resolve(import.meta.dirname, '..');
 const read = (p) => fs.readFileSync(path.join(root, p), 'utf8');
-const migration = read('supabase/migrations/00021_final_flow_integrity_and_concurrency.sql');
-const migration22 = read('supabase/migrations/00022_repair_clinical_order_billing_insert.sql');
-const migration23 = read('supabase/migrations/00023_repair_billing_receipt_number.sql');
-const migration24 = read('supabase/migrations/00024_repair_billing_initial_order_status.sql');
-const migration25 = read('supabase/migrations/00025_repair_billing_sample_patient_lineage.sql');
-const migration26 = read('supabase/migrations/00026_separate_technician_from_verifier.sql');
+const migration = read('supabase/migrations_legacy_archive/00021_final_flow_integrity_and_concurrency.sql');
+const migration22 = read('supabase/migrations_legacy_archive/00022_repair_clinical_order_billing_insert.sql');
+const migration23 = read('supabase/migrations_legacy_archive/00023_repair_billing_receipt_number.sql');
+const migration24 = read('supabase/migrations_legacy_archive/00024_repair_billing_initial_order_status.sql');
+const migration25 = read('supabase/migrations_legacy_archive/00025_repair_billing_sample_patient_lineage.sql');
+const migration26 = read('supabase/migrations_legacy_archive/00026_separate_technician_from_verifier.sql');
 const billing = read('src/features/billing/NewBillPage.tsx');
 const samples = read('src/features/samples/SampleAccessioningPage.tsx');
 const technician = read('src/features/dashboard/TechnicianDashboard.tsx');

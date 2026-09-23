@@ -34,7 +34,7 @@ console.log(' BIMAL PATHOLOGY - PHASE 15 OUTSOURCED IHC BILLING SUITE');
 console.log('================================================================\n');
 
 try {
-  const migrationPath = path.resolve('supabase/migrations/00017_outsourced_ihc_manual_pricing.sql');
+  const migrationPath = path.resolve('supabase/migrations_legacy_archive/00017_outsourced_ihc_manual_pricing.sql');
   const migrationContent = fs.readFileSync(migrationPath, 'utf8');
 
   console.log('--- TEST GROUP 1: SCHEMA EXTENSIONS & IHC MASTER SEED ---');

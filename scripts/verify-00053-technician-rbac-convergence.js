@@ -1,10 +1,10 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const migration = fs.readFileSync('supabase/migrations/00053_technician_rbac_convergence.sql', 'utf8');
+const migration = fs.readFileSync('supabase/migrations_legacy_archive/00053_technician_rbac_convergence.sql', 'utf8');
 const permissions = fs.readFileSync('src/types/permissions.ts', 'utf8');
-const technician19 = fs.readFileSync('supabase/migrations/00019_technician_clinical_only_permissions.sql', 'utf8');
-const separation26 = fs.readFileSync('supabase/migrations/00026_separate_technician_from_verifier.sql', 'utf8');
+const technician19 = fs.readFileSync('supabase/migrations_legacy_archive/00019_technician_clinical_only_permissions.sql', 'utf8');
+const separation26 = fs.readFileSync('supabase/migrations_legacy_archive/00026_separate_technician_from_verifier.sql', 'utf8');
 
 const canonical = [
   'can_view_dashboard',

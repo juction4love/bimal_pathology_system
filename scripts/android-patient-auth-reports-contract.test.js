@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
 const migration = fs.readFileSync(
-  new URL('../supabase/migrations/00095_android_patient_auth_reports.sql', import.meta.url),
+  new URL('../supabase/migrations_legacy_archive/00095_android_patient_auth_reports.sql', import.meta.url),
   'utf8'
 );
 

@@ -193,7 +193,7 @@ async function runTests() {
   );
 
   // 12. ServerVerification_RecomputesCalculatedValues
-  const mig15Path = path.resolve(__dirname, '../supabase/migrations/00015_laboratory_calculation_engine.sql');
+  const mig15Path = path.resolve(__dirname, '../supabase/migrations_legacy_archive/00015_laboratory_calculation_engine.sql');
   const mig15Exists = fs.existsSync(mig15Path);
   const mig15Sql = mig15Exists ? fs.readFileSync(mig15Path, 'utf8') : '';
   const hasServerRecalc =

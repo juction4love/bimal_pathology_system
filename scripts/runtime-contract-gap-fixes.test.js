@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 
-const migration=readFileSync('supabase/migrations/00088_runtime_contract_gap_fixes.sql','utf8');
+const migration=readFileSync('supabase/migrations_legacy_archive/00088_runtime_contract_gap_fixes.sql','utf8');
 
 test('patient bill history uses the authoritative bill timestamp',()=>{
   assert.match(migration,/'bill_date',b\.created_at/);

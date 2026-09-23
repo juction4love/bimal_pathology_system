@@ -116,7 +116,7 @@ describe('Bimal Pathology LIS: Migration 00123 GM Rate Import Verification', () 
 
   describe('1. Migration 00123 SQL Structure & Syntax', () => {
     it('verifies 00123 migration file exists and includes all 53 safe missing codes', () => {
-      const sqlPath = path.resolve('supabase/migrations/00123_import_missing_rates_from_gm_reference.sql');
+      const sqlPath = path.resolve('supabase/migrations_legacy_archive/00123_import_missing_rates_from_gm_reference.sql');
       const content = readFileSync(sqlPath, 'utf8');
 
       assert.ok(content.includes('catalogue_rate_versions'), 'Must target catalogue_rate_versions table');
@@ -131,7 +131,7 @@ describe('Bimal Pathology LIS: Migration 00123 GM Rate Import Verification', () 
     });
 
     it('enforces idempotency and avoids duplicate active rate insertions', () => {
-      const sqlPath = path.resolve('supabase/migrations/00123_import_missing_rates_from_gm_reference.sql');
+      const sqlPath = path.resolve('supabase/migrations_legacy_archive/00123_import_missing_rates_from_gm_reference.sql');
       const content = readFileSync(sqlPath, 'utf8');
 
       assert.ok(content.includes('NOT EXISTS'), 'Must contain NOT EXISTS guard to prevent duplicate active rates');
@@ -139,7 +139,7 @@ describe('Bimal Pathology LIS: Migration 00123 GM Rate Import Verification', () 
     });
 
     it('ensures all rates are represented as exact integer paisa without floating point values', () => {
-      const sqlPath = path.resolve('supabase/migrations/00123_import_missing_rates_from_gm_reference.sql');
+      const sqlPath = path.resolve('supabase/migrations_legacy_archive/00123_import_missing_rates_from_gm_reference.sql');
       const content = readFileSync(sqlPath, 'utf8');
 
       // Match all values ('CODE', 12345::BIGINT)
@@ -158,7 +158,7 @@ describe('Bimal Pathology LIS: Migration 00123 GM Rate Import Verification', () 
 
   describe('2. Business Rules & Catalogue Preservation Invariants', () => {
     it('verifies that pre-existing configured rates are preserved and NOT in migration insert list', () => {
-      const sqlPath = path.resolve('supabase/migrations/00123_import_missing_rates_from_gm_reference.sql');
+      const sqlPath = path.resolve('supabase/migrations_legacy_archive/00123_import_missing_rates_from_gm_reference.sql');
       const content = readFileSync(sqlPath, 'utf8');
 
       for (const code of PRESERVED_CONFIGURED_CODES) {
@@ -169,7 +169,7 @@ describe('Bimal Pathology LIS: Migration 00123 GM Rate Import Verification', () 
     });
 
     it('verifies that bundled services (BT/CT, N+/K+, Bilirubin T&D, ANCA/GBM) are safely handled', () => {
-      const sqlPath = path.resolve('supabase/migrations/00123_import_missing_rates_from_gm_reference.sql');
+      const sqlPath = path.resolve('supabase/migrations_legacy_archive/00123_import_missing_rates_from_gm_reference.sql');
       const content = readFileSync(sqlPath, 'utf8');
 
       // BT/CT panel is already PRO-0030 (preserved)
@@ -181,7 +181,7 @@ describe('Bimal Pathology LIS: Migration 00123 GM Rate Import Verification', () 
     });
 
     it('verifies ambiguous rows (Troponin generic, MHA, GM packages) are excluded from rate insertion', () => {
-      const sqlPath = path.resolve('supabase/migrations/00123_import_missing_rates_from_gm_reference.sql');
+      const sqlPath = path.resolve('supabase/migrations_legacy_archive/00123_import_missing_rates_from_gm_reference.sql');
       const content = readFileSync(sqlPath, 'utf8');
 
       // Proprietary whole body packages must not be inserted as test rates

@@ -2,7 +2,7 @@ import { readFileSync, writeFileSync, unlinkSync } from 'node:fs';
 import { execSync } from 'node:child_process';
 import path from 'node:path';
 
-const migrationSql = readFileSync('supabase/migrations/00114_lab_test_rate_catalogue_and_panels.sql', 'utf8');
+const migrationSql = readFileSync('supabase/migrations_legacy_archive/00114_lab_test_rate_catalogue_and_panels.sql', 'utf8');
 
 // Strip BEGIN; and COMMIT; from migration to wrap in dry-run transaction
 const migrationInner = migrationSql

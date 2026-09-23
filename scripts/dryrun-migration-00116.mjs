@@ -2,7 +2,7 @@ import { readFileSync, writeFileSync, unlinkSync } from 'node:fs';
 import { execSync } from 'node:child_process';
 import path from 'node:path';
 
-const migrationSql116 = readFileSync('supabase/migrations/00116_remove_catalogue_readiness_workflow_blocks.sql', 'utf8');
+const migrationSql116 = readFileSync('supabase/migrations_legacy_archive/00116_remove_catalogue_readiness_workflow_blocks.sql', 'utf8');
 
 // Strip BEGIN; and COMMIT; from migration to wrap in dry-run transaction
 const migrationInner116 = migrationSql116

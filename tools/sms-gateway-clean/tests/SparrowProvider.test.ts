@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import test from 'node:test';import assert from 'node:assert/strict';import {SparrowProvider} from '../src/providers/sparrow/SparrowProvider.js';
 const message={queueId:'q',recipient:'9800000000',body:'hello'};
 test('accepted Sparrow response requires code and message ID',async()=>{const p=new SparrowProvider('t','s',(async()=>new Response(JSON.stringify({response_code:200,message_id:'id',count:1}),{status:200,headers:{'content-type':'application/json'}})) as typeof fetch);assert.equal((await p.send(message,AbortSignal.timeout(1000))).outcome,'accepted');});
@@ -27,7 +27,10 @@ for (const body of ['Bimal Pathology: Your laboratory report is ready. Please co
 }
 
 test('each report-ready SQL construction produces URL-free outbound text', async () => {
- const sql = readFileSync(new URL('../../../../supabase/migrations/00122_url_free_sms_notifications.sql', import.meta.url), 'utf8');
+ const migPath = existsSync(new URL('../../../../supabase/migrations_legacy_archive/00122_url_free_sms_notifications.sql', import.meta.url))
+  ? new URL('../../../../supabase/migrations_legacy_archive/00122_url_free_sms_notifications.sql', import.meta.url)
+  : new URL('../../../../supabase/migrations/00122_url_free_sms_notifications.sql', import.meta.url);
+ const sql = readFileSync(migPath, 'utf8');
  const templates = [...sql.matchAll(/'Bimal Pathology: Your laboratory report is ready\.[^']*'/g)].map(match => match[0].slice(1,-1));
  assert.equal(templates.length, 3);
  for (const body of templates) {

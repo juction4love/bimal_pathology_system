@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
 const read = (file) => fs.readFileSync(file, 'utf8');
-const migration = read('supabase/migrations/00050_catalogue_management_architecture.sql');
+const migration = read('supabase/migrations_legacy_archive/00050_catalogue_management_architecture.sql');
 const auth = read('src/context/AuthContext.tsx');
 const roles = read('src/features/admin/RolePermissionsPage.tsx');
 const personnel = read('src/features/personnel/ReportingPersonnelPage.tsx');

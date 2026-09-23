@@ -5,7 +5,7 @@ import { readFileSync, writeFileSync, unlinkSync } from 'node:fs';
 import { execSync } from 'node:child_process';
 import path from 'node:path';
 
-const migrationSql = readFileSync(path.resolve('supabase/migrations/00134_p0_lab_approved_configuration.sql'), 'utf8');
+const migrationSql = readFileSync(path.resolve('supabase/migrations_legacy_archive/00134_p0_lab_approved_configuration.sql'), 'utf8');
 const cleanMigrationSql = migrationSql
     .replace(/^BEGIN;/m, '')
     .replace(/^COMMIT;/m, '');

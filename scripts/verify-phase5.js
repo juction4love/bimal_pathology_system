@@ -113,7 +113,7 @@ async function runTests() {
 
   // Test 11: Supabase configuration and RLS contract. Live connectivity is
   // verified separately by npm run test:supabase and must never be faked here.
-  const rlsMigration = fs.readFileSync(path.join(__dirname, '..', 'supabase', 'migrations', '00002_rls_and_permissions.sql'), 'utf8');
+  const rlsMigration = fs.readFileSync(path.join(__dirname, '..', 'supabase', 'migrations_legacy_archive', '00002_rls_and_permissions.sql'), 'utf8');
   assert(productionEnv.includes('VITE_SUPABASE_URL=https://rncjxstujioagcezvfkb.supabase.co') && /ALTER TABLE tests ENABLE ROW LEVEL SECURITY/i.test(rlsMigration), '11. SupabaseConfigAndRLSContract', 'Checked-in production build configuration and catalogue RLS contract are present; no endpoint was contacted');
 
   console.log('\n================================================================');

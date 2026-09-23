@@ -1,10 +1,10 @@
 import fs from 'node:fs';
-const smsPolicy = fs.readFileSync('supabase/migrations/00122_url_free_sms_notifications.sql', 'utf8');
+const smsPolicy = fs.readFileSync('supabase/migrations_legacy_archive/00122_url_free_sms_notifications.sql', 'utf8');
 
 const read = (path) => fs.readFileSync(path, 'utf8');
-const payment = read('supabase/migrations/00043_payment_receivables_integrity.sql');
-const report = read('supabase/migrations/00041_standardize_report_ready_sms.sql');
-const hardening = read('supabase/migrations/00075_catalogue_readiness_approval_workflow.sql');
+const payment = read('supabase/migrations_legacy_archive/00043_payment_receivables_integrity.sql');
+const report = read('supabase/migrations_legacy_archive/00041_standardize_report_ready_sms.sql');
+const hardening = read('supabase/migrations_legacy_archive/00075_catalogue_readiness_approval_workflow.sql');
 const edge = read('supabase/functions/dispatch-sms/index.ts');
 const cloud = read('cloudflare/sms-dispatcher/src/index.ts');
 const cloudConfig = read('cloudflare/sms-dispatcher/wrangler.toml');

@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const migration116 = fs.readFileSync('supabase/migrations/00116_remove_catalogue_readiness_workflow_blocks.sql', 'utf8');
+const migration116 = fs.readFileSync('supabase/migrations_legacy_archive/00116_remove_catalogue_readiness_workflow_blocks.sql', 'utf8');
 const billingSearch = fs.readFileSync('src/features/billing/BillingCatalogueSearch.tsx', 'utf8');
 const adminDashboard = fs.readFileSync('src/features/dashboard/DashboardPage.tsx', 'utf8');
 const techDashboard = fs.readFileSync('src/features/dashboard/TechnicianDashboard.tsx', 'utf8');

@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 
-const sql=readFileSync('supabase/migrations/00090_reportable_by_default_technician_exception_control.sql','utf8');
+const sql=readFileSync('supabase/migrations_legacy_archive/00090_reportable_by_default_technician_exception_control.sql','utf8');
 const ui=readFileSync('src/features/catalogue/CatalogueReadinessPanel.tsx','utf8');
 
 test('new active supported tests are ready without approval or price gates',()=>{

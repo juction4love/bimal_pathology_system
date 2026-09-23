@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-const migration=fs.readFileSync('supabase/migrations/00092_multi_report_group_lifecycle.sql','utf8');
+const migration=fs.readFileSync('supabase/migrations_legacy_archive/00092_multi_report_group_lifecycle.sql','utf8');
 const resultEntry=fs.readFileSync('src/features/worklist/ResultEntryPage.tsx','utf8');
 test('execution route is frozen on order item and report membership',()=>{assert.match(migration,/clinical_execution_route_enum/);assert.match(migration,/trg_freeze_order_item_execution_route/);assert.match(migration,/frozen_reference_laboratory_id/)});
 test('reference laboratory master is reused through guarded configuration',()=>{assert.match(migration,/CREATE TABLE public\.reference_laboratories/);assert.match(migration,/configure_reference_laboratory/);assert.match(migration,/can_manage_outsource_tracking/)});

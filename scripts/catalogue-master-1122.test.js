@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
 const csvPath = path.join(rootDir, 'approved-data', 'Bimal_Pathology_Master_Test_Catalogue_1122.csv');
-const migrationPath = path.join(rootDir, 'supabase', 'migrations', '00098_master_catalogue_1122_rebuild_and_convergence.sql');
+const migrationPath = path.join(rootDir, 'supabase', 'migrations_legacy_archive', '00098_master_catalogue_1122_rebuild_and_convergence.sql');
 
 test('Master CSV exists and contains exactly 1,122 test records', () => {
   assert.ok(fs.existsSync(csvPath), 'Master CSV must exist');

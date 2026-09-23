@@ -1,0 +1,2886 @@
+{
+  "enums": [
+    {
+      "enum_name": "analyzer_lifecycle_enum",
+      "enum_values": [
+        "Draft",
+        "Active",
+        "Archived"
+      ]
+    },
+    {
+      "enum_name": "calculation_reporting_mode_enum",
+      "enum_values": [
+        "Measured",
+        "Calculated",
+        "MeasuredWithCalculatedConsistencyCheck"
+      ]
+    },
+    {
+      "enum_name": "catalogue_billable_entity_enum",
+      "enum_values": [
+        "Test",
+        "Panel",
+        "Package",
+        "Other"
+      ]
+    },
+    {
+      "enum_name": "catalogue_decision_status_enum",
+      "enum_values": [
+        "Configured",
+        "Reviewed",
+        "Approved",
+        "Rejected"
+      ]
+    },
+    {
+      "enum_name": "catalogue_lifecycle_enum",
+      "enum_values": [
+        "Draft",
+        "Active",
+        "Archived"
+      ]
+    },
+    {
+      "enum_name": "catalogue_pricing_policy_enum",
+      "enum_values": [
+        "Fixed",
+        "Negotiable",
+        "PricePending",
+        "Manual"
+      ]
+    },
+    {
+      "enum_name": "catalogue_rate_status_enum",
+      "enum_values": [
+        "Draft",
+        "Active",
+        "Inactive",
+        "Archived"
+      ]
+    },
+    {
+      "enum_name": "catalogue_readiness_state_enum",
+      "enum_values": [
+        "Draft",
+        "NeedsConfiguration",
+        "ReadyForReview",
+        "Approved",
+        "Suspended"
+      ]
+    },
+    {
+      "enum_name": "catalogue_reporting_model_enum",
+      "enum_values": [
+        "NumericSingle",
+        "NumericMultiParameter",
+        "Qualitative",
+        "MixedTyped",
+        "StructuredNested",
+        "NarrativeDocument",
+        "Calculated",
+        "Profile",
+        "MicrobiologyWorkflow",
+        "CytologyWorkflow",
+        "MolecularWorkflow"
+      ]
+    },
+    {
+      "enum_name": "catalogue_result_readiness_enum",
+      "enum_values": [
+        "Ready",
+        "Incomplete",
+        "SpecialistWorkflow",
+        "DocumentWorkflow",
+        "NoReporting",
+        "Inactive"
+      ]
+    },
+    {
+      "enum_name": "catalogue_source_disposition_enum",
+      "enum_values": [
+        "CanonicalStandaloneTest",
+        "CanonicalProfile",
+        "ProfileComponentOnly",
+        "AliasOnly",
+        "DuplicateDoNotCreate",
+        "DraftNewIdentity",
+        "SpecialistWorkflow",
+        "ConflictNeedsOperatorDecision",
+        "RetireCandidate"
+      ]
+    },
+    {
+      "enum_name": "catalogue_test_kind_enum",
+      "enum_values": [
+        "Individual",
+        "Profile"
+      ]
+    },
+    {
+      "enum_name": "clinical_configuration_status_enum",
+      "enum_values": [
+        "Configured",
+        "Requires Clinical Validation",
+        "Ready for Activation",
+        "Workflow Not Supported"
+      ]
+    },
+    {
+      "enum_name": "clinical_execution_route_enum",
+      "enum_values": [
+        "INTERNAL",
+        "OUTSOURCE"
+      ]
+    },
+    {
+      "enum_name": "clinical_workflow_type_enum",
+      "enum_values": [
+        "Routine",
+        "MicrobiologyCulture",
+        "MicrobiologyMicroscopy",
+        "Cytology",
+        "Histopathology",
+        "Molecular",
+        "Outsource",
+        "NoClinicalReport"
+      ]
+    },
+    {
+      "enum_name": "outsource_item_state_enum",
+      "enum_values": [
+        "AwaitingDispatch",
+        "Dispatched",
+        "AwaitingExternalResult",
+        "ResultReceived",
+        "InternalReview",
+        "Verified",
+        "Signed",
+        "Rejected",
+        "RecollectionRequired",
+        "Cancelled",
+        "UnableToPerform"
+      ]
+    },
+    {
+      "enum_name": "outsource_sample_status_enum",
+      "enum_values": [
+        "ReceivedAtBimal",
+        "PreparedForDispatch",
+        "DispatchedToReferenceLab",
+        "ReceivedByReferenceLab",
+        "ProcessingAtReferenceLab",
+        "ResultReceived",
+        "MaterialReturned",
+        "Completed",
+        "Rejected",
+        "Cancelled",
+        "LostInTransit"
+      ]
+    },
+    {
+      "enum_name": "parameter_clinical_class_enum",
+      "enum_values": [
+        "Measured",
+        "Calculated",
+        "DerivedInterpretation",
+        "ReferencePolicy"
+      ]
+    },
+    {
+      "enum_name": "parameter_value_type_enum",
+      "enum_values": [
+        "Numeric",
+        "Text",
+        "Select",
+        "Boolean",
+        "Heading",
+        "Calculated"
+      ]
+    },
+    {
+      "enum_name": "payment_mode_enum",
+      "enum_values": [
+        "Cash",
+        "Fonepay",
+        "eSewa",
+        "Khalti",
+        "Card",
+        "Bank",
+        "Credit",
+        "Other"
+      ]
+    },
+    {
+      "enum_name": "payment_status_enum",
+      "enum_values": [
+        "Paid",
+        "Partial",
+        "Due"
+      ]
+    },
+    {
+      "enum_name": "professional_type_enum",
+      "enum_values": [
+        "Pathologist",
+        "Lab Technologist",
+        "Lab Technician",
+        "Lab Assistant",
+        "Receptionist",
+        "Admin"
+      ]
+    },
+    {
+      "enum_name": "reference_range_validation_state_enum",
+      "enum_values": [
+        "Unclassified",
+        "ClinicallyValidated",
+        "LegacyDefaultRequiresValidation"
+      ]
+    },
+    {
+      "enum_name": "report_artifact_status_enum",
+      "enum_values": [
+        "Pending",
+        "Generating",
+        "GenerationFailed",
+        "UploadFailed",
+        "Ready"
+      ]
+    },
+    {
+      "enum_name": "reporting_type_enum",
+      "enum_values": [
+        "InHouse",
+        "OutsourceWithBimalReport",
+        "NoReporting"
+      ]
+    },
+    {
+      "enum_name": "result_flag_enum",
+      "enum_values": [
+        "Normal",
+        "Low",
+        "High",
+        "CriticalLow",
+        "CriticalHigh",
+        "Abnormal",
+        "NoRange"
+      ]
+    },
+    {
+      "enum_name": "result_status_enum",
+      "enum_values": [
+        "Draft",
+        "SubmittedForVerification",
+        "Verified",
+        "SignedOff",
+        "ReturnedForCorrection"
+      ]
+    },
+    {
+      "enum_name": "sample_status_enum",
+      "enum_values": [
+        "Pending",
+        "Collected",
+        "Received",
+        "Rejected",
+        "Recollected",
+        "Processing",
+        "Completed"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "routine_name": "allocate_patient_uhid",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "assert_clinical_result_ready",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "assert_sms_gateway_v2_identity",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "assign_bpdc_lab_no",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "ast_activate_breakpoint_set",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "ast_clone_breakpoint_set",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "ast_enrich_frozen_report_snapshot",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "ast_guard_used_breakpoint_mutation",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "ast_guard_used_rule_mutation",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "ast_interpret_breakpoint",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "ast_retire_breakpoint_set",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "ast_save_breakpoint_rule",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "ast_save_breakpoint_set",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "ast_save_isolate",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "ast_save_microorganism_mapping",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "ast_save_observation",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "audit_patient_created",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "authorize_my_report_pdf",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "authorize_order_report_delivery",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "authorize_order_report_pdf_artifact",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "authorize_patient_app_pdf_artifact",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "authorize_report_pdf_artifact",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "bind_bpdc_lab_no",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "bootstrap_first_admin",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "build_single_credit_nepali_sms",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "calculation_dependency_blockers",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "capture_report_calculation_provenance",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_activate_rate",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_actor_name",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_adopt_standard_presets",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_approve_calculation_formula",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_approve_clinical_source_decision",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_archive_option_set",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_archive_rate",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_booking_readiness",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_bulk_activate",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_bulk_import_lab_data",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_bulk_set_current_rates",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_bulk_submit_lab_approval",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_cbc_source_completeness",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_cbc_v4_completeness",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_check_test_readiness",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_classification",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_clinical_missing_configuration",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_clone_test",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_clone_test_easy",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_configuration_history",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_create_rate_version",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_decide_readiness",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_delete_analyzer_mapping_easy",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_delete_category",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_delete_or_archive_rate",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_delete_package",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_delete_panel",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_delete_parameter",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_delete_parameter_guarded",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_delete_range",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_delete_range_guarded",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_delete_test",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_delete_test_guarded",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_expand_package",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_expand_profile",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_get_governance_summary",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_get_test_history",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_invalidate_test",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_master_acceptance_summary",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_materialize_clinical_source_decision",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_panel_service_components",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_price_master",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_rate_history",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_readiness_actor_role",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_readiness_inventory",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_record_clinical_source_decision",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_record_configuration_review",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_remove_panel_component",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_reorder_panel_components",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_reorder_parameters_easy",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_replace_ranges",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_require_manager",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_require_readiness_staff",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_require_technical",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_revert_to_proposed",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_save_analyzer",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_save_analyzer_mapping_easy",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_save_category",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_save_option_set",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_save_option_value",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_save_package",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_save_panel",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_save_panel_component",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_save_parameter",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_save_parameter_easy",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_save_range",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_save_range_easy",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_save_test",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_save_test_aliases_easy",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_save_test_analyzer_configuration",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_save_test_conservative_00089",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_save_test_easy",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_search_rate_list",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_service_readiness_checklist",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_set_category_lifecycle",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_set_current_rate",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_set_package_lifecycle",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_set_panel_lifecycle",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_set_parameter_calculation_reporting_mode",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_set_parameter_lifecycle",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_set_parameter_option_set",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_set_range_lifecycle",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_set_test_lifecycle",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_set_test_operational_gates",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_start_template_copy",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_submit_for_review",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_submit_lab_approval",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_submit_pending_configuration",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_technical_save_range",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_technical_update_parameter",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_technical_update_test",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_test_missing_configuration",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_test_operational_label",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_test_result_readiness",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_test_template_detail",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_update_test_price",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "catalogue_validate_test",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "check_order_report_readiness",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "check_report_group_readiness",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "claim_next_sms_gateway_item",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "claim_report_pdf_artifact",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "claim_report_pdf_artifact_v2",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "claim_sms_batch",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "claim_sms_gateway_item",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "claim_sms_gateway_v2_batch",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "clinical_result_collection_readiness",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "complete_report_pdf_artifact",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "complete_report_pdf_artifact_v2",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "complete_sms_gateway_item",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "complete_sms_gateway_v2_item",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "configure_reference_laboratory",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "create_patient",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "create_patient_bill_and_order",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "create_patient_bill_and_order",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "create_patient_bill_order_mixed_catalogue",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "create_patient_bill_order_with_packages",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "create_patient_bill_order_with_panel_service",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "create_patient_bill_order_with_panel_service",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "create_public_report_token",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "delete_unused_patient",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "derive_order_reporting_state",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "enforce_critical_acknowledgement_authority",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "enforce_report_pdf_artifact_immutability",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "enqueue_missing_report_pdf_artifacts",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "ensure_bill_collection_traceability",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "ensure_catalogue_test_readiness",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "evaluate_governed_formula",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "finalize_hmis_report",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "freeze_order_item_execution_route",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "freeze_report_group_execution_route",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "freeze_sample_requirement_identity",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "freeze_test_delivery_configuration",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "get_active_pt_inr_config",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "get_catalogue_panel_components",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "get_dashboard_collection_summary",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "get_dashboard_operational_summary",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "get_my_patient_profile",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "get_report_pdf_delivery_acceptance_candidate",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "get_report_secure_link_status",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "get_sms_delivery_status",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "get_sms_gateway_v2_health",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "get_sms_test_alias",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "get_technician_operational_summary",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "gin_extract_query_trgm",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "gin_extract_value_trgm",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "gin_trgm_consistent",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "gin_trgm_triconsistent",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "gtrgm_compress",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "gtrgm_consistent",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "gtrgm_decompress",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "gtrgm_distance",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "gtrgm_in",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "gtrgm_options",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "gtrgm_out",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "gtrgm_penalty",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "gtrgm_picksplit",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "gtrgm_same",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "gtrgm_union",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "guard_clinical_result_write",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "guard_clinical_source_item_update",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "guard_diagnostic_report_personnel",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "guard_formula_version_rewrite",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "guard_immutable_calculation_evidence",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "guard_lab_number_registry",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "guard_outsource_sample_write",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "guard_payment_immutability",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "guard_sms_queue_item",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "handle_new_auth_user",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "has_permission",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "heartbeat_sms_gateway_v2",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "hmis_auto_summary",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "hmis_identity_options",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "is_active_user",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "is_report_artifact_worker",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "is_super_admin",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "link_outsource_tracker_to_order_item",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "list_laboratory_worklist_departments",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "list_my_report_groups",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "list_my_report_orders",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "lock_diagnostic_report_lineage",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "mark_sms_gateway_v2_provider_call_started",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "mark_sms_provider_call_started",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "materialize_report_group_item",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "normalize_clinical_calculation_input",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "normalize_nepal_mobile",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "normalize_nepal_sms_mobile",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "notify_updated_order_reports",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "patient_actor_name",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "patient_clean_text",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "patient_normalize_mobile",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "prevent_archived_patient_transaction",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "prevent_catalogue_evidence_mutation",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "prevent_hmis_version_mutation",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "prevent_patient_uhid_change",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "provision_historical_report_secure_link",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "queue_bill_sms",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "queue_signed_report_artifact",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "receive_bill_payment",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "recompute_order_item_calculated_results",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "record_critical_value_acknowledgement",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "record_hmis_submission",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "recover_stale_sms_gateway_items",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "recover_stale_sms_gateway_v2_items",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "register_report_artifact_worker",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "register_sms_gateway_v2_instance",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "reject_catalogue_master_evidence_mutation",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "reject_clinical_source_evidence_mutation",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "reject_sms_gateway_v2_local_validation",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "replace_role_permission_matrix",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "report_artifact_public_url",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "require_outsource_tracking_permission",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "resolve_public_report_by_token",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "retry_sms_delivery",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "revoke_public_report_token",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "rls_auto_enable",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "run_governed_order_item_calculations",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "save_pt_inr_reagent_config",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "save_pus_culture_worksheet",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "save_referring_doctor",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "save_reporting_personnel",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "save_test_results",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "save_test_results_revision_internal",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "save_test_results_scoping_internal_00090",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "save_test_results_unversioned_internal",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "search_audit_log",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "search_bill_registry",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "search_billable_catalogue",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "search_dashboard_orders",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "search_laboratory_worklist",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "search_my_report_orders",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "search_patient_history",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "search_patient_registry",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "search_patient_registry",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "search_report_registry",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "search_sample_accessioning",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "search_sms_delivery_status",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "set_limit",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "set_patient_archived",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "set_sms_gateway_v2_claiming",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "set_sms_gateway_v2_enabled",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "show_limit",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "show_trgm",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "sign_and_freeze_diagnostic_report",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "sign_and_queue_diagnostic_report",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "sign_and_queue_report_group",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "sign_report_group",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "similarity",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "similarity_dist",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "similarity_op",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "sms_gateway_v2_preflight",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "strict_word_similarity",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "strict_word_similarity_commutator_op",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "strict_word_similarity_dist_commutator_op",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "strict_word_similarity_dist_op",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "strict_word_similarity_op",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "sync_my_patient_identity",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "transition_outsource_order_item",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "transition_sample_lifecycle",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "update_outsource_sample_status",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "update_patient_demographics",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "update_sms_status",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "update_user_access",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "uuid_generate_v4",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "validate_report_pdf_artifact_identity",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "word_similarity",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "word_similarity_commutator_op",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "word_similarity_dist_commutator_op",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "word_similarity_dist_op",
+      "routine_type": "FUNCTION"
+    },
+    {
+      "routine_name": "word_similarity_op",
+      "routine_type": "FUNCTION"
+    }
+  ],
+  "policies": [
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "analyzer_param_mappings_select",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "analyzer_parameter_mappings"
+    },
+    {
+      "cmd": "ALL",
+      "permissive": "PERMISSIVE",
+      "policyname": "analyzer_param_mappings_write",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "analyzer_parameter_mappings"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "analyzers_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "analyzers"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "Allow read access to authenticated users on assay_specimen_gove",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "assay_specimen_governance_rules"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "ast_antibiotic_staff_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "ast_antibiotics"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "ast_rule_staff_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "ast_breakpoint_rules"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "ast_master_staff_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "ast_breakpoint_sets"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "ast_isolate_staff_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "ast_isolates"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "ast_microorganism_staff_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "ast_microorganisms"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "ast_audit_staff_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "ast_observation_audit"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "ast_observation_staff_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "ast_observations"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "ast_group_staff_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "ast_organism_groups"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "audit_logs_select",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "audit_logs"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "bill_items_select",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "bill_items"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "bill_package_components_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "bill_package_components"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "bill_package_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "bill_package_selections"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "bill_panel_components_staff_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "bill_panel_components"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "bill_panel_selections_staff_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "bill_panel_selections"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "bills_select",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "bills"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "catalogue_calculations_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "catalogue_calculation_definitions"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "catalogue_conflicts_manager_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "catalogue_identity_conflicts"
+    },
+    {
+      "cmd": "INSERT",
+      "permissive": "PERMISSIVE",
+      "policyname": "catalogue_lab_approvals_insert",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "catalogue_lab_approvals"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "catalogue_lab_approvals_select",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "catalogue_lab_approvals"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "catalogue_rows_manager_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "catalogue_master_source_rows"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "catalogue_master_manager_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "catalogue_master_sources"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "catalogue_option_sets_staff_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "catalogue_option_sets"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "catalogue_option_values_staff_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "catalogue_option_values"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "panel_components_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "catalogue_panel_components"
+    },
+    {
+      "cmd": "ALL",
+      "permissive": "PERMISSIVE",
+      "policyname": "panel_components_write",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "catalogue_panel_components"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "catalogue_panel_resolution_staff_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "catalogue_panel_identity_resolution"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "catalogue_panel_ratelist_staff_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "catalogue_panel_ratelist_links"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "catalogue_panel_services_staff_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "catalogue_panel_services"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "catalogue_profile_components_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "catalogue_profile_components"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "catalogue_rates_staff_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "catalogue_rate_versions"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "catalogue_result_reconciliation_staff_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "catalogue_result_structure_reconciliation"
+    },
+    {
+      "cmd": "ALL",
+      "permissive": "PERMISSIVE",
+      "policyname": "catalogue_standard_presets_manage",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "catalogue_standard_presets"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "catalogue_standard_presets_select",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "catalogue_standard_presets"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "catalogue_test_database_staff_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "catalogue_test_database_entries"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "catalogue_test_templates_staff_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "catalogue_test_templates"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "clinical_order_items_select",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "clinical_order_items"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "clinical_orders_select",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "clinical_orders"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "report_group_items_staff_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "clinical_report_group_items"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "report_groups_staff_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "clinical_report_groups"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "clinical_source_decisions_manager_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "clinical_source_decisions"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "clinical_source_imports_manager_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "clinical_source_imports"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "clinical_source_items_manager_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "clinical_source_items"
+    },
+    {
+      "cmd": "ALL",
+      "permissive": "PERMISSIVE",
+      "policyname": "Allow authenticated users full access to critical_alert_events",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "critical_alert_events"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "Allow read access to authenticated on critical_value_policies",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "critical_value_policies"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "diagnostic_reports_select",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "diagnostic_reports"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "package_components_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "health_package_components"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "packages_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "health_packages"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "hmis_config_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "hmis_facility_configuration"
+    },
+    {
+      "cmd": "ALL",
+      "permissive": "PERMISSIVE",
+      "policyname": "hmis_config_write",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "hmis_facility_configuration"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "hmis_manual_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "hmis_monthly_manual_values"
+    },
+    {
+      "cmd": "ALL",
+      "permissive": "PERMISSIVE",
+      "policyname": "hmis_manual_write",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "hmis_monthly_manual_values"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "hmis_versions_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "hmis_monthly_report_versions"
+    },
+    {
+      "cmd": "INSERT",
+      "permissive": "PERMISSIVE",
+      "policyname": "hmis_reports_create",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "hmis_monthly_reports"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "hmis_reports_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "hmis_monthly_reports"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "hmis_submissions_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "hmis_submission_events"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "Authorized staff can read outsource events",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "outsource_sample_events"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "Authorized staff can read outsource samples",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "outsource_samples"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "parameters_select",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "parameters"
+    },
+    {
+      "cmd": "ALL",
+      "permissive": "PERMISSIVE",
+      "policyname": "parameters_write",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "parameters"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "patient_app_identities_select_own",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "patient_app_identities"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "patients_select",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "patients"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "payments_select",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "payment_transactions"
+    },
+    {
+      "cmd": "DELETE",
+      "permissive": "PERMISSIVE",
+      "policyname": "pt_inr_configs_delete_admin_only",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "pt_inr_reagent_configs"
+    },
+    {
+      "cmd": "INSERT",
+      "permissive": "PERMISSIVE",
+      "policyname": "pt_inr_configs_insert_admin_only",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "pt_inr_reagent_configs"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "pt_inr_configs_select_policy",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "pt_inr_reagent_configs"
+    },
+    {
+      "cmd": "UPDATE",
+      "permissive": "PERMISSIVE",
+      "policyname": "pt_inr_configs_update_admin_only",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "pt_inr_reagent_configs"
+    },
+    {
+      "cmd": "DELETE",
+      "permissive": "PERMISSIVE",
+      "policyname": "Deny direct client deletes on report tokens",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "public_report_tokens"
+    },
+    {
+      "cmd": "INSERT",
+      "permissive": "PERMISSIVE",
+      "policyname": "Deny direct client inserts on report tokens",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "public_report_tokens"
+    },
+    {
+      "cmd": "UPDATE",
+      "permissive": "PERMISSIVE",
+      "policyname": "Deny direct client updates on report tokens",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "public_report_tokens"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "Staff can view public report tokens",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "public_report_tokens"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "pus_culture_worksheet_staff_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "pus_culture_worksheets"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "reference_labs_staff_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "reference_laboratories"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "ref_ranges_select",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "reference_ranges"
+    },
+    {
+      "cmd": "ALL",
+      "permissive": "PERMISSIVE",
+      "policyname": "ref_ranges_write",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "reference_ranges"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "referring_doctors_select",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "referring_doctors"
+    },
+    {
+      "cmd": "ALL",
+      "permissive": "PERMISSIVE",
+      "policyname": "referring_doctors_write",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "referring_doctors"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "reporting_personnel_select",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "reporting_personnel"
+    },
+    {
+      "cmd": "ALL",
+      "permissive": "PERMISSIVE",
+      "policyname": "reporting_personnel_write",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "reporting_personnel"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "role_permissions_select",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "role_permissions"
+    },
+    {
+      "cmd": "ALL",
+      "permissive": "PERMISSIVE",
+      "policyname": "role_permissions_write",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "role_permissions"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "roles_select",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "roles"
+    },
+    {
+      "cmd": "ALL",
+      "permissive": "PERMISSIVE",
+      "policyname": "roles_write",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "roles"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "sample_lifecycle_select",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "sample_lifecycle_events"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "samples_select",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "samples"
+    },
+    {
+      "cmd": "DELETE",
+      "permissive": "PERMISSIVE",
+      "policyname": "Deny direct client deletes on SMS queue",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "sms_queue_items"
+    },
+    {
+      "cmd": "INSERT",
+      "permissive": "PERMISSIVE",
+      "policyname": "Deny direct client inserts on SMS queue",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "sms_queue_items"
+    },
+    {
+      "cmd": "UPDATE",
+      "permissive": "PERMISSIVE",
+      "policyname": "Deny direct client updates on SMS queue",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "sms_queue_items"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "test_aliases_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "test_aliases"
+    },
+    {
+      "cmd": "ALL",
+      "permissive": "PERMISSIVE",
+      "policyname": "test_aliases_write",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "test_aliases"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "test_analyzer_config_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "test_analyzer_configurations"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "test_categories_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "test_categories"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "test_category_aliases_staff_read",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "test_category_aliases"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "test_results_select",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "test_results"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "tests_select",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "tests"
+    },
+    {
+      "cmd": "ALL",
+      "permissive": "PERMISSIVE",
+      "policyname": "tests_write",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "tests"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "user_direct_permissions_select",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "user_direct_permissions"
+    },
+    {
+      "cmd": "ALL",
+      "permissive": "PERMISSIVE",
+      "policyname": "user_direct_permissions_write",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "user_direct_permissions"
+    },
+    {
+      "cmd": "ALL",
+      "permissive": "PERMISSIVE",
+      "policyname": "user_profiles_admin_all",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "user_profiles"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "user_profiles_select_own",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "user_profiles"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "user_roles_select",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "user_roles"
+    },
+    {
+      "cmd": "ALL",
+      "permissive": "PERMISSIVE",
+      "policyname": "user_roles_write",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "user_roles"
+    }
+  ],
+  "tables": [
+    "analyzer_parameter_mappings",
+    "analyzers",
+    "assay_specimen_governance_rules",
+    "ast_antibiotics",
+    "ast_breakpoint_rules",
+    "ast_breakpoint_sets",
+    "ast_isolates",
+    "ast_microorganisms",
+    "ast_observation_audit",
+    "ast_observations",
+    "ast_organism_groups",
+    "audit_logs",
+    "bill_items",
+    "bill_package_components",
+    "bill_package_selections",
+    "bill_panel_components",
+    "bill_panel_selections",
+    "billing_idempotency_requests",
+    "bills",
+    "catalogue_calculation_definitions",
+    "catalogue_configuration_evidence",
+    "catalogue_identity_conflicts",
+    "catalogue_lab_approvals",
+    "catalogue_master_source_rows",
+    "catalogue_master_sources",
+    "catalogue_option_sets",
+    "catalogue_option_values",
+    "catalogue_panel_components",
+    "catalogue_panel_identity_resolution",
+    "catalogue_panel_ratelist_links",
+    "catalogue_panel_services",
+    "catalogue_profile_components",
+    "catalogue_rate_versions",
+    "catalogue_result_structure_reconciliation",
+    "catalogue_service_readiness",
+    "catalogue_standard_presets",
+    "catalogue_test_database_entries",
+    "catalogue_test_template_drafts",
+    "catalogue_test_templates",
+    "clinical_calculation_consistency_checks",
+    "clinical_calculation_formula_inputs",
+    "clinical_calculation_formula_versions",
+    "clinical_calculation_runs",
+    "clinical_calculation_tolerance_versions",
+    "clinical_order_items",
+    "clinical_orders",
+    "clinical_report_group_items",
+    "clinical_report_groups",
+    "clinical_source_decisions",
+    "clinical_source_imports",
+    "clinical_source_items",
+    "critical_alert_events",
+    "critical_value_policies",
+    "diagnostic_reports",
+    "health_package_components",
+    "health_packages",
+    "hmis_facility_configuration",
+    "hmis_monthly_manual_values",
+    "hmis_monthly_report_versions",
+    "hmis_monthly_reports",
+    "hmis_submission_events",
+    "lab_number_registry",
+    "order_report_delivery_entitlements",
+    "order_report_delivery_tokens",
+    "order_report_notification_generations",
+    "outsource_sample_events",
+    "outsource_samples",
+    "parameters",
+    "patient_app_identities",
+    "patient_app_pdf_tokens",
+    "patients",
+    "payment_idempotency_requests",
+    "payment_transactions",
+    "pt_inr_reagent_configs",
+    "public_report_tokens",
+    "pus_culture_worksheets",
+    "reference_laboratories",
+    "reference_ranges",
+    "referring_doctors",
+    "report_artifact_worker_identities",
+    "report_calculation_provenance",
+    "report_pdf_artifacts",
+    "report_pdf_delivery_intents",
+    "report_secure_link_presentations",
+    "reporting_personnel",
+    "role_permissions",
+    "roles",
+    "sample_lifecycle_events",
+    "samples",
+    "sms_gateway_instances",
+    "sms_queue_items",
+    "test_aliases",
+    "test_analyzer_configurations",
+    "test_categories",
+    "test_category_aliases",
+    "test_results",
+    "tests",
+    "user_direct_permissions",
+    "user_profiles",
+    "user_roles"
+  ],
+  "triggers": [
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "UPDATE",
+      "event_object_table": "ast_breakpoint_rules",
+      "trigger_name": "ast_used_rule_immutable"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "DELETE",
+      "event_object_table": "ast_breakpoint_rules",
+      "trigger_name": "ast_used_rule_immutable"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "DELETE",
+      "event_object_table": "ast_breakpoint_sets",
+      "trigger_name": "ast_used_breakpoint_immutable"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "UPDATE",
+      "event_object_table": "ast_breakpoint_sets",
+      "trigger_name": "ast_used_breakpoint_immutable"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "INSERT",
+      "event_object_table": "bills",
+      "trigger_name": "trg_bills_active_patient"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "DELETE",
+      "event_object_table": "catalogue_configuration_evidence",
+      "trigger_name": "catalogue_configuration_evidence_immutable"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "UPDATE",
+      "event_object_table": "catalogue_configuration_evidence",
+      "trigger_name": "catalogue_configuration_evidence_immutable"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "UPDATE",
+      "event_object_table": "catalogue_master_source_rows",
+      "trigger_name": "catalogue_master_rows_immutable"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "DELETE",
+      "event_object_table": "catalogue_master_source_rows",
+      "trigger_name": "catalogue_master_rows_immutable"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "UPDATE",
+      "event_object_table": "catalogue_master_sources",
+      "trigger_name": "catalogue_master_sources_immutable"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "DELETE",
+      "event_object_table": "catalogue_master_sources",
+      "trigger_name": "catalogue_master_sources_immutable"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "UPDATE",
+      "event_object_table": "clinical_calculation_consistency_checks",
+      "trigger_name": "clinical_calculation_checks_immutable"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "DELETE",
+      "event_object_table": "clinical_calculation_consistency_checks",
+      "trigger_name": "clinical_calculation_checks_immutable"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "UPDATE",
+      "event_object_table": "clinical_calculation_formula_versions",
+      "trigger_name": "clinical_calculation_formula_version_rewrite_guard"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "DELETE",
+      "event_object_table": "clinical_calculation_formula_versions",
+      "trigger_name": "clinical_calculation_formula_version_rewrite_guard"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "DELETE",
+      "event_object_table": "clinical_calculation_runs",
+      "trigger_name": "clinical_calculation_runs_immutable"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "UPDATE",
+      "event_object_table": "clinical_calculation_runs",
+      "trigger_name": "clinical_calculation_runs_immutable"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "INSERT",
+      "event_object_table": "clinical_order_items",
+      "trigger_name": "trg_freeze_order_item_execution_route"
+    },
+    {
+      "action_timing": "AFTER",
+      "event_manipulation": "INSERT",
+      "event_object_table": "clinical_order_items",
+      "trigger_name": "trg_link_outsource_tracker_to_order_item"
+    },
+    {
+      "action_timing": "AFTER",
+      "event_manipulation": "INSERT",
+      "event_object_table": "clinical_order_items",
+      "trigger_name": "trg_materialize_report_group_item"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "INSERT",
+      "event_object_table": "clinical_orders",
+      "trigger_name": "assign_bpdc_lab_no_trigger"
+    },
+    {
+      "action_timing": "AFTER",
+      "event_manipulation": "INSERT",
+      "event_object_table": "clinical_orders",
+      "trigger_name": "bind_bpdc_lab_no_trigger"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "INSERT",
+      "event_object_table": "clinical_report_group_items",
+      "trigger_name": "trg_freeze_report_group_execution_route"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "UPDATE",
+      "event_object_table": "clinical_source_imports",
+      "trigger_name": "clinical_source_imports_immutable"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "DELETE",
+      "event_object_table": "clinical_source_imports",
+      "trigger_name": "clinical_source_imports_immutable"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "UPDATE",
+      "event_object_table": "clinical_source_items",
+      "trigger_name": "clinical_source_items_guard"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "DELETE",
+      "event_object_table": "clinical_source_items",
+      "trigger_name": "clinical_source_items_immutable_content"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "INSERT",
+      "event_object_table": "diagnostic_reports",
+      "trigger_name": "ast_enrich_frozen_report"
+    },
+    {
+      "action_timing": "AFTER",
+      "event_manipulation": "INSERT",
+      "event_object_table": "diagnostic_reports",
+      "trigger_name": "capture_report_calculation_provenance_trigger"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "INSERT",
+      "event_object_table": "diagnostic_reports",
+      "trigger_name": "guard_diagnostic_report_personnel_trigger"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "INSERT",
+      "event_object_table": "diagnostic_reports",
+      "trigger_name": "lock_diagnostic_report_lineage_trigger"
+    },
+    {
+      "action_timing": "AFTER",
+      "event_manipulation": "INSERT",
+      "event_object_table": "diagnostic_reports",
+      "trigger_name": "queue_signed_report_artifact_trigger"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "DELETE",
+      "event_object_table": "hmis_monthly_report_versions",
+      "trigger_name": "hmis_versions_immutable"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "UPDATE",
+      "event_object_table": "hmis_monthly_report_versions",
+      "trigger_name": "hmis_versions_immutable"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "UPDATE",
+      "event_object_table": "lab_number_registry",
+      "trigger_name": "guard_lab_number_registry_trigger"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "DELETE",
+      "event_object_table": "lab_number_registry",
+      "trigger_name": "guard_lab_number_registry_trigger"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "INSERT",
+      "event_object_table": "outsource_samples",
+      "trigger_name": "guard_outsource_sample_write_trigger"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "UPDATE",
+      "event_object_table": "outsource_samples",
+      "trigger_name": "guard_outsource_sample_write_trigger"
+    },
+    {
+      "action_timing": "AFTER",
+      "event_manipulation": "INSERT",
+      "event_object_table": "patients",
+      "trigger_name": "trg_patients_audit_created"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "UPDATE",
+      "event_object_table": "patients",
+      "trigger_name": "trg_patients_uhid_immutable"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "INSERT",
+      "event_object_table": "patients",
+      "trigger_name": "trg_patients_uhid_new_format"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "DELETE",
+      "event_object_table": "payment_transactions",
+      "trigger_name": "trg_payment_transactions_immutable"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "UPDATE",
+      "event_object_table": "payment_transactions",
+      "trigger_name": "trg_payment_transactions_immutable"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "UPDATE",
+      "event_object_table": "report_calculation_provenance",
+      "trigger_name": "report_calculation_provenance_immutable"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "DELETE",
+      "event_object_table": "report_calculation_provenance",
+      "trigger_name": "report_calculation_provenance_immutable"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "DELETE",
+      "event_object_table": "report_pdf_artifacts",
+      "trigger_name": "enforce_report_pdf_artifact_immutability_trigger"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "UPDATE",
+      "event_object_table": "report_pdf_artifacts",
+      "trigger_name": "enforce_report_pdf_artifact_immutability_trigger"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "INSERT",
+      "event_object_table": "report_pdf_artifacts",
+      "trigger_name": "validate_report_pdf_artifact_identity_trigger"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "INSERT",
+      "event_object_table": "samples",
+      "trigger_name": "trg_freeze_sample_requirement_identity"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "INSERT",
+      "event_object_table": "sms_queue_items",
+      "trigger_name": "trg_sms_queue_item_guard"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "UPDATE",
+      "event_object_table": "sms_queue_items",
+      "trigger_name": "trg_sms_queue_item_guard"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "UPDATE",
+      "event_object_table": "test_results",
+      "trigger_name": "enforce_critical_acknowledgement_authority_trigger"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "INSERT",
+      "event_object_table": "test_results",
+      "trigger_name": "enforce_critical_acknowledgement_authority_trigger"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "UPDATE",
+      "event_object_table": "test_results",
+      "trigger_name": "guard_clinical_result_write_trigger"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "INSERT",
+      "event_object_table": "test_results",
+      "trigger_name": "guard_clinical_result_write_trigger"
+    },
+    {
+      "action_timing": "AFTER",
+      "event_manipulation": "UPDATE",
+      "event_object_table": "tests",
+      "trigger_name": "ensure_catalogue_test_readiness_trigger"
+    },
+    {
+      "action_timing": "AFTER",
+      "event_manipulation": "INSERT",
+      "event_object_table": "tests",
+      "trigger_name": "ensure_catalogue_test_readiness_trigger"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "UPDATE",
+      "event_object_table": "tests",
+      "trigger_name": "trg_freeze_test_delivery_configuration"
+    },
+    {
+      "action_timing": "BEFORE",
+      "event_manipulation": "INSERT",
+      "event_object_table": "tests",
+      "trigger_name": "trg_freeze_test_delivery_configuration"
+    }
+  ]
+}

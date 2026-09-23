@@ -5,13 +5,13 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = (file) => fs.readFileSync(path.join(root, file), 'utf8');
-const schema = read('supabase/migrations/00001_initial_schema.sql');
-const rls = read('supabase/migrations/00002_rls_and_permissions.sql');
-const reporting = read('supabase/migrations/00005_reporting_signoff_and_pdf.sql');
-const finalAuthorization = read('supabase/migrations/00087_production_catalogue_rate_management.sql');
-const smsAndPublicReports = read('supabase/migrations/00006_sms_and_public_reports.sql');
+const schema = read('supabase/migrations_legacy_archive/00001_initial_schema.sql');
+const rls = read('supabase/migrations_legacy_archive/00002_rls_and_permissions.sql');
+const reporting = read('supabase/migrations_legacy_archive/00005_reporting_signoff_and_pdf.sql');
+const finalAuthorization = read('supabase/migrations_legacy_archive/00087_production_catalogue_rate_management.sql');
+const smsAndPublicReports = read('supabase/migrations_legacy_archive/00006_sms_and_public_reports.sql');
 const worklist = read('src/features/worklist/WorklistPage.tsx');
-const worklistSearch = read('supabase/migrations/00072_worklist_server_search_pagination.sql');
+const worklistSearch = read('supabase/migrations_legacy_archive/00072_worklist_server_search_pagination.sql');
 let passedCount = 0;
 let failedCount = 0;
 

@@ -3,8 +3,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const catalogue = fs.readFileSync(path.join(root, 'supabase/migrations/00008_default_pathology_catalogue.sql'), 'utf8');
-const ranges = fs.readFileSync(path.join(root, 'supabase/migrations/00011_default_reference_ranges.sql'), 'utf8');
+const catalogue = fs.readFileSync(path.join(root, 'supabase/migrations_legacy_archive/00008_default_pathology_catalogue.sql'), 'utf8');
+const ranges = fs.readFileSync(path.join(root, 'supabase/migrations_legacy_archive/00011_default_reference_ranges.sql'), 'utf8');
 
 const testNames = new Map();
 const parameterMeta = new Map();

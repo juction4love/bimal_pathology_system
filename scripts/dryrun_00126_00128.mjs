@@ -4,9 +4,9 @@ import fs from 'node:fs';
 async function main() {
   console.log('=== DRY-RUN SIMULATION OF 00126, 00127, 00128 ON LINKED PRODUCTION DB ===\n');
 
-  const m126 = fs.readFileSync('supabase/migrations/00126_councell_cbc_adult_reference_ranges.sql', 'utf8');
-  const m127 = fs.readFileSync('supabase/migrations/00127_coralab_fiacheck_adult_reference_ranges.sql', 'utf8');
-  const m128 = fs.readFileSync('supabase/migrations/00128_final_clinical_range_polish.sql', 'utf8');
+  const m126 = fs.readFileSync('supabase/migrations_legacy_archive/00126_councell_cbc_adult_reference_ranges.sql', 'utf8');
+  const m127 = fs.readFileSync('supabase/migrations_legacy_archive/00127_coralab_fiacheck_adult_reference_ranges.sql', 'utf8');
+  const m128 = fs.readFileSync('supabase/migrations_legacy_archive/00128_final_clinical_range_polish.sql', 'utf8');
 
   function stripTx(sql) {
     return sql

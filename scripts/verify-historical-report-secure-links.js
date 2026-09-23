@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 
-const migration = fs.readFileSync('supabase/migrations/00049_historical_report_secure_link_provisioning.sql', 'utf8');
+const migration = fs.readFileSync('supabase/migrations_legacy_archive/00049_historical_report_secure_link_provisioning.sql', 'utf8');
 const reports = fs.readFileSync('src/features/reports/ReportsPage.tsx', 'utf8');
 const viewer = fs.readFileSync('src/features/reports/FinalReportViewerDialog.tsx', 'utf8');
 const document = fs.readFileSync('src/features/reports/ReportDocument.tsx', 'utf8');

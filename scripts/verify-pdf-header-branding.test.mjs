@@ -11,7 +11,7 @@ const __dirname = path.dirname(__filename);
 const root = path.resolve(__dirname, '..');
 
 test('1. Migration 00131 exists and authoritatively sets approved organization branding', () => {
-  const mig131 = readFileSync(path.join(root, 'supabase/migrations/00131_fix_diagnostic_report_branding.sql'), 'utf8');
+  const mig131 = readFileSync(path.join(root, 'supabase/migrations_legacy_archive/00131_fix_diagnostic_report_branding.sql'), 'utf8');
   assert.doesNotMatch(mig131, /run_command/, 'Migration 00131 must not contain run_command');
   assert.match(mig131, /CREATE OR REPLACE FUNCTION public\.sign_report_group/);
   assert.match(mig131, /'name_en',\s*'BIMAL PATHOLOGY & DIAGNOSTIC CENTER'/);
@@ -23,7 +23,7 @@ test('1. Migration 00131 exists and authoritatively sets approved organization b
 });
 
 test('2. Migration 00131 preserves security definer, search_path and execution grants', () => {
-  const mig131 = readFileSync(path.join(root, 'supabase/migrations/00131_fix_diagnostic_report_branding.sql'), 'utf8');
+  const mig131 = readFileSync(path.join(root, 'supabase/migrations_legacy_archive/00131_fix_diagnostic_report_branding.sql'), 'utf8');
   assert.match(mig131, /SECURITY DEFINER/);
   assert.match(mig131, /SET search_path TO 'public',\s*'pg_temp'/);
   assert.match(mig131, /REVOKE ALL ON FUNCTION public\.sign_report_group\(UUID,UUID,UUID,TEXT,UUID\) FROM PUBLIC,anon,authenticated,service_role;/);

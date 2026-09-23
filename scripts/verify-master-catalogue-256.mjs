@@ -1,9 +1,9 @@
 import fs from 'node:fs'
 import { createHash } from 'node:crypto'
 
-const migration='supabase/migrations/00067_master_catalogue_256_identity_architecture.sql'
-const convergence='supabase/migrations/00068_master_catalogue_service_role_read_convergence.sql'
-const summary='supabase/migrations/00069_master_catalogue_acceptance_summary.sql'
+const migration='supabase/migrations_legacy_archive/00067_master_catalogue_256_identity_architecture.sql'
+const convergence='supabase/migrations_legacy_archive/00068_master_catalogue_service_role_read_convergence.sql'
+const summary='supabase/migrations_legacy_archive/00069_master_catalogue_acceptance_summary.sql'
 const source='docs/audits/master-catalogue-reconciliation-256.csv'
 const must=(ok,message)=>{if(!ok)throw new Error(message);console.log(`PASS ${message}`)}
 const sql=fs.readFileSync(migration,'utf8')

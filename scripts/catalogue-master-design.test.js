@@ -6,7 +6,7 @@ import { catalogueOperationalStatus } from '../src/features/catalogue/catalogueO
 const page = fs.readFileSync('src/features/catalogue/CataloguePage.tsx', 'utf8');
 const sections = fs.readFileSync('src/features/catalogue/CatalogueMasterSections.tsx', 'utf8');
 const readiness = fs.readFileSync('src/features/catalogue/CatalogueReadinessPanel.tsx', 'utf8');
-const migration = fs.readFileSync('supabase/migrations/00075_catalogue_readiness_approval_workflow.sql', 'utf8');
+const migration = fs.readFileSync('supabase/migrations_legacy_archive/00075_catalogue_readiness_approval_workflow.sql', 'utf8');
 
 test('catalogue has the six finalized operator-facing operational sections', () => {
   for (const label of ['Test Database', 'Categories', 'Test Panels', 'Parameters / Ranges', 'Prices / Ratelist', 'Templates']) {

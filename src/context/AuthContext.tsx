@@ -134,8 +134,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         }
       });
 
-      // 5. Super Admin receives all system permissions
-      if (activeProfile?.isSuperAdmin) {
+      // 5. Admin and Super Admin receive all system permissions
+      if (activeProfile?.isSuperAdmin || assignedRoleCodes.includes('admin')) {
         Object.values(PERMISSION_KEYS).forEach((p) => perms.add(p));
       }
 
@@ -239,19 +239,19 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, [user, loadUserPermissions]);
 
   const hasPermission = useCallback((permission: PermissionKey): boolean => {
-    if (profile?.isSuperAdmin) return true;
+    if (profile?.isSuperAdmin || roles.includes('admin')) return true;
     return permissions.has(permission);
-  }, [permissions, profile?.isSuperAdmin]);
+  }, [permissions, profile?.isSuperAdmin, roles]);
 
   const hasAnyPermission = useCallback((perms: PermissionKey[]): boolean => {
-    if (profile?.isSuperAdmin) return true;
+    if (profile?.isSuperAdmin || roles.includes('admin')) return true;
     return perms.some((p) => permissions.has(p));
-  }, [permissions, profile?.isSuperAdmin]);
+  }, [permissions, profile?.isSuperAdmin, roles]);
 
   const hasAllPermissions = useCallback((perms: PermissionKey[]): boolean => {
-    if (profile?.isSuperAdmin) return true;
+    if (profile?.isSuperAdmin || roles.includes('admin')) return true;
     return perms.every((p) => permissions.has(p));
-  }, [permissions, profile?.isSuperAdmin]);
+  }, [permissions, profile?.isSuperAdmin, roles]);
 
   const signIn = useCallback(async (email: string, password: string) => {
     if (!isSupabaseConfigured) {

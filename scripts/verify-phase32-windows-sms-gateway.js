@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 
 const read = (path) => fs.readFileSync(path, 'utf8');
-const migration = read('supabase/migrations/00075_catalogue_readiness_approval_workflow.sql');
+const migration = read('supabase/migrations_legacy_archive/00075_catalogue_readiness_approval_workflow.sql');
 const hardening = migration;
 const edge = read('supabase/functions/dispatch-sms/index.ts');
 const project = read('tools/sms-gateway/BimalPathology.SmsGateway.csproj');
@@ -13,7 +13,7 @@ const healthStore = read('tools/sms-gateway/HealthStore.cs');
 const health = healthStore + read('tools/sms-gateway/GatewayModels.cs');
 const install = read('tools/sms-gateway/install/Install-SmsGateway.ps1');
 const docs = read('tools/sms-gateway/README.md');
-const paymentMigration = read('supabase/migrations/00028_transactional_payment_and_report_sms.sql');
+const paymentMigration = read('supabase/migrations_legacy_archive/00028_transactional_payment_and_report_sms.sql');
 
 let passed = 0;
 const check = (condition, label) => {

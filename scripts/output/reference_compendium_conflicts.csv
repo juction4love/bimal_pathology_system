@@ -1,0 +1,3 @@
+"test_code","parameter_name","candidate_value","current_production_value","conflict_type","conflict_resolution","notes"
+"SER-0024","Widal Test (S. Typhi O & H)","Significant cutoff: S. Typhi O >=1:160, S. Typhi H >=1:160","O >=1:160, H >=1:160, AH >=1:80, BH >=1:80","STRUCTURE_AND_CUTOFF_MISMATCH","PRESERVE_EXISTING_APPROVED_LOCKED","Salmonella Paratyphi AH and BH are mandatory clinical parameters in Nepal endemic fever diagnostics."
+"SER-0089","Scrub Typhus (O. tsutsugamushi IgM)","IgM single analyte","Dual Scrub Typhus IgM + IgG (SER-0089-01, SER-0089-02)","PANEL_STRUCTURE_REGRESSION","PRESERVE_EXISTING_APPROVED_LOCKED","Do not collapse dual IgM/IgG FIA configuration to IgM single."

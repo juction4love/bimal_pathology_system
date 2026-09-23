@@ -46,7 +46,7 @@ check(outputs.every((value) => value === outputs[0] && value.length > 0), 'Devic
 
 const technician = read('src/features/dashboard/TechnicianDashboard.tsx');
 const worklist = read('src/features/dashboard/PatientOrderWorklist.tsx');
-const registrySearch = read('supabase/migrations/00073_server_search_pagination_convergence.sql');
+const registrySearch = read('supabase/migrations_legacy_archive/00073_server_search_pagination_convergence.sql');
 const billing = read('src/features/billing/BillListPage.tsx');
 const samples = read('src/features/samples/SampleAccessioningPage.tsx');
 const results = read('src/features/worklist/ResultEntryPage.tsx');
@@ -54,7 +54,7 @@ const report = read('src/features/reports/ReportDocument.tsx');
 const audit = read('src/features/admin/AuditLogPage.tsx');
 const outsource = read('src/features/outsource/OutsourceTrackingPage.tsx');
 const settings = read('src/features/settings/SettingsPage.tsx');
-const catalogue75 = read('supabase/migrations/00075_catalogue_readiness_approval_workflow.sql');
+const catalogue75 = read('supabase/migrations_legacy_archive/00075_catalogue_readiness_approval_workflow.sql');
 check(technician.includes("rpc('get_technician_operational_summary'") && catalogue75.includes("now() AT TIME ZONE 'Asia/Kathmandu'"), 'DashboardToday', 'dashboard summary derives the Nepal day server-side');
 check(worklist.includes("rpc('search_dashboard_orders'") && registrySearch.includes("AT TIME ZONE 'Asia/Kathmandu'"), 'WorklistToday', 'Today filter is server-authoritative in the Nepal calendar day');
 check(billing.includes('formatDualDate(bill.created_at)') && billing.includes('formatAdDateTime(pt.created_at)'), 'BillingDates', 'invoice and payment history use central utility');
