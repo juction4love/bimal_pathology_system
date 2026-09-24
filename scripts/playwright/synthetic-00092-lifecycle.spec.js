@@ -5,22 +5,31 @@ const uuidForTest=(n)=>`60000000-0000-4000-8000-${String(n).padStart(12,'0')}`;
 test.describe('00092 contract-faithful synthetic browser acceptance',()=>{
  test('mixed panel, standalone and profile bill through the actual New Bill UI',async({page,context})=>{
   const state=makeState();await installSyntheticBackend(context,state);observe(page,state);await login(page);await page.goto('/billing/new');
-  await page.getByLabel('Patient Mobile Number *').fill('9800000001');await page.getByLabel('Patient Mobile Number *').press('Enter');await expect(page.getByLabel('UHID (Hospital / Lab Identifier)')).toHaveValue(/NEW PATIENT/);await page.getByLabel('Patient Full Name *').fill('Synthetic Billing Patient');await page.getByLabel('Age (Years) *').fill('36');
+  await page.getByRole('button', { name: '+ Quick Add Patient' }).click();
+  const dialog = page.getByRole('dialog');
+  await dialog.getByLabel('Full Legal Name *').fill('Synthetic Billing Patient');
+  await dialog.getByLabel('Age (Years) *').fill('36');
+  await dialog.getByLabel('Mobile Number *').fill('9800000001');
+  await dialog.getByRole('button', { name: 'Save & Select Patient' }).click();
+  await expect(page.getByText('Existing Patient: 2609010001')).toBeVisible();
   const search=page.getByLabel('Search Test / Profile / Package');
   for(const term of ['panel','cre','thyroid']){await search.fill(term);await expect(page.getByText(term==='panel'?'Hematology Bundle':term==='cre'?'Serum Creatinine':'Thyroid Profile',{exact:true})).toBeVisible();await search.press('Enter');await expect(search).toHaveValue('');}
   await expect(page.getByText(/^Selected Tests for Invoice \(4\)$/)).toBeVisible();
   await expect(page.locator('input[value="Panel: HEM_PANEL"]')).toBeVisible();
   await page.getByRole('button',{name:'Confirm Bill & Register Order'}).click();
-  await expect(page.getByText(/Billing Success:/)).toBeVisible();
+  await expect(page.getByText('Bill saved and order registered successfully.')).toBeVisible();
   expect(state.rpcCalls).toContain('create_patient_bill_order_mixed_catalogue');expect(state.issues).toEqual([]);
  });
 
  test('returning patient keeps UHID and creates a new billing context',async({page,context})=>{
   const state=makeState();state.existingPatient=true;await installSyntheticBackend(context,state);observe(page,state);await login(page);await page.goto('/billing/new');
-  await page.getByLabel('Patient Mobile Number *').fill('9800000002');await page.getByLabel('Patient Mobile Number *').press('Enter');
+  const patSearch = page.getByLabel('Search Patient (UHID, Mobile, or Name) (F4) *');
+  await patSearch.fill('9800000002');
+  await expect(page.getByText('Synthetic Returning Patient')).toBeVisible();
+  await patSearch.press('Enter');
   await expect(page.getByText('Existing Patient: 2609010001',{exact:true})).toBeVisible();
   const search=page.getByLabel('Search Test / Profile / Package');await search.fill('cre');await expect(page.getByText('Serum Creatinine',{exact:true})).toBeVisible();await search.press('Enter');
-  await page.getByRole('button',{name:'Confirm Bill & Register Order'}).click();await expect(page.getByText(/Billing Success:/)).toBeVisible();
+  await page.getByRole('button',{name:'Confirm Bill & Register Order'}).click();await expect(page.getByText('Bill saved and order registered successfully.')).toBeVisible();
   expect(state.billCount).toBe(1);expect(state.issues).toEqual([]);
  });
 

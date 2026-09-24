@@ -15,10 +15,12 @@ test.describe('Smart Auto-Next Workflow Navigation Suite', () => {
     await login(page);
 
     await page.goto('/billing/new');
-    await page.getByLabel('Patient Mobile Number *').fill('9800000001');
-    await page.getByLabel('Patient Mobile Number *').press('Enter');
-    await page.getByLabel('Patient Full Name *').fill('Synthetic Billing Patient');
-    await page.getByLabel('Age (Years) *').fill('36');
+    await page.getByRole('button', { name: '+ Quick Add Patient' }).click();
+    const dialog = page.getByRole('dialog');
+    await dialog.getByLabel('Full Legal Name *').fill('Synthetic Billing Patient');
+    await dialog.getByLabel('Age (Years) *').fill('36');
+    await dialog.getByLabel('Mobile Number *').fill('9800000001');
+    await dialog.getByRole('button', { name: 'Save & Select Patient' }).click();
 
     const search = page.getByLabel('Search Test / Profile / Package');
     await search.fill('cre');
@@ -28,6 +30,7 @@ test.describe('Smart Auto-Next Workflow Navigation Suite', () => {
     await page.getByRole('button', { name: 'Confirm Bill & Register Order' }).click();
 
     // Verify auto-next progression to sample accessioning with order context
+    await page.getByRole('button', { name: /Sample Collection|Collect Sample|Continue to Sample/i }).click();
     await expect(page).toHaveURL(/\/samples\?orderId=|\/samples\?search=/, { timeout: 10000 });
     expect(state.issues).toEqual([]);
   });

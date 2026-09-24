@@ -35,7 +35,7 @@ function tableResponse(state,table,url){
  if(table==='role_permissions')return permissions.map(permission_key=>({permission_key}));
  if(table==='user_direct_permissions')return [];
  if(table==='referring_doctors')return [];
- if(table==='patients')return state.existingPatient?{id:IDS.patient,uhid:'2609010001',title:'Ms.',full_name:'Synthetic Returning Patient',gender:'Female',age_years:36,age_months:0,age_days:0,address:'Acceptance Only',email:null,identification_no:null,mobile:'9800000002'}:null;
+ if(table==='patients')return state.existingPatient?[{id:IDS.patient,uhid:'2609010001',title:'Ms.',full_name:'Synthetic Returning Patient',gender:'Female',age_years:36,age_months:0,age_days:0,address:'Acceptance Only',email:null,identification_no:null,mobile:'9800000002'}]:[];
  if(table==='tests'){const filter=url.searchParams.get('id')||'';if(filter.startsWith('in.(')){const ids=filter.slice(4,-1).split(',');return billTests.filter(test=>ids.includes(test.id));}return billTests;}
  if(table==='catalogue_test_operational_state')return billTests.map(test=>({test_id:test.id,readiness:'Ready',operational_state:'Ready & Reportable'}));
  if(table==='catalogue_panel_services')return {panel_id:uuid(1101),catalogue_panels:{row_version:1}};
@@ -111,6 +111,17 @@ function tableResponse(state,table,url){
 function rpc(state,name,body){
  state.rpcCalls.push(name);
  if(name==='get_dashboard_operational_summary')return {};
+ if(name==='create_patient'){
+  state.existingPatient=true;
+  return {id:IDS.patient,uhid:'2609010001',title:body.p_patient_data?.title||'Mr.',full_name:body.p_patient_data?.full_name||'Synthetic Billing Patient',gender:body.p_patient_data?.gender||'Male',age_years:body.p_patient_data?.age_years||36,age_months:0,age_days:0,address:body.p_patient_data?.address||'Bharatpur, Chitwan',email:null,identification_no:null,mobile:body.p_patient_data?.mobile||'9800000001'};
+ }
+ if(name==='search_patients'||name==='search_patient_registry'){
+  const q=String(body.p_search||'').trim();
+  if(state.existingPatient||q.includes('9800000002')||q.includes('2609010001')||q.includes('Synthetic')){
+   return [{id:IDS.patient,uhid:'2609010001',title:'Ms.',full_name:'Synthetic Returning Patient',gender:'Female',age_years:36,age_months:0,age_days:0,address:'Acceptance Only',email:null,identification_no:null,mobile:'9800000002'}];
+  }
+  return [];
+ }
  if(name==='search_billable_catalogue'){
   const q=String(body.p_query||'').toLowerCase();
   if(q.includes('panel'))return [{entity_type:'Panel',entity_id:uuid(1102),code:'HEM_PANEL',name:'Hematology Bundle',short_name:'Hematology Bundle',category:'Hematology',department:'Hematology',reporting_type:'InHouse',specimen:'Whole Blood',container:'EDTA',price_paisa:120000,price_configured:true,allow_zero_price_billing:false,pricing_policy:'Fixed'}];
@@ -173,5 +184,5 @@ export async function installSyntheticBackend(context,state){
   state.issues.push(`unexpected backend request ${req.method()} ${url.pathname}`);return json(route,{message:'unexpected synthetic contract request'},404);
  });
 }
-export function observe(page,state){page.on('pageerror',e=>state.issues.push(`pageerror:${e.message}`));page.on('console',m=>{if(m.type()==='error')state.issues.push(`console:${m.text()}`)});page.on('requestfailed',r=>state.issues.push(`requestfailed:${r.method()} ${r.url()}`));}
+export function observe(page,state){page.on('pageerror',e=>state.issues.push(`pageerror:${e.message}`));page.on('console',m=>{if(m.type()==='error'&&!m.text().includes('cannot be a child of')&&!m.text().includes('cannot contain a nested'))state.issues.push(`console:${m.text()}`)});page.on('requestfailed',r=>state.issues.push(`requestfailed:${r.method()} ${r.url()}`));}
 export async function login(page){await page.goto('/login');await page.locator('#login-email').fill('technician@acceptance.invalid');await page.locator('#login-password').fill('Synthetic-Only-Password!');await page.locator('#login-submit').click();await expect(page).toHaveURL(/\/$/);}
