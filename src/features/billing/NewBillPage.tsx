@@ -54,7 +54,15 @@ import { TestMaster, ReferringDoctor } from '@/types/database';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
 import { toTitleCase } from '@/lib/stringUtils';
-import { BLANK_PATIENT_AGE, normalizeNepalMobile, normalizePatientName, validateNepalMobile, validatePatientAge } from '@/lib/patientEntry';
+import {
+  BLANK_PATIENT_AGE,
+  getGenderForTitle,
+  normalizeNepalMobile,
+  normalizePatientName,
+  validateNepalMobile,
+  validatePatientAge,
+  validatePatientTitleAndGender,
+} from '@/lib/patientEntry';
 import { handleEnterKeyNavigation, useKeyboardShortcut, useGlobalShortcuts } from '@/lib/keyboardNav';
 import { safeBillingDiagnosticCode, safeDiagnostic, safeErrorMessage } from '@/lib/safeError';
 import { SmartMessageDialog } from '@/components/common/SmartMessageDialog';
@@ -389,6 +397,11 @@ export const NewBillPage: React.FC = () => {
       setErrorMsg(ageErr);
       return;
     }
+    const titleGenderErr = validatePatientTitleAndGender(quickAddForm.title, quickAddForm.gender);
+    if (titleGenderErr) {
+      setErrorMsg(titleGenderErr);
+      return;
+    }
 
     setQuickAddSaving(true);
     setErrorMsg(null);
@@ -677,6 +690,11 @@ export const NewBillPage: React.FC = () => {
     const ageError = validatePatientAge({ years: ageYears, months: ageMonths, days: ageDays }, true);
     if (ageError) {
       setErrorMsg(ageError);
+      return;
+    }
+    const titleGenderError = validatePatientTitleAndGender(title, gender);
+    if (titleGenderError) {
+      setErrorMsg(titleGenderError);
       return;
     }
     if (selectedItems.length === 0) {
@@ -1180,7 +1198,14 @@ export const NewBillPage: React.FC = () => {
                     fullWidth
                     label="Title"
                     value={title}
-                    onChange={(e) => setTitle(e.target.value)}
+                    onChange={(e) => {
+                      const nextTitle = e.target.value;
+                      setTitle(nextTitle);
+                      const mappedGender = getGenderForTitle(nextTitle);
+                      if (mappedGender) {
+                        setGender(mappedGender);
+                      }
+                    }}
                     onKeyDown={handleEnterKeyNavigation}
                   >
                     {['Mr.', 'Mrs.', 'Ms.', 'Miss', 'Master', 'Dr.', 'Baby'].map((t) => (
@@ -1210,7 +1235,15 @@ export const NewBillPage: React.FC = () => {
                     fullWidth
                     label="Gender *"
                     value={gender}
-                    onChange={(e) => setGender(e.target.value as any)}
+                    onChange={(e) => {
+                      const nextGender = e.target.value as 'Male' | 'Female' | 'Other';
+                      setGender(nextGender);
+                      if (nextGender === 'Female' && (title === 'Mr.' || title === 'Master')) {
+                        setTitle('Mrs.');
+                      } else if (nextGender === 'Male' && (title === 'Mrs.' || title === 'Ms.' || title === 'Miss')) {
+                        setTitle('Mr.');
+                      }
+                    }}
                     onKeyDown={(e) => handleEnterKeyNavigation(e, () => addressInputRef.current?.focus())}
                   >
                     <MenuItem value="Male">Male</MenuItem>
@@ -1749,7 +1782,22 @@ export const NewBillPage: React.FC = () => {
                 size="small"
                 label="Gender *"
                 value={quickAddForm.gender}
-                onChange={(e) => setQuickAddForm({ ...quickAddForm, gender: e.target.value as any })}
+                onChange={(e) => {
+                  const nextGender = e.target.value as any;
+                  setQuickAddForm((prev) => {
+                    let nextTitle = prev.title;
+                    if (nextGender === 'Female' && (nextTitle === 'Mr.' || nextTitle === 'Master')) {
+                      nextTitle = 'Mrs.';
+                    } else if (nextGender === 'Male' && (nextTitle === 'Mrs.' || nextTitle === 'Ms.' || nextTitle === 'Miss')) {
+                      nextTitle = 'Mr.';
+                    }
+                    return {
+                      ...prev,
+                      gender: nextGender,
+                      title: nextTitle,
+                    };
+                  });
+                }}
               >
                 <MenuItem value="Male">Male</MenuItem>
                 <MenuItem value="Female">Female</MenuItem>
@@ -1834,7 +1882,15 @@ export const NewBillPage: React.FC = () => {
                         size="small"
                         label="Title"
                         value={quickAddForm.title}
-                        onChange={(e) => setQuickAddForm({ ...quickAddForm, title: e.target.value })}
+                        onChange={(e) => {
+                          const nextTitle = e.target.value;
+                          const mappedGender = getGenderForTitle(nextTitle);
+                          setQuickAddForm((prev) => ({
+                            ...prev,
+                            title: nextTitle,
+                            gender: mappedGender || prev.gender,
+                          }));
+                        }}
                       >
                         {['Mr.', 'Mrs.', 'Ms.', 'Miss', 'Master', 'Dr.', 'Baby'].map((t) => (
                           <MenuItem key={t} value={t}>{t}</MenuItem>

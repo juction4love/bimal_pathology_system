@@ -2,8 +2,13 @@ import test from'node:test';import assert from'node:assert/strict';import fs fro
 const source=fs.readFileSync(new URL('../src/index.ts',import.meta.url),'utf8');
 const acceptanceAuthSource=fs.readFileSync(new URL('../src/acceptance-auth.ts',import.meta.url),'utf8');
 const scheduledSource=fs.readFileSync(new URL('../src/scheduled.ts',import.meta.url),'utf8');
-const migration81=fs.readFileSync(new URL('../../../supabase/migrations/00081_report_artifact_worker_identity.sql',import.meta.url),'utf8');
-const migration82=fs.readFileSync(new URL('../../../supabase/migrations/00082_retire_report_artifact_service_role.sql',import.meta.url),'utf8');
+const readMigration = (file) => {
+  const p1 = new URL(`../../../supabase/migrations/${file}`, import.meta.url);
+  const p2 = new URL(`../../../supabase/migrations_legacy_archive/${file}`, import.meta.url);
+  return fs.existsSync(p1) ? fs.readFileSync(p1, 'utf8') : fs.readFileSync(p2, 'utf8');
+};
+const migration81 = readMigration('00081_report_artifact_worker_identity.sql');
+const migration82 = readMigration('00082_retire_report_artifact_service_role.sql');
 test('Worker uses dedicated Auth and contains no service-role credential binding',()=>{assert.doesNotMatch(source,/SUPABASE_SERVICE_ROLE_KEY/);assert.match(source,/REPORT_ARTIFACT_WORKER_EMAIL/);assert.match(source,/grant_type=password/);assert.match(source,/SUPABASE_PUBLISHABLE_KEY/)});
 test('dedicated identity boundary is non-staff and server authoritative',()=>{assert.match(migration81,/auth\.uid\(\)/);assert.match(migration81,/is_active/);assert.match(migration81,/user_roles/);assert.match(migration81,/user_direct_permissions/);assert.match(migration81,/SECURITY DEFINER SET search_path=public,pg_temp/)});
 test('finalization removes service-role execution from artifact RPCs',()=>{assert.match(migration82,/REVOKE ALL ON FUNCTION[\s\S]*FROM service_role/);assert.doesNotMatch(migration82,/GRANT EXECUTE[\s\S]*service_role/)});

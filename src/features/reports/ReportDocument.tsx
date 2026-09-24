@@ -22,6 +22,7 @@ import { formatReferenceRangeText } from '@/lib/clinicalReferenceRange';
 import { formatAdDateTime, formatDualDate } from '@/lib/dateTime';
 import { generateQrSvgPath } from '@/lib/qrCode';
 import { BIMAL_PRINT, BIMAL_PRINT_CSS } from '@/lib/printDesign';
+import { formatPatientDisplayName } from '@/lib/patientEntry';
 import {
   paginateInvestigations,
   isReportableParameter,
@@ -73,7 +74,7 @@ export const ReportDocument: React.FC<ReportDocumentProps> = ({
   version = 1,
   isDraft = false,
   reportNumber,
-  integrityHash,
+  integrityHash: _integrityHash,
   publicToken,
 }) => {
   const patient = snapshot?.patient || ({} as any);
@@ -106,9 +107,11 @@ export const ReportDocument: React.FC<ReportDocumentProps> = ({
     ? `${patient.age_days} D`
     : '-';
 
-  const patientNameWithTitle = patient.title
-    ? `${patient.title} ${patient.full_name}`
-    : patient.full_name;
+  const patientDisplayName = formatPatientDisplayName(
+    patient.full_name,
+    patient.title,
+    patient.gender
+  );
 
   // A verification QR is emitted only when the unguessable public token is
   // available. Report/order numbers are identifiers, never access tokens.
@@ -383,9 +386,6 @@ export const ReportDocument: React.FC<ReportDocumentProps> = ({
                           <br />
                           PAN: <strong>{org.pan_no}</strong>
                         </Typography>
-                        <Typography className="report-header-page-number" sx={{ fontSize: '0.66rem', color: '#475569', fontWeight: 700, whiteSpace: 'nowrap' }}>
-                          Page {pageNumber} of {totalPageCount}
-                        </Typography>
                       </Box>
 
                       {/* Small Secure QR Code (Final Signed Reports Only, ~18-20mm) */}
@@ -420,12 +420,11 @@ export const ReportDocument: React.FC<ReportDocumentProps> = ({
                   </Box>
 
                   <Box className="patient-identity-strip" sx={{ position: 'relative', zIndex: 1, height: '32mm', px: '2mm', py: '2.2mm', display: 'grid', gridTemplateRows: '1fr 1fr', rowGap: '1.2mm', border: '1px solid #0b6b3a', bgcolor: 'rgba(237,247,241,0.94)' }}>
-                    <Box sx={{ display: 'grid', gridTemplateColumns: '2fr 0.8fr 1fr 1fr 0.55fr', minHeight: 0 }}>
-                      <Box sx={{ minWidth: 0, pr: '2mm', borderRight: '1px solid #d5e6dc' }}><Typography sx={{ fontSize: '0.58rem', color: '#527061', fontWeight: 700, textTransform: 'uppercase' }}>Patient Name</Typography><Typography sx={{ fontSize: '0.76rem', lineHeight: 1.12, fontWeight: 800, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>{patientNameWithTitle || '—'}</Typography></Box>
+                    <Box sx={{ display: 'grid', gridTemplateColumns: '2fr 0.8fr 1.1fr 1.1fr', minHeight: 0 }}>
+                      <Box sx={{ minWidth: 0, pr: '2mm', borderRight: '1px solid #d5e6dc' }}><Typography sx={{ fontSize: '0.58rem', color: '#527061', fontWeight: 700, textTransform: 'uppercase' }}>Patient Name</Typography><Typography sx={{ fontSize: '0.76rem', lineHeight: 1.12, fontWeight: 800, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>{patientDisplayName || '—'}</Typography></Box>
                       <Box sx={{ minWidth: 0, px: '2mm', borderRight: '1px solid #d5e6dc' }}><Typography sx={{ fontSize: '0.58rem', color: '#527061', fontWeight: 700, textTransform: 'uppercase' }}>Age / Sex</Typography><Typography sx={{ fontSize: '0.70rem', fontWeight: 700, whiteSpace: 'nowrap' }}>{ageDisplay} / {patient.gender || '—'}</Typography></Box>
                       <Box sx={{ minWidth: 0, px: '2mm', borderRight: '1px solid #d5e6dc' }}><Typography sx={{ fontSize: '0.58rem', color: '#527061', fontWeight: 700, textTransform: 'uppercase' }}>UHID</Typography><Typography sx={{ fontSize: '0.70rem', fontWeight: 700, fontFamily: 'monospace', overflowWrap: 'anywhere' }}>{patient.uhid || '—'}</Typography></Box>
-                      <Box sx={{ minWidth: 0, px: '2mm', borderRight: '1px solid #d5e6dc' }}><Typography sx={{ fontSize: '0.58rem', color: '#527061', fontWeight: 700, textTransform: 'uppercase' }}>Lab No.</Typography><Typography sx={{ fontSize: '0.72rem', fontWeight: 800, fontFamily: 'monospace', overflowWrap: 'anywhere' }}>{order.order_number || '—'}</Typography></Box>
-                      <Box sx={{ minWidth: 0, pl: '2mm' }}><Typography sx={{ fontSize: '0.58rem', color: '#527061', fontWeight: 700, textTransform: 'uppercase' }}>Page</Typography><Typography sx={{ fontSize: '0.72rem', fontWeight: 800, fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap' }}>{pageNumber} of {totalPageCount}</Typography></Box>
+                      <Box sx={{ minWidth: 0, pl: '2mm' }}><Typography sx={{ fontSize: '0.58rem', color: '#527061', fontWeight: 700, textTransform: 'uppercase' }}>Lab No.</Typography><Typography sx={{ fontSize: '0.72rem', fontWeight: 800, fontFamily: 'monospace', overflowWrap: 'anywhere' }}>{order.order_number || '—'}</Typography></Box>
                     </Box>
                     <Box sx={{ display: 'grid', gridTemplateColumns: '1.4fr 1.1fr 1fr 1fr 1fr', minHeight: 0, pt: '0.7mm', borderTop: '1px solid #d5e6dc' }}>
                       <Box sx={{ minWidth: 0, pr: '2mm', borderRight: '1px solid #d5e6dc' }}><Typography sx={{ fontSize: '0.56rem', color: '#527061', fontWeight: 700, textTransform: 'uppercase' }}>Referred By</Typography><Typography sx={{ fontSize: '0.64rem', lineHeight: 1.12, fontWeight: 600, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>{order.referring_doctor_name || '—'}</Typography></Box>
@@ -458,7 +457,7 @@ export const ReportDocument: React.FC<ReportDocumentProps> = ({
                           Patient:
                         </Typography>
                         <Typography sx={{ fontSize: '0.80rem', fontWeight: 700, color: '#0f172a', overflowWrap: 'anywhere' }}>
-                          {patientNameWithTitle || '-'}
+                          {patientDisplayName || '-'}
                         </Typography>
 
                         <Typography sx={{ fontSize: '0.76rem', color: '#64748b', fontWeight: 500 }}>
@@ -942,30 +941,28 @@ export const ReportDocument: React.FC<ReportDocumentProps> = ({
                 height: '13mm',
                 minHeight: '13mm',
                 maxHeight: '13mm',
-                pt: 0.5,
+                px: '3mm',
                 borderTop: '1.5px solid #0b6b3a',
                 display: 'grid',
-                gridTemplateColumns: 'minmax(0, 1.3fr) minmax(0, 1.5fr) auto',
-                columnGap: '2.5mm',
+                gridTemplateColumns: 'minmax(0, 1.4fr) minmax(0, 1.2fr) auto',
+                columnGap: '2mm',
                 alignItems: 'center',
-                fontSize: '0.64rem',
-                lineHeight: 1.08,
+                fontSize: '0.66rem',
+                fontWeight: 600,
                 color: '#ffffff',
                 bgcolor: BIMAL_PRINT.brand,
                 borderBottom: `1.5px solid ${BIMAL_PRINT.brand}`,
                 flexShrink: 0,
+                boxSizing: 'border-box',
               }}
             >
-              <Box className="bimal-footer-contact" sx={{ minWidth: 0, overflowWrap: 'anywhere' }}>
-                {org.phone || '—'} &bull; {footerEmail}
+              <Box className="bimal-footer-contact" sx={{ minWidth: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                {org.phone || '056-593288'} • {footerEmail}
               </Box>
-              <Box className="bimal-footer-report-identity" sx={{ minWidth: 0, textAlign: 'center', overflowWrap: 'anywhere', lineHeight: 1 }}>
-                <Box component="span" sx={{ display: 'block', fontSize: '0.60rem' }}>Bharatpur-7, Chitwan, Nepal</Box>
-                <Box component="span" sx={{ display: 'block', fontSize: '0.45rem', lineHeight: 1, letterSpacing: '-0.01em', color: '#d9f3e4' }}>
-                  Report: {reportNumber || '—'} &bull; v{version}{integrityHash ? ` [${integrityHash}]` : ''}
-                </Box>
+              <Box className="bimal-footer-report-identity" sx={{ minWidth: 0, textAlign: 'center', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', fontVariantNumeric: 'tabular-nums', fontWeight: 700 }}>
+                {reportNumber || '—'} • v{version}
               </Box>
-              <Box className="bimal-footer-page-number" sx={{ minWidth: 0, fontWeight: 800, color: '#ffffff', whiteSpace: 'nowrap', fontVariantNumeric: 'tabular-nums' }}>
+              <Box className="bimal-footer-page-number" sx={{ minWidth: 0, textAlign: 'right', fontWeight: 800, color: '#ffffff', whiteSpace: 'nowrap', fontVariantNumeric: 'tabular-nums' }}>
                 Page {pageNumber} of {totalPageCount}
               </Box>
             </Box>

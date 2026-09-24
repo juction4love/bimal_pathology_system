@@ -6,10 +6,10 @@
   "publicAppOrigin": "https://lis.bimalpathology.com.np",
   "frontendVersion": "1.0.0",
   "assetNamespace": "r1_0_0",
-  "frontendSourceSha256": "46561297eac67f8f0a3eed0ae74b492d4c5bda85d055d40c593dfb38c0bac589",
+  "frontendSourceSha256": "463d010131e0632fb41e1ee7e442af0f685bf169654ab4aefc1038a28ea58c31",
   "frontendBuildConfigSha256": "da721a48280dee61e22ddac0458e0db38159c0853b96f02ad1aa7a0a39144d84",
   "migrationHead": "00001",
-  "migrationSha256": "2255682dc92dc27fd9e76f4c04c0c2cbd98ecb7b4c775c2f132f50516734fb34",
+  "migrationSha256": "cf28f178e9a426f0fcb85859c77cd6187ab9de4882b2fa942ec156e019490c3c",
   "gatewayVersion": "1.0.4",
-  "releaseId": "1.0.0-00001-2255682d-46561297eac6-r1_0_0-gateway-1.0.4"
+  "releaseId": "1.0.0-00001-cf28f178-463d010131e0-r1_0_0-gateway-1.0.4"
 }

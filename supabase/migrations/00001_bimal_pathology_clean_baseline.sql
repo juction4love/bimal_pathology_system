@@ -942,6 +942,20 @@ BEGIN
         RAISE EXCEPTION 'Verification permission required.' USING ERRCODE = '42501';
     END IF;
 
+    IF p_target_status IN ('SubmittedForVerification', 'Verified') THEN
+        IF v_item.collection_required THEN
+            IF v_item.sample_id IS NULL THEN
+                RAISE EXCEPTION 'SAMPLE_NOT_RECEIVED: Specimen must be collected and received in laboratory accessioning before results can be verified.' USING ERRCODE = '23514';
+            END IF;
+            IF NOT EXISTS (
+                SELECT 1 FROM public.samples
+                WHERE id = v_item.sample_id AND status = 'Received' AND collected_at IS NOT NULL AND received_at IS NOT NULL
+            ) THEN
+                RAISE EXCEPTION 'SAMPLE_NOT_RECEIVED: Sample must be received before results can be verified.' USING ERRCODE = '23514';
+            END IF;
+        END IF;
+    END IF;
+
     FOR v_result IN SELECT * FROM jsonb_array_elements(p_results) LOOP
         SELECT * INTO v_parameter FROM public.parameters
         WHERE id = (v_result->>'parameter_id')::UUID;
@@ -9733,6 +9747,20 @@ BEGIN
         RAISE EXCEPTION 'Critical results must be acknowledged before verification.' USING ERRCODE = '55000';
     END IF;
 
+    IF p_target_status IN ('SubmittedForVerification', 'Verified') THEN
+        IF v_item.collection_required THEN
+            IF v_item.sample_id IS NULL THEN
+                RAISE EXCEPTION 'SAMPLE_NOT_RECEIVED: Specimen must be collected and received in laboratory accessioning before results can be verified.' USING ERRCODE = '23514';
+            END IF;
+            IF NOT EXISTS (
+                SELECT 1 FROM public.samples
+                WHERE id = v_item.sample_id AND status = 'Received' AND collected_at IS NOT NULL AND received_at IS NOT NULL
+            ) THEN
+                RAISE EXCEPTION 'SAMPLE_NOT_RECEIVED: Sample must be received before results can be verified.' USING ERRCODE = '23514';
+            END IF;
+        END IF;
+    END IF;
+
     SELECT COALESCE(full_name, 'Lab Staff') INTO v_user_name
     FROM public.user_profiles WHERE id = auth.uid();
 
@@ -11009,6 +11037,7 @@ DECLARE
     ready JSONB;
     investigations JSONB;
     snapshot JSONB;
+    v_sample_dates JSONB;
     version_no INT;
     report_id UUID;
     report_no TEXT;
@@ -11044,6 +11073,17 @@ BEGIN
     ready:=public.check_report_group_readiness(g.id);
     IF NOT (ready->>'is_ready')::boolean THEN
         RAISE EXCEPTION 'Report group is not ready: %', ready USING ERRCODE='23514';
+    END IF;
+
+    IF EXISTS (
+        SELECT 1 FROM public.clinical_report_group_items gi
+        JOIN public.clinical_order_items oi ON oi.id = gi.order_item_id
+        LEFT JOIN public.samples s ON s.id = oi.sample_id
+        WHERE gi.report_group_id = g.id
+          AND oi.collection_required
+          AND (s.id IS NULL OR s.status <> 'Received' OR s.collected_at IS NULL OR s.received_at IS NULL)
+    ) THEN
+        RAISE EXCEPTION 'SAMPLE_NOT_RECEIVED: Specimen must be collected and received in laboratory accessioning before report can be signed.' USING ERRCODE = '23514';
     END IF;
 
     IF is_amendment THEN
@@ -11120,6 +11160,15 @@ BEGIN
         RAISE EXCEPTION 'Report group contains no reportable investigations.' USING ERRCODE='23514';
     END IF;
 
+    SELECT jsonb_build_object(
+        'collected_at', to_char(min(s.collected_at), 'YYYY-MM-DD HH24:MI'),
+        'received_at', to_char(max(s.received_at), 'YYYY-MM-DD HH24:MI')
+    ) INTO v_sample_dates
+    FROM public.clinical_report_group_items gi
+    JOIN public.clinical_order_items oi ON oi.id = gi.order_item_id
+    JOIN public.samples s ON s.id = oi.sample_id
+    WHERE gi.report_group_id = g.id;
+
     snapshot:=jsonb_build_object(
         'organization', jsonb_build_object(
             'name_en', 'BIMAL PATHOLOGY & DIAGNOSTIC CENTER',
@@ -11146,6 +11195,8 @@ BEGIN
             'bill_number', b.bill_number,
             'registered_date_ad', o.order_date_ad,
             'registered_date_bs', o.order_date_bs,
+            'collected_at', v_sample_dates->>'collected_at',
+            'received_at', v_sample_dates->>'received_at',
             'reported_at', now(),
             'referring_doctor_name', coalesce(b.referring_doctor_name_snapshot, 'Self / Walk-in')
         ),

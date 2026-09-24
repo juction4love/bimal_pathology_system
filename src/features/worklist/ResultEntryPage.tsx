@@ -805,6 +805,14 @@ export const ResultEntryPage: React.FC = () => {
       }
     }
 
+    // 1b. Specimen Lifecycle Gate: Verify / Submit blocked if physical sample is not yet received
+    if (targetStatus === RESULT_STATUSES.VERIFIED || targetStatus === RESULT_STATUSES.SUBMITTED_FOR_VERIFICATION) {
+      if (orderItem?.collection_required && orderItem?.sample?.status !== 'Received') {
+        setError('Sample must be received before results can be verified.');
+        return;
+      }
+    }
+
     // 2. Clinical Error Gate: If verification or submission, reject if divide-by-zero or calculation error
     if (targetStatus === RESULT_STATUSES.VERIFIED || targetStatus === RESULT_STATUSES.SUBMITTED_FOR_VERIFICATION) {
       const errorParam = finalCalculatedResults.find(
@@ -907,6 +915,10 @@ export const ResultEntryPage: React.FC = () => {
   // Sign-Off & Generate Final Report
   const handleConfirmSignOff = async () => {
     if (!orderItem?.order_id) return;
+    if (orderItem?.collection_required && orderItem?.sample?.status !== 'Received') {
+      setError('Sample must be received before report can be signed.');
+      return;
+    }
     if (!performedById) {
       setError('Please select the Reporting Personnel who performed the report.');
       return;
@@ -1397,6 +1409,29 @@ export const ResultEntryPage: React.FC = () => {
         </Box>
       )}
 
+      {/* Specimen Accessioning Requirement Banner */}
+      {orderItem?.collection_required && orderItem?.sample?.status !== 'Received' && (
+        <Box sx={{ mb: 2 }}>
+          <Alert
+            severity="warning"
+            sx={{ alignItems: 'center' }}
+            action={
+              <Button
+                color="inherit"
+                size="small"
+                variant="outlined"
+                onClick={() => navigate(`/samples?search=${encodeURIComponent(orderItem?.order?.order_number || '')}`)}
+                sx={{ fontWeight: 700, textTransform: 'none' }}
+              >
+                Open Sample Accessioning →
+              </Button>
+            }
+          >
+            <strong>Sample Accessioning Required ({orderItem?.sample?.status || 'Pending'}):</strong> Specimen must be collected and received in laboratory accessioning before results can be verified or signed.
+          </Alert>
+        </Box>
+      )}
+
       <Card sx={{ mb: 3, display: orderItem?.test?.code === 'PUS_CULTURE_AND_SENSITIVITY' ? 'none' : 'block' }}>
         <CardContent>
           {loading ? (
@@ -1713,7 +1748,8 @@ export const ResultEntryPage: React.FC = () => {
                       saving ||
                       results.length === 0 ||
                       hasUnackCritical ||
-                      (isCurrentVerified && !amendReportId)
+                      (isCurrentVerified && !amendReportId) ||
+                      Boolean(orderItem?.collection_required && orderItem?.sample?.status !== 'Received')
                     }
                     onClick={() => handleSaveResults(RESULT_STATUSES.VERIFIED)}
                     sx={{ fontWeight: 700 }}

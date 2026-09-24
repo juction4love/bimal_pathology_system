@@ -45,7 +45,15 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import ArchiveIcon from '@mui/icons-material/Archive';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import RestoreIcon from '@mui/icons-material/Restore';
-import { normalizeNepalMobile, normalizePatientName, normalizePatientText, validateNepalMobile, validatePatientAge } from '@/lib/patientEntry';
+import {
+  getGenderForTitle,
+  normalizeNepalMobile,
+  normalizePatientName,
+  normalizePatientText,
+  validateNepalMobile,
+  validatePatientAge,
+  validatePatientTitleAndGender,
+} from '@/lib/patientEntry';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { PageHeader } from '@/components/common/PageHeader';
@@ -261,6 +269,11 @@ export const PatientsPage: React.FC = () => {
     const ageError = validatePatientAge({ years: editForm.age_years ?? null, months: editForm.age_months ?? null, days: editForm.age_days ?? null }, false);
     if (ageError) {
       setError(ageError);
+      return;
+    }
+    const titleGenderError = validatePatientTitleAndGender(editForm.title, editForm.gender);
+    if (titleGenderError) {
+      setError(titleGenderError);
       return;
     }
 
@@ -688,9 +701,17 @@ export const PatientsPage: React.FC = () => {
                 size="small"
                 label="Title"
                 value={editForm.title || 'Mr.'}
-                onChange={(e) => setEditForm({ ...editForm, title: e.target.value })}
+                onChange={(e) => {
+                  const nextTitle = e.target.value;
+                  const mappedGender = getGenderForTitle(nextTitle);
+                  setEditForm({
+                    ...editForm,
+                    title: nextTitle,
+                    gender: mappedGender || editForm.gender || 'Male',
+                  });
+                }}
               >
-                {['Mr.', 'Mrs.', 'Ms.', 'Master', 'Baby', 'Dr.', 'Prof.'].map((t) => (
+                {['Mr.', 'Mrs.', 'Ms.', 'Miss', 'Master', 'Baby', 'Dr.', 'Prof.'].map((t) => (
                   <MenuItem key={t} value={t}>{t}</MenuItem>
                 ))}
               </TextField>
@@ -716,7 +737,16 @@ export const PatientsPage: React.FC = () => {
                 size="small"
                 label="Gender"
                 value={editForm.gender || 'Male'}
-                onChange={(e) => setEditForm({ ...editForm, gender: e.target.value })}
+                onChange={(e) => {
+                  const nextGender = e.target.value as 'Male' | 'Female' | 'Other';
+                  let nextTitle = editForm.title || '';
+                  if (nextGender === 'Female' && (nextTitle === 'Mr.' || nextTitle === 'Master')) {
+                    nextTitle = 'Mrs.';
+                  } else if (nextGender === 'Male' && (nextTitle === 'Mrs.' || nextTitle === 'Ms.' || nextTitle === 'Miss')) {
+                    nextTitle = 'Mr.';
+                  }
+                  setEditForm({ ...editForm, gender: nextGender, title: nextTitle });
+                }}
               >
                 {['Male', 'Female', 'Other'].map((g) => (
                   <MenuItem key={g} value={g}>{g}</MenuItem>

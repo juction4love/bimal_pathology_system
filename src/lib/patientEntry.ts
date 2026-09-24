@@ -64,3 +64,95 @@ export function validatePatientAge(age: PatientAgeInput, yearsRequired: boolean)
   }
   return null;
 }
+
+/**
+ * Maps standard patient titles to corresponding gender.
+ * Mr. -> Male
+ * Miss -> Female
+ * Mrs. -> Female
+ * Ms. -> Female
+ * Master -> Male
+ * Neutral/unmapped titles (Dr., Prof., Baby, etc.) return null (no forced gender).
+ * Does NOT infer title from patient name.
+ */
+export function getGenderForTitle(title?: string | null): 'Male' | 'Female' | null {
+  if (!title) return null;
+  const lower = title.trim().toLowerCase().replace(/\.+$/, '');
+  if (lower === 'mr' || lower === 'master' || lower === 'shree' || lower === 'kumar') {
+    return 'Male';
+  }
+  if (lower === 'miss' || lower === 'mrs' || lower === 'ms' || lower === 'smt' || lower === 'shrimati' || lower === 'kumari') {
+    return 'Female';
+  }
+  return null;
+}
+
+/**
+ * Validates that title and gender are not contradictory.
+ * Returns an error message if contradictory, or null if valid.
+ * - Mr. + Female => invalid
+ * - Miss + Male => invalid
+ * - Mrs. + Male => invalid
+ */
+export function validatePatientTitleAndGender(
+  title?: string | null,
+  gender?: string | null
+): string | null {
+  if (!title || !gender) return null;
+  const lowerTitle = title.trim().toLowerCase().replace(/\.+$/, '');
+  const normGender = gender.trim().toLowerCase();
+
+  const maleTitles = ['mr', 'master', 'shree', 'kumar'];
+  const femaleTitles = ['mrs', 'ms', 'miss', 'smt', 'shrimati', 'kumari'];
+
+  if ((normGender === 'female' || normGender === 'f') && maleTitles.includes(lowerTitle)) {
+    return `Patient title "${title.trim()}" contradicts selected gender (Female).`;
+  }
+  if ((normGender === 'male' || normGender === 'm') && femaleTitles.includes(lowerTitle)) {
+    return `Patient title "${title.trim()}" contradicts selected gender (Male).`;
+  }
+
+  return null;
+}
+
+/**
+ * Formats patient display identity safely without guessed or conflicting honorifics.
+ * If title conflicts with sex (e.g., 'Mr.' with Female or 'Mrs.'/'Ms.' with Male),
+ * the conflicting title is omitted, returning the clean validated full name.
+ * Never guesses or forces honorifics.
+ */
+export function formatPatientDisplayName(
+  fullName?: string | null,
+  title?: string | null,
+  gender?: string | null
+): string {
+  const cleanName = (fullName || '').trim();
+  if (!cleanName) return '—';
+  if (!title) return cleanName;
+
+  const rawTitle = title.trim();
+  const lowerTitle = rawTitle.toLowerCase().replace(/\.+$/, '');
+  const normGender = (gender || '').trim().toLowerCase();
+
+  const maleTitles = ['mr', 'master', 'shree', 'kumar'];
+  const femaleTitles = ['mrs', 'ms', 'miss', 'smt', 'shrimati', 'kumari'];
+
+  if (normGender === 'female' || normGender === 'f') {
+    if (maleTitles.includes(lowerTitle)) {
+      return cleanName;
+    }
+  } else if (normGender === 'male' || normGender === 'm') {
+    if (femaleTitles.includes(lowerTitle)) {
+      return cleanName;
+    }
+  }
+
+  // If the full name already starts with the title, do not repeat it
+  if (cleanName.toLowerCase().startsWith(rawTitle.toLowerCase())) {
+    return cleanName;
+  }
+
+  return `${rawTitle} ${cleanName}`;
+}
+
+
